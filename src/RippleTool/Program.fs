@@ -14,9 +14,9 @@ let random =
 
 let execute command =
 
-    let computation = async {
+    use ws = new WebSocket("wss://s1.ripple.com")
 
-        let ws = new WebSocket("wss://s1.ripple.com")
+    let computation = async {
 
         ws.Open()
         let! ea = Async.AwaitEvent(ws.Opened)
@@ -30,6 +30,8 @@ let execute command =
 
         return message
     }
+
+    ws.Error |> Event.add (fun ea -> raise ea.Exception)
 
     Async.RunSynchronously(computation, timeout = 5000)
 
