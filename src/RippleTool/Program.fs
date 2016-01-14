@@ -1,7 +1,6 @@
 ﻿module Program
 
 open WebSocket4Net
-open Config
 
 //-------------------------------------------------------------------------------------------------
 
@@ -100,6 +99,60 @@ let gatewayBalances account =
         }
         """
         account
+
+let tx transaction =
+    sprintf
+        """
+        {
+            "command": "tx",
+            "transaction": "%s"
+        }
+        """
+        transaction
+
+let ripplePathFind sourceAccount destinationAccount destinationAmount destinationCurrency destinationIssuer =
+    sprintf
+        """
+        {
+            "command": "ripple_path_find",
+            "source_account": "%s",
+            "destination_account": "%s",
+            "destination_amount": {
+                "value": "%f",
+                "currency": "%s",
+                "issuer": "%s"
+            }
+        }
+        """
+        sourceAccount
+        destinationAccount
+        destinationAmount
+        destinationCurrency
+        destinationIssuer
+
+let submit txBlob =
+    sprintf
+        """
+        {
+            "command": "submit",
+            "tx_blob": "%s"
+        }
+        """
+        txBlob
+
+let bookOffers takerGetsCurrency takerGetsIssuer takerPaysCurrency takerPaysIssuer =
+    sprintf
+        """
+        {
+            "command": "book_offers",
+            "taker_gets": { "currency": "%s", "issuer": "%s" },
+            "taker_pays": { "currency": "%s", "issuer": "%s" }
+        }
+        """
+        takerGetsCurrency
+        takerGetsIssuer
+        takerPaysCurrency
+        takerPaysIssuer
 
 //-------------------------------------------------------------------------------------------------
 
