@@ -68,6 +68,8 @@
     <Compile Include="TransactionEncoding.fs" />
     <Compile Include="TransactionSerialization.fs" />
     <Compile Include="TransactionSigning.fs" />
+    <Compile Include="CommandTypes.fs" />
+    <Compile Include="CommandSerialization.fs" />
     <Compile Include="Config.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

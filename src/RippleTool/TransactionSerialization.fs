@@ -52,12 +52,12 @@ let private fieldsFromTrustSet (transaction : TrustSet) =
     let transactionType = uint16 TransactionType.TrustSet
 
     let fields =
-        [ { Type = UInt16'TransactionType; Value = toBinaryUInt16   transactionType }
-          { Type = Account'Account;        Value = toBinaryAccount  transaction.Account }
-          { Type = Amount'Fee;             Value = toBinaryAmount   transaction.Fee }
-          { Type = UInt32'Flags;           Value = toBinaryUInt32   transaction.Flags }
-          { Type = UInt32'Sequence;        Value = toBinaryUInt32   transaction.Sequence }
-          { Type = Amount'Limit;           Value = toBinaryAmount   transaction.LimitAmount }
+        [ { Type = UInt16'TransactionType; Value = toBinaryUInt16  transactionType }
+          { Type = Account'Account;        Value = toBinaryAccount transaction.Account }
+          { Type = Amount'Fee;             Value = toBinaryAmount  transaction.Fee }
+          { Type = UInt32'Flags;           Value = toBinaryUInt32  transaction.Flags }
+          { Type = UInt32'Sequence;        Value = toBinaryUInt32  transaction.Sequence }
+          { Type = Amount'Limit;           Value = toBinaryAmount  transaction.LimitAmount }
         ]
 
     fields
