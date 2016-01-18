@@ -1,6 +1,7 @@
 ﻿module Program
 
-open CommandTypes
+open RippleTool
+open RippleTool.CommandTypes
 
 //-------------------------------------------------------------------------------------------------
 

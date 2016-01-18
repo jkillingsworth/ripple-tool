@@ -1,4 +1,4 @@
-﻿module TransactionSigning
+﻿module RippleTool.TransactionSigning
 
 open System
 open System.Security.Cryptography
@@ -7,8 +7,8 @@ open Org.BouncyCastle.Asn1.Sec
 open Org.BouncyCastle.Crypto.Parameters
 open Org.BouncyCastle.Crypto.Signers
 open Org.BouncyCastle.Math
-open TransactionEncoding
-open TransactionSerialization
+open RippleTool.TransactionEncoding
+open RippleTool.TransactionSerialization
 
 //-------------------------------------------------------------------------------------------------
 

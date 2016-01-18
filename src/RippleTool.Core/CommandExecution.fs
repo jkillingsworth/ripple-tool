@@ -1,8 +1,8 @@
-﻿module CommandExecution
+﻿module RippleTool.CommandExecution
 
 open WebSocket4Net
-open CommandTypes
-open CommandSerialization
+open RippleTool.CommandTypes
+open RippleTool.CommandSerialization
 
 //-------------------------------------------------------------------------------------------------
 

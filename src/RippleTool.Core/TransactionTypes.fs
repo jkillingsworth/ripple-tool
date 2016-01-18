@@ -1,4 +1,4 @@
-﻿module TransactionTypes
+﻿module RippleTool.TransactionTypes
 
 open System
 

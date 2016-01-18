@@ -1,6 +1,6 @@
-﻿module CommandSerialization
+﻿module RippleTool.CommandSerialization
 
-open CommandTypes
+open RippleTool.CommandTypes
 
 //-------------------------------------------------------------------------------------------------
 

@@ -1,7 +1,7 @@
-﻿module TransactionSerialization
+﻿module RippleTool.TransactionSerialization
 
-open TransactionTypes
-open TransactionEncoding
+open RippleTool.TransactionTypes
+open RippleTool.TransactionEncoding
 
 //-------------------------------------------------------------------------------------------------
 
