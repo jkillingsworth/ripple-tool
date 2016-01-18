@@ -70,6 +70,7 @@
     <Compile Include="TransactionSigning.fs" />
     <Compile Include="CommandTypes.fs" />
     <Compile Include="CommandSerialization.fs" />
+    <Compile Include="CommandExecution.fs" />
     <Compile Include="Config.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
