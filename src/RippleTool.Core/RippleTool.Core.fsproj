@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>98326197-242a-4b8f-92e5-3d15070a29c3</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>RippleTool</RootNamespace>
-    <AssemblyName>RippleTool</AssemblyName>
+    <ProjectGuid>8728af9f-462b-4075-acb6-93f837652a0c</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RippleTool.Core</RootNamespace>
+    <AssemblyName>RippleTool.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
-    <Name>RippleTool</Name>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Name>RippleTool.Core</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,10 +25,8 @@
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Platform)\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>
     </DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,10 +38,8 @@
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Platform)\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>
     </DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
@@ -62,11 +58,20 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="App.config" />
-    <Compile Include="Config.fs" />
-    <Compile Include="Program.fs" />
+    <Content Include="packages.config" />
+    <Compile Include="TransactionTypes.fs" />
+    <Compile Include="TransactionEncoding.fs" />
+    <Compile Include="TransactionSerialization.fs" />
+    <Compile Include="TransactionSigning.fs" />
+    <Compile Include="CommandTypes.fs" />
+    <Compile Include="CommandSerialization.fs" />
+    <Compile Include="CommandExecution.fs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
@@ -74,17 +79,11 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RippleTool.Core\RippleTool.Core.fsproj">
-      <Name>RippleTool.Core</Name>
-      <Project>{8728af9f-462b-4075-acb6-93f837652a0c}</Project>
+    <Reference Include="WebSocket4Net">
+      <HintPath>..\..\packages\WebSocket4Net.0.14.1\lib\net45\WebSocket4Net.dll</HintPath>
       <Private>True</Private>
-    </ProjectReference>
+    </Reference>
   </ItemGroup>
-  <PropertyGroup>
-    <PostBuildEvent>if exist $(ProjectDir)..\..\private\Private.config xcopy $(ProjectDir)..\..\private\Private.config $(TargetDir) /y</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
