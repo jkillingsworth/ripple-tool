@@ -5,10 +5,7 @@ open RippleTool.CommandTypes
 
 //-------------------------------------------------------------------------------------------------
 
-let executionAgent = CommandExecution.agentExecuteCommand Config.serverUri
-let executionEvent = CommandExecution.eventExecuteCommand.Publish
-
-executionEvent|> Event.add (printfn "%s")
-executionAgent.Post <| Ping()
+Integration.eventCommandExecutionResponse|> Event.add (printfn "%s")
+Integration.agentCommandExecution.Post <| Ping()
 
 System.Console.ReadKey() |> ignore

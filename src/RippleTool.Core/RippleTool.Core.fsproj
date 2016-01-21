@@ -67,6 +67,7 @@
     <Compile Include="CommandTypes.fs" />
     <Compile Include="CommandSerialization.fs" />
     <Compile Include="CommandExecution.fs" />
+    <Compile Include="Integration.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto">
