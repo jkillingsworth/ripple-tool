@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>98326197-242a-4b8f-92e5-3d15070a29c3</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>RippleTool</RootNamespace>
     <AssemblyName>RippleTool</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -73,12 +73,19 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RippleTool.Core\RippleTool.Core.fsproj">
       <Name>RippleTool.Core</Name>
       <Project>{8728af9f-462b-4075-acb6-93f837652a0c}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\RippleTool.UI\RippleTool.UI.csproj">
+      <Name>RippleTool.UI</Name>
+      <Project>{70642095-3b64-41aa-a28f-20aa6122d221}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

@@ -1,11 +1,9 @@
 ﻿module Program
 
-open RippleTool
-open RippleTool.CommandTypes
+open System.Windows.Forms
 
 //-------------------------------------------------------------------------------------------------
 
-Integration.eventCommandExecutionResponse|> Event.add (printfn "%s")
-Integration.agentCommandExecution.Post <| Ping()
-
-System.Console.ReadKey() |> ignore
+Application.EnableVisualStyles()
+Application.SetCompatibleTextRenderingDefault(false)
+Application.Run(new RippleTool.UI.MainForm())
