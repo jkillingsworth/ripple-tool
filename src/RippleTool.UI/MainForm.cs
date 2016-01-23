@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace RippleTool.UI
 {
@@ -11,6 +12,11 @@ namespace RippleTool.UI
             statusItemServerUri.Text = Integration.configServerUri;
         }
 
+        private void Show(DockContent dockContent)
+        {
+            dockContent.Show(dockPanel);
+        }
+
         private void menuItemFileExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -18,14 +24,17 @@ namespace RippleTool.UI
 
         private void menuItemViewResponse_Click(object sender, EventArgs e)
         {
-            var form = new ResponseForm();
-            form.Show(dockPanel);
+            Show(new ResponseForm());
         }
 
         private void menuItemViewPing_Click(object sender, EventArgs e)
         {
-            var form = new PingForm();
-            form.Show(dockPanel);
+            Show(new PingForm());
+        }
+
+        private void menuItemViewRandom_Click(object sender, EventArgs e)
+        {
+            Show(new RandomForm());
         }
     }
 }

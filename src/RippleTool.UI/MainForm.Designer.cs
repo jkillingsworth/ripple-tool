@@ -35,6 +35,7 @@
             this.menuItemViewResponse = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSeparator01 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewRandom = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
@@ -74,7 +75,8 @@
             this.menuItemView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemViewResponse,
             this.menuItemViewSeparator01,
-            this.menuItemViewPing});
+            this.menuItemViewPing,
+            this.menuItemViewRandom});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
@@ -97,6 +99,13 @@
             this.menuItemViewPing.Size = new System.Drawing.Size(124, 22);
             this.menuItemViewPing.Text = "Ping";
             this.menuItemViewPing.Click += new System.EventHandler(this.menuItemViewPing_Click);
+            // 
+            // menuItemViewRandom
+            // 
+            this.menuItemViewRandom.Name = "menuItemViewRandom";
+            this.menuItemViewRandom.Size = new System.Drawing.Size(124, 22);
+            this.menuItemViewRandom.Text = "Random";
+            this.menuItemViewRandom.Click += new System.EventHandler(this.menuItemViewRandom_Click);
             // 
             // statusStrip
             // 
@@ -154,6 +163,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewResponse;
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator01;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewPing;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewRandom;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;

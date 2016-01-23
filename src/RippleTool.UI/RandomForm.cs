@@ -3,16 +3,16 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace RippleTool.UI
 {
-    public partial class PingForm : DockContent
+    public partial class RandomForm : DockContent
     {
-        public PingForm()
+        public RandomForm()
         {
             InitializeComponent();
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var command = CommandTypes.Command.NewPing(null);
+            var command = CommandTypes.Command.NewRandom(null);
             Integration.agentCommandExecution.Post(command);
         }
     }
