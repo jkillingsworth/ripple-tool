@@ -8,6 +8,7 @@ namespace RippleTool.UI
         public MainForm()
         {
             InitializeComponent();
+            statusItemServerUri.Text = Integration.configServerUri;
         }
 
         private void menuItemFileExit_Click(object sender, EventArgs e)
