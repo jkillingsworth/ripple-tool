@@ -53,7 +53,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(784, 24);
-            this.menuStrip.TabIndex = 1;
+            this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
             // menuItemFile
@@ -112,16 +112,23 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusItemServerUri});
-            this.statusStrip.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip.Location = new System.Drawing.Point(0, 538);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(784, 22);
-            this.statusStrip.TabIndex = 3;
+            this.statusStrip.Size = new System.Drawing.Size(784, 24);
+            this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip";
             // 
             // statusItemServerUri
             // 
+            this.statusItemServerUri.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.statusItemServerUri.BorderStyle = System.Windows.Forms.Border3DStyle.Adjust;
             this.statusItemServerUri.Name = "statusItemServerUri";
-            this.statusItemServerUri.Size = new System.Drawing.Size(0, 17);
+            this.statusItemServerUri.Size = new System.Drawing.Size(769, 19);
+            this.statusItemServerUri.Spring = true;
+            this.statusItemServerUri.Text = "wss://example.com";
+            this.statusItemServerUri.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dockPanel
             // 
@@ -129,18 +136,19 @@
             this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel.Location = new System.Drawing.Point(0, 24);
             this.dockPanel.Name = "dockPanel";
-            this.dockPanel.Size = new System.Drawing.Size(784, 516);
-            this.dockPanel.TabIndex = 5;
+            this.dockPanel.Size = new System.Drawing.Size(784, 514);
+            this.dockPanel.TabIndex = 1;
             this.dockPanel.Theme = this.themeVS2012Light;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
