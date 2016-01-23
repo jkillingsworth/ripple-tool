@@ -37,6 +37,8 @@
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.themeVS2012Light = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -111,11 +113,22 @@
             this.statusItemServerUri.Name = "statusItemServerUri";
             this.statusItemServerUri.Size = new System.Drawing.Size(0, 17);
             // 
+            // dockPanel
+            // 
+            this.dockPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel.Location = new System.Drawing.Point(0, 24);
+            this.dockPanel.Name = "dockPanel";
+            this.dockPanel.Size = new System.Drawing.Size(784, 516);
+            this.dockPanel.TabIndex = 5;
+            this.dockPanel.Theme = this.themeVS2012Light;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
@@ -143,5 +156,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewPing;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
+        private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
+        private WeifenLuo.WinFormsUI.Docking.VS2012LightTheme themeVS2012Light;
     }
 }

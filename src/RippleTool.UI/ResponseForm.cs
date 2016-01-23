@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace RippleTool.UI
 {
-    public partial class ResponseForm : Form
+    public partial class ResponseForm : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public ResponseForm()
         {

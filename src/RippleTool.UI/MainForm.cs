@@ -19,15 +19,13 @@ namespace RippleTool.UI
         private void menuItemViewResponse_Click(object sender, EventArgs e)
         {
             var form = new ResponseForm();
-            form.MdiParent = this;
-            form.Show();
+            form.Show(dockPanel);
         }
 
         private void menuItemViewPing_Click(object sender, EventArgs e)
         {
             var form = new PingForm();
-            form.MdiParent = this;
-            form.Show();
+            form.Show(dockPanel);
         }
     }
 }

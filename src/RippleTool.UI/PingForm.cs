@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace RippleTool.UI
 {
-    public partial class PingForm : Form
+    public partial class PingForm : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public PingForm()
         {
