@@ -42,6 +42,7 @@
             this.menuItemViewRandom = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusItemProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.themeVS2012Light = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
             this.menuStrip.SuspendLayout();
@@ -136,7 +137,8 @@
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusItemServerUri});
+            this.statusItemServerUri,
+            this.statusItemProgress});
             this.statusStrip.Location = new System.Drawing.Point(0, 538);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(784, 24);
@@ -150,10 +152,17 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.statusItemServerUri.BorderStyle = System.Windows.Forms.Border3DStyle.Adjust;
             this.statusItemServerUri.Name = "statusItemServerUri";
-            this.statusItemServerUri.Size = new System.Drawing.Size(769, 19);
+            this.statusItemServerUri.Size = new System.Drawing.Size(667, 19);
             this.statusItemServerUri.Spring = true;
             this.statusItemServerUri.Text = "wss://s1.ripple.com";
             this.statusItemServerUri.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // statusItemProgress
+            // 
+            this.statusItemProgress.MarqueeAnimationSpeed = 0;
+            this.statusItemProgress.Name = "statusItemProgress";
+            this.statusItemProgress.Size = new System.Drawing.Size(100, 18);
+            this.statusItemProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
             // dockPanel
             // 
@@ -204,6 +213,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRandom;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
+        private System.Windows.Forms.ToolStripProgressBar statusItemProgress;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         private WeifenLuo.WinFormsUI.Docking.VS2012LightTheme themeVS2012Light;
     }
