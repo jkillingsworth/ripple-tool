@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemFileSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemFileSeparator01 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewResponse = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,15 +61,29 @@
             // menuItemFile
             // 
             this.menuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemFileSettings,
+            this.menuItemFileSeparator01,
             this.menuItemFileExit});
             this.menuItemFile.Name = "menuItemFile";
             this.menuItemFile.Size = new System.Drawing.Size(37, 20);
             this.menuItemFile.Text = "&File";
             // 
+            // menuItemFileSettings
+            // 
+            this.menuItemFileSettings.Name = "menuItemFileSettings";
+            this.menuItemFileSettings.Size = new System.Drawing.Size(125, 22);
+            this.menuItemFileSettings.Text = "Settings...";
+            this.menuItemFileSettings.Click += new System.EventHandler(this.menuItemFileSettings_Click);
+            // 
+            // menuItemFileSeparator01
+            // 
+            this.menuItemFileSeparator01.Name = "menuItemFileSeparator01";
+            this.menuItemFileSeparator01.Size = new System.Drawing.Size(122, 6);
+            // 
             // menuItemFileExit
             // 
             this.menuItemFileExit.Name = "menuItemFileExit";
-            this.menuItemFileExit.Size = new System.Drawing.Size(92, 22);
+            this.menuItemFileExit.Size = new System.Drawing.Size(125, 22);
             this.menuItemFileExit.Text = "E&xit";
             this.menuItemFileExit.Click += new System.EventHandler(this.menuItemFileExit_Click);
             // 
@@ -127,7 +143,7 @@
             this.statusItemServerUri.Name = "statusItemServerUri";
             this.statusItemServerUri.Size = new System.Drawing.Size(769, 19);
             this.statusItemServerUri.Spring = true;
-            this.statusItemServerUri.Text = "wss://example.com";
+            this.statusItemServerUri.Text = "wss://s1.ripple.com";
             this.statusItemServerUri.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dockPanel
@@ -168,6 +184,8 @@
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuItemFile;
+        private System.Windows.Forms.ToolStripMenuItem menuItemFileSettings;
+        private System.Windows.Forms.ToolStripSeparator menuItemFileSeparator01;
         private System.Windows.Forms.ToolStripMenuItem menuItemFileExit;
         private System.Windows.Forms.ToolStripMenuItem menuItemView;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewResponse;

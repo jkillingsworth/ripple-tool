@@ -17,6 +17,12 @@ namespace RippleTool.UI
             dockContent.Show(dockPanel);
         }
 
+        private void menuItemFileSettings_Click(object sender, EventArgs e)
+        {
+            var form = new SettingsForm();
+            form.ShowDialog();
+        }
+
         private void menuItemFileExit_Click(object sender, EventArgs e)
         {
             Close();
