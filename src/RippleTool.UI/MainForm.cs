@@ -28,6 +28,11 @@ namespace RippleTool.UI
             Close();
         }
 
+        private void menuItemViewRequest_Click(object sender, EventArgs e)
+        {
+            Show(new RequestForm());
+        }
+
         private void menuItemViewResponse_Click(object sender, EventArgs e)
         {
             Show(new ResponseForm());

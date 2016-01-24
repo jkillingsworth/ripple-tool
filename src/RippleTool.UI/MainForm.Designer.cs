@@ -35,6 +35,7 @@
             this.menuItemFileSeparator01 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewRequest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewResponse = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSeparator01 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,6 +91,7 @@
             // menuItemView
             // 
             this.menuItemView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemViewRequest,
             this.menuItemViewResponse,
             this.menuItemViewSeparator01,
             this.menuItemViewPing,
@@ -97,6 +99,13 @@
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
+            // 
+            // menuItemViewRequest
+            // 
+            this.menuItemViewRequest.Name = "menuItemViewRequest";
+            this.menuItemViewRequest.Size = new System.Drawing.Size(124, 22);
+            this.menuItemViewRequest.Text = "Request";
+            this.menuItemViewRequest.Click += new System.EventHandler(this.menuItemViewRequest_Click);
             // 
             // menuItemViewResponse
             // 
@@ -188,6 +197,7 @@
         private System.Windows.Forms.ToolStripSeparator menuItemFileSeparator01;
         private System.Windows.Forms.ToolStripMenuItem menuItemFileExit;
         private System.Windows.Forms.ToolStripMenuItem menuItemView;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewRequest;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewResponse;
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator01;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewPing;

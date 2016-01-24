@@ -13,4 +13,5 @@ let configAccountId = reader.GetValue("accountId", typeof<string>) :?> string
 //-------------------------------------------------------------------------------------------------
 
 let agentCommandExecution = CommandExecution.agentExecuteCommand configServerUri
-let eventCommandExecutionResponse = CommandExecution.eventExecuteCommand.Publish
+let eventCommandExecutionRequest = CommandExecution.eventExecuteCommandRequest.Publish
+let eventCommandExecutionResponse = CommandExecution.eventExecuteCommandResponse.Publish

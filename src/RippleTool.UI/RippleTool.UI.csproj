@@ -82,6 +82,12 @@
     <Compile Include="RandomForm.Designer.cs">
       <DependentUpon>RandomForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestForm.Designer.cs">
+      <DependentUpon>RequestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResponseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RandomForm.resx">
       <DependentUpon>RandomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestForm.resx">
+      <DependentUpon>RequestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResponseForm.resx">
       <DependentUpon>ResponseForm.cs</DependentUpon>

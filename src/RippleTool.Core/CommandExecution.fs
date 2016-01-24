@@ -31,7 +31,12 @@ let private execute serverUri command =
 
 //-------------------------------------------------------------------------------------------------
 
-let eventExecuteCommand = new Event<string>()
+let private trigger (event : Event<'T>) arg =
+    arg |> event.Trigger
+    arg
+
+let eventExecuteCommandRequest = new Event<string>()
+let eventExecuteCommandResponse = new Event<string>()
 
 let agentExecuteCommand serverUri = MailboxProcessor.Start(fun inbox ->
     async {
@@ -39,6 +44,8 @@ let agentExecuteCommand serverUri = MailboxProcessor.Start(fun inbox ->
             let! command = inbox.Receive()
             command
             |> serialize
+            |> trigger eventExecuteCommandRequest
             |> execute serverUri
-            |> eventExecuteCommand.Trigger
+            |> trigger eventExecuteCommandResponse
+            |> ignore
     })
