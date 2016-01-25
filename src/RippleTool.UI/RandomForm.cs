@@ -1,9 +1,8 @@
 ﻿using System;
-using WeifenLuo.WinFormsUI.Docking;
 
 namespace RippleTool.UI
 {
-    public partial class RandomForm : DockContent
+    public partial class RandomForm : DockForm
     {
         public RandomForm()
         {

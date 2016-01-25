@@ -1,9 +1,8 @@
 ﻿using System;
-using WeifenLuo.WinFormsUI.Docking;
 
 namespace RippleTool.UI
 {
-    public partial class RequestForm : DockContent
+    public partial class RequestForm : DockForm
     {
         public RequestForm()
         {
