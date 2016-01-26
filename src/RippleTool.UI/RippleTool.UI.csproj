@@ -70,6 +70,12 @@
     <Compile Include="AccountCurrenciesForm.Designer.cs">
       <DependentUpon>AccountCurrenciesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AccountInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountInfoForm.Designer.cs">
+      <DependentUpon>AccountInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DockForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AccountCurrenciesForm.resx">
       <DependentUpon>AccountCurrenciesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountInfoForm.resx">
+      <DependentUpon>AccountInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockForm.resx">
       <DependentUpon>DockForm.cs</DependentUpon>
