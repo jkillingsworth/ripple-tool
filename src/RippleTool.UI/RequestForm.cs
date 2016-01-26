@@ -23,7 +23,7 @@ namespace RippleTool.UI
 
         private void HandleEvent(object sender, string value)
         {
-            textDisplay.Text = value;
+            textDisplay.Lines = Integration.formatJson.Invoke(value).Split('\n');
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿module RippleTool.Integration
 
 open System.Configuration
+open Chiron
 
 //-------------------------------------------------------------------------------------------------
 
@@ -15,3 +16,7 @@ let configAccountId = reader.GetValue("accountId", typeof<string>) :?> string
 let agentCommandExecution = CommandExecution.agentExecuteCommand configServerUri
 let eventCommandExecutionRequest = CommandExecution.eventExecuteCommandRequest.Publish
 let eventCommandExecutionResponse = CommandExecution.eventExecuteCommandResponse.Publish
+
+//-------------------------------------------------------------------------------------------------
+
+let formatJson = Json.parse >> Json.formatWith JsonFormattingOptions.Pretty
