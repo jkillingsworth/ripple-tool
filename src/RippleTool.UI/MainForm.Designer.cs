@@ -40,6 +40,7 @@
             this.menuItemViewSeparator01 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRandom = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewAccountCurrencies = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusItemProgress = new System.Windows.Forms.ToolStripProgressBar();
@@ -96,7 +97,8 @@
             this.menuItemViewResponse,
             this.menuItemViewSeparator01,
             this.menuItemViewPing,
-            this.menuItemViewRandom});
+            this.menuItemViewRandom,
+            this.menuItemViewAccountCurrencies});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
@@ -104,35 +106,42 @@
             // menuItemViewRequest
             // 
             this.menuItemViewRequest.Name = "menuItemViewRequest";
-            this.menuItemViewRequest.Size = new System.Drawing.Size(124, 22);
+            this.menuItemViewRequest.Size = new System.Drawing.Size(178, 22);
             this.menuItemViewRequest.Text = "Request";
             this.menuItemViewRequest.Click += new System.EventHandler(this.menuItemViewRequest_Click);
             // 
             // menuItemViewResponse
             // 
             this.menuItemViewResponse.Name = "menuItemViewResponse";
-            this.menuItemViewResponse.Size = new System.Drawing.Size(124, 22);
+            this.menuItemViewResponse.Size = new System.Drawing.Size(178, 22);
             this.menuItemViewResponse.Text = "Response";
             this.menuItemViewResponse.Click += new System.EventHandler(this.menuItemViewResponse_Click);
             // 
             // menuItemViewSeparator01
             // 
             this.menuItemViewSeparator01.Name = "menuItemViewSeparator01";
-            this.menuItemViewSeparator01.Size = new System.Drawing.Size(121, 6);
+            this.menuItemViewSeparator01.Size = new System.Drawing.Size(175, 6);
             // 
             // menuItemViewPing
             // 
             this.menuItemViewPing.Name = "menuItemViewPing";
-            this.menuItemViewPing.Size = new System.Drawing.Size(124, 22);
+            this.menuItemViewPing.Size = new System.Drawing.Size(178, 22);
             this.menuItemViewPing.Text = "Ping";
             this.menuItemViewPing.Click += new System.EventHandler(this.menuItemViewPing_Click);
             // 
             // menuItemViewRandom
             // 
             this.menuItemViewRandom.Name = "menuItemViewRandom";
-            this.menuItemViewRandom.Size = new System.Drawing.Size(124, 22);
+            this.menuItemViewRandom.Size = new System.Drawing.Size(178, 22);
             this.menuItemViewRandom.Text = "Random";
             this.menuItemViewRandom.Click += new System.EventHandler(this.menuItemViewRandom_Click);
+            // 
+            // menuItemViewAccountCurrencies
+            // 
+            this.menuItemViewAccountCurrencies.Name = "menuItemViewAccountCurrencies";
+            this.menuItemViewAccountCurrencies.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewAccountCurrencies.Text = "Account Currencies";
+            this.menuItemViewAccountCurrencies.Click += new System.EventHandler(this.menuItemViewAccountCurrencies_Click);
             // 
             // statusStrip
             // 
@@ -211,6 +220,7 @@
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator01;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewPing;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRandom;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountCurrencies;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
         private System.Windows.Forms.ToolStripProgressBar statusItemProgress;
