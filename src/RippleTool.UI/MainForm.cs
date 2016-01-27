@@ -87,5 +87,10 @@ namespace RippleTool.UI
         {
             Show(new AccountLinesForm());
         }
+
+        private void menuItemViewAccountOffers_Click(object sender, EventArgs e)
+        {
+            Show(new AccountOffersForm());
+        }
     }
 }

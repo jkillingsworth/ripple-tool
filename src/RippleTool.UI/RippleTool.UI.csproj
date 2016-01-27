@@ -82,6 +82,12 @@
     <Compile Include="AccountLinesForm.Designer.cs">
       <DependentUpon>AccountLinesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AccountOffersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountOffersForm.Designer.cs">
+      <DependentUpon>AccountOffersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DockForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AccountLinesForm.resx">
       <DependentUpon>AccountLinesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountOffersForm.resx">
+      <DependentUpon>AccountOffersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockForm.resx">
       <DependentUpon>DockForm.cs</DependentUpon>
