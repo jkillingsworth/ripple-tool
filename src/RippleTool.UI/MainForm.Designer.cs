@@ -44,6 +44,7 @@
             this.menuItemViewAccountInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountLines = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountOffers = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewAccountObjects = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusItemProgress = new System.Windows.Forms.ToolStripProgressBar();
@@ -104,7 +105,8 @@
             this.menuItemViewAccountCurrencies,
             this.menuItemViewAccountInfo,
             this.menuItemViewAccountLines,
-            this.menuItemViewAccountOffers});
+            this.menuItemViewAccountOffers,
+            this.menuItemViewAccountObjects});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
@@ -169,6 +171,13 @@
             this.menuItemViewAccountOffers.Size = new System.Drawing.Size(178, 22);
             this.menuItemViewAccountOffers.Text = "Account Offers";
             this.menuItemViewAccountOffers.Click += new System.EventHandler(this.menuItemViewAccountOffers_Click);
+            // 
+            // menuItemViewAccountObjects
+            // 
+            this.menuItemViewAccountObjects.Name = "menuItemViewAccountObjects";
+            this.menuItemViewAccountObjects.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewAccountObjects.Text = "Account Objects";
+            this.menuItemViewAccountObjects.Click += new System.EventHandler(this.menuItemViewAccountObjects_Click);
             // 
             // statusStrip
             // 
@@ -251,6 +260,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountInfo;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountLines;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountOffers;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountObjects;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
         private System.Windows.Forms.ToolStripProgressBar statusItemProgress;
