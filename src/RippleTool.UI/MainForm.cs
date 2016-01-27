@@ -97,5 +97,10 @@ namespace RippleTool.UI
         {
             Show(new AccountObjectsForm());
         }
+
+        private void menuItemViewAccountTx_Click(object sender, EventArgs e)
+        {
+            Show(new AccountTxForm());
+        }
     }
 }
