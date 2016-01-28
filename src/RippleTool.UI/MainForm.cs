@@ -107,5 +107,10 @@ namespace RippleTool.UI
         {
             Show(new NoRippleCheckForm());
         }
+
+        private void menuItemViewGatewayBalances_Click(object sender, EventArgs e)
+        {
+            Show(new GatewayBalancesForm());
+        }
     }
 }

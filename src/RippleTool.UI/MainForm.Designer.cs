@@ -47,6 +47,7 @@
             this.menuItemViewAccountObjects = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewNoRippleCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewGatewayBalances = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusItemProgress = new System.Windows.Forms.ToolStripProgressBar();
@@ -110,7 +111,8 @@
             this.menuItemViewAccountOffers,
             this.menuItemViewAccountObjects,
             this.menuItemViewAccountTx,
-            this.menuItemViewNoRippleCheck});
+            this.menuItemViewNoRippleCheck,
+            this.menuItemViewGatewayBalances});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
@@ -197,6 +199,13 @@
             this.menuItemViewNoRippleCheck.Text = "No Ripple Check";
             this.menuItemViewNoRippleCheck.Click += new System.EventHandler(this.menuItemViewNoRippleCheck_Click);
             // 
+            // menuItemViewGatewayBalances
+            // 
+            this.menuItemViewGatewayBalances.Name = "menuItemViewGatewayBalances";
+            this.menuItemViewGatewayBalances.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewGatewayBalances.Text = "Gateway Balances";
+            this.menuItemViewGatewayBalances.Click += new System.EventHandler(this.menuItemViewGatewayBalances_Click);
+            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -281,6 +290,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountObjects;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewNoRippleCheck;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewGatewayBalances;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
         private System.Windows.Forms.ToolStripProgressBar statusItemProgress;
