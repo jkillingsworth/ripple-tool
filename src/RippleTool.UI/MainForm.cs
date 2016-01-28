@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -111,6 +112,22 @@ namespace RippleTool.UI
         private void menuItemViewGatewayBalances_Click(object sender, EventArgs e)
         {
             Show(new GatewayBalancesForm());
+        }
+
+        private void menuItemHelpDeveloperCenter_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://ripple.com/build/");
+        }
+
+        private void menuItemHelpKnowledgeCenter_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://ripple.com/learn/");
+        }
+
+        private void menuItemHelpAbout_Click(object sender, EventArgs e)
+        {
+            var form = new AboutForm();
+            form.ShowDialog();
         }
     }
 }
