@@ -48,6 +48,7 @@
             this.menuItemViewAccountTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewNoRippleCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewGatewayBalances = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpDeveloperCenter = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpKnowledgeCenter = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,8 +68,10 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemFile,
             this.menuItemView,
+            this.menuItemWindow,
             this.menuItemHelp});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.MdiWindowListItem = this.menuItemWindow;
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(784, 24);
             this.menuStrip.TabIndex = 0;
@@ -212,6 +215,12 @@
             this.menuItemViewGatewayBalances.Text = "Gateway Balances";
             this.menuItemViewGatewayBalances.Click += new System.EventHandler(this.menuItemViewGatewayBalances_Click);
             // 
+            // menuItemWindow
+            // 
+            this.menuItemWindow.Name = "menuItemWindow";
+            this.menuItemWindow.Size = new System.Drawing.Size(63, 20);
+            this.menuItemWindow.Text = "&Window";
+            // 
             // menuItemHelp
             // 
             this.menuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -334,6 +343,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewNoRippleCheck;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewGatewayBalances;
+        private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpKnowledgeCenter;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpDeveloperCenter;
