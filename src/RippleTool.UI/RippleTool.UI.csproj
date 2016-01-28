@@ -112,6 +112,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NoRippleCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoRippleCheckForm.Designer.cs">
+      <DependentUpon>NoRippleCheckForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoRippleCheckForm.resx">
+      <DependentUpon>NoRippleCheckForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PingForm.resx">
       <DependentUpon>PingForm.cs</DependentUpon>

@@ -102,5 +102,10 @@ namespace RippleTool.UI
         {
             Show(new AccountTxForm());
         }
+
+        private void menuItemViewNoRippleCheck_Click(object sender, EventArgs e)
+        {
+            Show(new NoRippleCheckForm());
+        }
     }
 }
