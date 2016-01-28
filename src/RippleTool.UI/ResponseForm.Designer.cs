@@ -32,10 +32,10 @@
             this.textDisplay = new System.Windows.Forms.TextBox();
             this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripItemRaw = new System.Windows.Forms.ToolStripButton();
-            this.toolStripItemFormatted = new System.Windows.Forms.ToolStripButton();
-            this.toolStripItemSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripItemClear = new System.Windows.Forms.ToolStripButton();
+            this.toolItemRaw = new System.Windows.Forms.ToolStripButton();
+            this.toolItemFormatted = new System.Windows.Forms.ToolStripButton();
+            this.toolItemSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolItemClear = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer.SuspendLayout();
@@ -80,49 +80,49 @@
             this.toolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripItemRaw,
-            this.toolStripItemFormatted,
-            this.toolStripItemSeparator1,
-            this.toolStripItemClear});
+            this.toolItemRaw,
+            this.toolItemFormatted,
+            this.toolItemSeparator1,
+            this.toolItemClear});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(284, 25);
             this.toolStrip.Stretch = true;
             this.toolStrip.TabIndex = 0;
             // 
-            // toolStripItemRaw
+            // toolItemRaw
             // 
-            this.toolStripItemRaw.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemRaw.Image")));
-            this.toolStripItemRaw.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripItemRaw.Name = "toolStripItemRaw";
-            this.toolStripItemRaw.Size = new System.Drawing.Size(49, 22);
-            this.toolStripItemRaw.Text = "Raw";
-            this.toolStripItemRaw.Click += new System.EventHandler(this.toolStripItemRaw_Click);
+            this.toolItemRaw.Image = ((System.Drawing.Image)(resources.GetObject("toolItemRaw.Image")));
+            this.toolItemRaw.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolItemRaw.Name = "toolItemRaw";
+            this.toolItemRaw.Size = new System.Drawing.Size(49, 22);
+            this.toolItemRaw.Text = "Raw";
+            this.toolItemRaw.Click += new System.EventHandler(this.toolItemRaw_Click);
             // 
-            // toolStripItemFormatted
+            // toolItemFormatted
             // 
-            this.toolStripItemFormatted.Checked = true;
-            this.toolStripItemFormatted.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripItemFormatted.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemFormatted.Image")));
-            this.toolStripItemFormatted.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripItemFormatted.Name = "toolStripItemFormatted";
-            this.toolStripItemFormatted.Size = new System.Drawing.Size(82, 22);
-            this.toolStripItemFormatted.Text = "Formatted";
-            this.toolStripItemFormatted.Click += new System.EventHandler(this.toolStripItemFormatted_Click);
+            this.toolItemFormatted.Checked = true;
+            this.toolItemFormatted.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolItemFormatted.Image = ((System.Drawing.Image)(resources.GetObject("toolItemFormatted.Image")));
+            this.toolItemFormatted.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolItemFormatted.Name = "toolItemFormatted";
+            this.toolItemFormatted.Size = new System.Drawing.Size(82, 22);
+            this.toolItemFormatted.Text = "Formatted";
+            this.toolItemFormatted.Click += new System.EventHandler(this.toolItemFormatted_Click);
             // 
-            // toolStripItemSeparator1
+            // toolItemSeparator1
             // 
-            this.toolStripItemSeparator1.Name = "toolStripItemSeparator1";
-            this.toolStripItemSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolItemSeparator1.Name = "toolItemSeparator1";
+            this.toolItemSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripItemClear
+            // toolItemClear
             // 
-            this.toolStripItemClear.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemClear.Image")));
-            this.toolStripItemClear.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripItemClear.Name = "toolStripItemClear";
-            this.toolStripItemClear.Size = new System.Drawing.Size(54, 22);
-            this.toolStripItemClear.Text = "Clear";
-            this.toolStripItemClear.Click += new System.EventHandler(this.toolStripItemClear_Click);
+            this.toolItemClear.Image = ((System.Drawing.Image)(resources.GetObject("toolItemClear.Image")));
+            this.toolItemClear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolItemClear.Name = "toolItemClear";
+            this.toolItemClear.Size = new System.Drawing.Size(54, 22);
+            this.toolItemClear.Text = "Clear";
+            this.toolItemClear.Click += new System.EventHandler(this.toolItemClear_Click);
             // 
             // ResponseForm
             // 
@@ -150,9 +150,9 @@
         private System.Windows.Forms.TextBox textDisplay;
         private System.Windows.Forms.ToolStripContainer toolStripContainer;
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton toolStripItemRaw;
-        private System.Windows.Forms.ToolStripButton toolStripItemFormatted;
-        private System.Windows.Forms.ToolStripSeparator toolStripItemSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripItemClear;
+        private System.Windows.Forms.ToolStripButton toolItemRaw;
+        private System.Windows.Forms.ToolStripButton toolItemFormatted;
+        private System.Windows.Forms.ToolStripSeparator toolItemSeparator1;
+        private System.Windows.Forms.ToolStripButton toolItemClear;
     }
 }

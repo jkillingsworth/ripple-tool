@@ -23,7 +23,7 @@ namespace RippleTool.UI
 
         private void HandleEvent(object sender, string value)
         {
-            if (toolStripItemFormatted.Checked)
+            if (toolItemFormatted.Checked)
             {
                 textDisplay.Lines = Integration.formatJson.Invoke(value).Split('\n');
             }
@@ -33,19 +33,19 @@ namespace RippleTool.UI
             }
         }
 
-        private void toolStripItemRaw_Click(object sender, EventArgs e)
+        private void toolItemRaw_Click(object sender, EventArgs e)
         {
-            toolStripItemRaw.Checked = true;
-            toolStripItemFormatted.Checked = false;
+            toolItemRaw.Checked = true;
+            toolItemFormatted.Checked = false;
         }
 
-        private void toolStripItemFormatted_Click(object sender, EventArgs e)
+        private void toolItemFormatted_Click(object sender, EventArgs e)
         {
-            toolStripItemRaw.Checked = false;
-            toolStripItemFormatted.Checked = true;
+            toolItemRaw.Checked = false;
+            toolItemFormatted.Checked = true;
         }
 
-        private void toolStripItemClear_Click(object sender, EventArgs e)
+        private void toolItemClear_Click(object sender, EventArgs e)
         {
             textDisplay.Clear();
         }

@@ -32,12 +32,12 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemFileSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemFileSeparator01 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemFileSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRequest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewResponse = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewSeparator01 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemViewSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRandom = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountCurrencies = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +51,7 @@
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpDeveloperCenter = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpKnowledgeCenter = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemHelpSeparator01 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemHelpSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
@@ -78,7 +78,7 @@
             // 
             this.menuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemFileSettings,
-            this.menuItemFileSeparator01,
+            this.menuItemFileSeparator1,
             this.menuItemFileExit});
             this.menuItemFile.Name = "menuItemFile";
             this.menuItemFile.Size = new System.Drawing.Size(37, 20);
@@ -87,19 +87,19 @@
             // menuItemFileSettings
             // 
             this.menuItemFileSettings.Name = "menuItemFileSettings";
-            this.menuItemFileSettings.Size = new System.Drawing.Size(125, 22);
-            this.menuItemFileSettings.Text = "Settings...";
+            this.menuItemFileSettings.Size = new System.Drawing.Size(116, 22);
+            this.menuItemFileSettings.Text = "Settings";
             this.menuItemFileSettings.Click += new System.EventHandler(this.menuItemFileSettings_Click);
             // 
-            // menuItemFileSeparator01
+            // menuItemFileSeparator1
             // 
-            this.menuItemFileSeparator01.Name = "menuItemFileSeparator01";
-            this.menuItemFileSeparator01.Size = new System.Drawing.Size(122, 6);
+            this.menuItemFileSeparator1.Name = "menuItemFileSeparator1";
+            this.menuItemFileSeparator1.Size = new System.Drawing.Size(113, 6);
             // 
             // menuItemFileExit
             // 
             this.menuItemFileExit.Name = "menuItemFileExit";
-            this.menuItemFileExit.Size = new System.Drawing.Size(125, 22);
+            this.menuItemFileExit.Size = new System.Drawing.Size(116, 22);
             this.menuItemFileExit.Text = "E&xit";
             this.menuItemFileExit.Click += new System.EventHandler(this.menuItemFileExit_Click);
             // 
@@ -108,7 +108,7 @@
             this.menuItemView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemViewRequest,
             this.menuItemViewResponse,
-            this.menuItemViewSeparator01,
+            this.menuItemViewSeparator1,
             this.menuItemViewPing,
             this.menuItemViewRandom,
             this.menuItemViewAccountCurrencies,
@@ -137,10 +137,10 @@
             this.menuItemViewResponse.Text = "Response";
             this.menuItemViewResponse.Click += new System.EventHandler(this.menuItemViewResponse_Click);
             // 
-            // menuItemViewSeparator01
+            // menuItemViewSeparator1
             // 
-            this.menuItemViewSeparator01.Name = "menuItemViewSeparator01";
-            this.menuItemViewSeparator01.Size = new System.Drawing.Size(175, 6);
+            this.menuItemViewSeparator1.Name = "menuItemViewSeparator1";
+            this.menuItemViewSeparator1.Size = new System.Drawing.Size(175, 6);
             // 
             // menuItemViewPing
             // 
@@ -217,7 +217,7 @@
             this.menuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemHelpDeveloperCenter,
             this.menuItemHelpKnowledgeCenter,
-            this.menuItemHelpSeparator01,
+            this.menuItemHelpSeparator1,
             this.menuItemHelpAbout});
             this.menuItemHelp.Name = "menuItemHelp";
             this.menuItemHelp.Size = new System.Drawing.Size(44, 20);
@@ -237,10 +237,10 @@
             this.menuItemHelpKnowledgeCenter.Text = "Knowledge Center";
             this.menuItemHelpKnowledgeCenter.Click += new System.EventHandler(this.menuItemHelpKnowledgeCenter_Click);
             // 
-            // menuItemHelpSeparator01
+            // menuItemHelpSeparator1
             // 
-            this.menuItemHelpSeparator01.Name = "menuItemHelpSeparator01";
-            this.menuItemHelpSeparator01.Size = new System.Drawing.Size(168, 6);
+            this.menuItemHelpSeparator1.Name = "menuItemHelpSeparator1";
+            this.menuItemHelpSeparator1.Size = new System.Drawing.Size(168, 6);
             // 
             // menuItemHelpAbout
             // 
@@ -318,12 +318,12 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuItemFile;
         private System.Windows.Forms.ToolStripMenuItem menuItemFileSettings;
-        private System.Windows.Forms.ToolStripSeparator menuItemFileSeparator01;
+        private System.Windows.Forms.ToolStripSeparator menuItemFileSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemFileExit;
         private System.Windows.Forms.ToolStripMenuItem menuItemView;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRequest;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewResponse;
-        private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator01;
+        private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewPing;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRandom;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountCurrencies;
@@ -337,7 +337,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpKnowledgeCenter;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpDeveloperCenter;
-        private System.Windows.Forms.ToolStripSeparator menuItemHelpSeparator01;
+        private System.Windows.Forms.ToolStripSeparator menuItemHelpSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpAbout;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
