@@ -43,6 +43,25 @@ namespace RippleTool.UI
             dockContent.Show(dockPanel);
         }
 
+        private void menuStrip_MenuActivate(object sender, EventArgs e)
+        {
+            if (MdiChildren.Length == 0)
+            {
+                menuItemWindowCloseAll.Enabled = false;
+
+                var index = menuItemWindow.DropDownItems.Count - 1;
+                var items = menuItemWindow.DropDownItems;
+                if (items[index] is ToolStripSeparator)
+                {
+                    items.RemoveAt(index);
+                }
+            }
+            else
+            {
+                menuItemWindowCloseAll.Enabled = true;
+            }
+        }
+
         private void menuItemFileSettings_Click(object sender, EventArgs e)
         {
             var form = new SettingsForm();
@@ -127,6 +146,14 @@ namespace RippleTool.UI
         private void menuItemViewTx_Click(object sender, EventArgs e)
         {
             Show(new TxForm());
+        }
+
+        private void menuItemWindowCloseAll_Click(object sender, EventArgs e)
+        {
+            foreach (var form in MdiChildren)
+            {
+                form.Close();
+            }
         }
 
         private void menuItemHelpDeveloperCenter_Click(object sender, EventArgs e)

@@ -40,6 +40,7 @@
             this.menuItemViewSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRandom = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewAccountCurrencies = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountLines = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,10 +49,12 @@
             this.menuItemViewAccountTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewGatewayBalances = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewNoRippleCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewBookOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRipplePathFind = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemWindowCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpDeveloperCenter = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpKnowledgeCenter = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,6 +82,7 @@
             this.menuStrip.Size = new System.Drawing.Size(784, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
+            this.menuStrip.MenuActivate += new System.EventHandler(this.menuStrip_MenuActivate);
             // 
             // menuItemFile
             // 
@@ -117,6 +121,7 @@
             this.menuItemViewSeparator1,
             this.menuItemViewPing,
             this.menuItemViewRandom,
+            this.menuItemViewSeparator2,
             this.menuItemViewAccountCurrencies,
             this.menuItemViewAccountInfo,
             this.menuItemViewAccountLines,
@@ -125,6 +130,7 @@
             this.menuItemViewAccountTx,
             this.menuItemViewGatewayBalances,
             this.menuItemViewNoRippleCheck,
+            this.menuItemViewSeparator3,
             this.menuItemViewBookOffers,
             this.menuItemViewRipplePathFind,
             this.menuItemViewTx});
@@ -135,118 +141,143 @@
             // menuItemViewRequest
             // 
             this.menuItemViewRequest.Name = "menuItemViewRequest";
-            this.menuItemViewRequest.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewRequest.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Up)));
+            this.menuItemViewRequest.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewRequest.Text = "Request";
             this.menuItemViewRequest.Click += new System.EventHandler(this.menuItemViewRequest_Click);
             // 
             // menuItemViewResponse
             // 
             this.menuItemViewResponse.Name = "menuItemViewResponse";
-            this.menuItemViewResponse.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewResponse.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Down)));
+            this.menuItemViewResponse.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewResponse.Text = "Response";
             this.menuItemViewResponse.Click += new System.EventHandler(this.menuItemViewResponse_Click);
             // 
             // menuItemViewSeparator1
             // 
             this.menuItemViewSeparator1.Name = "menuItemViewSeparator1";
-            this.menuItemViewSeparator1.Size = new System.Drawing.Size(175, 6);
+            this.menuItemViewSeparator1.Size = new System.Drawing.Size(241, 6);
             // 
             // menuItemViewPing
             // 
             this.menuItemViewPing.Name = "menuItemViewPing";
-            this.menuItemViewPing.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewPing.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewPing.Text = "Ping";
             this.menuItemViewPing.Click += new System.EventHandler(this.menuItemViewPing_Click);
             // 
             // menuItemViewRandom
             // 
             this.menuItemViewRandom.Name = "menuItemViewRandom";
-            this.menuItemViewRandom.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewRandom.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewRandom.Text = "Random";
             this.menuItemViewRandom.Click += new System.EventHandler(this.menuItemViewRandom_Click);
+            // 
+            // menuItemViewSeparator2
+            // 
+            this.menuItemViewSeparator2.Name = "menuItemViewSeparator2";
+            this.menuItemViewSeparator2.Size = new System.Drawing.Size(241, 6);
             // 
             // menuItemViewAccountCurrencies
             // 
             this.menuItemViewAccountCurrencies.Name = "menuItemViewAccountCurrencies";
-            this.menuItemViewAccountCurrencies.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewAccountCurrencies.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewAccountCurrencies.Text = "Account Currencies";
             this.menuItemViewAccountCurrencies.Click += new System.EventHandler(this.menuItemViewAccountCurrencies_Click);
             // 
             // menuItemViewAccountInfo
             // 
             this.menuItemViewAccountInfo.Name = "menuItemViewAccountInfo";
-            this.menuItemViewAccountInfo.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewAccountInfo.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewAccountInfo.Text = "Account Info";
             this.menuItemViewAccountInfo.Click += new System.EventHandler(this.menuItemViewAccountInfo_Click);
             // 
             // menuItemViewAccountLines
             // 
             this.menuItemViewAccountLines.Name = "menuItemViewAccountLines";
-            this.menuItemViewAccountLines.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewAccountLines.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewAccountLines.Text = "Account Lines";
             this.menuItemViewAccountLines.Click += new System.EventHandler(this.menuItemViewAccountLines_Click);
             // 
             // menuItemViewAccountObjects
             // 
             this.menuItemViewAccountObjects.Name = "menuItemViewAccountObjects";
-            this.menuItemViewAccountObjects.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewAccountObjects.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewAccountObjects.Text = "Account Objects";
             this.menuItemViewAccountObjects.Click += new System.EventHandler(this.menuItemViewAccountObjects_Click);
             // 
             // menuItemViewAccountOffers
             // 
             this.menuItemViewAccountOffers.Name = "menuItemViewAccountOffers";
-            this.menuItemViewAccountOffers.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewAccountOffers.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewAccountOffers.Text = "Account Offers";
             this.menuItemViewAccountOffers.Click += new System.EventHandler(this.menuItemViewAccountOffers_Click);
             // 
             // menuItemViewAccountTx
             // 
             this.menuItemViewAccountTx.Name = "menuItemViewAccountTx";
-            this.menuItemViewAccountTx.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewAccountTx.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewAccountTx.Text = "Account Tx";
             this.menuItemViewAccountTx.Click += new System.EventHandler(this.menuItemViewAccountTx_Click);
             // 
             // menuItemViewGatewayBalances
             // 
             this.menuItemViewGatewayBalances.Name = "menuItemViewGatewayBalances";
-            this.menuItemViewGatewayBalances.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewGatewayBalances.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewGatewayBalances.Text = "Gateway Balances";
             this.menuItemViewGatewayBalances.Click += new System.EventHandler(this.menuItemViewGatewayBalances_Click);
             // 
             // menuItemViewNoRippleCheck
             // 
             this.menuItemViewNoRippleCheck.Name = "menuItemViewNoRippleCheck";
-            this.menuItemViewNoRippleCheck.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewNoRippleCheck.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewNoRippleCheck.Text = "No Ripple Check";
             this.menuItemViewNoRippleCheck.Click += new System.EventHandler(this.menuItemViewNoRippleCheck_Click);
+            // 
+            // menuItemViewSeparator3
+            // 
+            this.menuItemViewSeparator3.Name = "menuItemViewSeparator3";
+            this.menuItemViewSeparator3.Size = new System.Drawing.Size(241, 6);
             // 
             // menuItemViewBookOffers
             // 
             this.menuItemViewBookOffers.Name = "menuItemViewBookOffers";
-            this.menuItemViewBookOffers.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewBookOffers.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewBookOffers.Text = "Book Offers";
             this.menuItemViewBookOffers.Click += new System.EventHandler(this.menuItemViewBookOffers_Click);
             // 
             // menuItemViewRipplePathFind
             // 
             this.menuItemViewRipplePathFind.Name = "menuItemViewRipplePathFind";
-            this.menuItemViewRipplePathFind.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewRipplePathFind.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewRipplePathFind.Text = "Ripple Path Find";
             this.menuItemViewRipplePathFind.Click += new System.EventHandler(this.menuItemViewRipplePathFind_Click);
             // 
             // menuItemViewTx
             // 
             this.menuItemViewTx.Name = "menuItemViewTx";
-            this.menuItemViewTx.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewTx.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewTx.Text = "Tx";
             this.menuItemViewTx.Click += new System.EventHandler(this.menuItemViewTx_Click);
             // 
             // menuItemWindow
             // 
+            this.menuItemWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemWindowCloseAll});
             this.menuItemWindow.Name = "menuItemWindow";
             this.menuItemWindow.Size = new System.Drawing.Size(63, 20);
             this.menuItemWindow.Text = "&Window";
+            // 
+            // menuItemWindowCloseAll
+            // 
+            this.menuItemWindowCloseAll.Name = "menuItemWindowCloseAll";
+            this.menuItemWindowCloseAll.Size = new System.Drawing.Size(120, 22);
+            this.menuItemWindowCloseAll.Text = "Close All";
+            this.menuItemWindowCloseAll.Click += new System.EventHandler(this.menuItemWindowCloseAll_Click);
             // 
             // menuItemHelp
             // 
@@ -282,7 +313,7 @@
             // 
             this.menuItemHelpAbout.Name = "menuItemHelpAbout";
             this.menuItemHelpAbout.Size = new System.Drawing.Size(171, 22);
-            this.menuItemHelpAbout.Text = "About RippleTool";
+            this.menuItemHelpAbout.Text = "&About RippleTool";
             this.menuItemHelpAbout.Click += new System.EventHandler(this.menuItemHelpAbout_Click);
             // 
             // statusStrip
@@ -362,6 +393,7 @@
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewPing;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRandom;
+        private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator2;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountCurrencies;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountInfo;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountLines;
@@ -370,10 +402,12 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewGatewayBalances;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewNoRippleCheck;
+        private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator3;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewBookOffers;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRipplePathFind;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
+        private System.Windows.Forms.ToolStripMenuItem menuItemWindowCloseAll;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpKnowledgeCenter;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpDeveloperCenter;
