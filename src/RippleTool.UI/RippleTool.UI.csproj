@@ -106,6 +106,12 @@
     <Compile Include="AccountTxForm.Designer.cs">
       <DependentUpon>AccountTxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookOffersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookOffersForm.Designer.cs">
+      <DependentUpon>BookOffersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DockForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AccountTxForm.resx">
       <DependentUpon>AccountTxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookOffersForm.resx">
+      <DependentUpon>BookOffersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockForm.resx">
       <DependentUpon>DockForm.cs</DependentUpon>

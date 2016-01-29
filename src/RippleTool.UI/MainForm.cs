@@ -124,6 +124,11 @@ namespace RippleTool.UI
             Show(new RipplePathFindForm());
         }
 
+        private void menuItemViewBookOffers_Click(object sender, EventArgs e)
+        {
+            Show(new BookOffersForm());
+        }
+
         private void menuItemHelpDeveloperCenter_Click(object sender, EventArgs e)
         {
             Process.Start("https://ripple.com/build/");

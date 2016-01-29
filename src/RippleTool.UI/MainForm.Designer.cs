@@ -50,6 +50,7 @@
             this.menuItemViewGatewayBalances = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRipplePathFind = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewBookOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpDeveloperCenter = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,7 +126,8 @@
             this.menuItemViewNoRippleCheck,
             this.menuItemViewGatewayBalances,
             this.menuItemViewTx,
-            this.menuItemViewRipplePathFind});
+            this.menuItemViewRipplePathFind,
+            this.menuItemViewBookOffers});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
@@ -232,6 +234,13 @@
             this.menuItemViewRipplePathFind.Size = new System.Drawing.Size(178, 22);
             this.menuItemViewRipplePathFind.Text = "Ripple Path Find";
             this.menuItemViewRipplePathFind.Click += new System.EventHandler(this.menuItemViewRipplePathFind_Click);
+            // 
+            // menuItemViewBookOffers
+            // 
+            this.menuItemViewBookOffers.Name = "menuItemViewBookOffers";
+            this.menuItemViewBookOffers.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewBookOffers.Text = "Book Offers";
+            this.menuItemViewBookOffers.Click += new System.EventHandler(this.menuItemViewBookOffers_Click);
             // 
             // menuItemWindow
             // 
@@ -363,6 +372,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewGatewayBalances;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRipplePathFind;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewBookOffers;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpKnowledgeCenter;
