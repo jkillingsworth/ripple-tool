@@ -49,6 +49,7 @@
             this.menuItemViewNoRippleCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewGatewayBalances = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewTx = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewRipplePathFind = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpDeveloperCenter = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,7 +124,8 @@
             this.menuItemViewAccountTx,
             this.menuItemViewNoRippleCheck,
             this.menuItemViewGatewayBalances,
-            this.menuItemViewTx});
+            this.menuItemViewTx,
+            this.menuItemViewRipplePathFind});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
@@ -223,6 +225,13 @@
             this.menuItemViewTx.Size = new System.Drawing.Size(178, 22);
             this.menuItemViewTx.Text = "Tx";
             this.menuItemViewTx.Click += new System.EventHandler(this.menuItemViewTx_Click);
+            // 
+            // menuItemViewRipplePathFind
+            // 
+            this.menuItemViewRipplePathFind.Name = "menuItemViewRipplePathFind";
+            this.menuItemViewRipplePathFind.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewRipplePathFind.Text = "Ripple Path Find";
+            this.menuItemViewRipplePathFind.Click += new System.EventHandler(this.menuItemViewRipplePathFind_Click);
             // 
             // menuItemWindow
             // 
@@ -353,6 +362,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewNoRippleCheck;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewGatewayBalances;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewTx;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewRipplePathFind;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpKnowledgeCenter;
