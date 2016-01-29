@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.buttonSubmit = new System.Windows.Forms.Button();
-            this.labelTransactionId = new System.Windows.Forms.Label();
-            this.textTransactionId = new System.Windows.Forms.TextBox();
+            this.labelTransaction = new System.Windows.Forms.Label();
+            this.textTransaction = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSubmit
@@ -38,34 +38,34 @@
             this.buttonSubmit.Location = new System.Drawing.Point(12, 56);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
-            this.buttonSubmit.TabIndex = 0;
+            this.buttonSubmit.TabIndex = 2;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
-            // labelTransactionId
+            // labelTransaction
             // 
-            this.labelTransactionId.AutoSize = true;
-            this.labelTransactionId.Location = new System.Drawing.Point(12, 9);
-            this.labelTransactionId.Name = "labelTransactionId";
-            this.labelTransactionId.Size = new System.Drawing.Size(86, 15);
-            this.labelTransactionId.TabIndex = 1;
-            this.labelTransactionId.Text = "Transaction ID:";
+            this.labelTransaction.AutoSize = true;
+            this.labelTransaction.Location = new System.Drawing.Point(12, 9);
+            this.labelTransaction.Name = "labelTransaction";
+            this.labelTransaction.Size = new System.Drawing.Size(72, 15);
+            this.labelTransaction.TabIndex = 0;
+            this.labelTransaction.Text = "Transaction:";
             // 
-            // textTransactionId
+            // textTransaction
             // 
-            this.textTransactionId.Location = new System.Drawing.Point(12, 27);
-            this.textTransactionId.Name = "textTransactionId";
-            this.textTransactionId.Size = new System.Drawing.Size(260, 23);
-            this.textTransactionId.TabIndex = 2;
+            this.textTransaction.Location = new System.Drawing.Point(12, 27);
+            this.textTransaction.Name = "textTransaction";
+            this.textTransaction.Size = new System.Drawing.Size(260, 23);
+            this.textTransaction.TabIndex = 1;
             // 
             // TxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.textTransactionId);
-            this.Controls.Add(this.labelTransactionId);
+            this.ClientSize = new System.Drawing.Size(284, 362);
+            this.Controls.Add(this.textTransaction);
+            this.Controls.Add(this.labelTransaction);
             this.Controls.Add(this.buttonSubmit);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "TxForm";
@@ -78,7 +78,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonSubmit;
-        private System.Windows.Forms.Label labelTransactionId;
-        private System.Windows.Forms.TextBox textTransactionId;
+        private System.Windows.Forms.Label labelTransaction;
+        private System.Windows.Forms.TextBox textTransaction;
     }
 }

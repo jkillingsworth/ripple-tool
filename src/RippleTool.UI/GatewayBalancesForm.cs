@@ -11,8 +11,8 @@ namespace RippleTool.UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var accountId = textAccountId.Text;
-            var commandItem = new CommandTypes.GatewayBalances(accountId);
+            var account = textAccount.Text;
+            var commandItem = new CommandTypes.GatewayBalances(account);
             var command = CommandTypes.Command.NewGatewayBalances(commandItem);
             Integration.agentCommandExecution.Post(command);
         }

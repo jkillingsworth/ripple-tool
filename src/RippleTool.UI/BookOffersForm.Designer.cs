@@ -44,7 +44,7 @@
             this.buttonSubmit.Location = new System.Drawing.Point(12, 188);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
-            this.buttonSubmit.TabIndex = 0;
+            this.buttonSubmit.TabIndex = 8;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
@@ -55,7 +55,7 @@
             this.labelTakerGetsCurrency.Location = new System.Drawing.Point(12, 9);
             this.labelTakerGetsCurrency.Name = "labelTakerGetsCurrency";
             this.labelTakerGetsCurrency.Size = new System.Drawing.Size(113, 15);
-            this.labelTakerGetsCurrency.TabIndex = 1;
+            this.labelTakerGetsCurrency.TabIndex = 0;
             this.labelTakerGetsCurrency.Text = "Taker gets currency:";
             // 
             // textTakerGetsCurrency
@@ -63,7 +63,7 @@
             this.textTakerGetsCurrency.Location = new System.Drawing.Point(12, 27);
             this.textTakerGetsCurrency.Name = "textTakerGetsCurrency";
             this.textTakerGetsCurrency.Size = new System.Drawing.Size(260, 23);
-            this.textTakerGetsCurrency.TabIndex = 2;
+            this.textTakerGetsCurrency.TabIndex = 1;
             // 
             // labelTakerGetsIssuer
             // 
@@ -71,7 +71,7 @@
             this.labelTakerGetsIssuer.Location = new System.Drawing.Point(12, 53);
             this.labelTakerGetsIssuer.Name = "labelTakerGetsIssuer";
             this.labelTakerGetsIssuer.Size = new System.Drawing.Size(97, 15);
-            this.labelTakerGetsIssuer.TabIndex = 3;
+            this.labelTakerGetsIssuer.TabIndex = 2;
             this.labelTakerGetsIssuer.Text = "Taker gets issuer:";
             // 
             // textTakerGetsIssuer
@@ -79,7 +79,7 @@
             this.textTakerGetsIssuer.Location = new System.Drawing.Point(12, 71);
             this.textTakerGetsIssuer.Name = "textTakerGetsIssuer";
             this.textTakerGetsIssuer.Size = new System.Drawing.Size(260, 23);
-            this.textTakerGetsIssuer.TabIndex = 4;
+            this.textTakerGetsIssuer.TabIndex = 3;
             // 
             // labelTakerPaysCurrency
             // 
@@ -87,7 +87,7 @@
             this.labelTakerPaysCurrency.Location = new System.Drawing.Point(12, 97);
             this.labelTakerPaysCurrency.Name = "labelTakerPaysCurrency";
             this.labelTakerPaysCurrency.Size = new System.Drawing.Size(115, 15);
-            this.labelTakerPaysCurrency.TabIndex = 5;
+            this.labelTakerPaysCurrency.TabIndex = 4;
             this.labelTakerPaysCurrency.Text = "Taker pays currency:";
             // 
             // textTakerPaysCurrency
@@ -95,7 +95,7 @@
             this.textTakerPaysCurrency.Location = new System.Drawing.Point(12, 115);
             this.textTakerPaysCurrency.Name = "textTakerPaysCurrency";
             this.textTakerPaysCurrency.Size = new System.Drawing.Size(260, 23);
-            this.textTakerPaysCurrency.TabIndex = 6;
+            this.textTakerPaysCurrency.TabIndex = 5;
             // 
             // labelTakerPaysIssuer
             // 
@@ -103,7 +103,7 @@
             this.labelTakerPaysIssuer.Location = new System.Drawing.Point(12, 141);
             this.labelTakerPaysIssuer.Name = "labelTakerPaysIssuer";
             this.labelTakerPaysIssuer.Size = new System.Drawing.Size(99, 15);
-            this.labelTakerPaysIssuer.TabIndex = 7;
+            this.labelTakerPaysIssuer.TabIndex = 6;
             this.labelTakerPaysIssuer.Text = "Taker pays issuer:";
             // 
             // textTakerPaysIssuer
@@ -111,7 +111,7 @@
             this.textTakerPaysIssuer.Location = new System.Drawing.Point(12, 159);
             this.textTakerPaysIssuer.Name = "textTakerPaysIssuer";
             this.textTakerPaysIssuer.Size = new System.Drawing.Size(260, 23);
-            this.textTakerPaysIssuer.TabIndex = 8;
+            this.textTakerPaysIssuer.TabIndex = 7;
             // 
             // BookOffersForm
             // 

@@ -52,7 +52,7 @@
             this.textDisplay.Name = "textDisplay";
             this.textDisplay.ReadOnly = true;
             this.textDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textDisplay.Size = new System.Drawing.Size(284, 237);
+            this.textDisplay.Size = new System.Drawing.Size(284, 337);
             this.textDisplay.TabIndex = 0;
             this.textDisplay.WordWrap = false;
             // 
@@ -63,11 +63,11 @@
             // 
             this.toolStripContainer.ContentPanel.AutoScroll = true;
             this.toolStripContainer.ContentPanel.Controls.Add(this.textDisplay);
-            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(284, 237);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(284, 337);
             this.toolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer.Name = "toolStripContainer";
-            this.toolStripContainer.Size = new System.Drawing.Size(284, 262);
+            this.toolStripContainer.Size = new System.Drawing.Size(284, 362);
             this.toolStripContainer.TabIndex = 1;
             this.toolStripContainer.Text = "toolStripContainer";
             // 
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 362);
             this.Controls.Add(this.toolStripContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ResponseForm";

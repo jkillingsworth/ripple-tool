@@ -11,8 +11,8 @@ namespace RippleTool.UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var accountId = textAccountId.Text;
-            var commandItem = new CommandTypes.NoRippleCheck(accountId);
+            var account = textAccount.Text;
+            var commandItem = new CommandTypes.NoRippleCheck(account);
             var command = CommandTypes.Command.NewNoRippleCheck(commandItem);
             Integration.agentCommandExecution.Post(command);
         }

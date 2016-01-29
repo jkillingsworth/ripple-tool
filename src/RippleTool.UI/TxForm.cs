@@ -11,8 +11,8 @@ namespace RippleTool.UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var transactionId = textTransactionId.Text;
-            var commandItem = new CommandTypes.Tx(transactionId);
+            var transaction = textTransaction.Text;
+            var commandItem = new CommandTypes.Tx(transaction);
             var command = CommandTypes.Command.NewTx(commandItem);
             Integration.agentCommandExecution.Post(command);
         }
