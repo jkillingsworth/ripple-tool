@@ -43,22 +43,22 @@ let serializeAccountLines (command : AccountLines) =
         """
         command.Account
 
-let serializeAccountOffers (command : AccountOffers) =
+let serializeAccountObjects (command : AccountObjects) =
     sprintf
         """
         {
-            "command": "account_offers",
+            "command": "account_objects",
             "account": "%s",
             "ledger_index": "validated"
         }
         """
         command.Account
 
-let serializeAccountObjects (command : AccountObjects) =
+let serializeAccountOffers (command : AccountOffers) =
     sprintf
         """
         {
-            "command": "account_objects",
+            "command": "account_offers",
             "account": "%s",
             "ledger_index": "validated"
         }
@@ -77,6 +77,17 @@ let serializeAccountTx (command : AccountTx) =
         """
         command.Account
 
+let serializeGatewayBalances (command : GatewayBalances) =
+    sprintf
+        """
+        {
+            "command": "gateway_balances",
+            "account": "%s",
+            "ledger_index": "validated"
+        }
+        """
+        command.Account
+
 let serializeNoRippleCheck (command : NoRippleCheck) =
     sprintf
         """
@@ -89,26 +100,19 @@ let serializeNoRippleCheck (command : NoRippleCheck) =
         """
         command.Account
 
-let serializeGatewayBalances (command : GatewayBalances) =
+let serializeBookOffers (command : BookOffers) =
     sprintf
         """
         {
-            "command": "gateway_balances",
-            "account": "%s",
-            "ledger_index": "validated"
+            "command": "book_offers",
+            "taker_gets": { "currency": "%s", "issuer": "%s" },
+            "taker_pays": { "currency": "%s", "issuer": "%s" }
         }
         """
-        command.Account
-
-let serializeTx (command : Tx) =
-    sprintf
-        """
-        {
-            "command": "tx",
-            "transaction": "%s"
-        }
-        """
-        command.Transaction
+        command.TakerGetsCurrency
+        command.TakerGetsIssuer
+        command.TakerPaysCurrency
+        command.TakerPaysIssuer
 
 let serializeRipplePathFind (command : RipplePathFind) =
     sprintf
@@ -130,6 +134,16 @@ let serializeRipplePathFind (command : RipplePathFind) =
         command.DestinationCurrency
         command.DestinationIssuer
 
+let serializeTx (command : Tx) =
+    sprintf
+        """
+        {
+            "command": "tx",
+            "transaction": "%s"
+        }
+        """
+        command.Transaction
+
 let serializeSubmit (command : Submit) =
     sprintf
         """
@@ -140,20 +154,6 @@ let serializeSubmit (command : Submit) =
         """
         command.TxBlob
 
-let serializeBookOffers (command : BookOffers) =
-    sprintf
-        """
-        {
-            "command": "book_offers",
-            "taker_gets": { "currency": "%s", "issuer": "%s" },
-            "taker_pays": { "currency": "%s", "issuer": "%s" }
-        }
-        """
-        command.TakerGetsCurrency
-        command.TakerGetsIssuer
-        command.TakerPaysCurrency
-        command.TakerPaysIssuer
-
 //-------------------------------------------------------------------------------------------------
 
 let serialize = function
@@ -162,12 +162,12 @@ let serialize = function
     | AccountCurrencies command -> command |> serializeAccountCurrencies
     | AccountInfo       command -> command |> serializeAccountInfo
     | AccountLines      command -> command |> serializeAccountLines
-    | AccountOffers     command -> command |> serializeAccountOffers
     | AccountObjects    command -> command |> serializeAccountObjects
+    | AccountOffers     command -> command |> serializeAccountOffers
     | AccountTx         command -> command |> serializeAccountTx
-    | NoRippleCheck     command -> command |> serializeNoRippleCheck
     | GatewayBalances   command -> command |> serializeGatewayBalances
-    | Tx                command -> command |> serializeTx
-    | RipplePathFind    command -> command |> serializeRipplePathFind
-    | Submit            command -> command |> serializeSubmit
+    | NoRippleCheck     command -> command |> serializeNoRippleCheck
     | BookOffers        command -> command |> serializeBookOffers
+    | RipplePathFind    command -> command |> serializeRipplePathFind
+    | Tx                command -> command |> serializeTx
+    | Submit            command -> command |> serializeSubmit

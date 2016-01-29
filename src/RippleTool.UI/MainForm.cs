@@ -89,14 +89,14 @@ namespace RippleTool.UI
             Show(new AccountLinesForm());
         }
 
-        private void menuItemViewAccountOffers_Click(object sender, EventArgs e)
-        {
-            Show(new AccountOffersForm());
-        }
-
         private void menuItemViewAccountObjects_Click(object sender, EventArgs e)
         {
             Show(new AccountObjectsForm());
+        }
+
+        private void menuItemViewAccountOffers_Click(object sender, EventArgs e)
+        {
+            Show(new AccountOffersForm());
         }
 
         private void menuItemViewAccountTx_Click(object sender, EventArgs e)
@@ -104,19 +104,19 @@ namespace RippleTool.UI
             Show(new AccountTxForm());
         }
 
-        private void menuItemViewNoRippleCheck_Click(object sender, EventArgs e)
-        {
-            Show(new NoRippleCheckForm());
-        }
-
         private void menuItemViewGatewayBalances_Click(object sender, EventArgs e)
         {
             Show(new GatewayBalancesForm());
         }
 
-        private void menuItemViewTx_Click(object sender, EventArgs e)
+        private void menuItemViewNoRippleCheck_Click(object sender, EventArgs e)
         {
-            Show(new TxForm());
+            Show(new NoRippleCheckForm());
+        }
+
+        private void menuItemViewBookOffers_Click(object sender, EventArgs e)
+        {
+            Show(new BookOffersForm());
         }
 
         private void menuItemViewRipplePathFind_Click(object sender, EventArgs e)
@@ -124,9 +124,9 @@ namespace RippleTool.UI
             Show(new RipplePathFindForm());
         }
 
-        private void menuItemViewBookOffers_Click(object sender, EventArgs e)
+        private void menuItemViewTx_Click(object sender, EventArgs e)
         {
-            Show(new BookOffersForm());
+            Show(new TxForm());
         }
 
         private void menuItemHelpDeveloperCenter_Click(object sender, EventArgs e)

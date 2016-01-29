@@ -15,23 +15,26 @@ type AccountInfo =
 type AccountLines =
     { Account : string }
 
-type AccountOffers =
+type AccountObjects =
     { Account : string }
 
-type AccountObjects =
+type AccountOffers =
     { Account : string }
 
 type AccountTx =
     { Account : string }
 
-type NoRippleCheck =
-    { Account : string }
-
 type GatewayBalances =
     { Account : string }
 
-type Tx =
-    { Transaction : string }
+type NoRippleCheck =
+    { Account : string }
+
+type BookOffers =
+    { TakerGetsCurrency : string
+      TakerGetsIssuer : string
+      TakerPaysCurrency : string
+      TakerPaysIssuer : string }
 
 type RipplePathFind =
     { SourceAccount : string
@@ -40,14 +43,11 @@ type RipplePathFind =
       DestinationCurrency : string
       DestinationIssuer : string }
 
+type Tx =
+    { Transaction : string }
+
 type Submit =
     { TxBlob : string }
-
-type BookOffers =
-    { TakerGetsCurrency : string
-      TakerGetsIssuer : string
-      TakerPaysCurrency : string
-      TakerPaysIssuer : string }
 
 //-------------------------------------------------------------------------------------------------
 
@@ -57,12 +57,12 @@ type Command =
     | AccountCurrencies of AccountCurrencies
     | AccountInfo of AccountInfo
     | AccountLines of AccountLines
-    | AccountOffers of AccountOffers
     | AccountObjects of AccountObjects
+    | AccountOffers of AccountOffers
     | AccountTx of AccountTx
-    | NoRippleCheck of NoRippleCheck
     | GatewayBalances of GatewayBalances
-    | Tx of Tx
-    | RipplePathFind of RipplePathFind
-    | Submit of Submit
+    | NoRippleCheck of NoRippleCheck
     | BookOffers of BookOffers
+    | RipplePathFind of RipplePathFind
+    | Tx of Tx
+    | Submit of Submit

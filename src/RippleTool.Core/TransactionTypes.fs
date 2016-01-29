@@ -14,11 +14,11 @@ type Amount =
 
 //-------------------------------------------------------------------------------------------------
 
-type Payment = unit
 type AccountSet = unit
-type SetRegularKey = unit
-type OfferCreate = unit
 type OfferCancel = unit
+type OfferCreate = unit
+type Payment = unit
+type SetRegularKey = unit
 
 [<Flags>]
 type TrustSetFlags =
@@ -36,9 +36,9 @@ type TrustSet =
 //-------------------------------------------------------------------------------------------------
 
 type Transaction =
-    | Payment of Payment
     | AccountSet of AccountSet
-    | SetRegularKey of SetRegularKey
-    | OfferCreate of OfferCreate
     | OfferCancel of OfferCancel
+    | OfferCreate of OfferCreate
+    | Payment of Payment
+    | SetRegularKey of SetRegularKey
     | TrustSet of TrustSet

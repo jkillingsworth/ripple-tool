@@ -43,14 +43,14 @@
             this.menuItemViewAccountCurrencies = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountLines = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewAccountOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountObjects = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewAccountOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountTx = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewNoRippleCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewGatewayBalances = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewTx = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewRipplePathFind = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewNoRippleCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewBookOffers = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewRipplePathFind = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpDeveloperCenter = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,14 +120,14 @@
             this.menuItemViewAccountCurrencies,
             this.menuItemViewAccountInfo,
             this.menuItemViewAccountLines,
-            this.menuItemViewAccountOffers,
             this.menuItemViewAccountObjects,
+            this.menuItemViewAccountOffers,
             this.menuItemViewAccountTx,
-            this.menuItemViewNoRippleCheck,
             this.menuItemViewGatewayBalances,
-            this.menuItemViewTx,
+            this.menuItemViewNoRippleCheck,
+            this.menuItemViewBookOffers,
             this.menuItemViewRipplePathFind,
-            this.menuItemViewBookOffers});
+            this.menuItemViewTx});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
@@ -186,19 +186,19 @@
             this.menuItemViewAccountLines.Text = "Account Lines";
             this.menuItemViewAccountLines.Click += new System.EventHandler(this.menuItemViewAccountLines_Click);
             // 
-            // menuItemViewAccountOffers
-            // 
-            this.menuItemViewAccountOffers.Name = "menuItemViewAccountOffers";
-            this.menuItemViewAccountOffers.Size = new System.Drawing.Size(178, 22);
-            this.menuItemViewAccountOffers.Text = "Account Offers";
-            this.menuItemViewAccountOffers.Click += new System.EventHandler(this.menuItemViewAccountOffers_Click);
-            // 
             // menuItemViewAccountObjects
             // 
             this.menuItemViewAccountObjects.Name = "menuItemViewAccountObjects";
             this.menuItemViewAccountObjects.Size = new System.Drawing.Size(178, 22);
             this.menuItemViewAccountObjects.Text = "Account Objects";
             this.menuItemViewAccountObjects.Click += new System.EventHandler(this.menuItemViewAccountObjects_Click);
+            // 
+            // menuItemViewAccountOffers
+            // 
+            this.menuItemViewAccountOffers.Name = "menuItemViewAccountOffers";
+            this.menuItemViewAccountOffers.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewAccountOffers.Text = "Account Offers";
+            this.menuItemViewAccountOffers.Click += new System.EventHandler(this.menuItemViewAccountOffers_Click);
             // 
             // menuItemViewAccountTx
             // 
@@ -207,13 +207,6 @@
             this.menuItemViewAccountTx.Text = "Account Tx";
             this.menuItemViewAccountTx.Click += new System.EventHandler(this.menuItemViewAccountTx_Click);
             // 
-            // menuItemViewNoRippleCheck
-            // 
-            this.menuItemViewNoRippleCheck.Name = "menuItemViewNoRippleCheck";
-            this.menuItemViewNoRippleCheck.Size = new System.Drawing.Size(178, 22);
-            this.menuItemViewNoRippleCheck.Text = "No Ripple Check";
-            this.menuItemViewNoRippleCheck.Click += new System.EventHandler(this.menuItemViewNoRippleCheck_Click);
-            // 
             // menuItemViewGatewayBalances
             // 
             this.menuItemViewGatewayBalances.Name = "menuItemViewGatewayBalances";
@@ -221,12 +214,19 @@
             this.menuItemViewGatewayBalances.Text = "Gateway Balances";
             this.menuItemViewGatewayBalances.Click += new System.EventHandler(this.menuItemViewGatewayBalances_Click);
             // 
-            // menuItemViewTx
+            // menuItemViewNoRippleCheck
             // 
-            this.menuItemViewTx.Name = "menuItemViewTx";
-            this.menuItemViewTx.Size = new System.Drawing.Size(178, 22);
-            this.menuItemViewTx.Text = "Tx";
-            this.menuItemViewTx.Click += new System.EventHandler(this.menuItemViewTx_Click);
+            this.menuItemViewNoRippleCheck.Name = "menuItemViewNoRippleCheck";
+            this.menuItemViewNoRippleCheck.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewNoRippleCheck.Text = "No Ripple Check";
+            this.menuItemViewNoRippleCheck.Click += new System.EventHandler(this.menuItemViewNoRippleCheck_Click);
+            // 
+            // menuItemViewBookOffers
+            // 
+            this.menuItemViewBookOffers.Name = "menuItemViewBookOffers";
+            this.menuItemViewBookOffers.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewBookOffers.Text = "Book Offers";
+            this.menuItemViewBookOffers.Click += new System.EventHandler(this.menuItemViewBookOffers_Click);
             // 
             // menuItemViewRipplePathFind
             // 
@@ -235,12 +235,12 @@
             this.menuItemViewRipplePathFind.Text = "Ripple Path Find";
             this.menuItemViewRipplePathFind.Click += new System.EventHandler(this.menuItemViewRipplePathFind_Click);
             // 
-            // menuItemViewBookOffers
+            // menuItemViewTx
             // 
-            this.menuItemViewBookOffers.Name = "menuItemViewBookOffers";
-            this.menuItemViewBookOffers.Size = new System.Drawing.Size(178, 22);
-            this.menuItemViewBookOffers.Text = "Book Offers";
-            this.menuItemViewBookOffers.Click += new System.EventHandler(this.menuItemViewBookOffers_Click);
+            this.menuItemViewTx.Name = "menuItemViewTx";
+            this.menuItemViewTx.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewTx.Text = "Tx";
+            this.menuItemViewTx.Click += new System.EventHandler(this.menuItemViewTx_Click);
             // 
             // menuItemWindow
             // 
@@ -365,14 +365,14 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountCurrencies;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountInfo;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountLines;
-        private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountOffers;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountObjects;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountOffers;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountTx;
-        private System.Windows.Forms.ToolStripMenuItem menuItemViewNoRippleCheck;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewGatewayBalances;
-        private System.Windows.Forms.ToolStripMenuItem menuItemViewTx;
-        private System.Windows.Forms.ToolStripMenuItem menuItemViewRipplePathFind;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewNoRippleCheck;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewBookOffers;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewRipplePathFind;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpKnowledgeCenter;

@@ -6,11 +6,11 @@ open RippleTool.TransactionEncoding
 //-------------------------------------------------------------------------------------------------
 
 type private TransactionType =
-    | Payment       = 00us
     | AccountSet    = 03us
-    | SetRegularKey = 05us
-    | OfferCreate   = 07us
     | OfferCancel   = 08us
+    | OfferCreate   = 07us
+    | Payment       = 00us
+    | SetRegularKey = 05us
     | TrustSet      = 20us
 
 type private FieldType =
@@ -27,15 +27,11 @@ type private Field = { Type : FieldType; Value : byte[] }
 
 //-------------------------------------------------------------------------------------------------
 
-let private fieldsFromPayment (transaction : Payment) =
-
-    failwith "Not implemented"
-
 let private fieldsFromAccountSet (transaction : AccountSet) =
 
     failwith "Not implemented"
 
-let private fieldsFromSetRegularKey (transaction : SetRegularKey) =
+let private fieldsFromOfferCancel (transaction : OfferCancel) =
 
     failwith "Not implemented"
 
@@ -43,7 +39,11 @@ let private fieldsFromOfferCreate (transaction : OfferCreate) =
 
     failwith "Not implemented"
 
-let private fieldsFromOfferCancel (transaction : OfferCancel) =
+let private fieldsFromPayment (transaction : Payment) =
+
+    failwith "Not implemented"
+
+let private fieldsFromSetRegularKey (transaction : SetRegularKey) =
 
     failwith "Not implemented"
 
@@ -65,11 +65,11 @@ let private fieldsFromTrustSet (transaction : TrustSet) =
 //-------------------------------------------------------------------------------------------------
 
 let private fieldsFromTransaction = function
-    | Payment       transaction -> transaction |> fieldsFromPayment
     | AccountSet    transaction -> transaction |> fieldsFromAccountSet
-    | SetRegularKey transaction -> transaction |> fieldsFromSetRegularKey
-    | OfferCreate   transaction -> transaction |> fieldsFromOfferCreate
     | OfferCancel   transaction -> transaction |> fieldsFromOfferCancel
+    | OfferCreate   transaction -> transaction |> fieldsFromOfferCreate
+    | Payment       transaction -> transaction |> fieldsFromPayment
+    | SetRegularKey transaction -> transaction |> fieldsFromSetRegularKey
     | TrustSet      transaction -> transaction |> fieldsFromTrustSet
 
 let private fieldOrdinal = function
