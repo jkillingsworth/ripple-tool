@@ -48,6 +48,7 @@
             this.menuItemViewAccountTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewNoRippleCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewGatewayBalances = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpDeveloperCenter = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,7 +122,8 @@
             this.menuItemViewAccountObjects,
             this.menuItemViewAccountTx,
             this.menuItemViewNoRippleCheck,
-            this.menuItemViewGatewayBalances});
+            this.menuItemViewGatewayBalances,
+            this.menuItemViewTx});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
@@ -214,6 +216,13 @@
             this.menuItemViewGatewayBalances.Size = new System.Drawing.Size(178, 22);
             this.menuItemViewGatewayBalances.Text = "Gateway Balances";
             this.menuItemViewGatewayBalances.Click += new System.EventHandler(this.menuItemViewGatewayBalances_Click);
+            // 
+            // menuItemViewTx
+            // 
+            this.menuItemViewTx.Name = "menuItemViewTx";
+            this.menuItemViewTx.Size = new System.Drawing.Size(178, 22);
+            this.menuItemViewTx.Text = "Tx";
+            this.menuItemViewTx.Click += new System.EventHandler(this.menuItemViewTx_Click);
             // 
             // menuItemWindow
             // 
@@ -343,6 +352,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewNoRippleCheck;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewGatewayBalances;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpKnowledgeCenter;

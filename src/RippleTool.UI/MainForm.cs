@@ -114,6 +114,11 @@ namespace RippleTool.UI
             Show(new GatewayBalancesForm());
         }
 
+        private void menuItemViewTx_Click(object sender, EventArgs e)
+        {
+            Show(new TxForm());
+        }
+
         private void menuItemHelpDeveloperCenter_Click(object sender, EventArgs e)
         {
             Process.Start("https://ripple.com/build/");
