@@ -61,7 +61,7 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <None Include="Resources\JsonFormatted.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs">
@@ -142,6 +142,11 @@
     <Compile Include="PingForm.Designer.cs">
       <DependentUpon>PingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RandomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +224,10 @@
     <EmbeddedResource Include="PingForm.resx">
       <DependentUpon>PingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RandomForm.resx">
       <DependentUpon>RandomForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,6 +255,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JsonRaw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JsonClear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ripple.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

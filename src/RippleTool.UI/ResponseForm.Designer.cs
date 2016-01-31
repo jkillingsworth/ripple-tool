@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResponseForm));
             this.textDisplay = new System.Windows.Forms.TextBox();
             this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
@@ -92,7 +91,7 @@
             // 
             // toolItemRaw
             // 
-            this.toolItemRaw.Image = ((System.Drawing.Image)(resources.GetObject("toolItemRaw.Image")));
+            this.toolItemRaw.Image = global::RippleTool.UI.Properties.Resources.JsonRaw;
             this.toolItemRaw.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolItemRaw.Name = "toolItemRaw";
             this.toolItemRaw.Size = new System.Drawing.Size(49, 22);
@@ -103,7 +102,7 @@
             // 
             this.toolItemFormatted.Checked = true;
             this.toolItemFormatted.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolItemFormatted.Image = ((System.Drawing.Image)(resources.GetObject("toolItemFormatted.Image")));
+            this.toolItemFormatted.Image = global::RippleTool.UI.Properties.Resources.JsonFormatted;
             this.toolItemFormatted.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolItemFormatted.Name = "toolItemFormatted";
             this.toolItemFormatted.Size = new System.Drawing.Size(82, 22);
@@ -117,7 +116,7 @@
             // 
             // toolItemClear
             // 
-            this.toolItemClear.Image = ((System.Drawing.Image)(resources.GetObject("toolItemClear.Image")));
+            this.toolItemClear.Image = global::RippleTool.UI.Properties.Resources.JsonClear;
             this.toolItemClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolItemClear.Name = "toolItemClear";
             this.toolItemClear.Size = new System.Drawing.Size(54, 22);
