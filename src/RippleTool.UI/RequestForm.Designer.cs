@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textDisplay = new System.Windows.Forms.TextBox();
+            this.textJson = new System.Windows.Forms.TextBox();
             this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolItemFormatted = new System.Windows.Forms.ToolStripButton();
@@ -41,19 +41,19 @@
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textDisplay
+            // textJson
             // 
-            this.textDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textDisplay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDisplay.Location = new System.Drawing.Point(0, 0);
-            this.textDisplay.Multiline = true;
-            this.textDisplay.Name = "textDisplay";
-            this.textDisplay.ReadOnly = true;
-            this.textDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textDisplay.Size = new System.Drawing.Size(284, 337);
-            this.textDisplay.TabIndex = 0;
-            this.textDisplay.WordWrap = false;
+            this.textJson.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textJson.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textJson.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textJson.Location = new System.Drawing.Point(0, 0);
+            this.textJson.Multiline = true;
+            this.textJson.Name = "textJson";
+            this.textJson.ReadOnly = true;
+            this.textJson.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textJson.Size = new System.Drawing.Size(284, 337);
+            this.textJson.TabIndex = 0;
+            this.textJson.WordWrap = false;
             // 
             // toolStripContainer
             // 
@@ -61,7 +61,7 @@
             // toolStripContainer.ContentPanel
             // 
             this.toolStripContainer.ContentPanel.AutoScroll = true;
-            this.toolStripContainer.ContentPanel.Controls.Add(this.textDisplay);
+            this.toolStripContainer.ContentPanel.Controls.Add(this.textJson);
             this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(284, 337);
             this.toolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer.Location = new System.Drawing.Point(0, 0);
@@ -146,7 +146,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textDisplay;
+        private System.Windows.Forms.TextBox textJson;
         private System.Windows.Forms.ToolStripContainer toolStripContainer;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton toolItemFormatted;
