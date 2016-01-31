@@ -31,8 +31,8 @@
             this.textDisplay = new System.Windows.Forms.TextBox();
             this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolItemRaw = new System.Windows.Forms.ToolStripButton();
             this.toolItemFormatted = new System.Windows.Forms.ToolStripButton();
+            this.toolItemRaw = new System.Windows.Forms.ToolStripButton();
             this.toolItemSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolItemClear = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer.ContentPanel.SuspendLayout();
@@ -79,8 +79,8 @@
             this.toolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolItemRaw,
             this.toolItemFormatted,
+            this.toolItemRaw,
             this.toolItemSeparator1,
             this.toolItemClear});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
@@ -88,15 +88,6 @@
             this.toolStrip.Size = new System.Drawing.Size(284, 25);
             this.toolStrip.Stretch = true;
             this.toolStrip.TabIndex = 0;
-            // 
-            // toolItemRaw
-            // 
-            this.toolItemRaw.Image = global::RippleTool.UI.Properties.Resources.JsonRaw;
-            this.toolItemRaw.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolItemRaw.Name = "toolItemRaw";
-            this.toolItemRaw.Size = new System.Drawing.Size(49, 22);
-            this.toolItemRaw.Text = "Raw";
-            this.toolItemRaw.Click += new System.EventHandler(this.toolItemRaw_Click);
             // 
             // toolItemFormatted
             // 
@@ -108,6 +99,15 @@
             this.toolItemFormatted.Size = new System.Drawing.Size(82, 22);
             this.toolItemFormatted.Text = "Formatted";
             this.toolItemFormatted.Click += new System.EventHandler(this.toolItemFormatted_Click);
+            // 
+            // toolItemRaw
+            // 
+            this.toolItemRaw.Image = global::RippleTool.UI.Properties.Resources.JsonRaw;
+            this.toolItemRaw.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolItemRaw.Name = "toolItemRaw";
+            this.toolItemRaw.Size = new System.Drawing.Size(49, 22);
+            this.toolItemRaw.Text = "Raw";
+            this.toolItemRaw.Click += new System.EventHandler(this.toolItemRaw_Click);
             // 
             // toolItemSeparator1
             // 
@@ -149,8 +149,8 @@
         private System.Windows.Forms.TextBox textDisplay;
         private System.Windows.Forms.ToolStripContainer toolStripContainer;
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton toolItemRaw;
         private System.Windows.Forms.ToolStripButton toolItemFormatted;
+        private System.Windows.Forms.ToolStripButton toolItemRaw;
         private System.Windows.Forms.ToolStripSeparator toolItemSeparator1;
         private System.Windows.Forms.ToolStripButton toolItemClear;
     }

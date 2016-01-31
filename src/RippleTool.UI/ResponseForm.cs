@@ -33,16 +33,16 @@ namespace RippleTool.UI
             }
         }
 
-        private void toolItemRaw_Click(object sender, EventArgs e)
-        {
-            toolItemRaw.Checked = true;
-            toolItemFormatted.Checked = false;
-        }
-
         private void toolItemFormatted_Click(object sender, EventArgs e)
         {
-            toolItemRaw.Checked = false;
             toolItemFormatted.Checked = true;
+            toolItemRaw.Checked = false;
+        }
+
+        private void toolItemRaw_Click(object sender, EventArgs e)
+        {
+            toolItemFormatted.Checked = false;
+            toolItemRaw.Checked = true;
         }
 
         private void toolItemClear_Click(object sender, EventArgs e)
