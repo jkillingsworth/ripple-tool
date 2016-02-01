@@ -14,14 +14,16 @@ namespace RippleTool.UI
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            Integration.eventCommandExecutionResponse.AddHandler(HandleEvent);
+            Integration.eventCommandExecutionRes.AddHandler(HandleEvent);
+
+            json = Integration.getJsonRes();
             RenderJson();
         }
 
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Integration.eventCommandExecutionResponse.RemoveHandler(HandleEvent);
+            Integration.eventCommandExecutionRes.RemoveHandler(HandleEvent);
         }
 
         private void RenderJson()
@@ -70,8 +72,7 @@ namespace RippleTool.UI
 
         private void toolItemClear_Click(object sender, EventArgs e)
         {
-            json = null;
-            RenderJson();
+            Integration.setJsonRes("");
         }
     }
 }

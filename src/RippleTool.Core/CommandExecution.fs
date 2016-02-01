@@ -31,21 +31,39 @@ let private execute serverUri command =
 
 //-------------------------------------------------------------------------------------------------
 
-let private trigger (event : Event<'T>) arg =
-    arg |> event.Trigger
-    arg
+type private Agent<'T> = MailboxProcessor<'T>
 
-let eventExecuteCommandRequest = new Event<string>()
-let eventExecuteCommandResponse = new Event<string>()
+type State<'T> =
+    | Get of AsyncReplyChannel<'T>
+    | Set of 'T
 
-let agentExecuteCommand serverUri = MailboxProcessor.Start(fun inbox ->
+let private agentTrackStateWithEvent (event : Event<'T>) state = Agent.Start(fun inbox ->
+    let rec loop state =
+        async {
+            let! message = inbox.Receive()
+            match message with
+            | Get channel
+                ->
+                state |> channel.Reply
+                return! loop state
+            | Set state
+                ->
+                state |> event.Trigger
+                return! loop state
+    }
+
+    loop state)
+
+let eventExecuteCommandReq = new Event<string>()
+let eventExecuteCommandRes = new Event<string>()
+let agentExecuteCommandReq = agentTrackStateWithEvent eventExecuteCommandReq null
+let agentExecuteCommandRes = agentTrackStateWithEvent eventExecuteCommandRes null
+let agentExecuteCommand serverUri = Agent.Start(fun inbox ->
     async {
         while true do
             let! command = inbox.Receive()
-            command
-            |> serialize
-            |> trigger eventExecuteCommandRequest
-            |> execute serverUri
-            |> trigger eventExecuteCommandResponse
-            |> ignore
+            let req = serialize command
+            agentExecuteCommandReq.Post (Set req)
+            let res = execute serverUri req
+            agentExecuteCommandRes.Post (Set res)
     })

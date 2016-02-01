@@ -16,23 +16,23 @@ namespace RippleTool.UI
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            Integration.eventCommandExecutionRequest.AddHandler(HandleEventRequest);
-            Integration.eventCommandExecutionResponse.AddHandler(HandleEventResponse);
+            Integration.eventCommandExecutionReq.AddHandler(HandleEventReq);
+            Integration.eventCommandExecutionRes.AddHandler(HandleEventRes);
         }
 
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Integration.eventCommandExecutionRequest.RemoveHandler(HandleEventRequest);
-            Integration.eventCommandExecutionResponse.RemoveHandler(HandleEventResponse);
+            Integration.eventCommandExecutionReq.RemoveHandler(HandleEventReq);
+            Integration.eventCommandExecutionRes.RemoveHandler(HandleEventRes);
         }
 
-        private void HandleEventRequest(object sender, string value)
+        private void HandleEventReq(object sender, string value)
         {
             statusItemProgress.MarqueeAnimationSpeed = 1;
         }
 
-        private void HandleEventResponse(object sender, string value)
+        private void HandleEventRes(object sender, string value)
         {
             statusItemProgress.MarqueeAnimationSpeed = 0;
             statusItemProgress.Invalidate();
