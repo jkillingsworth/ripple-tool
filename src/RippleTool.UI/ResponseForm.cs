@@ -72,7 +72,7 @@ namespace RippleTool.UI
 
         private void toolItemClear_Click(object sender, EventArgs e)
         {
-            Integration.setJsonRes("");
+            Integration.setJsonRes(null);
         }
     }
 }
