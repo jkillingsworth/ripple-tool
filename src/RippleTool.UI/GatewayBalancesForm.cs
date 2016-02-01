@@ -14,7 +14,7 @@ namespace RippleTool.UI
             var account = textAccount.Text;
             var commandItem = new CommandTypes.GatewayBalances(account);
             var command = CommandTypes.Command.NewGatewayBalances(commandItem);
-            Integration.agentCommandExecution.Post(command);
+            Integration.executeCommand(command);
         }
     }
 }

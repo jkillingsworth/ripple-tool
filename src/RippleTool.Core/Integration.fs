@@ -14,9 +14,13 @@ let configAccountId = reader.GetValue("accountId", typeof<string>) :?> string
 
 //-------------------------------------------------------------------------------------------------
 
-let agentCommandExecution = CommandExecution.agentExecuteCommand configServerUri
-let eventCommandExecutionReq = CommandExecution.eventExecuteCommandReq.Publish
-let eventCommandExecutionRes = CommandExecution.eventExecuteCommandRes.Publish
+let private agentExecuteCommand = agentExecuteCommand configServerUri
+
+let eventCommandExecutionReq = eventExecuteCommandReq.Publish
+let eventCommandExecutionRes = eventExecuteCommandRes.Publish
+
+let executeCommand command =
+    agentExecuteCommand.Post command
 
 let getJsonReq () =
     agentExecuteCommandReq.PostAndReply (fun channel -> Get channel)

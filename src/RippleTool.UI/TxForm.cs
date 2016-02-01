@@ -14,7 +14,7 @@ namespace RippleTool.UI
             var transaction = textTransaction.Text;
             var commandItem = new CommandTypes.Tx(transaction);
             var command = CommandTypes.Command.NewTx(commandItem);
-            Integration.agentCommandExecution.Post(command);
+            Integration.executeCommand(command);
         }
     }
 }

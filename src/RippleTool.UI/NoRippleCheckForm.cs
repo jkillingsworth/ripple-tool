@@ -14,7 +14,7 @@ namespace RippleTool.UI
             var account = textAccount.Text;
             var commandItem = new CommandTypes.NoRippleCheck(account);
             var command = CommandTypes.Command.NewNoRippleCheck(commandItem);
-            Integration.agentCommandExecution.Post(command);
+            Integration.executeCommand(command);
         }
     }
 }

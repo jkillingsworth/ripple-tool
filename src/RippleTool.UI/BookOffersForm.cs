@@ -24,7 +24,7 @@ namespace RippleTool.UI
                 );
 
             var command = CommandTypes.Command.NewBookOffers(commandItem);
-            Integration.agentCommandExecution.Post(command);
+            Integration.executeCommand(command);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace RippleTool.UI
                 );
 
             var command = CommandTypes.Command.NewRipplePathFind(commandItem);
-            Integration.agentCommandExecution.Post(command);
+            Integration.executeCommand(command);
         }
     }
 }

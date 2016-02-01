@@ -14,7 +14,7 @@ namespace RippleTool.UI
             var account = textAccount.Text;
             var commandItem = new CommandTypes.AccountCurrencies(account);
             var command = CommandTypes.Command.NewAccountCurrencies(commandItem);
-            Integration.agentCommandExecution.Post(command);
+            Integration.executeCommand(command);
         }
     }
 }
