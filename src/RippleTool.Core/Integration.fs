@@ -16,8 +16,8 @@ let configAccountId = reader.GetValue("accountId", typeof<string>) :?> string
 
 let private agentExecuteCommand = agentExecuteCommand configServerUri
 
-let eventCommandExecutionReq = eventExecuteCommandReq.Publish
-let eventCommandExecutionRes = eventExecuteCommandRes.Publish
+let eventExecuteCommandReq = eventExecuteCommandReq.Publish
+let eventExecuteCommandRes = eventExecuteCommandRes.Publish
 
 let executeCommand command =
     agentExecuteCommand.Post command

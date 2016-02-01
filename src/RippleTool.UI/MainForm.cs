@@ -16,15 +16,15 @@ namespace RippleTool.UI
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            Integration.eventCommandExecutionReq.AddHandler(HandleEventReq);
-            Integration.eventCommandExecutionRes.AddHandler(HandleEventRes);
+            Integration.eventExecuteCommandReq.AddHandler(HandleEventReq);
+            Integration.eventExecuteCommandRes.AddHandler(HandleEventRes);
         }
 
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Integration.eventCommandExecutionReq.RemoveHandler(HandleEventReq);
-            Integration.eventCommandExecutionRes.RemoveHandler(HandleEventRes);
+            Integration.eventExecuteCommandReq.RemoveHandler(HandleEventReq);
+            Integration.eventExecuteCommandRes.RemoveHandler(HandleEventRes);
         }
 
         private void HandleEventReq(object sender, string value)
