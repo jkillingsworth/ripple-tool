@@ -135,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 362);
+            this.ClientSize = new System.Drawing.Size(284, 462);
             this.Controls.Add(this.textDestinationIssuer);
             this.Controls.Add(this.labelDestinationIssuer);
             this.Controls.Add(this.textDestinationCurrency);

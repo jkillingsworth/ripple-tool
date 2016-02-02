@@ -83,8 +83,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 162);
-            this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.linkViewSourceCode);
+            this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelRippleTool);
             this.Controls.Add(this.buttonOK);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

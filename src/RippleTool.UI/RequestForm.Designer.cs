@@ -51,7 +51,7 @@
             this.textJson.Name = "textJson";
             this.textJson.ReadOnly = true;
             this.textJson.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textJson.Size = new System.Drawing.Size(284, 337);
+            this.textJson.Size = new System.Drawing.Size(284, 437);
             this.textJson.TabIndex = 0;
             this.textJson.WordWrap = false;
             // 
@@ -62,11 +62,11 @@
             // 
             this.toolStripContainer.ContentPanel.AutoScroll = true;
             this.toolStripContainer.ContentPanel.Controls.Add(this.textJson);
-            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(284, 337);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(284, 437);
             this.toolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer.Name = "toolStripContainer";
-            this.toolStripContainer.Size = new System.Drawing.Size(284, 362);
+            this.toolStripContainer.Size = new System.Drawing.Size(284, 462);
             this.toolStripContainer.TabIndex = 1;
             this.toolStripContainer.Text = "toolStripContainer";
             // 
@@ -127,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 362);
+            this.ClientSize = new System.Drawing.Size(284, 462);
             this.Controls.Add(this.toolStripContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "RequestForm";

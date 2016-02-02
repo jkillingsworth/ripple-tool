@@ -205,14 +205,14 @@
             this.ClientSize = new System.Drawing.Size(284, 462);
             this.Controls.Add(this.textLimitAmountIssuer);
             this.Controls.Add(this.labelLimitAmountIssuer);
-            this.Controls.Add(this.labelLimitAmountCurrency);
             this.Controls.Add(this.textLimitAmountCurrency);
+            this.Controls.Add(this.labelLimitAmountCurrency);
+            this.Controls.Add(this.textLimitAmountValue);
+            this.Controls.Add(this.labelLimitAmountValue);
             this.Controls.Add(this.groupFlags);
             this.Controls.Add(this.textSequence);
             this.Controls.Add(this.labelSequence);
-            this.Controls.Add(this.textLimitAmountValue);
             this.Controls.Add(this.textFee);
-            this.Controls.Add(this.labelLimitAmountValue);
             this.Controls.Add(this.labelFee);
             this.Controls.Add(this.textAccount);
             this.Controls.Add(this.labelAccount);
