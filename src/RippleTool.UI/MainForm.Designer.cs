@@ -52,6 +52,13 @@
             this.menuItemViewSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewBookOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRipplePathFind = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSubmit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSubmitAccountSet = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSubmitOfferCancel = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSubmitOfferCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSubmitPayment = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSubmitSetRegularKey = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSubmitTrustSet = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindowCloseAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,6 +140,7 @@
             this.menuItemViewSeparator3,
             this.menuItemViewBookOffers,
             this.menuItemViewRipplePathFind,
+            this.menuItemViewSubmit,
             this.menuItemViewTx});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
@@ -256,6 +264,66 @@
             this.menuItemViewRipplePathFind.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewRipplePathFind.Text = "Ripple Path Find";
             this.menuItemViewRipplePathFind.Click += new System.EventHandler(this.menuItemViewRipplePathFind_Click);
+            // 
+            // menuItemViewSubmit
+            // 
+            this.menuItemViewSubmit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemViewSubmitAccountSet,
+            this.menuItemViewSubmitOfferCancel,
+            this.menuItemViewSubmitOfferCreate,
+            this.menuItemViewSubmitPayment,
+            this.menuItemViewSubmitSetRegularKey,
+            this.menuItemViewSubmitTrustSet});
+            this.menuItemViewSubmit.Name = "menuItemViewSubmit";
+            this.menuItemViewSubmit.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewSubmit.Text = "Submit";
+            // 
+            // menuItemViewSubmitAccountSet
+            // 
+            this.menuItemViewSubmitAccountSet.Enabled = false;
+            this.menuItemViewSubmitAccountSet.Name = "menuItemViewSubmitAccountSet";
+            this.menuItemViewSubmitAccountSet.Size = new System.Drawing.Size(155, 22);
+            this.menuItemViewSubmitAccountSet.Text = "Account Set";
+            this.menuItemViewSubmitAccountSet.ToolTipText = "Not implemented";
+            // 
+            // menuItemViewSubmitOfferCancel
+            // 
+            this.menuItemViewSubmitOfferCancel.Enabled = false;
+            this.menuItemViewSubmitOfferCancel.Name = "menuItemViewSubmitOfferCancel";
+            this.menuItemViewSubmitOfferCancel.Size = new System.Drawing.Size(155, 22);
+            this.menuItemViewSubmitOfferCancel.Text = "Offer Cancel";
+            this.menuItemViewSubmitOfferCancel.ToolTipText = "Not implemented";
+            // 
+            // menuItemViewSubmitOfferCreate
+            // 
+            this.menuItemViewSubmitOfferCreate.Enabled = false;
+            this.menuItemViewSubmitOfferCreate.Name = "menuItemViewSubmitOfferCreate";
+            this.menuItemViewSubmitOfferCreate.Size = new System.Drawing.Size(155, 22);
+            this.menuItemViewSubmitOfferCreate.Text = "Offer Create";
+            this.menuItemViewSubmitOfferCreate.ToolTipText = "Not implemented";
+            // 
+            // menuItemViewSubmitPayment
+            // 
+            this.menuItemViewSubmitPayment.Enabled = false;
+            this.menuItemViewSubmitPayment.Name = "menuItemViewSubmitPayment";
+            this.menuItemViewSubmitPayment.Size = new System.Drawing.Size(155, 22);
+            this.menuItemViewSubmitPayment.Text = "Payment";
+            this.menuItemViewSubmitPayment.ToolTipText = "Not implemented";
+            // 
+            // menuItemViewSubmitSetRegularKey
+            // 
+            this.menuItemViewSubmitSetRegularKey.Enabled = false;
+            this.menuItemViewSubmitSetRegularKey.Name = "menuItemViewSubmitSetRegularKey";
+            this.menuItemViewSubmitSetRegularKey.Size = new System.Drawing.Size(155, 22);
+            this.menuItemViewSubmitSetRegularKey.Text = "Set Regular Key";
+            this.menuItemViewSubmitSetRegularKey.ToolTipText = "Not implemented";
+            // 
+            // menuItemViewSubmitTrustSet
+            // 
+            this.menuItemViewSubmitTrustSet.Name = "menuItemViewSubmitTrustSet";
+            this.menuItemViewSubmitTrustSet.Size = new System.Drawing.Size(155, 22);
+            this.menuItemViewSubmitTrustSet.Text = "Trust Set";
+            this.menuItemViewSubmitTrustSet.Click += new System.EventHandler(this.menuItemViewSubmitTrustSet_Click);
             // 
             // menuItemViewTx
             // 
@@ -405,6 +473,13 @@
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator3;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewBookOffers;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRipplePathFind;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmit;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitAccountSet;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitOfferCancel;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitOfferCreate;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitPayment;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitSetRegularKey;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitTrustSet;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindowCloseAll;

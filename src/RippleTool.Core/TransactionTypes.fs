@@ -22,6 +22,7 @@ type SetRegularKey = unit
 
 [<Flags>]
 type TrustSetFlags =
+    | None              = 0x00000000u
     | FullyCanonicalSig = 0x80000000u
     | SetNoRipple       = 0x00020000u
     | ClearNoRipple     = 0x00040000u
@@ -29,8 +30,8 @@ type TrustSetFlags =
 type TrustSet =
     { Account : string
       Fee : Amount
-      Flags : uint32
       Sequence : uint32
+      Flags : uint32
       LimitAmount : Amount }
 
 //-------------------------------------------------------------------------------------------------

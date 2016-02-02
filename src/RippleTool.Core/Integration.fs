@@ -22,6 +22,11 @@ let eventExecuteCommandRes = eventExecuteCommandRes.Publish
 let executeCommand command =
     agentExecuteCommand.Post command
 
+let executeSubmitTransaction transaction =
+    let hex = TransactionSigning.sign transaction configSecretKey
+    let command = CommandTypes.Submit { TxBlob = hex }
+    executeCommand command
+
 let getJsonReq () =
     agentExecuteCommandReq.PostAndReply (fun channel -> Get channel)
 
