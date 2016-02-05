@@ -75,7 +75,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="BouncyCastle.Crypto">
-      <HintPath>..\..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
+      <HintPath>..\..\packages\BouncyCastle.Crypto.dll.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Chiron">
