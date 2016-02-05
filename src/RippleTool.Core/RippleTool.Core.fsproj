@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Aether">
-      <HintPath>..\..\packages\Aether.8.1.1\lib\net35\Aether.dll</HintPath>
+      <HintPath>..\..\packages\Aether.8.1.2\lib\net35\Aether.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="BouncyCastle.Crypto">
@@ -79,7 +79,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Chiron">
-      <HintPath>..\..\packages\Chiron.6.0.1\lib\net40\Chiron.dll</HintPath>
+      <HintPath>..\..\packages\Chiron.6.0.2\lib\net40\Chiron.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FParsec">
