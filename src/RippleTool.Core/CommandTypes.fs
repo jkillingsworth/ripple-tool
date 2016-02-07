@@ -43,11 +43,11 @@ type RipplePathFind =
       DestinationCurrency : string
       DestinationIssuer : string }
 
-type Tx =
-    { Transaction : string }
-
 type Submit =
     { TxBlob : string }
+
+type Tx =
+    { Transaction : string }
 
 //-------------------------------------------------------------------------------------------------
 
@@ -64,5 +64,5 @@ type Command =
     | NoRippleCheck of NoRippleCheck
     | BookOffers of BookOffers
     | RipplePathFind of RipplePathFind
-    | Tx of Tx
     | Submit of Submit
+    | Tx of Tx

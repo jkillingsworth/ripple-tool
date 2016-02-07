@@ -119,19 +119,19 @@ let private commandToJsonRipplePathFind (command : RipplePathFind) =
 
     Object elements
 
-let private commandToJsonTx (command : Tx) =
-
-    let elements =
-        [ "command", String "tx"
-          "transaction", String command.Transaction ]
-
-    Object elements
-
 let private commandToJsonSubmit (command : Submit) =
 
     let elements =
         [ "command", String "submit"
           "tx_blob", String command.TxBlob ]
+
+    Object elements
+
+let private commandToJsonTx (command : Tx) =
+
+    let elements =
+        [ "command", String "tx"
+          "transaction", String command.Transaction ]
 
     Object elements
 
@@ -150,7 +150,7 @@ let private commandToJson = function
     | NoRippleCheck     command -> command |> commandToJsonNoRippleCheck
     | BookOffers        command -> command |> commandToJsonBookOffers
     | RipplePathFind    command -> command |> commandToJsonRipplePathFind
-    | Tx                command -> command |> commandToJsonTx
     | Submit            command -> command |> commandToJsonSubmit
+    | Tx                command -> command |> commandToJsonTx
 
 let serialize = commandToJson >> Json.format
