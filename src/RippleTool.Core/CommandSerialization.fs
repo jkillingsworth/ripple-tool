@@ -1,173 +1,156 @@
 ﻿module RippleTool.CommandSerialization
 
+open Chiron
 open RippleTool.CommandTypes
 
 //-------------------------------------------------------------------------------------------------
 
-let serializePing (command : Ping) =
-    """{ "command": "ping" }"""
+let private Object = Map >> Object
 
-let serializeRandom (command : Random) =
-    """{ "command": "random" }"""
+let private commandToJsonPing (command : Ping) =
+    Object [ "command", String "ping" ]
 
-let serializeAccountCurrencies (command : AccountCurrencies) =
-    sprintf
-        """
-        {
-            "command": "account_currencies",
-            "account": "%s",
-            "ledger_index": "validated"
-        }
-        """
-        command.Account
+let private commandToJsonRandom (command : Random) =
+    Object [ "command", String "random" ]
 
-let serializeAccountInfo (command : AccountInfo) =
-    sprintf
-        """
-        {
-            "command": "account_info",
-            "account": "%s",
-            "ledger_index": "validated"
-        }
-        """
-        command.Account
+let private commandToJsonAccountCurrencies (command : AccountCurrencies) =
 
-let serializeAccountLines (command : AccountLines) =
-    sprintf
-        """
-        {
-            "command": "account_lines",
-            "account": "%s",
-            "ledger_index": "validated"
-        }
-        """
-        command.Account
+    let elements =
+        [ "command", String "account_currencies"
+          "account", String command.Account
+          "ledger_index", String "validated" ]
 
-let serializeAccountObjects (command : AccountObjects) =
-    sprintf
-        """
-        {
-            "command": "account_objects",
-            "account": "%s",
-            "ledger_index": "validated"
-        }
-        """
-        command.Account
+    Object elements
 
-let serializeAccountOffers (command : AccountOffers) =
-    sprintf
-        """
-        {
-            "command": "account_offers",
-            "account": "%s",
-            "ledger_index": "validated"
-        }
-        """
-        command.Account
+let private commandToJsonAccountInfo (command : AccountInfo) =
 
-let serializeAccountTx (command : AccountTx) =
-    sprintf
-        """
-        {
-            "command": "account_tx",
-            "account": "%s",
-            "ledger_index_min": -1,
-            "ledger_index_max": -1
-        }
-        """
-        command.Account
+    let elements =
+        [ "command", String "account_info"
+          "account", String command.Account
+          "ledger_index", String "validated" ]
 
-let serializeGatewayBalances (command : GatewayBalances) =
-    sprintf
-        """
-        {
-            "command": "gateway_balances",
-            "account": "%s",
-            "ledger_index": "validated"
-        }
-        """
-        command.Account
+    Object elements
 
-let serializeNoRippleCheck (command : NoRippleCheck) =
-    sprintf
-        """
-        {
-            "command": "noripple_check",
-            "account": "%s",
-            "ledger_index": "validated",
-            "role": "user"
-        }
-        """
-        command.Account
+let private commandToJsonAccountLines (command : AccountLines) =
 
-let serializeBookOffers (command : BookOffers) =
-    sprintf
-        """
-        {
-            "command": "book_offers",
-            "taker_gets": { "currency": "%s", "issuer": "%s" },
-            "taker_pays": { "currency": "%s", "issuer": "%s" }
-        }
-        """
-        command.TakerGetsCurrency
-        command.TakerGetsIssuer
-        command.TakerPaysCurrency
-        command.TakerPaysIssuer
+    let elements =
+        [ "command", String "account_lines"
+          "account", String command.Account
+          "ledger_index", String "validated" ]
 
-let serializeRipplePathFind (command : RipplePathFind) =
-    sprintf
-        """
-        {
-            "command": "ripple_path_find",
-            "source_account": "%s",
-            "destination_account": "%s",
-            "destination_amount": {
-                "value": "%f",
-                "currency": "%s",
-                "issuer": "%s"
-            }
-        }
-        """
-        command.SourceAccount
-        command.DestinationAccount
-        command.DestinationAmount
-        command.DestinationCurrency
-        command.DestinationIssuer
+    Object elements
 
-let serializeTx (command : Tx) =
-    sprintf
-        """
-        {
-            "command": "tx",
-            "transaction": "%s"
-        }
-        """
-        command.Transaction
+let private commandToJsonAccountObjects (command : AccountObjects) =
 
-let serializeSubmit (command : Submit) =
-    sprintf
-        """
-        {
-            "command": "submit",
-            "tx_blob": "%s"
-        }
-        """
-        command.TxBlob
+    let elements =
+        [ "command", String "account_objects"
+          "account", String command.Account
+          "ledger_index", String "validated" ]
+
+    Object elements
+
+let private commandToJsonAccountOffers (command : AccountOffers) =
+
+    let elements =
+        [ "command", String "account_objects"
+          "account", String command.Account
+          "ledger_index", String "validated" ]
+
+    Object elements
+
+let private commandToJsonAccountTx (command : AccountTx) =
+
+    let elements =
+        [ "command", String "account_tx"
+          "account", String command.Account
+          "ledger_index_min", Number -1m
+          "ledger_index_max", Number -1m ]
+
+    Object elements
+
+let private commandToJsonGatewayBalances (command : GatewayBalances) =
+
+    let elements =
+        [ "command", String "gateway_balances"
+          "account", String command.Account
+          "ledger_index", String "validated" ]
+
+    Object elements
+
+let private commandToJsonNoRippleCheck (command : NoRippleCheck) =
+
+    let elements =
+        [ "command", String "noripple_check"
+          "account", String command.Account
+          "ledger_index", String "validated"
+          "role", String "user" ]
+
+    Object elements
+
+let private commandToJsonBookOffers (command : BookOffers) =
+
+    let elementsTakerGets =
+        [ "currency", String command.TakerGetsCurrency
+          "issuer", String command.TakerGetsIssuer ]
+
+    let elementsTakerPays =
+        [ "currency", String command.TakerPaysCurrency
+          "issuer", String command.TakerPaysIssuer ]
+
+    let elements =
+        [ "command", String "book_offers"
+          "taker_gets", Object elementsTakerGets
+          "taker_pays", Object elementsTakerPays ]
+
+    Object elements
+
+let private commandToJsonRipplePathFind (command : RipplePathFind) =
+
+    let elementsDestimationAmount =
+        [ "value", Number command.DestinationAmount
+          "currency", String command.DestinationCurrency
+          "issuer", String command.DestinationIssuer ]
+
+    let elements =
+        [ "command", String "ripple_path_find"
+          "source_account", String command.SourceAccount
+          "destination_account", String command.DestinationAccount
+          "destination_amount", Object elementsDestimationAmount  ]
+
+    Object elements
+
+let private commandToJsonTx (command : Tx) =
+
+    let elements =
+        [ "command", String "tx"
+          "transaction", String command.Transaction ]
+
+    Object elements
+
+let private commandToJsonSubmit (command : Submit) =
+
+    let elements =
+        [ "command", String "submit"
+          "tx_blob", String command.TxBlob ]
+
+    Object elements
 
 //-------------------------------------------------------------------------------------------------
 
-let serialize = function
-    | Ping              command -> command |> serializePing
-    | Random            command -> command |> serializeRandom
-    | AccountCurrencies command -> command |> serializeAccountCurrencies
-    | AccountInfo       command -> command |> serializeAccountInfo
-    | AccountLines      command -> command |> serializeAccountLines
-    | AccountObjects    command -> command |> serializeAccountObjects
-    | AccountOffers     command -> command |> serializeAccountOffers
-    | AccountTx         command -> command |> serializeAccountTx
-    | GatewayBalances   command -> command |> serializeGatewayBalances
-    | NoRippleCheck     command -> command |> serializeNoRippleCheck
-    | BookOffers        command -> command |> serializeBookOffers
-    | RipplePathFind    command -> command |> serializeRipplePathFind
-    | Tx                command -> command |> serializeTx
-    | Submit            command -> command |> serializeSubmit
+let private commandToJson = function
+    | Ping              command -> command |> commandToJsonPing
+    | Random            command -> command |> commandToJsonRandom
+    | AccountCurrencies command -> command |> commandToJsonAccountCurrencies
+    | AccountInfo       command -> command |> commandToJsonAccountInfo
+    | AccountLines      command -> command |> commandToJsonAccountLines
+    | AccountObjects    command -> command |> commandToJsonAccountObjects
+    | AccountOffers     command -> command |> commandToJsonAccountOffers
+    | AccountTx         command -> command |> commandToJsonAccountTx
+    | GatewayBalances   command -> command |> commandToJsonGatewayBalances
+    | NoRippleCheck     command -> command |> commandToJsonNoRippleCheck
+    | BookOffers        command -> command |> commandToJsonBookOffers
+    | RipplePathFind    command -> command |> commandToJsonRipplePathFind
+    | Tx                command -> command |> commandToJsonTx
+    | Submit            command -> command |> commandToJsonSubmit
+
+let serialize = commandToJson >> Json.format

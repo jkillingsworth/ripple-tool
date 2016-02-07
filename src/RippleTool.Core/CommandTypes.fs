@@ -39,7 +39,7 @@ type BookOffers =
 type RipplePathFind =
     { SourceAccount : string
       DestinationAccount : string
-      DestinationAmount : float
+      DestinationAmount : decimal
       DestinationCurrency : string
       DestinationIssuer : string }
 

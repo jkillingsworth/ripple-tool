@@ -24,7 +24,7 @@ namespace RippleTool.UI
                 flags |= TransactionTypes.TrustSetFlags.ClearNoRipple;
 
             var limitAmount = new TransactionTypes.IssuedAmount(
-                double.Parse(textLimitAmountValue.Text),
+                decimal.Parse(textLimitAmountValue.Text),
                 textLimitAmountCurrency.Text,
                 textLimitAmountIssuer.Text
                 );

@@ -6,7 +6,7 @@ open System
 
 type NativeAmount = uint32
 
-type IssuedAmount = { Value : float; Currency : string; Issuer : string }
+type IssuedAmount = { Value : decimal; Currency : string; Issuer : string }
 
 type Amount =
     | NativeAmount of NativeAmount

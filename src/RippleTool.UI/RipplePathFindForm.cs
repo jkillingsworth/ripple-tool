@@ -13,7 +13,7 @@ namespace RippleTool.UI
         {
             var sourceAccount = textSourceAccount.Text;
             var destinationAccount = textDestinationAccount.Text;
-            var destinationAmount = double.Parse(textDestinationAmount.Text);
+            var destinationAmount = decimal.Parse(textDestinationAmount.Text);
             var destinationCurrency = textDestinationCurrency.Text;
             var destinationIssuer = textDestinationIssuer.Text;
 
