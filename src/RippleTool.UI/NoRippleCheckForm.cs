@@ -12,7 +12,8 @@ namespace RippleTool.UI
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
             var account = textAccount.Text;
-            var commandItem = new CommandTypes.NoRippleCheck(account);
+            var role = radioUser.Checked ? CommandTypes.Role.User : CommandTypes.Role.Gateway;
+            var commandItem = new CommandTypes.NoRippleCheck(account, role);
             var command = CommandTypes.Command.NewNoRippleCheck(commandItem);
             Integration.executeCommand(command);
         }

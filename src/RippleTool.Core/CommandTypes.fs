@@ -2,6 +2,8 @@
 
 //-------------------------------------------------------------------------------------------------
 
+type Role = User | Gateway
+
 type Ping = unit
 
 type Random = unit
@@ -28,7 +30,8 @@ type GatewayBalances =
     { Account : string }
 
 type NoRippleCheck =
-    { Account : string }
+    { Account : string
+      Role : Role }
 
 type BookOffers =
     { TakerGetsCurrency : string

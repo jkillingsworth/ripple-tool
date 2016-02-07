@@ -79,11 +79,16 @@ let private commandToJsonGatewayBalances (command : GatewayBalances) =
 
 let private commandToJsonNoRippleCheck (command : NoRippleCheck) =
 
+    let role =
+        match command.Role with
+        | User    -> "user"
+        | Gateway -> "gateway"
+
     let elements =
         [ "command", String "noripple_check"
           "account", String command.Account
           "ledger_index", String "validated"
-          "role", String "user" ]
+          "role", String role ]
 
     Object elements
 
