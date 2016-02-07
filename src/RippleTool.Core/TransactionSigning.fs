@@ -41,9 +41,21 @@ let private secretKeyToBigInt secretKey =
 
 let private createEcdsaSignature input secretKey =
 
-    let secretKeyBigInt = secretKeyToBigInt secretKey
+    let generatorPrvBigInt = secretKeyToBigInt secretKey
+    let generatorPubBinary = ecBasePoint.Multiply(generatorPrvBigInt).GetEncoded(true)
+
+    let n = 0u
+
+    let rec loop i input =
+        let keyBinary = input |> appendSequenceNumber n |> appendSequenceNumber i |> computeHalfSha512
+        let keyBigInt = BigInteger(1, keyBinary)
+        if (keyBigInt.CompareTo(ecOrder) < 0) then keyBigInt else input |> loop (i + 1u)
+
+    let hashBigInt = generatorPubBinary |> loop 0u
+    let prvKeyBigInt = hashBigInt.Add(generatorPrvBigInt).Mod(ecOrder)
+
     let ecDomainParameters = ECDomainParameters(ecParameters.Curve, ecParameters.G, ecParameters.N, ecParameters.H)
-    let ecPrivateKeyParameters = ECPrivateKeyParameters(secretKeyBigInt, ecDomainParameters)
+    let ecPrivateKeyParameters = ECPrivateKeyParameters(prvKeyBigInt, ecDomainParameters)
 
     let signer = ECDsaSigner()
     signer.Init(true, ecPrivateKeyParameters)
@@ -80,9 +92,22 @@ let private computeSignature serializedTransaction secretKey =
 
 let private computeSigningPubKey secretKey =
 
-    let secretKeyBigInt = secretKeyToBigInt secretKey
-    let publicKeyBinary = ecBasePoint.Multiply(secretKeyBigInt).GetEncoded()
-    publicKeyBinary
+    let generatorPrvBigInt = secretKeyToBigInt secretKey
+    let generatorPubBinary = ecBasePoint.Multiply(generatorPrvBigInt).GetEncoded(true)
+
+    let n = 0u
+
+    let rec loop i input =
+        let keyBinary = input |> appendSequenceNumber n |> appendSequenceNumber i |> computeHalfSha512
+        let keyBigInt = BigInteger(1, keyBinary)
+        if (keyBigInt.CompareTo(ecOrder) < 0) then keyBigInt else input |> loop (i + 1u)
+
+    let hashBigInt = generatorPubBinary |> loop 0u
+
+    let generatorPubEcPoint = ecBasePoint.Multiply(generatorPrvBigInt)
+    let pubKeyBinary = ecBasePoint.Multiply(hashBigInt).Add(generatorPubEcPoint).GetEncoded(true)
+
+    pubKeyBinary
 
 let sign transaction secretKey =
 
