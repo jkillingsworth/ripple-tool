@@ -7,7 +7,7 @@ open Org.BouncyCastle.Asn1.Sec
 open Org.BouncyCastle.Crypto.Parameters
 open Org.BouncyCastle.Crypto.Signers
 open Org.BouncyCastle.Math
-open RippleTool.TransactionEncoding
+open RippleTool.Encoding
 open RippleTool.TransactionSerialization
 
 //-------------------------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ let private computeHalfSha512 (input : byte[]) =
 
 let private appendSequenceNumber i input =
 
-    Array.concat [ input; toBinaryUInt32 i ]
+    Array.concat [ input; Binary.ofUint32 i ]
 
 let private secretKeyToBigInt secretKey =
 
@@ -116,4 +116,4 @@ let sign transaction secretKey =
     let signature = computeSignature transactionBinary secretKey
     let transactionBinary = serialize transaction signingPublicKey (Some signature)
 
-    transactionBinary |> toHex
+    transactionBinary |> Binary.toHex
