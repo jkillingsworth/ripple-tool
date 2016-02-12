@@ -89,6 +89,9 @@ module Base58 =
     type private Version =
         | AccountId = 00uy
         | SecretKey = 33uy
+        | AccountKeyPub = 35uy
+        | AccountKeyPrv = 34uy
+        | RootKeyPub = 41uy
 
     let private computeHashsum version payload =
         use sha256 = SHA256.Create()
@@ -173,5 +176,12 @@ module Base58 =
 
     let encodeAccountId = encode Version.AccountId
     let encodeSecretKey = encode Version.SecretKey
+    let encodeAccountKeyPub = encode Version.AccountKeyPub
+    let encodeAccountKeyPrv = encode Version.AccountKeyPrv
+    let encodeRootKeyPub = encode Version.RootKeyPub
+
     let decodeAccountId = decode Version.AccountId
     let decodeSecretKey = decode Version.SecretKey
+    let decodeAccountKeyPub = decode Version.AccountKeyPub
+    let decodeAccountKeyPrv = decode Version.AccountKeyPrv
+    let decodeRootKeyPub = decode Version.RootKeyPub
