@@ -1,9 +1,7 @@
 ﻿module RippleTool.TransactionSigning
 
 open System
-open System.Security.Cryptography
 open Org.BouncyCastle.Asn1
-open Org.BouncyCastle.Asn1.Sec
 open Org.BouncyCastle.Crypto.Parameters
 open Org.BouncyCastle.Crypto.Signers
 open Org.BouncyCastle.Math
@@ -12,48 +10,11 @@ open RippleTool.TransactionSerialization
 
 //-------------------------------------------------------------------------------------------------
 
-let private ecParameters = SecNamedCurves.GetByName("secp256k1")
-let private ecOrder = ecParameters.N
-let private ecBasePoint = ecParameters.G
+let private createEcdsaSignature input (accountKeys : Crypto.Keys) =
 
-let private computeHalfSha512 (input : byte[]) =
+    let prvKeyBigInt = BigInteger(1, accountKeys.Prv)
 
-    use provider = new SHA512CryptoServiceProvider()
-    let hashFull = provider.ComputeHash(input)
-    let hashHalf = hashFull.[.. (256 / 8) - 1]
-
-    hashHalf
-
-let private appendSequenceNumber i input =
-
-    Array.concat [ input; Binary.ofUint32 i ]
-
-let private secretKeyToBigInt secretKey =
-
-    let secretKeyBinary = Base58.decodeSecretKey secretKey
-
-    let rec loop i input =
-        let keyBinary = input |> appendSequenceNumber i |> computeHalfSha512
-        let keyBigInt = BigInteger(1, keyBinary)
-        if (keyBigInt.CompareTo(ecOrder) < 0) then keyBigInt else input |> loop (i + 1u)
-
-    secretKeyBinary |> loop 0u
-
-let private createEcdsaSignature input secretKey =
-
-    let generatorPrvBigInt = secretKeyToBigInt secretKey
-    let generatorPubBinary = ecBasePoint.Multiply(generatorPrvBigInt).GetEncoded(true)
-
-    let n = 0u
-
-    let rec loop i input =
-        let keyBinary = input |> appendSequenceNumber n |> appendSequenceNumber i |> computeHalfSha512
-        let keyBigInt = BigInteger(1, keyBinary)
-        if (keyBigInt.CompareTo(ecOrder) < 0) then keyBigInt else input |> loop (i + 1u)
-
-    let hashBigInt = generatorPubBinary |> loop 0u
-    let prvKeyBigInt = hashBigInt.Add(generatorPrvBigInt).Mod(ecOrder)
-
+    let ecParameters = Crypto.ecParameters
     let ecDomainParameters = ECDomainParameters(ecParameters.Curve, ecParameters.G, ecParameters.N, ecParameters.H)
     let ecPrivateKeyParameters = ECPrivateKeyParameters(prvKeyBigInt, ecDomainParameters)
 
@@ -64,7 +25,7 @@ let private createEcdsaSignature input secretKey =
     let r = sigs.[0]
     let s = sigs.[1]
 
-    let sOther = ecOrder.Subtract(s)
+    let sOther = Crypto.ecOrder.Subtract(s)
     let s = if s.CompareTo(sOther) > 0 then sOther else s
 
     (r, s)
@@ -78,42 +39,31 @@ let private encodeToDer (r, s) =
     generator.Close()
     stream.ToArray()
 
+//-------------------------------------------------------------------------------------------------
+
 let private computeSigningHash serializedTransaction =
 
     let prefix = Text.Encoding.UTF8.GetBytes("STX\u0000")
     let binary = Array.concat [ prefix; serializedTransaction ]
-    computeHalfSha512 binary
+    Crypto.computeHash binary
 
-let private computeSignature serializedTransaction secretKey =
+let private computeSignature serializedTransaction accountKeys =
 
     let signingHash = computeSigningHash serializedTransaction
-    let (r, s) = createEcdsaSignature signingHash secretKey
+    let (r, s) = createEcdsaSignature signingHash accountKeys
     encodeToDer (r, s)
-
-let private computeSigningPubKey secretKey =
-
-    let generatorPrvBigInt = secretKeyToBigInt secretKey
-    let generatorPubBinary = ecBasePoint.Multiply(generatorPrvBigInt).GetEncoded(true)
-
-    let n = 0u
-
-    let rec loop i input =
-        let keyBinary = input |> appendSequenceNumber n |> appendSequenceNumber i |> computeHalfSha512
-        let keyBigInt = BigInteger(1, keyBinary)
-        if (keyBigInt.CompareTo(ecOrder) < 0) then keyBigInt else input |> loop (i + 1u)
-
-    let hashBigInt = generatorPubBinary |> loop 0u
-
-    let generatorPubEcPoint = ecBasePoint.Multiply(generatorPrvBigInt)
-    let pubKeyBinary = ecBasePoint.Multiply(hashBigInt).Add(generatorPubEcPoint).GetEncoded(true)
-
-    pubKeyBinary
 
 let sign transaction secretKey =
 
-    let signingPublicKey = computeSigningPubKey secretKey
+    let accountKeys =
+        secretKey
+        |> Base58.decodeSecretKey
+        |> Crypto.computeRootKeys
+        |> Crypto.computeAccountKeys 0u
+
+    let signingPublicKey = accountKeys.Pub
     let transactionBinary = serialize transaction signingPublicKey (None)
-    let signature = computeSignature transactionBinary secretKey
+    let signature = computeSignature transactionBinary accountKeys
     let transactionBinary = serialize transaction signingPublicKey (Some signature)
 
     transactionBinary |> Binary.toHex
