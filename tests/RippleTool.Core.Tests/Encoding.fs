@@ -293,49 +293,139 @@ let ``Base58 to bigint 60`` () =
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
-let ``Base58 encode account id rrrrrrrrrrrrrrrrrrrrrhoLvTp`` () =
+let ``Base58 using account 0, encode account id`` () =
 
     let input = Binary.ofHex "0000000000000000000000000000000000000000"
     let expected = "rrrrrrrrrrrrrrrrrrrrrhoLvTp"
     input |> Base58.encodeAccountId |> should equal expected
 
 [<Test>]
-let ``Base58 encode account id rrrrrrrrrrrrrrrrrrrrBZbvji`` () =
+let ``Base58 using account 0, decode account id`` () =
+
+    let input = "rrrrrrrrrrrrrrrrrrrrrhoLvTp"
+    let expected = Binary.ofHex "0000000000000000000000000000000000000000"
+    input |> Base58.decodeAccountId |> should equal expected
+
+[<Test>]
+let ``Base58 using account 1, encode account id`` () =
 
     let input = Binary.ofHex "0000000000000000000000000000000000000001"
     let expected = "rrrrrrrrrrrrrrrrrrrrBZbvji"
     input |> Base58.encodeAccountId |> should equal expected
 
 [<Test>]
-let ``Base58 encode account id rhcfR9Cg98qCxHpCcPBmMonbDBXo84wyTn`` () =
+let ``Base58 using account 1, decode account id`` () =
+
+    let input = "rrrrrrrrrrrrrrrrrrrrBZbvji"
+    let expected = Binary.ofHex "0000000000000000000000000000000000000001"
+    input |> Base58.decodeAccountId |> should equal expected
+
+//-------------------------------------------------------------------------------------------------
+
+[<Test>]
+let ``Base58 using test keys 1, encode account id`` () =
+
+    let input = Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8"
+    let expected = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"
+    input |> Base58.encodeAccountId |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 1, encode secret key`` () =
+
+    let input = Binary.ofHex "DEDCE9CE67B451D852FD4E846FCDE31C"
+    let expected = "snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
+    input |> Base58.encodeSecretKey |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 1, encode account key prv`` () =
+
+    let input = Binary.ofHex "1ACAAEDECE405B2A958212629E16F2EB46B153EEE94CDD350FDEFF52795525B7"
+    let expected = "p9JfM6HHi64m6mvB6v5k7G2b1cXzGmYiCNJf6GHPKvFTWdeRVjh"
+    input |> Base58.encodeAccountKeyPrv |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 1, encode account key pub`` () =
+
+    let input = Binary.ofHex "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020"
+    let expected = "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw"
+    input |> Base58.encodeAccountKeyPub |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 1, encode root key pub`` () =
+
+    let input = Binary.ofHex "03D49C56E1B185F1BE899AE66A02EFC17F78EA6FC53AF85E0FE54C6E8B7F8C71A8"
+    let expected = "fhuJKrhSDzV2SkjLn9qbwm5AaRmrxDPfFsHDCP6yfDZWcxDFz4mt"
+    input |> Base58.encodeRootKeyPub |> should equal expected
+
+//-------------------------------------------------------------------------------------------------
+
+[<Test>]
+let ``Base58 using test keys 1, decode account id`` () =
+
+    let input = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"
+    let expected = Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8"
+    input |> Base58.decodeAccountId |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 1, decode secret key`` () =
+
+    let input = "snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
+    let expected = Binary.ofHex "DEDCE9CE67B451D852FD4E846FCDE31C"
+    input |> Base58.decodeSecretKey |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 1, decode account key prv`` () =
+
+    let input = "p9JfM6HHi64m6mvB6v5k7G2b1cXzGmYiCNJf6GHPKvFTWdeRVjh"
+    let expected = Binary.ofHex "1ACAAEDECE405B2A958212629E16F2EB46B153EEE94CDD350FDEFF52795525B7"
+    input |> Base58.decodeAccountKeyPrv |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 1, decode account key pub`` () =
+
+    let input = "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw"
+    let expected = Binary.ofHex "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020"
+    input |> Base58.decodeAccountKeyPub |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 1, decode root key pub`` () =
+
+    let input = "fhuJKrhSDzV2SkjLn9qbwm5AaRmrxDPfFsHDCP6yfDZWcxDFz4mt"
+    let expected = Binary.ofHex "03D49C56E1B185F1BE899AE66A02EFC17F78EA6FC53AF85E0FE54C6E8B7F8C71A8"
+    input |> Base58.decodeRootKeyPub |> should equal expected
+
+//-------------------------------------------------------------------------------------------------
+
+[<Test>]
+let ``Base58 using test keys 2, encode account id`` () =
 
     let input = Binary.ofHex "278C4AC8FEAB993E85BBA8FF8401E7C37E062C56"
     let expected = "rhcfR9Cg98qCxHpCcPBmMonbDBXo84wyTn"
     input |> Base58.encodeAccountId |> should equal expected
 
 [<Test>]
-let ``Base58 encode secret key shHM53KPZ87Gwdqarm1bAmPeXg8Tn`` () =
+let ``Base58 using test keys 2, encode secret key`` () =
 
     let input = Binary.ofHex "71ED064155FFADFA38782C5E0158CB26"
     let expected = "shHM53KPZ87Gwdqarm1bAmPeXg8Tn"
     input |> Base58.encodeSecretKey |> should equal expected
 
 [<Test>]
-let ``Base58 encode account key pub aBRoQibi2jpDofohooFuzZi9nEzKw9Zdfc4ExVNmuXHaJpSPh8uJ`` () =
-
-    let input = Binary.ofHex "03FA25B68DA6FF6832E4462FDFB9A2AAA58888C0ED17285FFE92E4465E0C6E782A"
-    let expected = "aBRoQibi2jpDofohooFuzZi9nEzKw9Zdfc4ExVNmuXHaJpSPh8uJ"
-    input |> Base58.encodeAccountKeyPub |> should equal expected
-
-[<Test>]
-let ``Base58 encode account key prv pwMPbuE25rnajigDPBEh9Pwv8bMV2ebN9gVPTWTh4c3DtB14iGL`` () =
+let ``Base58 using test keys 2, encode account key prv`` () =
 
     let input = Binary.ofHex "A5EF877564D096EA445E72FDA77C77BB45002261087C69D57CEA56B008102D52"
     let expected = "pwMPbuE25rnajigDPBEh9Pwv8bMV2ebN9gVPTWTh4c3DtB14iGL"
     input |> Base58.encodeAccountKeyPrv |> should equal expected
 
 [<Test>]
-let ``Base58 encode root key pub fht5yrLWh3P8DrJgQuVNDPQVXGTMyPpgRHFKGQzFQ66o3ssesk3o`` () =
+let ``Base58 using test keys 2, encode account key pub`` () =
+
+    let input = Binary.ofHex "03FA25B68DA6FF6832E4462FDFB9A2AAA58888C0ED17285FFE92E4465E0C6E782A"
+    let expected = "aBRoQibi2jpDofohooFuzZi9nEzKw9Zdfc4ExVNmuXHaJpSPh8uJ"
+    input |> Base58.encodeAccountKeyPub |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 2, encode root key pub`` () =
 
     let input = Binary.ofHex "0388E5BA87A000CB807240DF8C848EB0B5FFA5C8E5A521BC8E105C0F0A44217828"
     let expected = "fht5yrLWh3P8DrJgQuVNDPQVXGTMyPpgRHFKGQzFQ66o3ssesk3o"
@@ -344,49 +434,35 @@ let ``Base58 encode root key pub fht5yrLWh3P8DrJgQuVNDPQVXGTMyPpgRHFKGQzFQ66o3ss
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
-let ``Base58 decode account id rrrrrrrrrrrrrrrrrrrrrhoLvTp`` () =
-
-    let input = "rrrrrrrrrrrrrrrrrrrrrhoLvTp"
-    let expected = Binary.ofHex "0000000000000000000000000000000000000000"
-    input |> Base58.decodeAccountId |> should equal expected
-
-[<Test>]
-let ``Base58 decode account id rrrrrrrrrrrrrrrrrrrrBZbvji`` () =
-
-    let input = "rrrrrrrrrrrrrrrrrrrrBZbvji"
-    let expected = Binary.ofHex "0000000000000000000000000000000000000001"
-    input |> Base58.decodeAccountId |> should equal expected
-
-[<Test>]
-let ``Base58 decode account id rhcfR9Cg98qCxHpCcPBmMonbDBXo84wyTn`` () =
+let ``Base58 using test keys 2, decode account id`` () =
 
     let input = "rhcfR9Cg98qCxHpCcPBmMonbDBXo84wyTn"
     let expected = Binary.ofHex "278C4AC8FEAB993E85BBA8FF8401E7C37E062C56"
     input |> Base58.decodeAccountId |> should equal expected
 
 [<Test>]
-let ``Base58 decode secret key shHM53KPZ87Gwdqarm1bAmPeXg8Tn`` () =
+let ``Base58 using test keys 2, decode secret key`` () =
 
     let input = "shHM53KPZ87Gwdqarm1bAmPeXg8Tn"
     let expected = Binary.ofHex "71ED064155FFADFA38782C5E0158CB26"
     input |> Base58.decodeSecretKey |> should equal expected
 
 [<Test>]
-let ``Base58 decode account key pub aBRoQibi2jpDofohooFuzZi9nEzKw9Zdfc4ExVNmuXHaJpSPh8uJ`` () =
-
-    let input = "aBRoQibi2jpDofohooFuzZi9nEzKw9Zdfc4ExVNmuXHaJpSPh8uJ"
-    let expected = Binary.ofHex "03FA25B68DA6FF6832E4462FDFB9A2AAA58888C0ED17285FFE92E4465E0C6E782A"
-    input |> Base58.decodeAccountKeyPub |> should equal expected
-
-[<Test>]
-let ``Base58 decode account key prv pwMPbuE25rnajigDPBEh9Pwv8bMV2ebN9gVPTWTh4c3DtB14iGL`` () =
+let ``Base58 using test keys 2, decode account key prv`` () =
 
     let input = "pwMPbuE25rnajigDPBEh9Pwv8bMV2ebN9gVPTWTh4c3DtB14iGL"
     let expected = Binary.ofHex "A5EF877564D096EA445E72FDA77C77BB45002261087C69D57CEA56B008102D52"
     input |> Base58.decodeAccountKeyPrv |> should equal expected
 
 [<Test>]
-let ``Base58 decode root key pub fht5yrLWh3P8DrJgQuVNDPQVXGTMyPpgRHFKGQzFQ66o3ssesk3o`` () =
+let ``Base58 using test keys 2, decode account key pub`` () =
+
+    let input = "aBRoQibi2jpDofohooFuzZi9nEzKw9Zdfc4ExVNmuXHaJpSPh8uJ"
+    let expected = Binary.ofHex "03FA25B68DA6FF6832E4462FDFB9A2AAA58888C0ED17285FFE92E4465E0C6E782A"
+    input |> Base58.decodeAccountKeyPub |> should equal expected
+
+[<Test>]
+let ``Base58 using test keys 2, decode root key pub`` () =
 
     let input = "fht5yrLWh3P8DrJgQuVNDPQVXGTMyPpgRHFKGQzFQ66o3ssesk3o"
     let expected = Binary.ofHex "0388E5BA87A000CB807240DF8C848EB0B5FFA5C8E5A521BC8E105C0F0A44217828"

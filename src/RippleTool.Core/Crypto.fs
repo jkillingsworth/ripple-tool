@@ -23,6 +23,8 @@ module private Binary =
 
 //-------------------------------------------------------------------------------------------------
 
+let private appendSeqNumber input = Array.append input << Binary.ofUint32
+
 type Keys = { Prv : byte[]; Pub : byte[] }
 
 let computeHash (input : byte[]) =
@@ -31,9 +33,7 @@ let computeHash (input : byte[]) =
     |> sha512.ComputeHash
     |> Array.take 32
 
-let private appendSeqNumber input = Array.append input << Binary.ofUint32
-
-let private computeHashLoop appendSeqNumber input =
+let private computeKeysHash appendSeqNumber input =
     let generator i = Some (appendSeqNumber input i, i + 1u)
     0u
     |> Seq.unfold generator
@@ -43,7 +43,7 @@ let private computeHashLoop appendSeqNumber input =
 
 let computeRootKeys secretKeyBinary =
 
-    let generatorPrvBigint = secretKeyBinary |> computeHashLoop appendSeqNumber
+    let generatorPrvBigint = secretKeyBinary |> computeKeysHash appendSeqNumber
     let generatorPubEccPnt = ecBasePoint.Multiply(generatorPrvBigint)
     let generatorPrvBinary = generatorPrvBigint |> Binary.ofBigint
     let generatorPubBinary = generatorPubEccPnt.GetEncoded(true)
@@ -55,9 +55,9 @@ let computeAccountKeys n generatorKeys =
     let rootKeyPrvBigint = generatorKeys.Prv |> Binary.toBigint
 
     let appendSeqNumber input =
-        appendSeqNumber <| appendSeqNumber input n
+        appendSeqNumber input n |> appendSeqNumber
 
-    let hashBigint = generatorKeys.Pub |> computeHashLoop appendSeqNumber
+    let hashBigint = generatorKeys.Pub |> computeKeysHash appendSeqNumber
 
     let accountKeyPrvBigint = hashBigint.Add(rootKeyPrvBigint).Mod(ecOrder)
     let accountKeyPubEccPnt = ecBasePoint.Multiply(accountKeyPrvBigint)
@@ -65,3 +65,10 @@ let computeAccountKeys n generatorKeys =
     let accountKeyPubBinary = accountKeyPubEccPnt.GetEncoded(true)
 
     { Prv = accountKeyPrvBinary; Pub = accountKeyPubBinary }
+
+let computeAccountId accountKeys =
+    use sha256 = SHA256.Create()
+    use rmd160 = RIPEMD160.Create()
+    accountKeys.Pub
+    |> sha256.ComputeHash
+    |> rmd160.ComputeHash
