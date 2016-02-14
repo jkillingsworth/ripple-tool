@@ -1,7 +1,6 @@
 ﻿module RippleTool.TransactionEncoding
 
 open System
-open System.Security.Cryptography
 open RippleTool.Encoding
 open RippleTool.TransactionTypes
 
