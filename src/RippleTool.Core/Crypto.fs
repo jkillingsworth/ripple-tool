@@ -4,6 +4,7 @@ open System
 open System.Security.Cryptography
 open Org.BouncyCastle.Asn1
 open Org.BouncyCastle.Asn1.Sec
+open Org.BouncyCastle.Crypto.Digests
 open Org.BouncyCastle.Crypto.Parameters
 open Org.BouncyCastle.Crypto.Signers
 open Org.BouncyCastle.Math
@@ -87,7 +88,8 @@ let private computeSignatureEcc accountKeys input =
     let eccDomainParameters = ECDomainParameters(eccParams.Curve, eccParams.G, eccParams.N, eccParams.H)
     let eccPrvKeyParameters = ECPrivateKeyParameters(accountKeyPrvBigint, eccDomainParameters)
 
-    let signer = ECDsaSigner()
+    let digest = Sha256Digest()
+    let signer = digest |> HMacDsaKCalculator |> ECDsaSigner
     signer.Init(true, eccPrvKeyParameters)
 
     let sigs = signer.GenerateSignature(input)
