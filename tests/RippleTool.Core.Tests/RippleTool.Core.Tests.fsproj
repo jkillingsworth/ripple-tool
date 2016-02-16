@@ -63,6 +63,7 @@
     <Content Include="packages.config" />
     <Compile Include="Encoding.fs" />
     <Compile Include="Crypto.fs" />
+    <Compile Include="TransactionEncoding.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FsUnit.NUnit">

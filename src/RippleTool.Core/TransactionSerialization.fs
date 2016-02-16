@@ -1,5 +1,6 @@
 ﻿module RippleTool.TransactionSerialization
 
+open RippleTool.Encoding
 open RippleTool.TransactionTypes
 open RippleTool.TransactionEncoding
 
@@ -52,12 +53,12 @@ let private fieldsFromTrustSet (transaction : TrustSet) =
     let transactionType = uint16 TransactionType.TrustSet
 
     let fields =
-        [ { Type = UInt16'TransactionType; Value = toBinaryUInt16  transactionType }
-          { Type = Account'Account;        Value = toBinaryAccount transaction.Account }
-          { Type = Amount'Fee;             Value = toBinaryAmount  transaction.Fee }
-          { Type = UInt32'Flags;           Value = toBinaryUInt32  transaction.Flags }
-          { Type = UInt32'Sequence;        Value = toBinaryUInt32  transaction.Sequence }
-          { Type = Amount'Limit;           Value = toBinaryAmount  transaction.LimitAmount }
+        [ { Type = UInt16'TransactionType; Value = Binary.ofUint16  transactionType }
+          { Type = Account'Account;        Value = Binary.ofAccount transaction.Account }
+          { Type = Amount'Fee;             Value = Binary.ofAmount  transaction.Fee }
+          { Type = UInt32'Flags;           Value = Binary.ofUint32  transaction.Flags }
+          { Type = UInt32'Sequence;        Value = Binary.ofUint32  transaction.Sequence }
+          { Type = Amount'Limit;           Value = Binary.ofAmount  transaction.LimitAmount }
         ]
 
     fields
@@ -90,11 +91,11 @@ let private fieldToBytes field =
 
 let serialize transaction signingPublicKey signature =
 
-    let signingFields = [ { Type = Variable'SigningPubKey; Value = toBinaryVariable signingPublicKey } ] 
+    let signingFields = [ { Type = Variable'SigningPubKey; Value = Binary.ofVariable signingPublicKey } ]
     let signingFields =
         match signature with
         | Some signature
-            -> signingFields @ [ { Type = Variable'TxnSignature; Value = toBinaryVariable signature } ]
+            -> signingFields @ [ { Type = Variable'TxnSignature; Value = Binary.ofVariable signature } ]
         | _ -> signingFields
 
     transaction
