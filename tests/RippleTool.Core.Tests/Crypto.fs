@@ -1,4 +1,4 @@
-﻿module Crypto
+﻿module RippleTool.Tests.Crypto
 
 open NUnit.Framework
 open FsUnit

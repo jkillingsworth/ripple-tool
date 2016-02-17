@@ -1,4 +1,4 @@
-﻿module TransactionEncoding
+﻿module RippleTool.Tests.TransactionEncoding
 
 open NUnit.Framework
 open FsUnit
