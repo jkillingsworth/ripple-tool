@@ -16,11 +16,11 @@ namespace RippleTool.UI
             var sequence = uint.Parse(textSequence.Text);
 
             var flags = TransactionTypes.TrustSetFlags.None;
-            if (checkFullyCanonicalSig.Enabled)
+            if (checkFullyCanonicalSig.Checked)
                 flags |= TransactionTypes.TrustSetFlags.FullyCanonicalSig;
-            if (checkSetNoRipple.Enabled)
+            if (checkSetNoRipple.Checked)
                 flags |= TransactionTypes.TrustSetFlags.SetNoRipple;
-            if (checkClearNoRipple.Enabled)
+            if (checkClearNoRipple.Checked)
                 flags |= TransactionTypes.TrustSetFlags.ClearNoRipple;
 
             var limitAmount = new TransactionTypes.IssuedAmount(
