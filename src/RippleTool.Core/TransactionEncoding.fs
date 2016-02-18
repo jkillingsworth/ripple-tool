@@ -8,6 +8,19 @@ open RippleTool.TransactionTypes
 
 module Binary =
 
+    let rec private pow10 x n =
+        match n with
+        | n when n > 0 -> pow10 (x * 10m) (n - 1)
+        | n when n < 0 -> pow10 (x / 10m) (n + 1)
+        | _ -> x
+
+    let rec private log10 x n =
+        match x with
+        | 0m -> n
+        | x when x < 1.0m -> log10 (x * 10m) (n - 1)
+        | x when x >= 10m -> log10 (x / 10m) (n + 1)
+        | x -> n
+
     let private ofNativeAmount (input : NativeAmount) =
 
         let x1 = uint64 0 <<< 63
@@ -17,25 +30,17 @@ module Binary =
 
     let private ofIssuedAmount (input : IssuedAmount) =
 
-        let value = input.Value.ToString(".0###########################")
-
-        let exponent =
-            match value.IndexOf(".") with
-            | 0 -> 1 - value.Length
-            | i -> i - 1
-
+        let exponent = log10 input.Value 0
+        let mantissa = input.Value
+        let mantissa = pow10 mantissa (0 - exponent - 1)
+        let mantissa = Decimal.Round(mantissa, 16)
+        let mantissa = pow10 mantissa 16
         let exponent = 97 - 15 + exponent
 
-        let mantissa = "0." + value.Replace(".", "").TrimStart('0')
-        let mantissa = Decimal.Parse(mantissa)
-        let mantissa = Decimal.Round(mantissa, 16)
-        let mantissa = Decimal.Multiply(mantissa, 10000000000000000m)
-
         let combined =
-            match input.Value with
-            | x when x = Decimal.Zero
-                -> uint64 1 <<< 63
-            | _ ->
+            if input.Value = Decimal.Zero then
+                uint64 1 <<< 63
+            else
                 let x1 = uint64 1 <<< 63
                 let x2 = uint64 1 <<< 62
                 let x3 = uint64 exponent <<< 54
