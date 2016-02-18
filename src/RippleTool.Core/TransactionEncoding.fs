@@ -17,32 +17,34 @@ module Binary =
 
     let private ofIssuedAmount (input : IssuedAmount) =
 
-        let value = input.Value.ToString()
-        let value = if value.Contains(".") then value else value + "."
-        let value = value.Trim('0')
+        let value = input.Value.ToString(".0###########################")
 
-        let index =
+        let exponent =
             match value.IndexOf(".") with
-            | 0 -> 2 - value.Length
-            | i -> i
+            | 0 -> 1 - value.Length
+            | i -> i - 1
 
-        let exponent = index - 16
-        let mantissa = UInt64.Parse(value.Replace(".", "").TrimStart('0').PadRight(16, '0'))
+        let exponent = 97 - 15 + exponent
+
+        let mantissa = "0." + value.Replace(".", "").TrimStart('0')
+        let mantissa = Decimal.Parse(mantissa)
+        let mantissa = Decimal.Round(mantissa, 16)
+        let mantissa = Decimal.Multiply(mantissa, 10000000000000000m)
 
         let combined =
             match input.Value with
-            | 0m
+            | x when x = Decimal.Zero
                 -> uint64 1 <<< 63
             | _ ->
                 let x1 = uint64 1 <<< 63
                 let x2 = uint64 1 <<< 62
-                let x3 = uint64 (97 + exponent) <<< 54
-                let x4 = mantissa
+                let x3 = uint64 exponent <<< 54
+                let x4 = uint64 mantissa <<< 00
                 (x1 ||| x2 ||| x3 ||| x4)
 
         let bytes1 = Binary.ofUint64 combined
         let bytes2 = Array.zeroCreate<byte> 12
-        let bytes3 = input.Currency |> Seq.map (fun x -> byte x) |> Seq.toArray
+        let bytes3 = input.Currency |> Seq.map byte |> Seq.toArray
         let bytes4 = Array.zeroCreate<byte> 5
         let bytes5 = Base58.decodeAccountId input.Issuer
 
