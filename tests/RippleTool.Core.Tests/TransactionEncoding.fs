@@ -47,7 +47,7 @@ let ``Binary of native amount 999`` () =
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
-let ``Binary of issued amount 000.000`` () =
+let ``Binary of issued amount +000.000`` () =
 
     // 8000000000000000 1 <<< 63
     // 0000000000000000 0 <<< 62
@@ -56,7 +56,7 @@ let ``Binary of issued amount 000.000`` () =
     // ----------------
     // 8000000000000000
 
-    let value = 000.000m
+    let value = +000.000m
 
     let input =
         IssuedAmount
@@ -71,7 +71,7 @@ let ``Binary of issued amount 000.000`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of issued amount 000.001`` () =
+let ``Binary of issued amount +000.001`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -80,7 +80,7 @@ let ``Binary of issued amount 000.001`` () =
     // ----------------
     // D3C38D7EA4C68000
 
-    let value = 000.001m
+    let value = +000.001m
 
     let input =
         IssuedAmount
@@ -95,7 +95,7 @@ let ``Binary of issued amount 000.001`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of issued amount 000.010`` () =
+let ``Binary of issued amount +000.010`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -104,7 +104,7 @@ let ``Binary of issued amount 000.010`` () =
     // ----------------
     // D4038D7EA4C68000
 
-    let value = 000.010m
+    let value = +000.010m
 
     let input =
         IssuedAmount
@@ -119,7 +119,7 @@ let ``Binary of issued amount 000.010`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of issued amount 000.100`` () =
+let ``Binary of issued amount +000.100`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -128,7 +128,7 @@ let ``Binary of issued amount 000.100`` () =
     // ----------------
     // D4438D7EA4C68000
 
-    let value = 000.100m
+    let value = +000.100m
 
     let input =
         IssuedAmount
@@ -143,7 +143,7 @@ let ``Binary of issued amount 000.100`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of issued amount 001.000`` () =
+let ``Binary of issued amount +001.000`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -152,7 +152,7 @@ let ``Binary of issued amount 001.000`` () =
     // ----------------
     // D4838D7EA4C68000
 
-    let value = 001.000m
+    let value = +001.000m
 
     let input =
         IssuedAmount
@@ -167,7 +167,7 @@ let ``Binary of issued amount 001.000`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of issued amount 010.000`` () =
+let ``Binary of issued amount +010.000`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -176,7 +176,7 @@ let ``Binary of issued amount 010.000`` () =
     // ----------------
     // D4C38D7EA4C68000
 
-    let value = 010.000m
+    let value = +010.000m
 
     let input =
         IssuedAmount
@@ -191,7 +191,7 @@ let ``Binary of issued amount 010.000`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of issued amount 100.000`` () =
+let ``Binary of issued amount +100.000`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -200,7 +200,7 @@ let ``Binary of issued amount 100.000`` () =
     // ----------------
     // D5038D7EA4C68000
 
-    let value = 100.000m
+    let value = +100.000m
 
     let input =
         IssuedAmount
@@ -215,7 +215,7 @@ let ``Binary of issued amount 100.000`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of issued amount 123.456`` () =
+let ``Binary of issued amount +123.456`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -224,7 +224,7 @@ let ``Binary of issued amount 123.456`` () =
     // ----------------
     // D50462D366410000
 
-    let value = 123.456m
+    let value = +123.456m
 
     let input =
         IssuedAmount
@@ -239,7 +239,7 @@ let ``Binary of issued amount 123.456`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of issued amount 999.999`` () =
+let ``Binary of issued amount +999.999`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -248,7 +248,7 @@ let ``Binary of issued amount 999.999`` () =
     // ----------------
     // D52386F01BB51C00
 
-    let value = 999.999m
+    let value = +999.999m
 
     let input =
         IssuedAmount
@@ -262,9 +262,8 @@ let ``Binary of issued amount 999.999`` () =
 
     input |> Binary.ofAmount |> should equal expected
 
-
 [<Test>]
-let ``Binary of issued amount maximum`` () =
+let ``Binary of issued amount +maximum`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -288,7 +287,7 @@ let ``Binary of issued amount maximum`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of issued amount minimum`` () =
+let ``Binary of issued amount +minimum`` () =
 
     // 8000000000000000 1 <<< 63
     // 4000000000000000 1 <<< 62
@@ -297,7 +296,7 @@ let ``Binary of issued amount minimum`` () =
     // ----------------
     // CD838D7EA4C68000
 
-    let value = 0.0000000000000000000000000001m
+    let value = +0.0000000000000000000000000001m
 
     let input =
         IssuedAmount
@@ -306,6 +305,272 @@ let ``Binary of issued amount minimum`` () =
     let expected =
         Array.concat
             [ Binary.ofHex "CD838D7EA4C68000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+//-------------------------------------------------------------------------------------------------
+
+[<Test>]
+let ``Binary of issued amount -000.000`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 0000000000000000 0 <<< 54
+    // 0000000000000000 0
+    // ----------------
+    // 8000000000000000
+
+    let value = -000.000m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "8000000000000000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -000.001`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 13C0000000000000 (97 - 15 - 3) <<< 54
+    // 00038D7EA4C68000 1000000000000000
+    // ----------------
+    // 93C38D7EA4C68000
+
+    let value = -000.001m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "93C38D7EA4C68000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -000.010`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 1400000000000000 (97 - 15 - 2) <<< 54
+    // 00038D7EA4C68000 1000000000000000
+    // ----------------
+    // 94038D7EA4C68000
+
+    let value = -000.010m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "94038D7EA4C68000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -000.100`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 1440000000000000 (97 - 15 - 1) <<< 54
+    // 00038D7EA4C68000 1000000000000000
+    // ----------------
+    // 94438D7EA4C68000
+
+    let value = -000.100m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "94438D7EA4C68000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -001.000`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 1480000000000000 (97 - 15 + 0) <<< 54
+    // 00038D7EA4C68000 1000000000000000
+    // ----------------
+    // 94838D7EA4C68000
+
+    let value = -001.000m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "94838D7EA4C68000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -010.000`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 14C0000000000000 (97 - 15 + 1) <<< 54
+    // 00038D7EA4C68000 1000000000000000
+    // ----------------
+    // 94C38D7EA4C68000
+
+    let value = -010.000m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "94C38D7EA4C68000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -100.000`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 1500000000000000 (97 - 15 + 2) <<< 54
+    // 00038D7EA4C68000 1000000000000000
+    // ----------------
+    // 95038D7EA4C68000
+
+    let value = -100.000m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "95038D7EA4C68000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -123.456`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 1500000000000000 (97 - 15 + 2) <<< 54
+    // 000462D366410000 1234560000000000
+    // ----------------
+    // 950462D366410000
+
+    let value = -123.456m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "950462D366410000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -999.999`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 1500000000000000 (97 - 15 + 2) <<< 54
+    // 002386F01BB51C00 9999990000000000
+    // ----------------
+    // 952386F01BB51C00
+
+    let value = -999.999m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "952386F01BB51C00"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -maximum`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 1B80000000000000 (97 - 15 + 28) <<< 54
+    // 001C25C268497682 7922816251426434
+    // ----------------
+    // 9B9C25C268497682
+
+    let value = Decimal.MinValue
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "9B9C25C268497682"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -minimum`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 0D80000000000000 (97 - 15 - 28) <<< 54
+    // 00038D7EA4C68000 1000000000000000
+    // ----------------
+    // 8D838D7EA4C68000
+
+    let value = -0.0000000000000000000000000001m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "8D838D7EA4C68000"
               Binary.ofHex "0000000000000000000000005553440000000000"
               Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
 

@@ -30,22 +30,24 @@ module Binary =
 
     let private ofIssuedAmount (input : IssuedAmount) =
 
-        let exponent = log10 input.Value 0
-        let mantissa = input.Value
-        let mantissa = pow10 mantissa (0 - exponent - 1)
+        let value = input.Value
+
+        let typeFlag = 1
+        let signFlag = if value > Decimal.Zero then 1 else 0
+        let valueAbs = if value < Decimal.Zero then Decimal.Negate(value) else value
+
+        let exponent = log10 valueAbs <| 0
+        let mantissa = pow10 valueAbs <| 0 - exponent - 1
         let mantissa = Decimal.Round(mantissa, 16)
         let mantissa = pow10 mantissa 16
-        let exponent = 97 - 15 + exponent
+        let exponent = if value = Decimal.Zero then 0 else (97 - 15 + exponent)
 
-        let combined =
-            if input.Value = Decimal.Zero then
-                uint64 1 <<< 63
-            else
-                let x1 = uint64 1 <<< 63
-                let x2 = uint64 1 <<< 62
-                let x3 = uint64 exponent <<< 54
-                let x4 = uint64 mantissa <<< 00
-                (x1 ||| x2 ||| x3 ||| x4)
+        let bits1 = uint64 typeFlag <<< 63
+        let bits2 = uint64 signFlag <<< 62
+        let bits3 = uint64 exponent <<< 54
+        let bits4 = uint64 mantissa <<< 00
+
+        let combined = Array.fold (|||) 0UL [| bits1; bits2; bits3; bits4 |]
 
         let bytes1 = Binary.ofUint64 combined
         let bytes2 = Array.zeroCreate<byte> 12
