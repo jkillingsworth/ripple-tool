@@ -56,9 +56,11 @@ let ``Binary of issued amount 000.000`` () =
     // ----------------
     // 8000000000000000
 
+    let value = 000.000m
+
     let input =
         IssuedAmount
-            { Value = 000.000m; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
 
     let expected =
         Array.concat
@@ -78,9 +80,11 @@ let ``Binary of issued amount 000.001`` () =
     // ----------------
     // D3C38D7EA4C68000
 
+    let value = 000.001m
+
     let input =
         IssuedAmount
-            { Value = 000.001m; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
 
     let expected =
         Array.concat
@@ -100,9 +104,11 @@ let ``Binary of issued amount 000.010`` () =
     // ----------------
     // D4038D7EA4C68000
 
+    let value = 000.010m
+
     let input =
         IssuedAmount
-            { Value = 000.010m; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
 
     let expected =
         Array.concat
@@ -122,9 +128,11 @@ let ``Binary of issued amount 000.100`` () =
     // ----------------
     // D4438D7EA4C68000
 
+    let value = 000.100m
+
     let input =
         IssuedAmount
-            { Value = 000.100m; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
 
     let expected =
         Array.concat
@@ -144,9 +152,11 @@ let ``Binary of issued amount 001.000`` () =
     // ----------------
     // D4838D7EA4C68000
 
+    let value = 001.000m
+
     let input =
         IssuedAmount
-            { Value = 001.000m; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
 
     let expected =
         Array.concat
@@ -166,9 +176,11 @@ let ``Binary of issued amount 010.000`` () =
     // ----------------
     // D4C38D7EA4C68000
 
+    let value = 010.000m
+
     let input =
         IssuedAmount
-            { Value = 010.000m; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
 
     let expected =
         Array.concat
@@ -188,9 +200,11 @@ let ``Binary of issued amount 100.000`` () =
     // ----------------
     // D5038D7EA4C68000
 
+    let value = 100.000m
+
     let input =
         IssuedAmount
-            { Value = 100.000m; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
 
     let expected =
         Array.concat
@@ -210,9 +224,11 @@ let ``Binary of issued amount 123.456`` () =
     // ----------------
     // D50462D366410000
 
+    let value = 123.456m
+
     let input =
         IssuedAmount
-            { Value = 123.456m; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
 
     let expected =
         Array.concat
@@ -232,9 +248,11 @@ let ``Binary of issued amount 999.999`` () =
     // ----------------
     // D52386F01BB51C00
 
+    let value = 999.999m
+
     let input =
         IssuedAmount
-            { Value = 999.999m; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
 
     let expected =
         Array.concat
@@ -256,6 +274,7 @@ let ``Binary of issued amount maximum`` () =
     // DB9C25C268497682
 
     let value = Decimal.MaxValue
+
     let input =
         IssuedAmount
             { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
@@ -279,6 +298,7 @@ let ``Binary of issued amount minimum`` () =
     // CD838D7EA4C68000
 
     let value = 0.0000000000000000000000000001m
+
     let input =
         IssuedAmount
             { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
@@ -296,7 +316,8 @@ let ``Binary of issued amount minimum`` () =
 [<Test>]
 let ``Binary of issued amount with currency BTC`` () =
 
-    let value = 1.00m
+    let value = Decimal.One
+
     let input =
         IssuedAmount
             { Value = value; Currency = "BTC"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
@@ -312,7 +333,8 @@ let ``Binary of issued amount with currency BTC`` () =
 [<Test>]
 let ``Binary of issued amount with currency CNY`` () =
 
-    let value = 1.00m
+    let value = Decimal.One
+
     let input =
         IssuedAmount
             { Value = value; Currency = "CNY"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
@@ -328,7 +350,8 @@ let ``Binary of issued amount with currency CNY`` () =
 [<Test>]
 let ``Binary of issued amount with currency EUR`` () =
 
-    let value = 1.00m
+    let value = Decimal.One
+
     let input =
         IssuedAmount
             { Value = value; Currency = "EUR"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
@@ -344,7 +367,8 @@ let ``Binary of issued amount with currency EUR`` () =
 [<Test>]
 let ``Binary of issued amount with currency JPY`` () =
 
-    let value = 1.00m
+    let value = Decimal.One
+
     let input =
         IssuedAmount
             { Value = value; Currency = "JPY"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
@@ -360,7 +384,8 @@ let ``Binary of issued amount with currency JPY`` () =
 [<Test>]
 let ``Binary of issued amount with currency USD`` () =
 
-    let value = 1.00m
+    let value = Decimal.One
+
     let input =
         IssuedAmount
             { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
