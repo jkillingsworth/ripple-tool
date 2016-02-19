@@ -310,6 +310,54 @@ let ``Binary of issued amount +minimum`` () =
 
     input |> Binary.ofAmount |> should equal expected
 
+[<Test>]
+let ``Binary of issued amount +rounds toward even down`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 1440000000000000 (97 - 15 - 1) <<< 54
+    // 00038D7EA4C68002 1000000000000002
+    // ----------------
+    // D4438D7EA4C68002
+
+    let value = +0.10000000000000025m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "D4438D7EA4C68002"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount +rounds toward even up`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 1440000000000000 (97 - 15 - 1) <<< 54
+    // 00038D7EA4C68002 1000000000000002
+    // ----------------
+    // D4438D7EA4C68002
+
+    let value = +0.10000000000000015m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "D4438D7EA4C68002"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
@@ -571,6 +619,54 @@ let ``Binary of issued amount -minimum`` () =
     let expected =
         Array.concat
             [ Binary.ofHex "8D838D7EA4C68000"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -rounds toward even down`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 1440000000000000 (97 - 15 - 1) <<< 54
+    // 00038D7EA4C68002 1000000000000002
+    // ----------------
+    // 94438D7EA4C68002
+
+    let value = -0.10000000000000025m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "94438D7EA4C68002"
+              Binary.ofHex "0000000000000000000000005553440000000000"
+              Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
+
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of issued amount -rounds toward even up`` () =
+
+    // 8000000000000000 1 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 1440000000000000 (97 - 15 - 1) <<< 54
+    // 00038D7EA4C68002 1000000000000002
+    // ----------------
+    // 94438D7EA4C68002
+
+    let value = -0.10000000000000015m
+
+    let input =
+        IssuedAmount
+            { Value = value; Currency = "USD"; Issuer = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }
+
+    let expected =
+        Array.concat
+            [ Binary.ofHex "94438D7EA4C68002"
               Binary.ofHex "0000000000000000000000005553440000000000"
               Binary.ofHex "B5F762798A53D543A014CAF8B297CFF8F2F937E8" ]
 
