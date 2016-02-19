@@ -10,6 +10,7 @@ namespace RippleTool.UI
         public MainForm()
         {
             InitializeComponent();
+            InitializeDockPanel();
             statusItemServerUri.Text = Integration.configServerUri;
         }
 
@@ -25,6 +26,17 @@ namespace RippleTool.UI
             base.OnClosed(e);
             Integration.eventExecuteCommandReq.RemoveHandler(HandleEventReq);
             Integration.eventExecuteCommandRes.RemoveHandler(HandleEventRes);
+        }
+
+        private void InitializeDockPanel()
+        {
+            var formReq = new RequestForm();
+            var formRes = new ResponseForm();
+
+            formReq.Show(dockPanel, DockState.DockRight);
+            formRes.Show(dockPanel.Panes[0], DockAlignment.Bottom, 0.7);
+
+            dockPanel.DockRightPortion = 0.7;
         }
 
         private void HandleEventReq(object sender, string value)
