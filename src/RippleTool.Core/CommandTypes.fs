@@ -2,35 +2,49 @@
 
 //-------------------------------------------------------------------------------------------------
 
-type Role = User | Gateway
+type Ledger =
+    | Validated
+    | Closed
+    | Current
+
+type Role =
+    | User
+    | Gateway
 
 type Ping = unit
 
 type Random = unit
 
 type AccountCurrencies =
-    { Account : string }
+    { Account : string
+      Ledger : Ledger }
 
 type AccountInfo =
-    { Account : string }
+    { Account : string
+      Ledger : Ledger }
 
 type AccountLines =
-    { Account : string }
+    { Account : string
+      Ledger : Ledger }
 
 type AccountObjects =
-    { Account : string }
+    { Account : string
+      Ledger : Ledger }
 
 type AccountOffers =
-    { Account : string }
+    { Account : string
+      Ledger : Ledger }
 
 type AccountTx =
     { Account : string }
 
 type GatewayBalances =
-    { Account : string }
+    { Account : string
+      Ledger : Ledger }
 
 type NoRippleCheck =
     { Account : string
+      Ledger : Ledger
       Role : Role }
 
 type BookOffers =

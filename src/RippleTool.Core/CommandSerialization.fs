@@ -5,6 +5,17 @@ open RippleTool.CommandTypes
 
 //-------------------------------------------------------------------------------------------------
 
+let private stringOfLedger = function
+    | Validated -> "validated"
+    | Closed    -> "closed"
+    | Current   -> "current"
+
+let private stringOfRole = function
+    | User    -> "user"
+    | Gateway -> "gateway"
+
+//-------------------------------------------------------------------------------------------------
+
 let private Object = Map >> Object
 
 let private commandToJsonPing (command : Ping) =
@@ -15,46 +26,56 @@ let private commandToJsonRandom (command : Random) =
 
 let private commandToJsonAccountCurrencies (command : AccountCurrencies) =
 
+    let ledger = stringOfLedger command.Ledger
+
     let elements =
         [ "command", String "account_currencies"
           "account", String command.Account
-          "ledger_index", String "validated" ]
+          "ledger_index", String ledger ]
 
     Object elements
 
 let private commandToJsonAccountInfo (command : AccountInfo) =
 
+    let ledger = stringOfLedger command.Ledger
+
     let elements =
         [ "command", String "account_info"
           "account", String command.Account
-          "ledger_index", String "validated" ]
+          "ledger_index", String ledger ]
 
     Object elements
 
 let private commandToJsonAccountLines (command : AccountLines) =
 
+    let ledger = stringOfLedger command.Ledger
+
     let elements =
         [ "command", String "account_lines"
           "account", String command.Account
-          "ledger_index", String "validated" ]
+          "ledger_index", String ledger ]
 
     Object elements
 
 let private commandToJsonAccountObjects (command : AccountObjects) =
 
+    let ledger = stringOfLedger command.Ledger
+
     let elements =
         [ "command", String "account_objects"
           "account", String command.Account
-          "ledger_index", String "validated" ]
+          "ledger_index", String ledger ]
 
     Object elements
 
 let private commandToJsonAccountOffers (command : AccountOffers) =
 
+    let ledger = stringOfLedger command.Ledger
+
     let elements =
         [ "command", String "account_objects"
           "account", String command.Account
-          "ledger_index", String "validated" ]
+          "ledger_index", String ledger ]
 
     Object elements
 
@@ -70,24 +91,24 @@ let private commandToJsonAccountTx (command : AccountTx) =
 
 let private commandToJsonGatewayBalances (command : GatewayBalances) =
 
+    let ledger = stringOfLedger command.Ledger
+
     let elements =
         [ "command", String "gateway_balances"
           "account", String command.Account
-          "ledger_index", String "validated" ]
+          "ledger_index", String ledger ]
 
     Object elements
 
 let private commandToJsonNoRippleCheck (command : NoRippleCheck) =
 
-    let role =
-        match command.Role with
-        | User    -> "user"
-        | Gateway -> "gateway"
+    let ledger = stringOfLedger command.Ledger
+    let role = stringOfRole command.Role
 
     let elements =
         [ "command", String "noripple_check"
           "account", String command.Account
-          "ledger_index", String "validated"
+          "ledger_index", String ledger
           "role", String role ]
 
     Object elements
