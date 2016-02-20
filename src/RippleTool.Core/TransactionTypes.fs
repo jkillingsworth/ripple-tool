@@ -17,7 +17,20 @@ type Amount =
 type AccountSet = unit
 type OfferCancel = unit
 type OfferCreate = unit
-type Payment = unit
+
+[<Flags>]
+type PaymentFlags =
+    | None              = 0x00000000u
+    | FullyCanonicalSig = 0x80000000u
+
+type Payment =
+    { Account : string
+      Fee : Amount
+      Sequence : uint32
+      Flags : uint32
+      Destination : string
+      Amount : Amount }
+
 type SetRegularKey = unit
 
 [<Flags>]
