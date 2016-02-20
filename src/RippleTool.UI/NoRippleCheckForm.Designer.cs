@@ -39,7 +39,7 @@
             // 
             // buttonSubmit
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(12, 134);
+            this.buttonSubmit.Location = new System.Drawing.Point(12, 137);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
             this.buttonSubmit.TabIndex = 3;
@@ -69,7 +69,8 @@
             this.groupRole.Controls.Add(this.radioGateway);
             this.groupRole.Location = new System.Drawing.Point(12, 56);
             this.groupRole.Name = "groupRole";
-            this.groupRole.Size = new System.Drawing.Size(260, 72);
+            this.groupRole.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
+            this.groupRole.Size = new System.Drawing.Size(260, 75);
             this.groupRole.TabIndex = 2;
             this.groupRole.TabStop = false;
             this.groupRole.Text = "Role";
@@ -78,7 +79,7 @@
             // 
             this.radioUser.AutoSize = true;
             this.radioUser.Checked = true;
-            this.radioUser.Location = new System.Drawing.Point(6, 22);
+            this.radioUser.Location = new System.Drawing.Point(9, 22);
             this.radioUser.Name = "radioUser";
             this.radioUser.Size = new System.Drawing.Size(48, 19);
             this.radioUser.TabIndex = 0;
@@ -89,7 +90,7 @@
             // radioGateway
             // 
             this.radioGateway.AutoSize = true;
-            this.radioGateway.Location = new System.Drawing.Point(6, 47);
+            this.radioGateway.Location = new System.Drawing.Point(9, 47);
             this.radioGateway.Name = "radioGateway";
             this.radioGateway.Size = new System.Drawing.Size(70, 19);
             this.radioGateway.TabIndex = 1;

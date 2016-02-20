@@ -50,7 +50,7 @@
             // 
             // buttonSubmit
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(12, 379);
+            this.buttonSubmit.Location = new System.Drawing.Point(12, 382);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
             this.buttonSubmit.TabIndex = 13;
@@ -113,7 +113,8 @@
             this.groupFlags.Controls.Add(this.checkClearNoRipple);
             this.groupFlags.Location = new System.Drawing.Point(12, 144);
             this.groupFlags.Name = "groupFlags";
-            this.groupFlags.Size = new System.Drawing.Size(260, 97);
+            this.groupFlags.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
+            this.groupFlags.Size = new System.Drawing.Size(260, 100);
             this.groupFlags.TabIndex = 6;
             this.groupFlags.TabStop = false;
             this.groupFlags.Text = "Flags";
@@ -123,7 +124,7 @@
             this.checkFullyCanonicalSig.AutoSize = true;
             this.checkFullyCanonicalSig.Checked = true;
             this.checkFullyCanonicalSig.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkFullyCanonicalSig.Location = new System.Drawing.Point(6, 22);
+            this.checkFullyCanonicalSig.Location = new System.Drawing.Point(9, 22);
             this.checkFullyCanonicalSig.Name = "checkFullyCanonicalSig";
             this.checkFullyCanonicalSig.Size = new System.Drawing.Size(157, 19);
             this.checkFullyCanonicalSig.TabIndex = 0;
@@ -133,7 +134,7 @@
             // checkSetNoRipple
             // 
             this.checkSetNoRipple.AutoSize = true;
-            this.checkSetNoRipple.Location = new System.Drawing.Point(6, 47);
+            this.checkSetNoRipple.Location = new System.Drawing.Point(9, 47);
             this.checkSetNoRipple.Name = "checkSetNoRipple";
             this.checkSetNoRipple.Size = new System.Drawing.Size(92, 19);
             this.checkSetNoRipple.TabIndex = 1;
@@ -143,7 +144,7 @@
             // checkClearNoRipple
             // 
             this.checkClearNoRipple.AutoSize = true;
-            this.checkClearNoRipple.Location = new System.Drawing.Point(6, 72);
+            this.checkClearNoRipple.Location = new System.Drawing.Point(9, 72);
             this.checkClearNoRipple.Name = "checkClearNoRipple";
             this.checkClearNoRipple.Size = new System.Drawing.Size(103, 19);
             this.checkClearNoRipple.TabIndex = 2;
@@ -153,7 +154,7 @@
             // labelLimitAmountValue
             // 
             this.labelLimitAmountValue.AutoSize = true;
-            this.labelLimitAmountValue.Location = new System.Drawing.Point(12, 244);
+            this.labelLimitAmountValue.Location = new System.Drawing.Point(12, 247);
             this.labelLimitAmountValue.Name = "labelLimitAmountValue";
             this.labelLimitAmountValue.Size = new System.Drawing.Size(113, 15);
             this.labelLimitAmountValue.TabIndex = 7;
@@ -161,7 +162,7 @@
             // 
             // textLimitAmountValue
             // 
-            this.textLimitAmountValue.Location = new System.Drawing.Point(12, 262);
+            this.textLimitAmountValue.Location = new System.Drawing.Point(12, 265);
             this.textLimitAmountValue.Name = "textLimitAmountValue";
             this.textLimitAmountValue.Size = new System.Drawing.Size(260, 23);
             this.textLimitAmountValue.TabIndex = 8;
@@ -169,7 +170,7 @@
             // labelLimitAmountCurrency
             // 
             this.labelLimitAmountCurrency.AutoSize = true;
-            this.labelLimitAmountCurrency.Location = new System.Drawing.Point(12, 288);
+            this.labelLimitAmountCurrency.Location = new System.Drawing.Point(12, 291);
             this.labelLimitAmountCurrency.Name = "labelLimitAmountCurrency";
             this.labelLimitAmountCurrency.Size = new System.Drawing.Size(131, 15);
             this.labelLimitAmountCurrency.TabIndex = 9;
@@ -177,7 +178,7 @@
             // 
             // textLimitAmountCurrency
             // 
-            this.textLimitAmountCurrency.Location = new System.Drawing.Point(12, 306);
+            this.textLimitAmountCurrency.Location = new System.Drawing.Point(12, 309);
             this.textLimitAmountCurrency.Name = "textLimitAmountCurrency";
             this.textLimitAmountCurrency.Size = new System.Drawing.Size(260, 23);
             this.textLimitAmountCurrency.TabIndex = 10;
@@ -185,7 +186,7 @@
             // labelLimitAmountIssuer
             // 
             this.labelLimitAmountIssuer.AutoSize = true;
-            this.labelLimitAmountIssuer.Location = new System.Drawing.Point(12, 332);
+            this.labelLimitAmountIssuer.Location = new System.Drawing.Point(12, 335);
             this.labelLimitAmountIssuer.Name = "labelLimitAmountIssuer";
             this.labelLimitAmountIssuer.Size = new System.Drawing.Size(115, 15);
             this.labelLimitAmountIssuer.TabIndex = 11;
@@ -193,7 +194,7 @@
             // 
             // textLimitAmountIssuer
             // 
-            this.textLimitAmountIssuer.Location = new System.Drawing.Point(12, 350);
+            this.textLimitAmountIssuer.Location = new System.Drawing.Point(12, 353);
             this.textLimitAmountIssuer.Name = "textLimitAmountIssuer";
             this.textLimitAmountIssuer.Size = new System.Drawing.Size(260, 23);
             this.textLimitAmountIssuer.TabIndex = 12;
