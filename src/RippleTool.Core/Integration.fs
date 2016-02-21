@@ -2,7 +2,7 @@
 
 open System.Configuration
 open Chiron
-open CommandExecution
+open RippleTool.Commands
 
 //-------------------------------------------------------------------------------------------------
 

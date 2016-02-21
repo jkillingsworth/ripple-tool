@@ -65,8 +65,7 @@
     <Compile Include="TransactionTypes.fs" />
     <Compile Include="Transactions.fs" />
     <Compile Include="CommandTypes.fs" />
-    <Compile Include="CommandSerialization.fs" />
-    <Compile Include="CommandExecution.fs" />
+    <Compile Include="Commands.fs" />
     <Compile Include="Integration.fs" />
   </ItemGroup>
   <ItemGroup>
