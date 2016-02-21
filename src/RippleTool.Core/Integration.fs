@@ -6,15 +6,17 @@ open RippleTool.Commands
 
 //-------------------------------------------------------------------------------------------------
 
-let private reader = AppSettingsReader()
+module Config =
 
-let configServerUri = reader.GetValue("serverUri", typeof<string>) :?> string
-let configSecretKey = reader.GetValue("secretKey", typeof<string>) :?> string
-let configAccountId = reader.GetValue("accountId", typeof<string>) :?> string
+    let private reader = AppSettingsReader()
+
+    let serverUri = reader.GetValue("serverUri", typeof<string>) :?> string
+    let secretKey = reader.GetValue("secretKey", typeof<string>) :?> string
+    let accountId = reader.GetValue("accountId", typeof<string>) :?> string
 
 //-------------------------------------------------------------------------------------------------
 
-let private agentExecuteCommand = agentExecuteCommand configServerUri
+let private agentExecuteCommand = agentExecuteCommand Config.serverUri
 
 let eventExecuteCommandReq = eventExecuteCommandReq.Publish
 let eventExecuteCommandRes = eventExecuteCommandRes.Publish
@@ -23,7 +25,7 @@ let executeCommand command =
     agentExecuteCommand.Post command
 
 let executeSubmitTransaction transaction =
-    let hex = Transactions.sign transaction configSecretKey
+    let hex = Transactions.sign transaction Config.secretKey
     let command = CommandTypes.Submit { TxBlob = hex }
     executeCommand command
 

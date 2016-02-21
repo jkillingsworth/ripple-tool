@@ -11,7 +11,7 @@ namespace RippleTool.UI
         {
             InitializeComponent();
             InitializeDockPanel();
-            statusItemServerUri.Text = Integration.configServerUri;
+            statusItemServerUri.Text = Integration.Config.serverUri;
         }
 
         protected override void OnShown(EventArgs e)

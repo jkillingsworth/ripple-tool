@@ -8,9 +8,9 @@ namespace RippleTool.UI
         {
             InitializeComponent();
 
-            textServerUri.Text = Integration.configServerUri;
-            textSecretKey.Text = Integration.configSecretKey;
-            textAccountId.Text = Integration.configAccountId;
+            textServerUri.Text = Integration.Config.serverUri;
+            textSecretKey.Text = Integration.Config.secretKey;
+            textAccountId.Text = Integration.Config.accountId;
         }
     }
 }
