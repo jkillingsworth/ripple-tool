@@ -140,6 +140,19 @@ let ``Binary of native amount +maximum`` () =
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
+let ``Binary of native amount +maximum exceeded`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 4000000000000000 4611686018427387904
+    // ----------------
+    // Throws exception
+
+    let input = NativeAmount +4611686018427.387904m
+    let action () = input |> Binary.ofAmount |> ignore
+    action |> should throw typeof<System.Exception>
+
+[<Test>]
 let ``Binary of native amount +minimum`` () =
 
     // 0000000000000000 0 <<< 63
@@ -309,6 +322,19 @@ let ``Binary of native amount -maximum`` () =
     let input = NativeAmount -4611686018427.387903m
     let expected = Binary.ofHex "3FFFFFFFFFFFFFFF"
     input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -maximum exceeded`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 4000000000000000 4611686018427387904
+    // ----------------
+    // Throws exception
+
+    let input = NativeAmount -4611686018427.387904m
+    let action () = input |> Binary.ofAmount |> ignore
+    action |> should throw typeof<System.Exception>
 
 [<Test>]
 let ``Binary of native amount -minimum`` () =
