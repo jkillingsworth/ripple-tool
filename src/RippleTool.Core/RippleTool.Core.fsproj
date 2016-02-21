@@ -63,9 +63,7 @@
     <Compile Include="Encoding.fs" />
     <Compile Include="Crypto.fs" />
     <Compile Include="TransactionTypes.fs" />
-    <Compile Include="TransactionEncoding.fs" />
-    <Compile Include="TransactionSerialization.fs" />
-    <Compile Include="TransactionSigning.fs" />
+    <Compile Include="Transactions.fs" />
     <Compile Include="CommandTypes.fs" />
     <Compile Include="CommandSerialization.fs" />
     <Compile Include="CommandExecution.fs" />

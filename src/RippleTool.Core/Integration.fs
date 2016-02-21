@@ -23,7 +23,7 @@ let executeCommand command =
     agentExecuteCommand.Post command
 
 let executeSubmitTransaction transaction =
-    let hex = TransactionSigning.sign transaction configSecretKey
+    let hex = Transactions.sign transaction configSecretKey
     let command = CommandTypes.Submit { TxBlob = hex }
     executeCommand command
 
