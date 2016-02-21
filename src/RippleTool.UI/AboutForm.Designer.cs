@@ -82,6 +82,7 @@
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonOK;
             this.ClientSize = new System.Drawing.Size(384, 162);
             this.Controls.Add(this.linkViewSourceCode);
             this.Controls.Add(this.labelDescription);
