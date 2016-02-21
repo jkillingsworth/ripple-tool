@@ -4,7 +4,7 @@ open System
 
 //-------------------------------------------------------------------------------------------------
 
-type NativeAmount = uint32
+type NativeAmount = decimal
 
 type IssuedAmount = { Value : decimal; Currency : string; Issuer : string }
 

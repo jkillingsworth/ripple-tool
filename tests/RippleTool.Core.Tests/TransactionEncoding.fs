@@ -10,38 +10,343 @@ open RippleTool.TransactionEncoding
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
-let ``Binary of native amount 000`` () =
+let ``Binary of native amount +000.000`` () =
 
-    let input = NativeAmount 000u
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 0000000000000000 0
+    // ----------------
+    // 4000000000000000
+
+    let input = NativeAmount +000.000m
     let expected = Binary.ofHex "4000000000000000"
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of native amount 001`` () =
+let ``Binary of native amount +000.001`` () =
 
-    let input = NativeAmount 001u
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 00000000000003E8 1000
+    // ----------------
+    // 40000000000003E8
+
+    let input = NativeAmount +000.001m
+    let expected = Binary.ofHex "40000000000003E8"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount +000.010`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 0000000000002710 10000
+    // ----------------
+    // 4000000000002710
+
+    let input = NativeAmount +000.010m
+    let expected = Binary.ofHex "4000000000002710"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount +000.100`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 00000000000186A0 100000
+    // ----------------
+    // 40000000000186A0
+
+    let input = NativeAmount +000.100m
+    let expected = Binary.ofHex "40000000000186A0"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount +001.000`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 00000000000F4240 1000000
+    // ----------------
+    // 40000000000F4240
+
+    let input = NativeAmount +001.000m
+    let expected = Binary.ofHex "40000000000F4240"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount +010.000`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 0000000000989680 10000000
+    // ----------------
+    // 4000000000989680
+
+    let input = NativeAmount +010.000m
+    let expected = Binary.ofHex "4000000000989680"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount +100.000`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 0000000005F5E100 100000000
+    // ----------------
+    // 4000000005F5E100
+
+    let input = NativeAmount +100.000m
+    let expected = Binary.ofHex "4000000005F5E100"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount +123.456`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 00000000075BCA00 123456000
+    // ----------------
+    // 40000000075BCA00
+
+    let input = NativeAmount +123.456m
+    let expected = Binary.ofHex "40000000075BCA00"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount +999.999`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 000000003B9AC618 999999000
+    // ----------------
+    // 400000003B9AC618
+
+    let input = NativeAmount +999.999m
+    let expected = Binary.ofHex "400000003B9AC618"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount +maximum`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 3FFFFFFFFFFFFFFF 4611686018427387903
+    // ----------------
+    // 7FFFFFFFFFFFFFFF
+
+    let input = NativeAmount +4611686018427.387903m
+    let expected = Binary.ofHex "7FFFFFFFFFFFFFFF"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount +minimum`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 0000000000000001 1
+    // ----------------
+    // 4000000000000001
+
+    let input = NativeAmount +0.000001m
     let expected = Binary.ofHex "4000000000000001"
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of native amount 255`` () =
+let ``Binary of native amount +rounds toward even down`` () =
 
-    let input = NativeAmount 255u
-    let expected = Binary.ofHex "40000000000000FF"
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 00000000000F4242 1000002
+    // ----------------
+    // 40000000000F4242
+
+    let input = NativeAmount +1.0000025m
+    let expected = Binary.ofHex "40000000000F4242"
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of native amount 256`` () =
+let ``Binary of native amount +rounds toward even up`` () =
 
-    let input = NativeAmount 256u
-    let expected = Binary.ofHex "4000000000000100"
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 00000000000F4242 1000002
+    // ----------------
+    // 40000000000F4242
+
+    let input = NativeAmount +1.0000015m
+    let expected = Binary.ofHex "40000000000F4242"
+    input |> Binary.ofAmount |> should equal expected
+
+//-------------------------------------------------------------------------------------------------
+
+[<Test>]
+let ``Binary of native amount -000.000`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 4000000000000000 1 <<< 62
+    // 0000000000000000 0
+    // ----------------
+    // 4000000000000000
+
+    let input = NativeAmount -000.000m
+    let expected = Binary.ofHex "4000000000000000"
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
-let ``Binary of native amount 999`` () =
+let ``Binary of native amount -000.001`` () =
 
-    let input = NativeAmount 999u
-    let expected = Binary.ofHex "40000000000003E7"
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 00000000000003E8 1000
+    // ----------------
+    // 00000000000003E8
+
+    let input = NativeAmount -000.001m
+    let expected = Binary.ofHex "00000000000003E8"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -000.010`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 0000000000002710 10000
+    // ----------------
+    // 0000000000002710
+
+    let input = NativeAmount -000.010m
+    let expected = Binary.ofHex "0000000000002710"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -000.100`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 00000000000186A0 100000
+    // ----------------
+    // 00000000000186A0
+
+    let input = NativeAmount -000.100m
+    let expected = Binary.ofHex "00000000000186A0"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -001.000`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 00000000000F4240 1000000
+    // ----------------
+    // 00000000000F4240
+
+    let input = NativeAmount -001.000m
+    let expected = Binary.ofHex "00000000000F4240"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -010.000`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 0000000000989680 10000000
+    // ----------------
+    // 0000000000989680
+
+    let input = NativeAmount -010.000m
+    let expected = Binary.ofHex "0000000000989680"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -100.000`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 0000000005F5E100 100000000
+    // ----------------
+    // 0000000005F5E100
+
+    let input = NativeAmount -100.000m
+    let expected = Binary.ofHex "0000000005F5E100"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -123.456`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 00000000075BCA00 123456000
+    // ----------------
+    // 00000000075BCA00
+
+    let input = NativeAmount -123.456m
+    let expected = Binary.ofHex "00000000075BCA00"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -999.999`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 000000003B9AC618 999999000
+    // ----------------
+    // 000000003B9AC618
+
+    let input = NativeAmount -999.999m
+    let expected = Binary.ofHex "000000003B9AC618"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -maximum`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 3FFFFFFFFFFFFFFF 4611686018427387903
+    // ----------------
+    // 3FFFFFFFFFFFFFFF
+
+    let input = NativeAmount -4611686018427.387903m
+    let expected = Binary.ofHex "3FFFFFFFFFFFFFFF"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -minimum`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 0000000000000001 1
+    // ----------------
+    // 0000000000000001
+
+    let input = NativeAmount -0.000001m
+    let expected = Binary.ofHex "0000000000000001"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -rounds toward even down`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 00000000000F4242 1000002
+    // ----------------
+    // 00000000000F4242
+
+    let input = NativeAmount -1.0000025m
+    let expected = Binary.ofHex "00000000000F4242"
+    input |> Binary.ofAmount |> should equal expected
+
+[<Test>]
+let ``Binary of native amount -rounds toward even up`` () =
+
+    // 0000000000000000 0 <<< 63
+    // 0000000000000000 0 <<< 62
+    // 00000000000F4242 1000002
+    // ----------------
+    // 00000000000F4242
+
+    let input = NativeAmount -1.0000015m
+    let expected = Binary.ofHex "00000000000F4242"
     input |> Binary.ofAmount |> should equal expected
 
 //-------------------------------------------------------------------------------------------------

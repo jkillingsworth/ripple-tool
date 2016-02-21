@@ -12,7 +12,7 @@ namespace RippleTool.UI
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
             var account = textAccount.Text;
-            var fee = uint.Parse(textFee.Text);
+            var fee = decimal.Parse(textFee.Text);
             var sequence = uint.Parse(textSequence.Text);
 
             var flags = TransactionTypes.TrustSetFlags.None;
@@ -20,7 +20,7 @@ namespace RippleTool.UI
                 flags |= TransactionTypes.TrustSetFlags.FullyCanonicalSig;
 
             var destination = textDestination.Text;
-            var amount = uint.Parse(textAmount.Text);
+            var amount = decimal.Parse(textAmount.Text);
 
             var transactionItem = new TransactionTypes.Payment(
                 account,

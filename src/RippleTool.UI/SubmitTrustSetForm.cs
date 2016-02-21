@@ -12,7 +12,7 @@ namespace RippleTool.UI
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
             var account = textAccount.Text;
-            var fee = uint.Parse(textFee.Text);
+            var fee = decimal.Parse(textFee.Text);
             var sequence = uint.Parse(textSequence.Text);
 
             var flags = TransactionTypes.TrustSetFlags.None;

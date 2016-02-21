@@ -23,10 +23,22 @@ module Binary =
 
     let private ofNativeAmount (input : NativeAmount) =
 
-        let x1 = uint64 0 <<< 63
-        let x2 = uint64 1 <<< 62
-        let x3 = uint64 input
-        Binary.ofUint64 (x1 ||| x2 ||| x3)
+        let value = input
+
+        let typeFlag = 0
+        let signFlag = if value < Decimal.Zero then 0 else 1
+        let valueAbs = if value < Decimal.Zero then Decimal.Negate(value) else value
+
+        let mantissa = Decimal.Round(valueAbs, 6)
+        let mantissa = pow10 mantissa <| 6
+
+        let bits1 = uint64 typeFlag <<< 63
+        let bits2 = uint64 signFlag <<< 62
+        let bits3 = uint64 mantissa <<< 00
+
+        let combined = Array.fold (|||) 0UL [| bits1; bits2; bits3 |]
+
+        combined |> Binary.ofUint64
 
     let private ofIssuedAmount (input : IssuedAmount) =
 
