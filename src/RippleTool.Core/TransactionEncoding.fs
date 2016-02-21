@@ -38,7 +38,7 @@ module Binary =
 
         let combined = Array.fold (|||) 0UL [| bits1; bits2; bits3 |]
 
-        combined |> Binary.ofUint64
+        Binary.ofUint64 combined
 
     let private ofIssuedAmount (input : IssuedAmount) =
 
@@ -51,7 +51,7 @@ module Binary =
         let exponent = log10 valueAbs <| 0
         let mantissa = pow10 valueAbs <| 0 - exponent - 1
         let mantissa = Decimal.Round(mantissa, 16)
-        let mantissa = pow10 mantissa 16
+        let mantissa = pow10 mantissa <| 16
         let exponent = if value = Decimal.Zero then 0 else (97 - 15 + exponent)
 
         let bits1 = uint64 typeFlag <<< 63
