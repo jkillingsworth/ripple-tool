@@ -304,11 +304,10 @@
             // 
             // menuItemViewSubmitPayment
             // 
-            this.menuItemViewSubmitPayment.Enabled = false;
             this.menuItemViewSubmitPayment.Name = "menuItemViewSubmitPayment";
             this.menuItemViewSubmitPayment.Size = new System.Drawing.Size(155, 22);
             this.menuItemViewSubmitPayment.Text = "Payment";
-            this.menuItemViewSubmitPayment.ToolTipText = "Not implemented";
+            this.menuItemViewSubmitPayment.Click += new System.EventHandler(this.menuItemViewSubmitPayment_Click);
             // 
             // menuItemViewSubmitSetRegularKey
             // 

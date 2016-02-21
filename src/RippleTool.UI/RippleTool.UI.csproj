@@ -177,6 +177,12 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubmitPaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmitPaymentForm.Designer.cs">
+      <DependentUpon>SubmitPaymentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubmitTrustSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubmitPaymentForm.resx">
+      <DependentUpon>SubmitPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubmitTrustSetForm.resx">
       <DependentUpon>SubmitTrustSetForm.cs</DependentUpon>
