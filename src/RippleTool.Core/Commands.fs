@@ -6,183 +6,193 @@ open RippleTool.CommandTypes
 
 //-------------------------------------------------------------------------------------------------
 
-let private stringOfLedger = function
-    | Validated -> "validated"
-    | Closed    -> "closed"
-    | Current   -> "current"
+module private String =
 
-let private stringOfRole = function
-    | User    -> "user"
-    | Gateway -> "gateway"
+    let ofLedger = function
+        | Validated -> "validated"
+        | Closed    -> "closed"
+        | Current   -> "current"
 
-//-------------------------------------------------------------------------------------------------
-
-let private Object = Map >> Object
-
-let private commandToJsonPing (command : Ping) =
-    Object [ "command", String "ping" ]
-
-let private commandToJsonRandom (command : Random) =
-    Object [ "command", String "random" ]
-
-let private commandToJsonAccountCurrencies (command : AccountCurrencies) =
-
-    let ledger = stringOfLedger command.Ledger
-
-    let elements =
-        [ "command", String "account_currencies"
-          "account", String command.Account
-          "ledger_index", String ledger ]
-
-    Object elements
-
-let private commandToJsonAccountInfo (command : AccountInfo) =
-
-    let ledger = stringOfLedger command.Ledger
-
-    let elements =
-        [ "command", String "account_info"
-          "account", String command.Account
-          "ledger_index", String ledger ]
-
-    Object elements
-
-let private commandToJsonAccountLines (command : AccountLines) =
-
-    let ledger = stringOfLedger command.Ledger
-
-    let elements =
-        [ "command", String "account_lines"
-          "account", String command.Account
-          "ledger_index", String ledger ]
-
-    Object elements
-
-let private commandToJsonAccountObjects (command : AccountObjects) =
-
-    let ledger = stringOfLedger command.Ledger
-
-    let elements =
-        [ "command", String "account_objects"
-          "account", String command.Account
-          "ledger_index", String ledger ]
-
-    Object elements
-
-let private commandToJsonAccountOffers (command : AccountOffers) =
-
-    let ledger = stringOfLedger command.Ledger
-
-    let elements =
-        [ "command", String "account_objects"
-          "account", String command.Account
-          "ledger_index", String ledger ]
-
-    Object elements
-
-let private commandToJsonAccountTx (command : AccountTx) =
-
-    let elements =
-        [ "command", String "account_tx"
-          "account", String command.Account
-          "ledger_index_min", Number -1m
-          "ledger_index_max", Number -1m ]
-
-    Object elements
-
-let private commandToJsonGatewayBalances (command : GatewayBalances) =
-
-    let ledger = stringOfLedger command.Ledger
-
-    let elements =
-        [ "command", String "gateway_balances"
-          "account", String command.Account
-          "ledger_index", String ledger ]
-
-    Object elements
-
-let private commandToJsonNoRippleCheck (command : NoRippleCheck) =
-
-    let ledger = stringOfLedger command.Ledger
-    let role = stringOfRole command.Role
-
-    let elements =
-        [ "command", String "noripple_check"
-          "account", String command.Account
-          "ledger_index", String ledger
-          "role", String role ]
-
-    Object elements
-
-let private commandToJsonBookOffers (command : BookOffers) =
-
-    let elementsTakerGets =
-        [ "currency", String command.TakerGetsCurrency
-          "issuer", String command.TakerGetsIssuer ]
-
-    let elementsTakerPays =
-        [ "currency", String command.TakerPaysCurrency
-          "issuer", String command.TakerPaysIssuer ]
-
-    let elements =
-        [ "command", String "book_offers"
-          "taker_gets", Object elementsTakerGets
-          "taker_pays", Object elementsTakerPays ]
-
-    Object elements
-
-let private commandToJsonRipplePathFind (command : RipplePathFind) =
-
-    let elementsDestimationAmount =
-        [ "value", Number command.DestinationAmount
-          "currency", String command.DestinationCurrency
-          "issuer", String command.DestinationIssuer ]
-
-    let elements =
-        [ "command", String "ripple_path_find"
-          "source_account", String command.SourceAccount
-          "destination_account", String command.DestinationAccount
-          "destination_amount", Object elementsDestimationAmount  ]
-
-    Object elements
-
-let private commandToJsonSubmit (command : Submit) =
-
-    let elements =
-        [ "command", String "submit"
-          "tx_blob", String command.TxBlob ]
-
-    Object elements
-
-let private commandToJsonTx (command : Tx) =
-
-    let elements =
-        [ "command", String "tx"
-          "transaction", String command.Transaction ]
-
-    Object elements
+    let ofRole = function
+        | User    -> "user"
+        | Gateway -> "gateway"
 
 //-------------------------------------------------------------------------------------------------
 
-let private commandToJson = function
-    | Ping              command -> command |> commandToJsonPing
-    | Random            command -> command |> commandToJsonRandom
-    | AccountCurrencies command -> command |> commandToJsonAccountCurrencies
-    | AccountInfo       command -> command |> commandToJsonAccountInfo
-    | AccountLines      command -> command |> commandToJsonAccountLines
-    | AccountObjects    command -> command |> commandToJsonAccountObjects
-    | AccountOffers     command -> command |> commandToJsonAccountOffers
-    | AccountTx         command -> command |> commandToJsonAccountTx
-    | GatewayBalances   command -> command |> commandToJsonGatewayBalances
-    | NoRippleCheck     command -> command |> commandToJsonNoRippleCheck
-    | BookOffers        command -> command |> commandToJsonBookOffers
-    | RipplePathFind    command -> command |> commandToJsonRipplePathFind
-    | Submit            command -> command |> commandToJsonSubmit
-    | Tx                command -> command |> commandToJsonTx
+module private Json =
 
-let serialize = commandToJson >> Json.format
+    let private Object = Map >> Object
+
+    let private ofPing (command : Ping) =
+
+        let elements =
+            [ "command", String "ping" ]
+
+        Object elements
+
+    let private ofRandom (command : Random) =
+
+        let elements =
+            [ "command", String "random" ]
+
+        Object elements
+
+    let private ofAccountCurrencies (command : AccountCurrencies) =
+
+        let ledger = String.ofLedger command.Ledger
+
+        let elements =
+            [ "command", String "account_currencies"
+              "account", String command.Account
+              "ledger_index", String ledger ]
+
+        Object elements
+
+    let private ofAccountInfo (command : AccountInfo) =
+
+        let ledger = String.ofLedger command.Ledger
+
+        let elements =
+            [ "command", String "account_info"
+              "account", String command.Account
+              "ledger_index", String ledger ]
+
+        Object elements
+
+    let private ofAccountLines (command : AccountLines) =
+
+        let ledger = String.ofLedger command.Ledger
+
+        let elements =
+            [ "command", String "account_lines"
+              "account", String command.Account
+              "ledger_index", String ledger ]
+
+        Object elements
+
+    let private ofAccountObjects (command : AccountObjects) =
+
+        let ledger = String.ofLedger command.Ledger
+
+        let elements =
+            [ "command", String "account_objects"
+              "account", String command.Account
+              "ledger_index", String ledger ]
+
+        Object elements
+
+    let private ofAccountOffers (command : AccountOffers) =
+
+        let ledger = String.ofLedger command.Ledger
+
+        let elements =
+            [ "command", String "account_objects"
+              "account", String command.Account
+              "ledger_index", String ledger ]
+
+        Object elements
+
+    let private ofAccountTx (command : AccountTx) =
+
+        let elements =
+            [ "command", String "account_tx"
+              "account", String command.Account
+              "ledger_index_min", Number -1m
+              "ledger_index_max", Number -1m ]
+
+        Object elements
+
+    let private ofGatewayBalances (command : GatewayBalances) =
+
+        let ledger = String.ofLedger command.Ledger
+
+        let elements =
+            [ "command", String "gateway_balances"
+              "account", String command.Account
+              "ledger_index", String ledger ]
+
+        Object elements
+
+    let private ofNoRippleCheck (command : NoRippleCheck) =
+
+        let ledger = String.ofLedger command.Ledger
+        let role = String.ofRole command.Role
+
+        let elements =
+            [ "command", String "noripple_check"
+              "account", String command.Account
+              "ledger_index", String ledger
+              "role", String role ]
+
+        Object elements
+
+    let private ofBookOffers (command : BookOffers) =
+
+        let elementsTakerGets =
+            [ "currency", String command.TakerGetsCurrency
+              "issuer", String command.TakerGetsIssuer ]
+
+        let elementsTakerPays =
+            [ "currency", String command.TakerPaysCurrency
+              "issuer", String command.TakerPaysIssuer ]
+
+        let elements =
+            [ "command", String "book_offers"
+              "taker_gets", Object elementsTakerGets
+              "taker_pays", Object elementsTakerPays ]
+
+        Object elements
+
+    let private ofRipplePathFind (command : RipplePathFind) =
+
+        let elementsDestimationAmount =
+            [ "value", Number command.DestinationAmount
+              "currency", String command.DestinationCurrency
+              "issuer", String command.DestinationIssuer ]
+
+        let elements =
+            [ "command", String "ripple_path_find"
+              "source_account", String command.SourceAccount
+              "destination_account", String command.DestinationAccount
+              "destination_amount", Object elementsDestimationAmount ]
+
+        Object elements
+
+    let private ofSubmit (command : Submit) =
+
+        let elements =
+            [ "command", String "submit"
+              "tx_blob", String command.TxBlob ]
+
+        Object elements
+
+    let private ofTx (command : Tx) =
+
+        let elements =
+            [ "command", String "tx"
+              "transaction", String command.Transaction ]
+
+        Object elements
+
+    let ofCommand = function
+        | Ping              command -> command |> ofPing
+        | Random            command -> command |> ofRandom
+        | AccountCurrencies command -> command |> ofAccountCurrencies
+        | AccountInfo       command -> command |> ofAccountInfo
+        | AccountLines      command -> command |> ofAccountLines
+        | AccountObjects    command -> command |> ofAccountObjects
+        | AccountOffers     command -> command |> ofAccountOffers
+        | AccountTx         command -> command |> ofAccountTx
+        | GatewayBalances   command -> command |> ofGatewayBalances
+        | NoRippleCheck     command -> command |> ofNoRippleCheck
+        | BookOffers        command -> command |> ofBookOffers
+        | RipplePathFind    command -> command |> ofRipplePathFind
+        | Submit            command -> command |> ofSubmit
+        | Tx                command -> command |> ofTx
 
 //-------------------------------------------------------------------------------------------------
+
+let serialize = Json.ofCommand >> Json.format
 
 let execute serverUri command =
 
