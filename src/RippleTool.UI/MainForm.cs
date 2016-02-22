@@ -17,15 +17,15 @@ namespace RippleTool.UI
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            Integration.eventExecuteCommandReq.AddHandler(HandleEventReq);
-            Integration.eventExecuteCommandRes.AddHandler(HandleEventRes);
+            Integration.hookupEventExecuteCommandReq(HandleEventReq);
+            Integration.hookupEventExecuteCommandRes(HandleEventRes);
         }
 
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Integration.eventExecuteCommandReq.RemoveHandler(HandleEventReq);
-            Integration.eventExecuteCommandRes.RemoveHandler(HandleEventRes);
+            Integration.unhookEventExecuteCommandReq(HandleEventReq);
+            Integration.unhookEventExecuteCommandRes(HandleEventRes);
         }
 
         private void InitializeDockPanel()

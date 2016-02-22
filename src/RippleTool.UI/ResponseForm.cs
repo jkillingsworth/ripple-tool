@@ -14,7 +14,7 @@ namespace RippleTool.UI
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            Integration.eventExecuteCommandRes.AddHandler(HandleEvent);
+            Integration.hookupEventExecuteCommandRes(HandleEvent);
 
             json = Integration.getJsonRes();
             RenderJson();
@@ -23,7 +23,7 @@ namespace RippleTool.UI
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Integration.eventExecuteCommandRes.RemoveHandler(HandleEvent);
+            Integration.unhookEventExecuteCommandRes(HandleEvent);
         }
 
         private void RenderJson()
