@@ -2,6 +2,7 @@
 
 open System.Configuration
 open Chiron
+open RippleTool.Encoding
 open RippleTool.Commands
 
 //-------------------------------------------------------------------------------------------------
@@ -68,8 +69,8 @@ let executeCommand command =
     agentExecuteCommand.Post command
 
 let executeSubmitTransaction transaction =
-    let hex = Transactions.sign transaction Config.secretKey
-    let command = CommandTypes.Submit { TxBlob = hex }
+    let blob = Transactions.sign transaction Config.secretKey
+    let command = CommandTypes.Submit { TxBlob = Binary.toHex blob }
     executeCommand command
 
 let getJsonReq () =

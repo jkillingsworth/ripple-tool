@@ -241,4 +241,4 @@ let sign transaction secretKey =
     let signature = transactionBinary |> computeSigningHash |> Crypto.computeSignature accountKeys
     let transactionBinary = serialize transaction accountKeys.Pub (Some signature)
 
-    transactionBinary |> Binary.toHex
+    transactionBinary
