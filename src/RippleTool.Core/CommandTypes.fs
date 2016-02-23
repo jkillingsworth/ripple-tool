@@ -15,6 +15,10 @@ type Ping = unit
 
 type Random = unit
 
+type ServerInfo = unit
+
+type ServerState = unit
+
 type AccountCurrencies =
     { Account : string
       Ledger : Ledger }
@@ -71,6 +75,8 @@ type Tx =
 type Command =
     | Ping of Ping
     | Random of Random
+    | ServerInfo of ServerInfo
+    | ServerState of ServerState
     | AccountCurrencies of AccountCurrencies
     | AccountInfo of AccountInfo
     | AccountLines of AccountLines

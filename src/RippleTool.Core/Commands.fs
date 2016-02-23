@@ -37,6 +37,20 @@ module private Json =
 
         Object elements
 
+    let private ofServerInfo (command : ServerInfo) =
+
+        let elements =
+            [ "command", String "server_info" ]
+
+        Object elements
+
+    let private ofServerState (command : ServerState) =
+
+        let elements =
+            [ "command", String "server_state" ]
+
+        Object elements
+
     let private ofAccountCurrencies (command : AccountCurrencies) =
 
         let ledger = String.ofLedger command.Ledger
@@ -177,6 +191,8 @@ module private Json =
     let ofCommand = function
         | Ping              command -> command |> ofPing
         | Random            command -> command |> ofRandom
+        | ServerInfo        command -> command |> ofServerInfo
+        | ServerState       command -> command |> ofServerState
         | AccountCurrencies command -> command |> ofAccountCurrencies
         | AccountInfo       command -> command |> ofAccountInfo
         | AccountLines      command -> command |> ofAccountLines
