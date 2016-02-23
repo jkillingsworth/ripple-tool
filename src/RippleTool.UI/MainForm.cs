@@ -40,13 +40,12 @@ namespace RippleTool.UI
 
         private void InitializeDockPanel()
         {
-            var formReq = new RequestForm();
-            var formRes = new ResponseForm();
-
-            formReq.Show(dockPanel, DockState.DockRight);
-            formRes.Show(dockPanel.Panes[0], DockAlignment.Bottom, 0.7);
-
-            dockPanel.DockRightPortion = 0.7;
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            using (var stream = assembly.GetManifestResourceStream(GetType(), "MainFormLayout.xml"))
+            {
+                var deserializer = new DeserializeDockContent(GetDockContentInstance);
+                dockPanel.LoadFromXml(stream, deserializer);
+            }
         }
 
         private void CloseAllDocuments()
