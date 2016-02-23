@@ -391,7 +391,7 @@
             // 
             this.menuItemWindowCloseAll.Name = "menuItemWindowCloseAll";
             this.menuItemWindowCloseAll.Size = new System.Drawing.Size(120, 22);
-            this.menuItemWindowCloseAll.Text = "Close All";
+            this.menuItemWindowCloseAll.Text = "C&lose All";
             this.menuItemWindowCloseAll.Click += new System.EventHandler(this.menuItemWindowCloseAll_Click);
             // 
             // menuItemHelp
