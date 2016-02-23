@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -7,6 +8,8 @@ namespace RippleTool.UI
 {
     public partial class MainForm : Form
     {
+        private string currentFile = null;
+
         public MainForm()
         {
             InitializeComponent();
@@ -28,6 +31,13 @@ namespace RippleTool.UI
             Integration.unhookEventExecuteCommandRes(HandleEventRes);
         }
 
+        private static IDockContent GetDockContentInstance(string typeName)
+        {
+            var type = Type.GetType(typeName);
+            var instance = Activator.CreateInstance(type);
+            return (IDockContent)instance;
+        }
+
         private void InitializeDockPanel()
         {
             var formReq = new RequestForm();
@@ -39,6 +49,59 @@ namespace RippleTool.UI
             dockPanel.DockRightPortion = 0.7;
         }
 
+        private void CloseAllDocuments()
+        {
+            foreach (var form in MdiChildren)
+            {
+                form.Close();
+            }
+        }
+
+        private void CloseAllPanes()
+        {
+            foreach (var pane in dockPanel.Panes.ToList())
+            {
+                pane.CloseActiveContent();
+            }
+        }
+
+        private void PromptFileOpen()
+        {
+            var result = dialogOpenFile.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                CloseAllDocuments();
+                CloseAllPanes();
+
+                using (var stream = dialogOpenFile.OpenFile())
+                {
+                    var deserializer = new DeserializeDockContent(GetDockContentInstance);
+                    dockPanel.LoadFromXml(stream, deserializer);
+                }
+
+                currentFile = dialogOpenFile.FileName;
+            }
+        }
+
+        private void PromptFileSave()
+        {
+            var result = dialogSaveFile.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                using (var stream = dialogSaveFile.OpenFile())
+                {
+                    dockPanel.SaveAsXml(stream, System.Text.Encoding.UTF8);
+                }
+
+                currentFile = dialogSaveFile.FileName;
+            }
+        }
+
+        private void Show(DockContent dockContent)
+        {
+            dockContent.Show(dockPanel);
+        }
+
         private void HandleEventReq(object sender, string value)
         {
             statusItemProgress.MarqueeAnimationSpeed = 1;
@@ -48,11 +111,6 @@ namespace RippleTool.UI
         {
             statusItemProgress.MarqueeAnimationSpeed = 0;
             statusItemProgress.Invalidate();
-        }
-
-        private void Show(DockContent dockContent)
-        {
-            dockContent.Show(dockPanel);
         }
 
         private void menuStrip_MenuActivate(object sender, EventArgs e)
@@ -72,6 +130,35 @@ namespace RippleTool.UI
             {
                 menuItemWindowCloseAll.Enabled = true;
             }
+        }
+
+        private void menuItemFileNew_Click(object sender, EventArgs e)
+        {
+            CloseAllDocuments();
+            CloseAllPanes();
+
+            currentFile = null;
+        }
+
+        private void menuItemFileOpen_Click(object sender, EventArgs e)
+        {
+            PromptFileOpen();
+        }
+
+        private void menuItemFileSave_Click(object sender, EventArgs e)
+        {
+            if (currentFile != null)
+            {
+                dockPanel.SaveAsXml(currentFile, System.Text.Encoding.UTF8);
+                return;
+            }
+
+            PromptFileSave();
+        }
+
+        private void menuItemFileSaveAs_Click(object sender, EventArgs e)
+        {
+            PromptFileSave();
         }
 
         private void menuItemFileSettings_Click(object sender, EventArgs e)
@@ -172,10 +259,7 @@ namespace RippleTool.UI
 
         private void menuItemWindowCloseAll_Click(object sender, EventArgs e)
         {
-            foreach (var form in MdiChildren)
-            {
-                form.Close();
-            }
+            CloseAllDocuments();
         }
 
         private void menuItemHelpDeveloperCenter_Click(object sender, EventArgs e)

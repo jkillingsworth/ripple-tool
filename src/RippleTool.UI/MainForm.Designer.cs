@@ -31,8 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemFileSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemFileNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemFileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemFileSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemFileSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemFileSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRequest = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,6 +75,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusItemProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.dialogOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.dialogSaveFile = new System.Windows.Forms.SaveFileDialog();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.themeVS2012Light = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
             this.menuStrip.SuspendLayout();
@@ -94,29 +101,70 @@
             // menuItemFile
             // 
             this.menuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemFileSettings,
+            this.menuItemFileNew,
+            this.menuItemFileOpen,
+            this.menuItemFileSave,
+            this.menuItemFileSaveAs,
             this.menuItemFileSeparator1,
+            this.menuItemFileSettings,
+            this.menuItemFileSeparator2,
             this.menuItemFileExit});
             this.menuItemFile.Name = "menuItemFile";
             this.menuItemFile.Size = new System.Drawing.Size(37, 20);
             this.menuItemFile.Text = "&File";
             // 
-            // menuItemFileSettings
+            // menuItemFileNew
             // 
-            this.menuItemFileSettings.Name = "menuItemFileSettings";
-            this.menuItemFileSettings.Size = new System.Drawing.Size(116, 22);
-            this.menuItemFileSettings.Text = "Settings";
-            this.menuItemFileSettings.Click += new System.EventHandler(this.menuItemFileSettings_Click);
+            this.menuItemFileNew.Name = "menuItemFileNew";
+            this.menuItemFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.menuItemFileNew.Size = new System.Drawing.Size(155, 22);
+            this.menuItemFileNew.Text = "&New";
+            this.menuItemFileNew.Click += new System.EventHandler(this.menuItemFileNew_Click);
+            // 
+            // menuItemFileOpen
+            // 
+            this.menuItemFileOpen.Name = "menuItemFileOpen";
+            this.menuItemFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.menuItemFileOpen.Size = new System.Drawing.Size(155, 22);
+            this.menuItemFileOpen.Text = "&Open...";
+            this.menuItemFileOpen.Click += new System.EventHandler(this.menuItemFileOpen_Click);
+            // 
+            // menuItemFileSave
+            // 
+            this.menuItemFileSave.Name = "menuItemFileSave";
+            this.menuItemFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.menuItemFileSave.Size = new System.Drawing.Size(155, 22);
+            this.menuItemFileSave.Text = "&Save";
+            this.menuItemFileSave.Click += new System.EventHandler(this.menuItemFileSave_Click);
+            // 
+            // menuItemFileSaveAs
+            // 
+            this.menuItemFileSaveAs.Name = "menuItemFileSaveAs";
+            this.menuItemFileSaveAs.Size = new System.Drawing.Size(155, 22);
+            this.menuItemFileSaveAs.Text = "Save &As...";
+            this.menuItemFileSaveAs.Click += new System.EventHandler(this.menuItemFileSaveAs_Click);
             // 
             // menuItemFileSeparator1
             // 
             this.menuItemFileSeparator1.Name = "menuItemFileSeparator1";
-            this.menuItemFileSeparator1.Size = new System.Drawing.Size(113, 6);
+            this.menuItemFileSeparator1.Size = new System.Drawing.Size(152, 6);
+            // 
+            // menuItemFileSettings
+            // 
+            this.menuItemFileSettings.Name = "menuItemFileSettings";
+            this.menuItemFileSettings.Size = new System.Drawing.Size(155, 22);
+            this.menuItemFileSettings.Text = "Settings";
+            this.menuItemFileSettings.Click += new System.EventHandler(this.menuItemFileSettings_Click);
+            // 
+            // menuItemFileSeparator2
+            // 
+            this.menuItemFileSeparator2.Name = "menuItemFileSeparator2";
+            this.menuItemFileSeparator2.Size = new System.Drawing.Size(152, 6);
             // 
             // menuItemFileExit
             // 
             this.menuItemFileExit.Name = "menuItemFileExit";
-            this.menuItemFileExit.Size = new System.Drawing.Size(116, 22);
+            this.menuItemFileExit.Size = new System.Drawing.Size(155, 22);
             this.menuItemFileExit.Text = "E&xit";
             this.menuItemFileExit.Click += new System.EventHandler(this.menuItemFileExit_Click);
             // 
@@ -413,6 +461,14 @@
             this.statusItemProgress.Size = new System.Drawing.Size(100, 18);
             this.statusItemProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
+            // dialogOpenFile
+            // 
+            this.dialogOpenFile.Filter = "XML Files|*.xml|All Files|*.*";
+            // 
+            // dialogSaveFile
+            // 
+            this.dialogSaveFile.Filter = "XML Files|*.xml|All Files|*.*";
+            // 
             // dockPanel
             // 
             this.dockPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -451,8 +507,13 @@
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuItemFile;
-        private System.Windows.Forms.ToolStripMenuItem menuItemFileSettings;
+        private System.Windows.Forms.ToolStripMenuItem menuItemFileNew;
+        private System.Windows.Forms.ToolStripMenuItem menuItemFileOpen;
+        private System.Windows.Forms.ToolStripMenuItem menuItemFileSave;
+        private System.Windows.Forms.ToolStripMenuItem menuItemFileSaveAs;
         private System.Windows.Forms.ToolStripSeparator menuItemFileSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem menuItemFileSettings;
+        private System.Windows.Forms.ToolStripSeparator menuItemFileSeparator2;
         private System.Windows.Forms.ToolStripMenuItem menuItemFileExit;
         private System.Windows.Forms.ToolStripMenuItem menuItemView;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRequest;
@@ -490,6 +551,8 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
         private System.Windows.Forms.ToolStripProgressBar statusItemProgress;
+        private System.Windows.Forms.OpenFileDialog dialogOpenFile;
+        private System.Windows.Forms.SaveFileDialog dialogSaveFile;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         private WeifenLuo.WinFormsUI.Docking.VS2012LightTheme themeVS2012Light;
     }
