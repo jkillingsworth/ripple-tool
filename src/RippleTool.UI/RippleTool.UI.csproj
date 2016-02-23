@@ -171,6 +171,18 @@
     <Compile Include="RipplePathFindForm.Designer.cs">
       <DependentUpon>RipplePathFindForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServerInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerInfoForm.Designer.cs">
+      <DependentUpon>ServerInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServerStateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerStateForm.Designer.cs">
+      <DependentUpon>ServerStateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +263,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RipplePathFindForm.resx">
       <DependentUpon>RipplePathFindForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServerInfoForm.resx">
+      <DependentUpon>ServerInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServerStateForm.resx">
+      <DependentUpon>ServerStateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

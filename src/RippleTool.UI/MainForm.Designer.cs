@@ -46,6 +46,9 @@
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRandom = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemViewServerInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewServerState = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewAccountCurrencies = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountLines = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +57,7 @@
             this.menuItemViewAccountTx = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewGatewayBalances = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewNoRippleCheck = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemViewSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewBookOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRipplePathFind = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSubmit = new System.Windows.Forms.ToolStripMenuItem();
@@ -177,6 +180,9 @@
             this.menuItemViewPing,
             this.menuItemViewRandom,
             this.menuItemViewSeparator2,
+            this.menuItemViewServerInfo,
+            this.menuItemViewServerState,
+            this.menuItemViewSeparator3,
             this.menuItemViewAccountCurrencies,
             this.menuItemViewAccountInfo,
             this.menuItemViewAccountLines,
@@ -185,7 +191,7 @@
             this.menuItemViewAccountTx,
             this.menuItemViewGatewayBalances,
             this.menuItemViewNoRippleCheck,
-            this.menuItemViewSeparator3,
+            this.menuItemViewSeparator4,
             this.menuItemViewBookOffers,
             this.menuItemViewRipplePathFind,
             this.menuItemViewSubmit,
@@ -237,6 +243,25 @@
             // 
             this.menuItemViewSeparator2.Name = "menuItemViewSeparator2";
             this.menuItemViewSeparator2.Size = new System.Drawing.Size(241, 6);
+            // 
+            // menuItemViewServerInfo
+            // 
+            this.menuItemViewServerInfo.Name = "menuItemViewServerInfo";
+            this.menuItemViewServerInfo.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewServerInfo.Text = "Server Info";
+            this.menuItemViewServerInfo.Click += new System.EventHandler(this.menuItemViewServerInfo_Click);
+            // 
+            // menuItemViewServerState
+            // 
+            this.menuItemViewServerState.Name = "menuItemViewServerState";
+            this.menuItemViewServerState.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewServerState.Text = "Server State";
+            this.menuItemViewServerState.Click += new System.EventHandler(this.menuItemViewServerState_Click);
+            // 
+            // menuItemViewSeparator3
+            // 
+            this.menuItemViewSeparator3.Name = "menuItemViewSeparator3";
+            this.menuItemViewSeparator3.Size = new System.Drawing.Size(241, 6);
             // 
             // menuItemViewAccountCurrencies
             // 
@@ -294,10 +319,10 @@
             this.menuItemViewNoRippleCheck.Text = "No Ripple Check";
             this.menuItemViewNoRippleCheck.Click += new System.EventHandler(this.menuItemViewNoRippleCheck_Click);
             // 
-            // menuItemViewSeparator3
+            // menuItemViewSeparator4
             // 
-            this.menuItemViewSeparator3.Name = "menuItemViewSeparator3";
-            this.menuItemViewSeparator3.Size = new System.Drawing.Size(241, 6);
+            this.menuItemViewSeparator4.Name = "menuItemViewSeparator4";
+            this.menuItemViewSeparator4.Size = new System.Drawing.Size(241, 6);
             // 
             // menuItemViewBookOffers
             // 
@@ -522,6 +547,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewPing;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRandom;
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewServerInfo;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewServerState;
+        private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator3;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountCurrencies;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountInfo;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountLines;
@@ -530,7 +558,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountTx;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewGatewayBalances;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewNoRippleCheck;
-        private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator3;
+        private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator4;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewBookOffers;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRipplePathFind;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmit;
