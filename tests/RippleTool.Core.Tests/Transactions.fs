@@ -131,12 +131,12 @@ let ``Binary of native amount +maximum`` () =
 
     // 0000000000000000 0 <<< 63
     // 4000000000000000 1 <<< 62
-    // 3FFFFFFFFFFFFFFF 4611686018427387903
+    // 016345785D8A0000 100000000000000000
     // ----------------
-    // 7FFFFFFFFFFFFFFF
+    // 416345785D8A0000
 
-    let input = NativeAmount +4611686018427.387903m
-    let expected = Binary.ofHex "7FFFFFFFFFFFFFFF"
+    let input = NativeAmount +100000000000.000000m
+    let expected = Binary.ofHex "416345785D8A0000"
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
@@ -144,11 +144,11 @@ let ``Binary of native amount +maximum exceeded`` () =
 
     // 0000000000000000 0 <<< 63
     // 4000000000000000 1 <<< 62
-    // 4000000000000000 4611686018427387904
+    // 016345785D8A0001 100000000000000001
     // ----------------
     // Throws exception
 
-    let input = NativeAmount +4611686018427.387904m
+    let input = NativeAmount +100000000000.000001m
     let action () = input |> Binary.ofAmount |> ignore
     action |> should throw typeof<System.Exception>
 
@@ -315,12 +315,12 @@ let ``Binary of native amount -maximum`` () =
 
     // 0000000000000000 0 <<< 63
     // 0000000000000000 0 <<< 62
-    // 3FFFFFFFFFFFFFFF 4611686018427387903
+    // 016345785D8A0000 100000000000000000
     // ----------------
-    // 3FFFFFFFFFFFFFFF
+    // 016345785D8A0000
 
-    let input = NativeAmount -4611686018427.387903m
-    let expected = Binary.ofHex "3FFFFFFFFFFFFFFF"
+    let input = NativeAmount -100000000000.000000m
+    let expected = Binary.ofHex "016345785D8A0000"
     input |> Binary.ofAmount |> should equal expected
 
 [<Test>]
@@ -328,11 +328,11 @@ let ``Binary of native amount -maximum exceeded`` () =
 
     // 0000000000000000 0 <<< 63
     // 0000000000000000 0 <<< 62
-    // 4000000000000000 4611686018427387904
+    // 016345785D8A0001 100000000000000001
     // ----------------
     // Throws exception
 
-    let input = NativeAmount -4611686018427.387904m
+    let input = NativeAmount -100000000000.000001m
     let action () = input |> Binary.ofAmount |> ignore
     action |> should throw typeof<System.Exception>
 

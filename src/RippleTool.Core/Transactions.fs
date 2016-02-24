@@ -29,8 +29,8 @@ module Binary =
         let signFlag = if value < Decimal.Zero then 0 else 1
         let valueAbs = if value < Decimal.Zero then Decimal.Negate(value) else value
 
-        if (valueAbs > 4611686018427.387903m) then
-            failwith "Native amount absolute value cannot exceed 4611686018427.387903."
+        if (valueAbs > 100000000000m) then
+            failwith "Native amount absolute value cannot exceed 100000000000."
 
         let mantissa = Decimal.Round(valueAbs, 6)
         let mantissa = pow10 mantissa <| 6
