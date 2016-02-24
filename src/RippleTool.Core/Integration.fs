@@ -51,8 +51,7 @@ let private agentExecuteCommandRes = agentTrackStateWithEvent eventExecuteComman
 let private agentExecuteCommand = Agent.Start(fun inbox ->
     async {
         while true do
-            let! command = inbox.Receive()
-            let req = serialize command
+            let! req = inbox.Receive()
             agentExecuteCommandReq.Post (Set req)
             let res = execute Config.serverUri req
             agentExecuteCommandRes.Post (Set res)
@@ -65,8 +64,14 @@ let unhookEventExecuteCommandReq handler = handler |> unhook eventExecuteCommand
 let hookupEventExecuteCommandRes handler = handler |> hookup eventExecuteCommandRes
 let unhookEventExecuteCommandRes handler = handler |> unhook eventExecuteCommandRes
 
+let executeRawJson command =
+    command
+    |> agentExecuteCommand.Post
+
 let executeCommand command =
-    agentExecuteCommand.Post command
+    command
+    |> serialize
+    |> agentExecuteCommand.Post
 
 let executeSubmitTransaction transaction =
     let blob = Transactions.sign transaction Config.secretKey
@@ -85,6 +90,5 @@ let setJsonReq json =
 let setJsonRes json =
     agentExecuteCommandRes.Post (Set json)
 
-//-------------------------------------------------------------------------------------------------
-
-let formatJson = Json.parse >> Json.formatWith JsonFormattingOptions.Pretty
+let formatJson =
+    Json.parse >> Json.formatWith JsonFormattingOptions.Pretty

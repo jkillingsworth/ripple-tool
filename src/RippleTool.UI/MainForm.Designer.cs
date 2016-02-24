@@ -45,6 +45,7 @@
             this.menuItemViewSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRandom = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewRaw = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewServerInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewServerState = new System.Windows.Forms.ToolStripMenuItem();
@@ -179,6 +180,7 @@
             this.menuItemViewSeparator1,
             this.menuItemViewPing,
             this.menuItemViewRandom,
+            this.menuItemViewRaw,
             this.menuItemViewSeparator2,
             this.menuItemViewServerInfo,
             this.menuItemViewServerState,
@@ -238,6 +240,13 @@
             this.menuItemViewRandom.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewRandom.Text = "Random";
             this.menuItemViewRandom.Click += new System.EventHandler(this.menuItemViewRandom_Click);
+            // 
+            // menuItemViewRaw
+            // 
+            this.menuItemViewRaw.Name = "menuItemViewRaw";
+            this.menuItemViewRaw.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewRaw.Text = "Raw";
+            this.menuItemViewRaw.Click += new System.EventHandler(this.menuItemViewRaw_Click);
             // 
             // menuItemViewSeparator2
             // 
@@ -546,6 +555,7 @@
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewPing;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRandom;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewRaw;
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator2;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewServerInfo;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewServerState;
