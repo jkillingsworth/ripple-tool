@@ -73,19 +73,19 @@ type Tx =
 //-------------------------------------------------------------------------------------------------
 
 type Command =
-    | Ping of Ping
-    | Random of Random
-    | ServerInfo of ServerInfo
-    | ServerState of ServerState
+    | Ping              of Ping
+    | Random            of Random
+    | ServerInfo        of ServerInfo
+    | ServerState       of ServerState
     | AccountCurrencies of AccountCurrencies
-    | AccountInfo of AccountInfo
-    | AccountLines of AccountLines
-    | AccountObjects of AccountObjects
-    | AccountOffers of AccountOffers
-    | AccountTx of AccountTx
-    | GatewayBalances of GatewayBalances
-    | NoRippleCheck of NoRippleCheck
-    | BookOffers of BookOffers
-    | RipplePathFind of RipplePathFind
-    | Submit of Submit
-    | Tx of Tx
+    | AccountInfo       of AccountInfo
+    | AccountLines      of AccountLines
+    | AccountObjects    of AccountObjects
+    | AccountOffers     of AccountOffers
+    | AccountTx         of AccountTx
+    | GatewayBalances   of GatewayBalances
+    | NoRippleCheck     of NoRippleCheck
+    | BookOffers        of BookOffers
+    | RipplePathFind    of RipplePathFind
+    | Submit            of Submit
+    | Tx                of Tx

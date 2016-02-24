@@ -50,9 +50,9 @@ type TrustSet =
 //-------------------------------------------------------------------------------------------------
 
 type Transaction =
-    | AccountSet of AccountSet
-    | OfferCancel of OfferCancel
-    | OfferCreate of OfferCreate
-    | Payment of Payment
+    | AccountSet    of AccountSet
+    | OfferCancel   of OfferCancel
+    | OfferCreate   of OfferCreate
+    | Payment       of Payment
     | SetRegularKey of SetRegularKey
-    | TrustSet of TrustSet
+    | TrustSet      of TrustSet

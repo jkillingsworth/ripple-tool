@@ -87,11 +87,11 @@ module Base58 =
     let alphabet = "rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz"
 
     type private Version =
-        | AccountId = 00uy
-        | SecretKey = 33uy
+        | AccountId     = 00uy
+        | SecretKey     = 33uy
         | AccountKeyPrv = 34uy
         | AccountKeyPub = 35uy
-        | RootKeyPub = 41uy
+        | RootKeyPub    = 41uy
 
     let private computeHashsum version payload =
         use sha256 = SHA256.Create()
