@@ -52,8 +52,13 @@ namespace RippleTool.UI
 
         private void HandleEvent(object sender, string value)
         {
-            json = value;
-            RenderJson();
+            Action handler = () =>
+            {
+                json = value;
+                RenderJson();
+            };
+
+            UI.Events.Invoke(this, handler);
         }
 
         private void toolItemFormatted_Click(object sender, EventArgs e)

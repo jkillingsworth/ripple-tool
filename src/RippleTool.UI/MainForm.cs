@@ -103,13 +103,23 @@ namespace RippleTool.UI
 
         private void HandleEventReq(object sender, string value)
         {
-            statusItemProgress.MarqueeAnimationSpeed = 1;
+            Action handler = () =>
+            {
+                statusItemProgress.MarqueeAnimationSpeed = 1;
+            };
+
+            UI.Events.Invoke(this, handler);
         }
 
         private void HandleEventRes(object sender, string value)
         {
-            statusItemProgress.MarqueeAnimationSpeed = 0;
-            statusItemProgress.Invalidate();
+            Action handler = () =>
+            {
+                statusItemProgress.MarqueeAnimationSpeed = 0;
+                statusItemProgress.Invalidate();
+            };
+
+            UI.Events.Invoke(this, handler);
         }
 
         private void menuStrip_MenuActivate(object sender, EventArgs e)
