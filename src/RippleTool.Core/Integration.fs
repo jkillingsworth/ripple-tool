@@ -53,9 +53,11 @@ let private agentExecuteCommand = Agent.Start(fun inbox ->
         while true do
             let! req = inbox.Receive()
             agentExecuteCommandReq.Post (Set req)
-            let res = execute Config.serverUri req
+            let! res = execute Config.serverUri req
             agentExecuteCommandRes.Post (Set res)
     })
+
+Event.add raise agentExecuteCommand.Error
 
 //-------------------------------------------------------------------------------------------------
 

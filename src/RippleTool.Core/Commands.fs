@@ -211,10 +211,10 @@ module private Json =
 let serialize = Json.ofCommand >> Json.format
 
 let execute serverUri command =
+    async {
 
-    use ws = new WebSocket(serverUri)
-
-    let computation = async {
+        use ws = new WebSocket(serverUri)
+        ws.Error |> Event.add (fun ea -> raise ea.Exception)
 
         ws.Open()
         let! ea = Async.AwaitEvent(ws.Opened)
@@ -228,7 +228,3 @@ let execute serverUri command =
 
         return message
     }
-
-    ws.Error |> Event.add (fun ea -> raise ea.Exception)
-
-    Async.RunSynchronously(computation, timeout = 5000)
