@@ -9,6 +9,33 @@ namespace RippleTool.UI
             InitializeComponent();
         }
 
+        private void RefreshCurrencyType()
+        {
+            var enabled = radioIssued.Checked;
+            labelAmountCurrency.Enabled = enabled;
+            textAmountCurrency.Enabled = enabled;
+            labelAmountIssuer.Enabled = enabled;
+            textAmountIssuer.Enabled = enabled;
+        }
+
+        private Types.Amount GetIssuedAmount()
+        {
+            var item = new Types.IssuedAmount(
+                decimal.Parse(textAmountValue.Text),
+                textAmountCurrency.Text,
+                textAmountIssuer.Text
+                );
+
+            return Types.Amount.NewIssuedAmount(item);
+        }
+
+        private Types.Amount GetNativeAmount()
+        {
+            var item = decimal.Parse(textAmountValue.Text);
+
+            return Types.Amount.NewNativeAmount(item);
+        }
+
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
             var account = textAccount.Text;
@@ -20,7 +47,10 @@ namespace RippleTool.UI
                 flags |= TransactionTypes.TrustSetFlags.FullyCanonicalSig;
 
             var destination = textDestination.Text;
-            var amount = decimal.Parse(textAmount.Text);
+
+            var amount = radioIssued.Checked
+                ? GetIssuedAmount()
+                : GetNativeAmount();
 
             var transactionItem = new TransactionTypes.Payment(
                 account,
@@ -28,11 +58,21 @@ namespace RippleTool.UI
                 sequence,
                 (uint)flags,
                 destination,
-                Types.Amount.NewNativeAmount(amount)
+                amount
                 );
 
             var transaction = TransactionTypes.Transaction.NewPayment(transactionItem);
             Integration.executeSubmitTransaction(transaction);
+        }
+
+        private void radioIssued_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshCurrencyType();
+        }
+
+        private void radioNative_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshCurrencyType();
         }
     }
 }

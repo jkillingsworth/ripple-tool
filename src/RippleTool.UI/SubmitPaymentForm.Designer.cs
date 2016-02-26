@@ -39,17 +39,25 @@
             this.checkFullyCanonicalSig = new System.Windows.Forms.CheckBox();
             this.labelDestination = new System.Windows.Forms.Label();
             this.textDestination = new System.Windows.Forms.TextBox();
-            this.labelAmount = new System.Windows.Forms.Label();
-            this.textAmount = new System.Windows.Forms.TextBox();
+            this.groupAmount = new System.Windows.Forms.GroupBox();
+            this.radioNative = new System.Windows.Forms.RadioButton();
+            this.radioIssued = new System.Windows.Forms.RadioButton();
+            this.labelAmountValue = new System.Windows.Forms.Label();
+            this.textAmountValue = new System.Windows.Forms.TextBox();
+            this.labelAmountCurrency = new System.Windows.Forms.Label();
+            this.textAmountCurrency = new System.Windows.Forms.TextBox();
+            this.labelAmountIssuer = new System.Windows.Forms.Label();
+            this.textAmountIssuer = new System.Windows.Forms.TextBox();
             this.groupFlags.SuspendLayout();
+            this.groupAmount.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSubmit
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(12, 288);
+            this.buttonSubmit.Location = new System.Drawing.Point(12, 432);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
-            this.buttonSubmit.TabIndex = 11;
+            this.buttonSubmit.TabIndex = 16;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
@@ -141,29 +149,102 @@
             this.textDestination.Size = new System.Drawing.Size(260, 23);
             this.textDestination.TabIndex = 8;
             // 
-            // labelAmount
+            // groupAmount
             // 
-            this.labelAmount.AutoSize = true;
-            this.labelAmount.Location = new System.Drawing.Point(12, 241);
-            this.labelAmount.Name = "labelAmount";
-            this.labelAmount.Size = new System.Drawing.Size(54, 15);
-            this.labelAmount.TabIndex = 9;
-            this.labelAmount.Text = "Amount:";
+            this.groupAmount.Controls.Add(this.radioNative);
+            this.groupAmount.Controls.Add(this.radioIssued);
+            this.groupAmount.Location = new System.Drawing.Point(12, 244);
+            this.groupAmount.Name = "groupAmount";
+            this.groupAmount.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
+            this.groupAmount.Size = new System.Drawing.Size(257, 50);
+            this.groupAmount.TabIndex = 9;
+            this.groupAmount.TabStop = false;
+            this.groupAmount.Text = "Amount";
             // 
-            // textAmount
+            // radioNative
             // 
-            this.textAmount.Location = new System.Drawing.Point(12, 259);
-            this.textAmount.Name = "textAmount";
-            this.textAmount.Size = new System.Drawing.Size(260, 23);
-            this.textAmount.TabIndex = 10;
+            this.radioNative.AutoSize = true;
+            this.radioNative.Location = new System.Drawing.Point(73, 22);
+            this.radioNative.Name = "radioNative";
+            this.radioNative.Size = new System.Drawing.Size(59, 19);
+            this.radioNative.TabIndex = 1;
+            this.radioNative.Text = "Native";
+            this.radioNative.UseVisualStyleBackColor = true;
+            this.radioNative.CheckedChanged += new System.EventHandler(this.radioNative_CheckedChanged);
+            // 
+            // radioIssued
+            // 
+            this.radioIssued.AutoSize = true;
+            this.radioIssued.Checked = true;
+            this.radioIssued.Location = new System.Drawing.Point(9, 22);
+            this.radioIssued.Name = "radioIssued";
+            this.radioIssued.Size = new System.Drawing.Size(58, 19);
+            this.radioIssued.TabIndex = 0;
+            this.radioIssued.TabStop = true;
+            this.radioIssued.Text = "Issued";
+            this.radioIssued.UseVisualStyleBackColor = true;
+            this.radioIssued.CheckedChanged += new System.EventHandler(this.radioIssued_CheckedChanged);
+            // 
+            // labelAmountValue
+            // 
+            this.labelAmountValue.AutoSize = true;
+            this.labelAmountValue.Location = new System.Drawing.Point(12, 297);
+            this.labelAmountValue.Name = "labelAmountValue";
+            this.labelAmountValue.Size = new System.Drawing.Size(85, 15);
+            this.labelAmountValue.TabIndex = 10;
+            this.labelAmountValue.Text = "Amount value:";
+            // 
+            // textAmountValue
+            // 
+            this.textAmountValue.Location = new System.Drawing.Point(12, 315);
+            this.textAmountValue.Name = "textAmountValue";
+            this.textAmountValue.Size = new System.Drawing.Size(260, 23);
+            this.textAmountValue.TabIndex = 11;
+            // 
+            // labelAmountCurrency
+            // 
+            this.labelAmountCurrency.AutoSize = true;
+            this.labelAmountCurrency.Location = new System.Drawing.Point(12, 341);
+            this.labelAmountCurrency.Name = "labelAmountCurrency";
+            this.labelAmountCurrency.Size = new System.Drawing.Size(103, 15);
+            this.labelAmountCurrency.TabIndex = 12;
+            this.labelAmountCurrency.Text = "Amount currency:";
+            // 
+            // textAmountCurrency
+            // 
+            this.textAmountCurrency.Location = new System.Drawing.Point(12, 359);
+            this.textAmountCurrency.Name = "textAmountCurrency";
+            this.textAmountCurrency.Size = new System.Drawing.Size(260, 23);
+            this.textAmountCurrency.TabIndex = 13;
+            // 
+            // labelAmountIssuer
+            // 
+            this.labelAmountIssuer.AutoSize = true;
+            this.labelAmountIssuer.Location = new System.Drawing.Point(12, 385);
+            this.labelAmountIssuer.Name = "labelAmountIssuer";
+            this.labelAmountIssuer.Size = new System.Drawing.Size(87, 15);
+            this.labelAmountIssuer.TabIndex = 14;
+            this.labelAmountIssuer.Text = "Amount issuer:";
+            // 
+            // textAmountIssuer
+            // 
+            this.textAmountIssuer.Location = new System.Drawing.Point(12, 403);
+            this.textAmountIssuer.Name = "textAmountIssuer";
+            this.textAmountIssuer.Size = new System.Drawing.Size(260, 23);
+            this.textAmountIssuer.TabIndex = 15;
             // 
             // SubmitPaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 462);
-            this.Controls.Add(this.textAmount);
-            this.Controls.Add(this.labelAmount);
+            this.ClientSize = new System.Drawing.Size(284, 862);
+            this.Controls.Add(this.textAmountIssuer);
+            this.Controls.Add(this.labelAmountIssuer);
+            this.Controls.Add(this.textAmountCurrency);
+            this.Controls.Add(this.labelAmountCurrency);
+            this.Controls.Add(this.textAmountValue);
+            this.Controls.Add(this.labelAmountValue);
+            this.Controls.Add(this.groupAmount);
             this.Controls.Add(this.textDestination);
             this.Controls.Add(this.labelDestination);
             this.Controls.Add(this.groupFlags);
@@ -179,6 +260,8 @@
             this.Text = "Payment";
             this.groupFlags.ResumeLayout(false);
             this.groupFlags.PerformLayout();
+            this.groupAmount.ResumeLayout(false);
+            this.groupAmount.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,7 +280,14 @@
         private System.Windows.Forms.CheckBox checkFullyCanonicalSig;
         private System.Windows.Forms.Label labelDestination;
         private System.Windows.Forms.TextBox textDestination;
-        private System.Windows.Forms.Label labelAmount;
-        private System.Windows.Forms.TextBox textAmount;
+        private System.Windows.Forms.GroupBox groupAmount;
+        private System.Windows.Forms.RadioButton radioIssued;
+        private System.Windows.Forms.RadioButton radioNative;
+        private System.Windows.Forms.Label labelAmountValue;
+        private System.Windows.Forms.TextBox textAmountValue;
+        private System.Windows.Forms.Label labelAmountCurrency;
+        private System.Windows.Forms.TextBox textAmountCurrency;
+        private System.Windows.Forms.Label labelAmountIssuer;
+        private System.Windows.Forms.TextBox textAmountIssuer;
     }
 }
