@@ -2,6 +2,20 @@
 
 //-------------------------------------------------------------------------------------------------
 
+type NativeCurrency = NativeCurrency
+type IssuedCurrency = { Code : string; Issuer : string }
+
+type Currency =
+    | NativeCurrency of NativeCurrency
+    | IssuedCurrency of IssuedCurrency
+
+type NativeAmount = decimal
+type IssuedAmount = { Value : decimal; Currency : string; Issuer : string }
+
+type Amount =
+    | NativeAmount of NativeAmount
+    | IssuedAmount of IssuedAmount
+
 type Ledger =
     | Validated
     | Closed
@@ -11,13 +25,15 @@ type Role =
     | User
     | Gateway
 
-type Ping = unit
+//-------------------------------------------------------------------------------------------------
 
-type Random = unit
+type Ping = Ping
 
-type ServerInfo = unit
+type Random = Random
 
-type ServerState = unit
+type ServerInfo = ServerInfo
+
+type ServerState = ServerState
 
 type AccountCurrencies =
     { Account : string
@@ -52,17 +68,13 @@ type NoRippleCheck =
       Role : Role }
 
 type BookOffers =
-    { TakerGetsCurrency : string
-      TakerGetsIssuer : string
-      TakerPaysCurrency : string
-      TakerPaysIssuer : string }
+    { TakerGets : Currency
+      TakerPays : Currency }
 
 type RipplePathFind =
     { SourceAccount : string
       DestinationAccount : string
-      DestinationAmount : decimal
-      DestinationCurrency : string
-      DestinationIssuer : string }
+      DestinationAmount : Amount }
 
 type Submit =
     { TxBlob : string }

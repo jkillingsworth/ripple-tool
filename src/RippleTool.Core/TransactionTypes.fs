@@ -5,7 +5,6 @@ open System
 //-------------------------------------------------------------------------------------------------
 
 type NativeAmount = decimal
-
 type IssuedAmount = { Value : decimal; Currency : string; Issuer : string }
 
 type Amount =

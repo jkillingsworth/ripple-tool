@@ -23,6 +23,42 @@ module private Json =
 
     let private Object = Map >> Object
 
+    let private ofNativeCurrency (currency : NativeCurrency) =
+
+        let elements =
+            [ "currency", String "XRP" ]
+
+        Object elements
+
+    let private ofIssuedCurrency (currency : IssuedCurrency) =
+
+        let elements =
+            [ "currency", String currency.Code
+              "issuer", String currency.Issuer ]
+
+        Object elements
+
+    let private ofCurrency = function
+        | NativeCurrency currency -> ofNativeCurrency currency
+        | IssuedCurrency currency -> ofIssuedCurrency currency
+
+    let private ofNativeAmount (amount : NativeAmount) =
+
+        Number amount
+
+    let private ofIssuedAmount (amount : IssuedAmount) =
+
+        let elements =
+            [ "value", Number amount.Value
+              "currency", String amount.Currency
+              "issuer", String amount.Issuer ]
+
+        Object elements
+
+    let private ofAmount = function
+        | NativeAmount amount -> ofNativeAmount amount
+        | IssuedAmount amount -> ofIssuedAmount amount
+
     let private ofPing (command : Ping) =
 
         let elements =
@@ -142,33 +178,20 @@ module private Json =
 
     let private ofBookOffers (command : BookOffers) =
 
-        let elementsTakerGets =
-            [ "currency", String command.TakerGetsCurrency
-              "issuer", String command.TakerGetsIssuer ]
-
-        let elementsTakerPays =
-            [ "currency", String command.TakerPaysCurrency
-              "issuer", String command.TakerPaysIssuer ]
-
         let elements =
             [ "command", String "book_offers"
-              "taker_gets", Object elementsTakerGets
-              "taker_pays", Object elementsTakerPays ]
+              "taker_gets", ofCurrency command.TakerGets
+              "taker_pays", ofCurrency command.TakerPays ]
 
         Object elements
 
     let private ofRipplePathFind (command : RipplePathFind) =
 
-        let elementsDestimationAmount =
-            [ "value", Number command.DestinationAmount
-              "currency", String command.DestinationCurrency
-              "issuer", String command.DestinationIssuer ]
-
         let elements =
             [ "command", String "ripple_path_find"
               "source_account", String command.SourceAccount
               "destination_account", String command.DestinationAccount
-              "destination_amount", Object elementsDestimationAmount ]
+              "destination_amount", ofAmount command.DestinationAmount ]
 
         Object elements
 

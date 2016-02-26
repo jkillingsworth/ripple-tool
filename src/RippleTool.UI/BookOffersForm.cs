@@ -11,18 +11,20 @@ namespace RippleTool.UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var takerGetsCurrency = textTakerGetsCurrency.Text;
-            var takerGetsIssuer = textTakerGetsIssuer.Text;
-            var takerPaysCurrency = textTakerPaysCurrency.Text;
-            var takerPaysIssuer = textTakerPaysIssuer.Text;
-
-            var commandItem = new CommandTypes.BookOffers(
-                takerGetsCurrency,
-                takerGetsIssuer,
-                takerPaysCurrency,
-                takerPaysIssuer
+            var takerGetsItem = new CommandTypes.IssuedCurrency(
+                textTakerGetsCurrency.Text,
+                textTakerGetsIssuer.Text
                 );
 
+            var takerPaysItem = new CommandTypes.IssuedCurrency(
+                textTakerPaysCurrency.Text,
+                textTakerPaysIssuer.Text
+                );
+
+            var takerGets = CommandTypes.Currency.NewIssuedCurrency(takerGetsItem);
+            var takerPays = CommandTypes.Currency.NewIssuedCurrency(takerPaysItem);
+
+            var commandItem = new CommandTypes.BookOffers(takerGets, takerPays);
             var command = CommandTypes.Command.NewBookOffers(commandItem);
             Integration.executeCommand(command);
         }

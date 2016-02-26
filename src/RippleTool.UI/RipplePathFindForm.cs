@@ -13,16 +13,19 @@ namespace RippleTool.UI
         {
             var sourceAccount = textSourceAccount.Text;
             var destinationAccount = textDestinationAccount.Text;
-            var destinationAmount = decimal.Parse(textDestinationAmount.Text);
-            var destinationCurrency = textDestinationCurrency.Text;
-            var destinationIssuer = textDestinationIssuer.Text;
+
+            var destinationAmountItem = new CommandTypes.IssuedAmount(
+                decimal.Parse(textDestinationAmount.Text),
+                textDestinationCurrency.Text,
+                textDestinationIssuer.Text
+                );
+
+            var destinationAmount = CommandTypes.Amount.NewIssuedAmount(destinationAmountItem);
 
             var commandItem = new CommandTypes.RipplePathFind(
                 sourceAccount,
                 destinationAccount,
-                destinationAmount,
-                destinationCurrency,
-                destinationIssuer
+                destinationAmount
                 );
 
             var command = CommandTypes.Command.NewRipplePathFind(commandItem);
