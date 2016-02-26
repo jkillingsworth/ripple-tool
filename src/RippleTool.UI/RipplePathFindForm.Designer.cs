@@ -33,20 +33,24 @@
             this.textSourceAccount = new System.Windows.Forms.TextBox();
             this.labelDestinationAccount = new System.Windows.Forms.Label();
             this.textDestinationAccount = new System.Windows.Forms.TextBox();
-            this.labelDestinationAmount = new System.Windows.Forms.Label();
-            this.textDestinationAmount = new System.Windows.Forms.TextBox();
-            this.labelDestinationCurrency = new System.Windows.Forms.Label();
-            this.textDestinationCurrency = new System.Windows.Forms.TextBox();
-            this.labelDestinationIssuer = new System.Windows.Forms.Label();
-            this.textDestinationIssuer = new System.Windows.Forms.TextBox();
+            this.groupDestinationAmount = new System.Windows.Forms.GroupBox();
+            this.radioIssued = new System.Windows.Forms.RadioButton();
+            this.radioNative = new System.Windows.Forms.RadioButton();
+            this.labelDestinationAmountValue = new System.Windows.Forms.Label();
+            this.textDestinationAmountValue = new System.Windows.Forms.TextBox();
+            this.labelDestinationAmountCurrency = new System.Windows.Forms.Label();
+            this.textDestinationAmountCurrency = new System.Windows.Forms.TextBox();
+            this.labelDestinationAmountIssuer = new System.Windows.Forms.Label();
+            this.textDestinationAmountIssuer = new System.Windows.Forms.TextBox();
+            this.groupDestinationAmount.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSubmit
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(12, 232);
+            this.buttonSubmit.Location = new System.Drawing.Point(12, 288);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
-            this.buttonSubmit.TabIndex = 10;
+            this.buttonSubmit.TabIndex = 11;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
@@ -83,65 +87,102 @@
             this.textDestinationAccount.Size = new System.Drawing.Size(260, 23);
             this.textDestinationAccount.TabIndex = 3;
             // 
-            // labelDestinationAmount
+            // groupDestinationAmount
             // 
-            this.labelDestinationAmount.AutoSize = true;
-            this.labelDestinationAmount.Location = new System.Drawing.Point(12, 97);
-            this.labelDestinationAmount.Name = "labelDestinationAmount";
-            this.labelDestinationAmount.Size = new System.Drawing.Size(115, 15);
-            this.labelDestinationAmount.TabIndex = 4;
-            this.labelDestinationAmount.Text = "Destination amount:";
+            this.groupDestinationAmount.Controls.Add(this.radioIssued);
+            this.groupDestinationAmount.Controls.Add(this.radioNative);
+            this.groupDestinationAmount.Location = new System.Drawing.Point(12, 100);
+            this.groupDestinationAmount.Name = "groupDestinationAmount";
+            this.groupDestinationAmount.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
+            this.groupDestinationAmount.Size = new System.Drawing.Size(260, 50);
+            this.groupDestinationAmount.TabIndex = 4;
+            this.groupDestinationAmount.TabStop = false;
+            this.groupDestinationAmount.Text = "Destination amount";
             // 
-            // textDestinationAmount
+            // radioIssued
             // 
-            this.textDestinationAmount.Location = new System.Drawing.Point(12, 115);
-            this.textDestinationAmount.Name = "textDestinationAmount";
-            this.textDestinationAmount.Size = new System.Drawing.Size(260, 23);
-            this.textDestinationAmount.TabIndex = 5;
+            this.radioIssued.AutoSize = true;
+            this.radioIssued.Checked = true;
+            this.radioIssued.Location = new System.Drawing.Point(9, 22);
+            this.radioIssued.Name = "radioIssued";
+            this.radioIssued.Size = new System.Drawing.Size(58, 19);
+            this.radioIssued.TabIndex = 0;
+            this.radioIssued.TabStop = true;
+            this.radioIssued.Text = "Issued";
+            this.radioIssued.UseVisualStyleBackColor = true;
+            this.radioIssued.CheckedChanged += new System.EventHandler(this.radioIssued_CheckedChanged);
             // 
-            // labelDestinationCurrency
+            // radioNative
             // 
-            this.labelDestinationCurrency.AutoSize = true;
-            this.labelDestinationCurrency.Location = new System.Drawing.Point(12, 141);
-            this.labelDestinationCurrency.Name = "labelDestinationCurrency";
-            this.labelDestinationCurrency.Size = new System.Drawing.Size(119, 15);
-            this.labelDestinationCurrency.TabIndex = 6;
-            this.labelDestinationCurrency.Text = "Destination currency:";
+            this.radioNative.AutoSize = true;
+            this.radioNative.Location = new System.Drawing.Point(73, 22);
+            this.radioNative.Name = "radioNative";
+            this.radioNative.Size = new System.Drawing.Size(59, 19);
+            this.radioNative.TabIndex = 1;
+            this.radioNative.Text = "Native";
+            this.radioNative.UseVisualStyleBackColor = true;
+            this.radioNative.CheckedChanged += new System.EventHandler(this.radioNative_CheckedChanged);
             // 
-            // textDestinationCurrency
+            // labelDestinationAmountValue
             // 
-            this.textDestinationCurrency.Location = new System.Drawing.Point(12, 159);
-            this.textDestinationCurrency.Name = "textDestinationCurrency";
-            this.textDestinationCurrency.Size = new System.Drawing.Size(260, 23);
-            this.textDestinationCurrency.TabIndex = 7;
+            this.labelDestinationAmountValue.AutoSize = true;
+            this.labelDestinationAmountValue.Location = new System.Drawing.Point(12, 153);
+            this.labelDestinationAmountValue.Name = "labelDestinationAmountValue";
+            this.labelDestinationAmountValue.Size = new System.Drawing.Size(146, 15);
+            this.labelDestinationAmountValue.TabIndex = 5;
+            this.labelDestinationAmountValue.Text = "Destination amount value:";
             // 
-            // labelDestinationIssuer
+            // textDestinationAmountValue
             // 
-            this.labelDestinationIssuer.AutoSize = true;
-            this.labelDestinationIssuer.Location = new System.Drawing.Point(12, 185);
-            this.labelDestinationIssuer.Name = "labelDestinationIssuer";
-            this.labelDestinationIssuer.Size = new System.Drawing.Size(103, 15);
-            this.labelDestinationIssuer.TabIndex = 8;
-            this.labelDestinationIssuer.Text = "Destination issuer:";
+            this.textDestinationAmountValue.Location = new System.Drawing.Point(12, 171);
+            this.textDestinationAmountValue.Name = "textDestinationAmountValue";
+            this.textDestinationAmountValue.Size = new System.Drawing.Size(260, 23);
+            this.textDestinationAmountValue.TabIndex = 6;
             // 
-            // textDestinationIssuer
+            // labelDestinationAmountCurrency
             // 
-            this.textDestinationIssuer.Location = new System.Drawing.Point(12, 203);
-            this.textDestinationIssuer.Name = "textDestinationIssuer";
-            this.textDestinationIssuer.Size = new System.Drawing.Size(260, 23);
-            this.textDestinationIssuer.TabIndex = 9;
+            this.labelDestinationAmountCurrency.AutoSize = true;
+            this.labelDestinationAmountCurrency.Location = new System.Drawing.Point(12, 197);
+            this.labelDestinationAmountCurrency.Name = "labelDestinationAmountCurrency";
+            this.labelDestinationAmountCurrency.Size = new System.Drawing.Size(164, 15);
+            this.labelDestinationAmountCurrency.TabIndex = 7;
+            this.labelDestinationAmountCurrency.Text = "Destination amount currency:";
+            // 
+            // textDestinationAmountCurrency
+            // 
+            this.textDestinationAmountCurrency.Location = new System.Drawing.Point(12, 215);
+            this.textDestinationAmountCurrency.Name = "textDestinationAmountCurrency";
+            this.textDestinationAmountCurrency.Size = new System.Drawing.Size(260, 23);
+            this.textDestinationAmountCurrency.TabIndex = 8;
+            // 
+            // labelDestinationAmountIssuer
+            // 
+            this.labelDestinationAmountIssuer.AutoSize = true;
+            this.labelDestinationAmountIssuer.Location = new System.Drawing.Point(12, 241);
+            this.labelDestinationAmountIssuer.Name = "labelDestinationAmountIssuer";
+            this.labelDestinationAmountIssuer.Size = new System.Drawing.Size(148, 15);
+            this.labelDestinationAmountIssuer.TabIndex = 9;
+            this.labelDestinationAmountIssuer.Text = "Destination amount issuer:";
+            // 
+            // textDestinationAmountIssuer
+            // 
+            this.textDestinationAmountIssuer.Location = new System.Drawing.Point(12, 259);
+            this.textDestinationAmountIssuer.Name = "textDestinationAmountIssuer";
+            this.textDestinationAmountIssuer.Size = new System.Drawing.Size(260, 23);
+            this.textDestinationAmountIssuer.TabIndex = 10;
             // 
             // RipplePathFindForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 462);
-            this.Controls.Add(this.textDestinationIssuer);
-            this.Controls.Add(this.labelDestinationIssuer);
-            this.Controls.Add(this.textDestinationCurrency);
-            this.Controls.Add(this.labelDestinationCurrency);
-            this.Controls.Add(this.textDestinationAmount);
-            this.Controls.Add(this.labelDestinationAmount);
+            this.Controls.Add(this.textDestinationAmountIssuer);
+            this.Controls.Add(this.labelDestinationAmountIssuer);
+            this.Controls.Add(this.textDestinationAmountCurrency);
+            this.Controls.Add(this.labelDestinationAmountCurrency);
+            this.Controls.Add(this.textDestinationAmountValue);
+            this.Controls.Add(this.labelDestinationAmountValue);
+            this.Controls.Add(this.groupDestinationAmount);
             this.Controls.Add(this.textDestinationAccount);
             this.Controls.Add(this.labelDestinationAccount);
             this.Controls.Add(this.textSourceAccount);
@@ -150,6 +191,8 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "RipplePathFindForm";
             this.Text = "Ripple Path Find";
+            this.groupDestinationAmount.ResumeLayout(false);
+            this.groupDestinationAmount.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,11 +205,14 @@
         private System.Windows.Forms.TextBox textSourceAccount;
         private System.Windows.Forms.Label labelDestinationAccount;
         private System.Windows.Forms.TextBox textDestinationAccount;
-        private System.Windows.Forms.Label labelDestinationAmount;
-        private System.Windows.Forms.TextBox textDestinationAmount;
-        private System.Windows.Forms.Label labelDestinationCurrency;
-        private System.Windows.Forms.TextBox textDestinationCurrency;
-        private System.Windows.Forms.Label labelDestinationIssuer;
-        private System.Windows.Forms.TextBox textDestinationIssuer;
+        private System.Windows.Forms.GroupBox groupDestinationAmount;
+        private System.Windows.Forms.RadioButton radioIssued;
+        private System.Windows.Forms.RadioButton radioNative;
+        private System.Windows.Forms.Label labelDestinationAmountValue;
+        private System.Windows.Forms.TextBox textDestinationAmountValue;
+        private System.Windows.Forms.Label labelDestinationAmountCurrency;
+        private System.Windows.Forms.TextBox textDestinationAmountCurrency;
+        private System.Windows.Forms.Label labelDestinationAmountIssuer;
+        private System.Windows.Forms.TextBox textDestinationAmountIssuer;
     }
 }
