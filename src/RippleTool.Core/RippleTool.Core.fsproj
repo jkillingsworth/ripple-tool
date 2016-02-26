@@ -62,6 +62,7 @@
     <Content Include="packages.config" />
     <Compile Include="Encoding.fs" />
     <Compile Include="Crypto.fs" />
+    <Compile Include="Types.fs" />
     <Compile Include="TransactionTypes.fs" />
     <Compile Include="Transactions.fs" />
     <Compile Include="CommandTypes.fs" />

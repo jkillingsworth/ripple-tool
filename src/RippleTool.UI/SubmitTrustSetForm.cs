@@ -23,7 +23,7 @@ namespace RippleTool.UI
             if (checkClearNoRipple.Checked)
                 flags |= TransactionTypes.TrustSetFlags.ClearNoRipple;
 
-            var limitAmount = new TransactionTypes.IssuedAmount(
+            var limitAmount = new Types.IssuedAmount(
                 decimal.Parse(textLimitAmountValue.Text),
                 textLimitAmountCurrency.Text,
                 textLimitAmountIssuer.Text
@@ -31,10 +31,10 @@ namespace RippleTool.UI
 
             var transactionItem = new TransactionTypes.TrustSet(
                 account,
-                TransactionTypes.Amount.NewNativeAmount(fee),
+                Types.Amount.NewNativeAmount(fee),
                 sequence,
                 (uint)flags,
-                TransactionTypes.Amount.NewIssuedAmount(limitAmount)
+                Types.Amount.NewIssuedAmount(limitAmount)
                 );
 
             var transaction = TransactionTypes.Transaction.NewTrustSet(transactionItem);

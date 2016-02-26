@@ -1,15 +1,7 @@
 ﻿module RippleTool.TransactionTypes
 
 open System
-
-//-------------------------------------------------------------------------------------------------
-
-type NativeAmount = decimal
-type IssuedAmount = { Value : decimal; Currency : string; Issuer : string }
-
-type Amount =
-    | NativeAmount of NativeAmount
-    | IssuedAmount of IssuedAmount
+open RippleTool.Types
 
 //-------------------------------------------------------------------------------------------------
 

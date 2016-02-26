@@ -24,11 +24,11 @@ namespace RippleTool.UI
 
             var transactionItem = new TransactionTypes.Payment(
                 account,
-                TransactionTypes.Amount.NewNativeAmount(fee),
+                Types.Amount.NewNativeAmount(fee),
                 sequence,
                 (uint)flags,
                 destination,
-                TransactionTypes.Amount.NewNativeAmount(amount)
+                Types.Amount.NewNativeAmount(amount)
                 );
 
             var transaction = TransactionTypes.Transaction.NewPayment(transactionItem);
