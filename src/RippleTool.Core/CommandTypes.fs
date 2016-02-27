@@ -56,7 +56,9 @@ type NoRippleCheck =
       Role : Role }
 
 type BookOffers =
-    { TakerGets : Currency
+    { Taker : string option
+      Limit : uint32 option
+      TakerGets : Currency
       TakerPays : Currency }
 
 type RipplePathFind =

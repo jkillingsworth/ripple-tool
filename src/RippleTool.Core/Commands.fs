@@ -184,6 +184,16 @@ module private Json =
               "taker_gets", ofCurrency command.TakerGets
               "taker_pays", ofCurrency command.TakerPays ]
 
+        let elements =
+            match command.Taker with
+            | Some taker -> ("taker", String taker) :: elements
+            | None -> elements
+
+        let elements =
+            match command.Limit with
+            | Some limit -> ("limit", Number (decimal limit)) :: elements
+            | None -> elements
+
         Object elements
 
     let private ofRipplePathFind (command : RipplePathFind) =

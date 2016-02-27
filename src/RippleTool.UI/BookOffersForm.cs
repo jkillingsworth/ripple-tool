@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.FSharp.Core;
 
 namespace RippleTool.UI
 {
@@ -27,6 +28,28 @@ namespace RippleTool.UI
             textTakerPaysIssuer.Enabled = enabled;
         }
 
+        private FSharpOption<string> GetTaker()
+        {
+            if (string.IsNullOrEmpty(textTaker.Text))
+            {
+                return FSharpOption<string>.None;
+            }
+
+            var value = textTaker.Text;
+            return FSharpOption<string>.Some(value);
+        }
+
+        private FSharpOption<uint> GetLimit()
+        {
+            if (string.IsNullOrEmpty(textLimit.Text))
+            {
+                return FSharpOption<uint>.None;
+            }
+
+            var value = uint.Parse(textLimit.Text);
+            return FSharpOption<uint>.Some(value);
+        }
+
         private Types.Currency GetTakerGetsIssuedCurrency()
         {
             var item = new Types.IssuedCurrency(
@@ -49,6 +72,9 @@ namespace RippleTool.UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
+            var taker = GetTaker();
+            var limit = GetLimit();
+
             var takerGets = radioTakerGetsIssued.Checked
                 ? GetTakerGetsIssuedCurrency()
                 : Types.Currency.NewNativeCurrency(null);
@@ -57,7 +83,7 @@ namespace RippleTool.UI
                 ? GetTakerPaysIssuedCurrency()
                 : Types.Currency.NewNativeCurrency(null);
 
-            var commandItem = new CommandTypes.BookOffers(takerGets, takerPays);
+            var commandItem = new CommandTypes.BookOffers(taker, limit, takerGets, takerPays);
             var command = CommandTypes.Command.NewBookOffers(commandItem);
             Integration.executeCommand(command);
         }
