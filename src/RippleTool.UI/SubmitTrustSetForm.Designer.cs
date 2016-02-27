@@ -203,7 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 462);
+            this.ClientSize = new System.Drawing.Size(284, 862);
             this.Controls.Add(this.textLimitAmountIssuer);
             this.Controls.Add(this.labelLimitAmountIssuer);
             this.Controls.Add(this.textLimitAmountCurrency);
