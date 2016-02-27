@@ -31,10 +31,11 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.labelServerUri = new System.Windows.Forms.Label();
             this.textServerUri = new System.Windows.Forms.TextBox();
-            this.labelSecretKey = new System.Windows.Forms.Label();
-            this.textSecretKey = new System.Windows.Forms.TextBox();
             this.labelAccountId = new System.Windows.Forms.Label();
             this.textAccountId = new System.Windows.Forms.TextBox();
+            this.labelSecretKey = new System.Windows.Forms.Label();
+            this.textSecretKey = new System.Windows.Forms.TextBox();
+            this.checkShowSecretKey = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // buttonOK
@@ -68,32 +69,12 @@
             this.textServerUri.TabIndex = 2;
             this.textServerUri.Text = "wss://s1.ripple.com";
             // 
-            // labelSecretKey
-            // 
-            this.labelSecretKey.Location = new System.Drawing.Point(12, 43);
-            this.labelSecretKey.Name = "labelSecretKey";
-            this.labelSecretKey.Size = new System.Drawing.Size(70, 15);
-            this.labelSecretKey.TabIndex = 3;
-            this.labelSecretKey.Text = "Secret Key:";
-            // 
-            // textSecretKey
-            // 
-            this.textSecretKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textSecretKey.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSecretKey.Location = new System.Drawing.Point(88, 41);
-            this.textSecretKey.Name = "textSecretKey";
-            this.textSecretKey.ReadOnly = true;
-            this.textSecretKey.Size = new System.Drawing.Size(284, 22);
-            this.textSecretKey.TabIndex = 4;
-            this.textSecretKey.Text = "snoPBrXtMeMyMHUVTgbuqAfg1SUTb";
-            // 
             // labelAccountId
             // 
-            this.labelAccountId.Location = new System.Drawing.Point(12, 72);
+            this.labelAccountId.Location = new System.Drawing.Point(12, 42);
             this.labelAccountId.Name = "labelAccountId";
             this.labelAccountId.Size = new System.Drawing.Size(70, 15);
-            this.labelAccountId.TabIndex = 5;
+            this.labelAccountId.TabIndex = 3;
             this.labelAccountId.Text = "Account ID:";
             // 
             // textAccountId
@@ -101,12 +82,44 @@
             this.textAccountId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textAccountId.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textAccountId.Location = new System.Drawing.Point(88, 70);
+            this.textAccountId.Location = new System.Drawing.Point(88, 40);
             this.textAccountId.Name = "textAccountId";
             this.textAccountId.ReadOnly = true;
             this.textAccountId.Size = new System.Drawing.Size(284, 22);
-            this.textAccountId.TabIndex = 6;
+            this.textAccountId.TabIndex = 4;
             this.textAccountId.Text = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh";
+            // 
+            // labelSecretKey
+            // 
+            this.labelSecretKey.Location = new System.Drawing.Point(12, 70);
+            this.labelSecretKey.Name = "labelSecretKey";
+            this.labelSecretKey.Size = new System.Drawing.Size(70, 15);
+            this.labelSecretKey.TabIndex = 5;
+            this.labelSecretKey.Text = "Secret key:";
+            // 
+            // textSecretKey
+            // 
+            this.textSecretKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textSecretKey.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textSecretKey.Location = new System.Drawing.Point(88, 68);
+            this.textSecretKey.Name = "textSecretKey";
+            this.textSecretKey.PasswordChar = '*';
+            this.textSecretKey.ReadOnly = true;
+            this.textSecretKey.Size = new System.Drawing.Size(284, 22);
+            this.textSecretKey.TabIndex = 6;
+            this.textSecretKey.Text = "snoPBrXtMeMyMHUVTgbuqAfg1SUTb";
+            // 
+            // checkShowSecretKey
+            // 
+            this.checkShowSecretKey.AutoSize = true;
+            this.checkShowSecretKey.Location = new System.Drawing.Point(88, 96);
+            this.checkShowSecretKey.Name = "checkShowSecretKey";
+            this.checkShowSecretKey.Size = new System.Drawing.Size(110, 19);
+            this.checkShowSecretKey.TabIndex = 7;
+            this.checkShowSecretKey.Text = "Show secret key";
+            this.checkShowSecretKey.UseVisualStyleBackColor = true;
+            this.checkShowSecretKey.CheckedChanged += new System.EventHandler(this.checkHideSecretKey_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -115,10 +128,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonOK;
             this.ClientSize = new System.Drawing.Size(384, 162);
-            this.Controls.Add(this.textAccountId);
-            this.Controls.Add(this.labelAccountId);
+            this.Controls.Add(this.checkShowSecretKey);
             this.Controls.Add(this.textSecretKey);
             this.Controls.Add(this.labelSecretKey);
+            this.Controls.Add(this.textAccountId);
+            this.Controls.Add(this.labelAccountId);
             this.Controls.Add(this.textServerUri);
             this.Controls.Add(this.labelServerUri);
             this.Controls.Add(this.buttonOK);
@@ -140,9 +154,10 @@
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Label labelServerUri;
         private System.Windows.Forms.TextBox textServerUri;
-        private System.Windows.Forms.Label labelSecretKey;
-        private System.Windows.Forms.TextBox textSecretKey;
         private System.Windows.Forms.Label labelAccountId;
         private System.Windows.Forms.TextBox textAccountId;
+        private System.Windows.Forms.Label labelSecretKey;
+        private System.Windows.Forms.TextBox textSecretKey;
+        private System.Windows.Forms.CheckBox checkShowSecretKey;
     }
 }
