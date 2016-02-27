@@ -7,220 +7,166 @@ open RippleTool.CommandTypes
 
 //-------------------------------------------------------------------------------------------------
 
-module private String =
+module private Json =
 
-    let ofLedger = function
+    let private toObject = Object << Map
+
+    let private required name toJson value elements =
+        (name, toJson value) :: elements
+
+    let private optional name toJson = function
+        | Some value -> value |> required name toJson
+        | None -> id
+
+    let private ofString = String
+    let private ofNumber = Number
+    let private ofUint32 = Number << decimal
+
+    let private ofLedger = String << function
         | Validated -> "validated"
         | Closed    -> "closed"
         | Current   -> "current"
 
-    let ofRole = function
+    let private ofRole = String << function
         | User    -> "user"
         | Gateway -> "gateway"
 
-//-------------------------------------------------------------------------------------------------
-
-module private Json =
-
-    let private Object = Map >> Object
-
     let private ofIssuedCurrency (currency : IssuedCurrency) =
-
-        let elements =
-            [ "currency", String currency.Code
-              "issuer", String currency.Issuer ]
-
-        Object elements
+        []
+        |> required "currency" ofString currency.Code
+        |> required "issuer" ofString currency.Issuer
+        |> toObject
 
     let private ofNativeCurrency (currency : NativeCurrency) =
-
-        let elements =
-            [ "currency", String "XRP" ]
-
-        Object elements
+        []
+        |> required "currency" ofString "XRP"
+        |> toObject
 
     let private ofCurrency = function
         | IssuedCurrency currency -> ofIssuedCurrency currency
         | NativeCurrency currency -> ofNativeCurrency currency
 
     let private ofIssuedAmount (amount : IssuedAmount) =
-
-        let elements =
-            [ "value", Number amount.Value
-              "currency", String amount.Currency
-              "issuer", String amount.Issuer ]
-
-        Object elements
+        []
+        |> required "value" ofNumber amount.Value
+        |> required "currency" ofString amount.Currency
+        |> required "issuer" ofString amount.Issuer
+        |> toObject
 
     let private ofNativeAmount (amount : NativeAmount) =
 
-        Number amount
+        ofNumber amount
 
     let private ofAmount = function
         | IssuedAmount amount -> ofIssuedAmount amount
         | NativeAmount amount -> ofNativeAmount amount
 
     let private ofPing (command : Ping) =
-
-        let elements =
-            [ "command", String "ping" ]
-
-        Object elements
+        []
+        |> required "command" ofString "ping"
+        |> toObject
 
     let private ofRandom (command : Random) =
-
-        let elements =
-            [ "command", String "random" ]
-
-        Object elements
+        []
+        |> required "command" ofString "random"
+        |> toObject
 
     let private ofServerInfo (command : ServerInfo) =
-
-        let elements =
-            [ "command", String "server_info" ]
-
-        Object elements
+        []
+        |> required "command" ofString "server_info"
+        |> toObject
 
     let private ofServerState (command : ServerState) =
-
-        let elements =
-            [ "command", String "server_state" ]
-
-        Object elements
+        []
+        |> required "command" ofString "server_state"
+        |> toObject
 
     let private ofAccountCurrencies (command : AccountCurrencies) =
-
-        let ledger = String.ofLedger command.Ledger
-
-        let elements =
-            [ "command", String "account_currencies"
-              "account", String command.Account
-              "ledger_index", String ledger ]
-
-        Object elements
+        []
+        |> required "command" ofString "account_currencies"
+        |> required "account" ofString command.Account
+        |> required "ledger_index" ofLedger command.Ledger
+        |> toObject
 
     let private ofAccountInfo (command : AccountInfo) =
-
-        let ledger = String.ofLedger command.Ledger
-
-        let elements =
-            [ "command", String "account_info"
-              "account", String command.Account
-              "ledger_index", String ledger ]
-
-        Object elements
+        []
+        |> required "command" ofString "account_info"
+        |> required "account" ofString command.Account
+        |> required "ledger_index" ofLedger command.Ledger
+        |> toObject
 
     let private ofAccountLines (command : AccountLines) =
-
-        let ledger = String.ofLedger command.Ledger
-
-        let elements =
-            [ "command", String "account_lines"
-              "account", String command.Account
-              "ledger_index", String ledger ]
-
-        Object elements
+        []
+        |> required "command" ofString "account_lines"
+        |> required "account" ofString command.Account
+        |> required "ledger_index" ofLedger command.Ledger
+        |> toObject
 
     let private ofAccountObjects (command : AccountObjects) =
-
-        let ledger = String.ofLedger command.Ledger
-
-        let elements =
-            [ "command", String "account_objects"
-              "account", String command.Account
-              "ledger_index", String ledger ]
-
-        Object elements
+        []
+        |> required "command" ofString "account_objects"
+        |> required "account" ofString command.Account
+        |> required "ledger_index" ofLedger command.Ledger
+        |> toObject
 
     let private ofAccountOffers (command : AccountOffers) =
-
-        let ledger = String.ofLedger command.Ledger
-
-        let elements =
-            [ "command", String "account_objects"
-              "account", String command.Account
-              "ledger_index", String ledger ]
-
-        Object elements
+        []
+        |> required "command" ofString "account_offers"
+        |> required "account" ofString command.Account
+        |> required "ledger_index" ofLedger command.Ledger
+        |> toObject
 
     let private ofAccountTx (command : AccountTx) =
-
-        let elements =
-            [ "command", String "account_tx"
-              "account", String command.Account
-              "ledger_index_min", Number -1m
-              "ledger_index_max", Number -1m ]
-
-        Object elements
+        []
+        |> required "command" ofString "account_tx"
+        |> required "account" ofString command.Account
+        |> required "ledger_index_min" ofNumber -1m
+        |> required "ledger_index_max" ofNumber -1m
+        |> toObject
 
     let private ofGatewayBalances (command : GatewayBalances) =
-
-        let ledger = String.ofLedger command.Ledger
-
-        let elements =
-            [ "command", String "gateway_balances"
-              "account", String command.Account
-              "ledger_index", String ledger ]
-
-        Object elements
+        []
+        |> required "command" ofString "gateway_balances"
+        |> required "account" ofString command.Account
+        |> required "ledger_index" ofLedger command.Ledger
+        |> toObject
 
     let private ofNoRippleCheck (command : NoRippleCheck) =
-
-        let ledger = String.ofLedger command.Ledger
-        let role = String.ofRole command.Role
-
-        let elements =
-            [ "command", String "noripple_check"
-              "account", String command.Account
-              "ledger_index", String ledger
-              "role", String role ]
-
-        Object elements
+        []
+        |> required "command" ofString "noripple_check"
+        |> required "account" ofString command.Account
+        |> required "ledger_index" ofLedger command.Ledger
+        |> required "role" ofRole command.Role
+        |> toObject
 
     let private ofBookOffers (command : BookOffers) =
-
-        let elements =
-            [ "command", String "book_offers"
-              "taker_gets", ofCurrency command.TakerGets
-              "taker_pays", ofCurrency command.TakerPays ]
-
-        let elements =
-            match command.Taker with
-            | Some taker -> ("taker", String taker) :: elements
-            | None -> elements
-
-        let elements =
-            match command.Limit with
-            | Some limit -> ("limit", Number (decimal limit)) :: elements
-            | None -> elements
-
-        Object elements
+        []
+        |> required "command" ofString "book_offers"
+        |> optional "taker" ofString command.Taker
+        |> optional "limit" ofUint32 command.Limit
+        |> required "taker_gets" ofCurrency command.TakerGets
+        |> required "taker_pays" ofCurrency command.TakerPays
+        |> toObject
 
     let private ofRipplePathFind (command : RipplePathFind) =
-
-        let elements =
-            [ "command", String "ripple_path_find"
-              "source_account", String command.SourceAccount
-              "destination_account", String command.DestinationAccount
-              "destination_amount", ofAmount command.DestinationAmount ]
-
-        Object elements
+        []
+        |> required "command" ofString "ripple_path_find"
+        |> required "source_account" ofString command.SourceAccount
+        |> required "destination_account" ofString command.DestinationAccount
+        |> required "destination_amount" ofAmount command.DestinationAmount
+        |> toObject
 
     let private ofSubmit (command : Submit) =
-
-        let elements =
-            [ "command", String "submit"
-              "tx_blob", String command.TxBlob ]
-
-        Object elements
+        []
+        |> required "command" ofString "submit"
+        |> required "tx_blob" ofString command.TxBlob
+        |> toObject
 
     let private ofTx (command : Tx) =
-
-        let elements =
-            [ "command", String "tx"
-              "transaction", String command.Transaction ]
-
-        Object elements
+        []
+        |> required "command" ofString "tx"
+        |> required "transaction" ofString command.Transaction
+        |> toObject
 
     let ofCommand = function
         | Ping              command -> command |> ofPing
