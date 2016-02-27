@@ -24,13 +24,6 @@ module private Json =
 
     let private Object = Map >> Object
 
-    let private ofNativeCurrency (currency : NativeCurrency) =
-
-        let elements =
-            [ "currency", String "XRP" ]
-
-        Object elements
-
     let private ofIssuedCurrency (currency : IssuedCurrency) =
 
         let elements =
@@ -39,13 +32,16 @@ module private Json =
 
         Object elements
 
+    let private ofNativeCurrency (currency : NativeCurrency) =
+
+        let elements =
+            [ "currency", String "XRP" ]
+
+        Object elements
+
     let private ofCurrency = function
-        | NativeCurrency currency -> ofNativeCurrency currency
         | IssuedCurrency currency -> ofIssuedCurrency currency
-
-    let private ofNativeAmount (amount : NativeAmount) =
-
-        Number amount
+        | NativeCurrency currency -> ofNativeCurrency currency
 
     let private ofIssuedAmount (amount : IssuedAmount) =
 
@@ -56,9 +52,13 @@ module private Json =
 
         Object elements
 
+    let private ofNativeAmount (amount : NativeAmount) =
+
+        Number amount
+
     let private ofAmount = function
-        | NativeAmount amount -> ofNativeAmount amount
         | IssuedAmount amount -> ofIssuedAmount amount
+        | NativeAmount amount -> ofNativeAmount amount
 
     let private ofPing (command : Ping) =
 

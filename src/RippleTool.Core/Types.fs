@@ -2,16 +2,16 @@
 
 //-------------------------------------------------------------------------------------------------
 
-type NativeCurrency = NativeCurrency
 type IssuedCurrency = { Code : string; Issuer : string }
+type NativeCurrency = NativeCurrency
 
 type Currency =
-    | NativeCurrency of NativeCurrency
     | IssuedCurrency of IssuedCurrency
+    | NativeCurrency of NativeCurrency
 
-type NativeAmount = decimal
 type IssuedAmount = { Value : decimal; Currency : string; Issuer : string }
+type NativeAmount = decimal
 
 type Amount =
-    | NativeAmount of NativeAmount
     | IssuedAmount of IssuedAmount
+    | NativeAmount of NativeAmount

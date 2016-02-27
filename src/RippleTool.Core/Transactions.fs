@@ -22,28 +22,6 @@ module Binary =
         | x when x >= 10m -> log10 (x / 10m) (n + 1)
         | x -> n
 
-    let private ofNativeAmount (input : NativeAmount) =
-
-        let value = input
-
-        let typeFlag = 0
-        let signFlag = if value < Decimal.Zero then 0 else 1
-        let valueAbs = if value < Decimal.Zero then Decimal.Negate(value) else value
-
-        if (valueAbs > 100000000000m) then
-            failwith "Native amount absolute value cannot exceed 100000000000."
-
-        let mantissa = Decimal.Round(valueAbs, 6)
-        let mantissa = pow10 mantissa <| 6
-
-        let bits1 = uint64 typeFlag <<< 63
-        let bits2 = uint64 signFlag <<< 62
-        let bits3 = uint64 mantissa <<< 00
-
-        let combined = Array.fold (|||) 0UL [| bits1; bits2; bits3 |]
-
-        Binary.ofUint64 combined
-
     let private ofIssuedAmount (input : IssuedAmount) =
 
         let value = input.Value
@@ -73,6 +51,28 @@ module Binary =
 
         Array.concat [ bytes1; bytes2; bytes3; bytes4; bytes5 ]
 
+    let private ofNativeAmount (input : NativeAmount) =
+
+        let value = input
+
+        let typeFlag = 0
+        let signFlag = if value < Decimal.Zero then 0 else 1
+        let valueAbs = if value < Decimal.Zero then Decimal.Negate(value) else value
+
+        if (valueAbs > 100000000000m) then
+            failwith "Native amount absolute value cannot exceed 100000000000."
+
+        let mantissa = Decimal.Round(valueAbs, 6)
+        let mantissa = pow10 mantissa <| 6
+
+        let bits1 = uint64 typeFlag <<< 63
+        let bits2 = uint64 signFlag <<< 62
+        let bits3 = uint64 mantissa <<< 00
+
+        let combined = Array.fold (|||) 0UL [| bits1; bits2; bits3 |]
+
+        Binary.ofUint64 combined
+
     let private encodeLength = function
 
         | length when length <= 192u
@@ -97,8 +97,8 @@ module Binary =
         | _ -> failwith "Cannot encode variable length data greater than 918744 bytes."
 
     let ofAmount = function
-        | NativeAmount amount -> ofNativeAmount amount
         | IssuedAmount amount -> ofIssuedAmount amount
+        | NativeAmount amount -> ofNativeAmount amount
 
     let ofVariable (input : byte[]) =
 
