@@ -219,3 +219,23 @@ type RipplePathFindModel() =
               DestinationAmount = destinationAmount }
 
         executeCommand (command |> RipplePathFind)
+
+//-------------------------------------------------------------------------------------------------
+
+type TxModel() =
+
+    inherit Model()
+
+    let mutable transaction = ""
+
+    member this.Transaction
+        with get () = transaction
+        and set value =
+            transaction <- value
+            this.OnPropertyChanged(<@ this.Transaction @>)
+
+    member this.Submit() =
+
+        let command = { Transaction = transaction }
+
+        executeCommand (command |> Tx)

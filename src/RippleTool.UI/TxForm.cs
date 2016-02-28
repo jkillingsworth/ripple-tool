@@ -7,14 +7,18 @@ namespace RippleTool.UI
         public TxForm()
         {
             InitializeComponent();
+            Model = new Models.TxModel();
+        }
+
+        private Models.TxModel Model
+        {
+            get { return bindingSource.DataSource as Models.TxModel; }
+            set { bindingSource.DataSource = value; }
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var transaction = textTransaction.Text;
-            var commandItem = new CommandTypes.Tx(transaction);
-            var command = CommandTypes.Command.NewTx(commandItem);
-            Integration.executeCommand(command);
+            Model.Submit();
         }
     }
 }

@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.labelTransaction = new System.Windows.Forms.Label();
             this.textTransaction = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(RippleTool.UI.Models.TxModel);
             // 
             // buttonSubmit
             // 
@@ -54,6 +61,7 @@
             // 
             // textTransaction
             // 
+            this.textTransaction.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Transaction", true));
             this.textTransaction.Location = new System.Drawing.Point(12, 27);
             this.textTransaction.Name = "textTransaction";
             this.textTransaction.Size = new System.Drawing.Size(260, 23);
@@ -70,6 +78,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "TxForm";
             this.Text = "Tx";
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,6 +86,7 @@
 
         #endregion
 
+        private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.Label labelTransaction;
         private System.Windows.Forms.TextBox textTransaction;
