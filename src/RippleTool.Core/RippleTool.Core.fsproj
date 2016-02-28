@@ -68,6 +68,7 @@
     <Compile Include="CommandTypes.fs" />
     <Compile Include="Commands.fs" />
     <Compile Include="Integration.fs" />
+    <Compile Include="UI.Models.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Aether">
