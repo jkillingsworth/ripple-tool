@@ -5,7 +5,9 @@ open RippleTool.Encoding
 
 //-------------------------------------------------------------------------------------------------
 
-type EqualBinaryConstraint(expected) = inherit Constraint() with
+type EqualBinaryConstraint(expected) =
+
+    inherit Constraint()
 
     let display binary =
         let max = 100
