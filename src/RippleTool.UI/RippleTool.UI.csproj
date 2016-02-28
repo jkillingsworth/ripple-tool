@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\Models.BookOffersModel.datasource" />
+    <None Include="Properties\DataSources\Models.RipplePathFindModel.datasource" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs">

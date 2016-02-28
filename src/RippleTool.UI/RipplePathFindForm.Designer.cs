@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.labelSourceAccount = new System.Windows.Forms.Label();
             this.textSourceAccount = new System.Windows.Forms.TextBox();
@@ -42,8 +44,13 @@
             this.textDestinationAmountCurrency = new System.Windows.Forms.TextBox();
             this.labelDestinationAmountIssuer = new System.Windows.Forms.Label();
             this.textDestinationAmountIssuer = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupDestinationAmount.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(RippleTool.UI.Models.RipplePathFindModel);
             // 
             // buttonSubmit
             // 
@@ -66,6 +73,7 @@
             // 
             // textSourceAccount
             // 
+            this.textSourceAccount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "SourceAccount", true));
             this.textSourceAccount.Location = new System.Drawing.Point(12, 27);
             this.textSourceAccount.Name = "textSourceAccount";
             this.textSourceAccount.Size = new System.Drawing.Size(260, 23);
@@ -82,6 +90,7 @@
             // 
             // textDestinationAccount
             // 
+            this.textDestinationAccount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DestinationAccount", true));
             this.textDestinationAccount.Location = new System.Drawing.Point(12, 71);
             this.textDestinationAccount.Name = "textDestinationAccount";
             this.textDestinationAccount.Size = new System.Drawing.Size(260, 23);
@@ -103,6 +112,7 @@
             // 
             this.radioIssued.AutoSize = true;
             this.radioIssued.Checked = true;
+            this.radioIssued.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "DestinationAmountIssued", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.radioIssued.Location = new System.Drawing.Point(9, 22);
             this.radioIssued.Name = "radioIssued";
             this.radioIssued.Size = new System.Drawing.Size(58, 19);
@@ -110,18 +120,17 @@
             this.radioIssued.TabStop = true;
             this.radioIssued.Text = "Issued";
             this.radioIssued.UseVisualStyleBackColor = true;
-            this.radioIssued.CheckedChanged += new System.EventHandler(this.radioIssued_CheckedChanged);
             // 
             // radioNative
             // 
             this.radioNative.AutoSize = true;
+            this.radioNative.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "DestinationAmountNative", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.radioNative.Location = new System.Drawing.Point(73, 22);
             this.radioNative.Name = "radioNative";
             this.radioNative.Size = new System.Drawing.Size(59, 19);
             this.radioNative.TabIndex = 1;
             this.radioNative.Text = "Native";
             this.radioNative.UseVisualStyleBackColor = true;
-            this.radioNative.CheckedChanged += new System.EventHandler(this.radioNative_CheckedChanged);
             // 
             // labelDestinationAmountValue
             // 
@@ -134,6 +143,7 @@
             // 
             // textDestinationAmountValue
             // 
+            this.textDestinationAmountValue.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DestinationAmountValue", true));
             this.textDestinationAmountValue.Location = new System.Drawing.Point(12, 171);
             this.textDestinationAmountValue.Name = "textDestinationAmountValue";
             this.textDestinationAmountValue.Size = new System.Drawing.Size(260, 23);
@@ -142,6 +152,7 @@
             // labelDestinationAmountCurrency
             // 
             this.labelDestinationAmountCurrency.AutoSize = true;
+            this.labelDestinationAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIssued", true));
             this.labelDestinationAmountCurrency.Location = new System.Drawing.Point(12, 197);
             this.labelDestinationAmountCurrency.Name = "labelDestinationAmountCurrency";
             this.labelDestinationAmountCurrency.Size = new System.Drawing.Size(164, 15);
@@ -150,6 +161,8 @@
             // 
             // textDestinationAmountCurrency
             // 
+            this.textDestinationAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DestinationAmountCurrency", true));
+            this.textDestinationAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIssued", true));
             this.textDestinationAmountCurrency.Location = new System.Drawing.Point(12, 215);
             this.textDestinationAmountCurrency.Name = "textDestinationAmountCurrency";
             this.textDestinationAmountCurrency.Size = new System.Drawing.Size(260, 23);
@@ -158,6 +171,7 @@
             // labelDestinationAmountIssuer
             // 
             this.labelDestinationAmountIssuer.AutoSize = true;
+            this.labelDestinationAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIssued", true));
             this.labelDestinationAmountIssuer.Location = new System.Drawing.Point(12, 241);
             this.labelDestinationAmountIssuer.Name = "labelDestinationAmountIssuer";
             this.labelDestinationAmountIssuer.Size = new System.Drawing.Size(148, 15);
@@ -166,6 +180,8 @@
             // 
             // textDestinationAmountIssuer
             // 
+            this.textDestinationAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DestinationAmountIssuer", true));
+            this.textDestinationAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIssued", true));
             this.textDestinationAmountIssuer.Location = new System.Drawing.Point(12, 259);
             this.textDestinationAmountIssuer.Name = "textDestinationAmountIssuer";
             this.textDestinationAmountIssuer.Size = new System.Drawing.Size(260, 23);
@@ -191,6 +207,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "RipplePathFindForm";
             this.Text = "Ripple Path Find";
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupDestinationAmount.ResumeLayout(false);
             this.groupDestinationAmount.PerformLayout();
             this.ResumeLayout(false);
@@ -200,6 +217,7 @@
 
         #endregion
 
+        private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.Label labelSourceAccount;
         private System.Windows.Forms.TextBox textSourceAccount;

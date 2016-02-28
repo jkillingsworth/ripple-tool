@@ -141,3 +141,81 @@ type BookOffersModel() =
               TakerPays = takerPays }
 
         executeCommand (command |> BookOffers)
+
+//-------------------------------------------------------------------------------------------------
+
+type RipplePathFindModel() =
+
+    inherit Model()
+
+    let mutable sourceAccount = ""
+    let mutable destinationAccount = ""
+    let mutable destinationAmountIssued = true
+    let mutable destinationAmountNative = false
+    let mutable destinationAmountValue = ""
+    let mutable destinationAmountCurrency = ""
+    let mutable destinationAmountIssuer = ""
+
+    member this.SourceAccount
+        with get () = sourceAccount
+        and set value =
+            sourceAccount <- value
+            this.OnPropertyChanged(<@ this.SourceAccount @>)
+
+    member this.DestinationAccount
+        with get () = destinationAccount
+        and set value =
+            destinationAccount <- value
+            this.OnPropertyChanged(<@ this.DestinationAccount @>)
+
+    member this.DestinationAmountIssued
+        with get () = destinationAmountIssued
+        and set value =
+            destinationAmountIssued <- value
+            destinationAmountNative <- not value
+            this.OnPropertyChanged(<@ this.DestinationAmountIssued @>)
+            this.OnPropertyChanged(<@ this.DestinationAmountNative @>)
+
+    member this.DestinationAmountNative
+        with get () = destinationAmountNative
+        and set value =
+            destinationAmountIssued <- not value
+            destinationAmountNative <- value
+            this.OnPropertyChanged(<@ this.DestinationAmountIssued @>)
+            this.OnPropertyChanged(<@ this.DestinationAmountNative @>)
+
+    member this.DestinationAmountValue
+        with get () = destinationAmountValue
+        and set value =
+            destinationAmountValue <- value
+            this.OnPropertyChanged(<@ this.DestinationAmountValue @>)
+
+    member this.DestinationAmountCurrency
+        with get () = destinationAmountCurrency
+        and set value =
+            destinationAmountCurrency <- value
+            this.OnPropertyChanged(<@ this.DestinationAmountCurrency @>)
+
+    member this.DestinationAmountIssuer
+        with get () = destinationAmountIssuer
+        and set value =
+            destinationAmountIssuer <- value
+            this.OnPropertyChanged(<@ this.DestinationAmountIssuer @>)
+
+    member this.Submit() =
+
+        let destinationAmount =
+            match destinationAmountIssued with
+            | true  ->
+                let amount = { Value = Decimal.Parse destinationAmountValue; Currency = destinationAmountCurrency; Issuer = destinationAmountIssuer }
+                IssuedAmount amount
+            | false ->
+                let amount = Decimal.Parse destinationAmountValue
+                NativeAmount amount
+
+        let command =
+            { SourceAccount = sourceAccount
+              DestinationAccount = destinationAccount
+              DestinationAmount = destinationAmount }
+
+        executeCommand (command |> RipplePathFind)
