@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.labelAccount = new System.Windows.Forms.Label();
             this.textAccount = new System.Windows.Forms.TextBox();
@@ -45,8 +47,13 @@
             this.textLimitAmountCurrency = new System.Windows.Forms.TextBox();
             this.labelLimitAmountIssuer = new System.Windows.Forms.Label();
             this.textLimitAmountIssuer = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupFlags.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(RippleTool.UI.Models.SubmitTrustSetModel);
             // 
             // buttonSubmit
             // 
@@ -69,6 +76,7 @@
             // 
             // textAccount
             // 
+            this.textAccount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Account", true));
             this.textAccount.Location = new System.Drawing.Point(12, 27);
             this.textAccount.Name = "textAccount";
             this.textAccount.Size = new System.Drawing.Size(260, 23);
@@ -85,6 +93,7 @@
             // 
             // textFee
             // 
+            this.textFee.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Fee", true));
             this.textFee.Location = new System.Drawing.Point(12, 71);
             this.textFee.Name = "textFee";
             this.textFee.Size = new System.Drawing.Size(260, 23);
@@ -101,6 +110,7 @@
             // 
             // textSequence
             // 
+            this.textSequence.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Sequence", true));
             this.textSequence.Location = new System.Drawing.Point(12, 115);
             this.textSequence.Name = "textSequence";
             this.textSequence.Size = new System.Drawing.Size(260, 23);
@@ -124,6 +134,7 @@
             this.checkFullyCanonicalSig.AutoSize = true;
             this.checkFullyCanonicalSig.Checked = true;
             this.checkFullyCanonicalSig.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkFullyCanonicalSig.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "FlagFullyCanonicalSig", true));
             this.checkFullyCanonicalSig.Location = new System.Drawing.Point(9, 22);
             this.checkFullyCanonicalSig.Name = "checkFullyCanonicalSig";
             this.checkFullyCanonicalSig.Size = new System.Drawing.Size(157, 19);
@@ -134,6 +145,7 @@
             // checkSetNoRipple
             // 
             this.checkSetNoRipple.AutoSize = true;
+            this.checkSetNoRipple.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "FlagSetNoRipple", true));
             this.checkSetNoRipple.Location = new System.Drawing.Point(9, 47);
             this.checkSetNoRipple.Name = "checkSetNoRipple";
             this.checkSetNoRipple.Size = new System.Drawing.Size(92, 19);
@@ -144,6 +156,7 @@
             // checkClearNoRipple
             // 
             this.checkClearNoRipple.AutoSize = true;
+            this.checkClearNoRipple.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "FlagClearNoRipple", true));
             this.checkClearNoRipple.Location = new System.Drawing.Point(9, 72);
             this.checkClearNoRipple.Name = "checkClearNoRipple";
             this.checkClearNoRipple.Size = new System.Drawing.Size(103, 19);
@@ -162,6 +175,7 @@
             // 
             // textLimitAmountValue
             // 
+            this.textLimitAmountValue.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "LimitAmountValue", true));
             this.textLimitAmountValue.Location = new System.Drawing.Point(12, 265);
             this.textLimitAmountValue.Name = "textLimitAmountValue";
             this.textLimitAmountValue.Size = new System.Drawing.Size(260, 23);
@@ -178,6 +192,7 @@
             // 
             // textLimitAmountCurrency
             // 
+            this.textLimitAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "LimitAmountCurrency", true));
             this.textLimitAmountCurrency.Location = new System.Drawing.Point(12, 309);
             this.textLimitAmountCurrency.Name = "textLimitAmountCurrency";
             this.textLimitAmountCurrency.Size = new System.Drawing.Size(260, 23);
@@ -194,6 +209,7 @@
             // 
             // textLimitAmountIssuer
             // 
+            this.textLimitAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "LimitAmountIssuer", true));
             this.textLimitAmountIssuer.Location = new System.Drawing.Point(12, 353);
             this.textLimitAmountIssuer.Name = "textLimitAmountIssuer";
             this.textLimitAmountIssuer.Size = new System.Drawing.Size(260, 23);
@@ -221,6 +237,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SubmitTrustSetForm";
             this.Text = "Trust Set";
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupFlags.ResumeLayout(false);
             this.groupFlags.PerformLayout();
             this.ResumeLayout(false);
@@ -230,6 +247,7 @@
 
         #endregion
 
+        private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.Label labelAccount;
         private System.Windows.Forms.TextBox textAccount;

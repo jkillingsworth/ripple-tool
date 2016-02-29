@@ -7,38 +7,18 @@ namespace RippleTool.UI
         public SubmitTrustSetForm()
         {
             InitializeComponent();
+            Model = new Models.SubmitTrustSetModel();
+        }
+
+        private Models.SubmitTrustSetModel Model
+        {
+            get { return bindingSource.DataSource as Models.SubmitTrustSetModel; }
+            set { bindingSource.DataSource = value; }
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var account = textAccount.Text;
-            var fee = decimal.Parse(textFee.Text);
-            var sequence = uint.Parse(textSequence.Text);
-
-            var flags = TransactionTypes.TrustSetFlags.None;
-            if (checkFullyCanonicalSig.Checked)
-                flags |= TransactionTypes.TrustSetFlags.FullyCanonicalSig;
-            if (checkSetNoRipple.Checked)
-                flags |= TransactionTypes.TrustSetFlags.SetNoRipple;
-            if (checkClearNoRipple.Checked)
-                flags |= TransactionTypes.TrustSetFlags.ClearNoRipple;
-
-            var limitAmount = new Types.IssuedAmount(
-                decimal.Parse(textLimitAmountValue.Text),
-                textLimitAmountCurrency.Text,
-                textLimitAmountIssuer.Text
-                );
-
-            var transactionItem = new TransactionTypes.TrustSet(
-                account,
-                Types.Amount.NewNativeAmount(fee),
-                sequence,
-                (uint)flags,
-                Types.Amount.NewIssuedAmount(limitAmount)
-                );
-
-            var transaction = TransactionTypes.Transaction.NewTrustSet(transactionItem);
-            Integration.executeSubmitTransaction(transaction);
+            Model.Submit();
         }
     }
 }

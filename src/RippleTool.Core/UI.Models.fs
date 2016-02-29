@@ -298,6 +298,80 @@ type SubmitPaymentModel() =
 
 //-------------------------------------------------------------------------------------------------
 
+type SubmitTrustSetModel() =
+
+    inherit Model()
+
+    let account = ref ""
+    let fee = ref ""
+    let sequence = ref ""
+    let flagFullyCanonicalSig = ref true
+    let flagSetNoRipple = ref false
+    let flagClearNoRipple = ref false
+    let limitAmountValue = ref ""
+    let limitAmountCurrency = ref ""
+    let limitAmountIssuer = ref ""
+
+    member this.Account
+        with get () = !account
+        and set value = set this value account <@ this.Account @>
+
+    member this.Fee
+        with get () = !fee
+        and set value = set this value fee <@ this.Fee @>
+
+    member this.Sequence
+        with get () = !sequence
+        and set value = set this value sequence <@ this.Sequence @>
+
+    member this.FlagFullyCanonicalSig
+        with get () = !flagFullyCanonicalSig
+        and set value = set this value flagFullyCanonicalSig <@ this.FlagFullyCanonicalSig @>
+
+    member this.FlagSetNoRipple
+        with get () = !flagSetNoRipple
+        and set value = set this value flagSetNoRipple <@ this.FlagSetNoRipple @>
+
+    member this.FlagClearNoRipple
+        with get () = !flagClearNoRipple
+        and set value = set this value flagClearNoRipple <@ this.FlagClearNoRipple @>
+
+    member this.LimitAmountValue
+        with get () = !limitAmountValue
+        and set value = set this value limitAmountValue <@ this.LimitAmountValue @>
+
+    member this.LimitAmountCurrency
+        with get () = !limitAmountCurrency
+        and set value = set this value limitAmountCurrency <@ this.LimitAmountCurrency @>
+
+    member this.LimitAmountIssuer
+        with get () = !limitAmountIssuer
+        and set value = set this value limitAmountIssuer <@ this.LimitAmountIssuer @>
+
+    member this.Submit() =
+
+        let fee = toNativeAmount !fee
+
+        let flags =
+            TrustSetFlags.None
+            |> combineFlag !flagFullyCanonicalSig TrustSetFlags.FullyCanonicalSig
+            |> combineFlag !flagSetNoRipple       TrustSetFlags.SetNoRipple
+            |> combineFlag !flagClearNoRipple     TrustSetFlags.ClearNoRipple
+
+        let limitAmount =
+            toIssuedAmount !limitAmountValue !limitAmountCurrency !limitAmountIssuer
+
+        let transaction =
+            { Account = !account
+              Fee = fee
+              Sequence = UInt32.Parse !sequence
+              Flags = uint32 flags
+              LimitAmount = limitAmount }
+
+        executeSubmitTransaction (transaction |> TrustSet)
+
+//-------------------------------------------------------------------------------------------------
+
 type TxModel() =
 
     inherit Model()
