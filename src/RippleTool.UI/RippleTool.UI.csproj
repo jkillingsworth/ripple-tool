@@ -302,6 +302,7 @@
   <ItemGroup>
     <None Include="Properties\DataSources\Models.BookOffersModel.datasource" />
     <None Include="Properties\DataSources\Models.RipplePathFindModel.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitPaymentModel.datasource" />
     <None Include="Properties\DataSources\Models.TxModel.datasource" />
     <None Include="Resources\JsonFormatted.png" />
     <None Include="Resources\JsonRaw.png" />

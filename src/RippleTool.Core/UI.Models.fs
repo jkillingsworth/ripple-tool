@@ -213,6 +213,91 @@ type RipplePathFindModel() =
 
 //-------------------------------------------------------------------------------------------------
 
+type SubmitPaymentModel() =
+
+    inherit Model()
+
+    let account = ref ""
+    let fee = ref ""
+    let sequence = ref ""
+    let flagFullyCanonicalSig = ref true
+    let destination = ref ""
+    let amountIsIssued = ref true
+    let amountIsNative = ref false
+    let amountValue = ref ""
+    let amountCurrency = ref ""
+    let amountIssuer = ref ""
+
+    member this.Account
+        with get () = !account
+        and set value = set this value account <@ this.Account @>
+
+    member this.Fee
+        with get () = !fee
+        and set value = set this value fee <@ this.Fee @>
+
+    member this.Sequence
+        with get () = !sequence
+        and set value = set this value sequence <@ this.Sequence @>
+
+    member this.FlagFullyCanonicalSig
+        with get () = !flagFullyCanonicalSig
+        and set value = set this value flagFullyCanonicalSig <@ this.FlagFullyCanonicalSig @>
+
+    member this.Destination
+        with get () = !destination
+        and set value = set this value destination <@ this.Destination @>
+
+    member this.AmountIsIssued
+        with get () = !amountIsIssued
+        and set value =
+            let issued, native = (value, not value)
+            set this issued amountIsIssued <@ this.AmountIsIssued @>
+            set this native amountIsNative <@ this.AmountIsNative @>
+
+    member this.AmountIsNative
+        with get () = !amountIsNative
+        and set value =
+            let issued, native = (not value, value)
+            set this issued amountIsIssued <@ this.AmountIsIssued @>
+            set this native amountIsNative <@ this.AmountIsNative @>
+
+    member this.AmountValue
+        with get () = !amountValue
+        and set value = set this value amountValue <@ this.AmountValue @>
+
+    member this.AmountCurrency
+        with get () = !amountCurrency
+        and set value = set this value amountCurrency <@ this.AmountCurrency @>
+
+    member this.AmountIssuer
+        with get () = !amountIssuer
+        and set value = set this value amountIssuer <@ this.AmountIssuer @>
+
+    member this.Submit() =
+
+        let fee = toNativeAmount !fee
+
+        let flags =
+            PaymentFlags.None
+            |> combineFlag !flagFullyCanonicalSig PaymentFlags.FullyCanonicalSig
+
+        let amount =
+            !amountIsIssued
+            |> toAmount !amountValue !amountCurrency !amountIssuer
+
+        let transaction =
+            { Account = !account
+              Fee = fee
+              Sequence = UInt32.Parse !sequence
+              Flags = uint32 flags
+              Destination = !destination
+              Amount = amount }
+
+        executeSubmitTransaction (transaction |> Payment)
+
+//-------------------------------------------------------------------------------------------------
+
 type TxModel() =
 
     inherit Model()

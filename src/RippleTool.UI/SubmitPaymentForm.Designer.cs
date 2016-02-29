@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.labelAccount = new System.Windows.Forms.Label();
             this.textAccount = new System.Windows.Forms.TextBox();
@@ -48,9 +50,14 @@
             this.textAmountCurrency = new System.Windows.Forms.TextBox();
             this.labelAmountIssuer = new System.Windows.Forms.Label();
             this.textAmountIssuer = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupFlags.SuspendLayout();
             this.groupAmount.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(RippleTool.UI.Models.SubmitPaymentModel);
             // 
             // buttonSubmit
             // 
@@ -73,6 +80,7 @@
             // 
             // textAccount
             // 
+            this.textAccount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Account", true));
             this.textAccount.Location = new System.Drawing.Point(12, 27);
             this.textAccount.Name = "textAccount";
             this.textAccount.Size = new System.Drawing.Size(260, 23);
@@ -89,6 +97,7 @@
             // 
             // textFee
             // 
+            this.textFee.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Fee", true));
             this.textFee.Location = new System.Drawing.Point(12, 71);
             this.textFee.Name = "textFee";
             this.textFee.Size = new System.Drawing.Size(260, 23);
@@ -105,6 +114,7 @@
             // 
             // textSequence
             // 
+            this.textSequence.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Sequence", true));
             this.textSequence.Location = new System.Drawing.Point(12, 115);
             this.textSequence.Name = "textSequence";
             this.textSequence.Size = new System.Drawing.Size(260, 23);
@@ -126,6 +136,7 @@
             this.checkFullyCanonicalSig.AutoSize = true;
             this.checkFullyCanonicalSig.Checked = true;
             this.checkFullyCanonicalSig.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkFullyCanonicalSig.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "FlagFullyCanonicalSig", true));
             this.checkFullyCanonicalSig.Location = new System.Drawing.Point(9, 22);
             this.checkFullyCanonicalSig.Name = "checkFullyCanonicalSig";
             this.checkFullyCanonicalSig.Size = new System.Drawing.Size(157, 19);
@@ -144,6 +155,7 @@
             // 
             // textDestination
             // 
+            this.textDestination.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Destination", true));
             this.textDestination.Location = new System.Drawing.Point(12, 215);
             this.textDestination.Name = "textDestination";
             this.textDestination.Size = new System.Drawing.Size(260, 23);
@@ -165,6 +177,7 @@
             // 
             this.radioAmountIsIssued.AutoSize = true;
             this.radioAmountIsIssued.Checked = true;
+            this.radioAmountIsIssued.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "AmountIsIssued", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.radioAmountIsIssued.Location = new System.Drawing.Point(9, 22);
             this.radioAmountIsIssued.Name = "radioAmountIsIssued";
             this.radioAmountIsIssued.Size = new System.Drawing.Size(58, 19);
@@ -172,18 +185,17 @@
             this.radioAmountIsIssued.TabStop = true;
             this.radioAmountIsIssued.Text = "Issued";
             this.radioAmountIsIssued.UseVisualStyleBackColor = true;
-            this.radioAmountIsIssued.CheckedChanged += new System.EventHandler(this.radioIssued_CheckedChanged);
             // 
             // radioAmountIsNative
             // 
             this.radioAmountIsNative.AutoSize = true;
+            this.radioAmountIsNative.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "AmountIsNative", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.radioAmountIsNative.Location = new System.Drawing.Point(73, 22);
             this.radioAmountIsNative.Name = "radioAmountIsNative";
             this.radioAmountIsNative.Size = new System.Drawing.Size(59, 19);
             this.radioAmountIsNative.TabIndex = 1;
             this.radioAmountIsNative.Text = "Native";
             this.radioAmountIsNative.UseVisualStyleBackColor = true;
-            this.radioAmountIsNative.CheckedChanged += new System.EventHandler(this.radioNative_CheckedChanged);
             // 
             // labelAmountValue
             // 
@@ -196,6 +208,7 @@
             // 
             // textAmountValue
             // 
+            this.textAmountValue.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "AmountValue", true));
             this.textAmountValue.Location = new System.Drawing.Point(12, 315);
             this.textAmountValue.Name = "textAmountValue";
             this.textAmountValue.Size = new System.Drawing.Size(260, 23);
@@ -204,6 +217,7 @@
             // labelAmountCurrency
             // 
             this.labelAmountCurrency.AutoSize = true;
+            this.labelAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "AmountIsIssued", true));
             this.labelAmountCurrency.Location = new System.Drawing.Point(12, 341);
             this.labelAmountCurrency.Name = "labelAmountCurrency";
             this.labelAmountCurrency.Size = new System.Drawing.Size(103, 15);
@@ -212,6 +226,8 @@
             // 
             // textAmountCurrency
             // 
+            this.textAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "AmountCurrency", true));
+            this.textAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "AmountIsIssued", true));
             this.textAmountCurrency.Location = new System.Drawing.Point(12, 359);
             this.textAmountCurrency.Name = "textAmountCurrency";
             this.textAmountCurrency.Size = new System.Drawing.Size(260, 23);
@@ -220,6 +236,7 @@
             // labelAmountIssuer
             // 
             this.labelAmountIssuer.AutoSize = true;
+            this.labelAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "AmountIsIssued", true));
             this.labelAmountIssuer.Location = new System.Drawing.Point(12, 385);
             this.labelAmountIssuer.Name = "labelAmountIssuer";
             this.labelAmountIssuer.Size = new System.Drawing.Size(87, 15);
@@ -228,6 +245,8 @@
             // 
             // textAmountIssuer
             // 
+            this.textAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "AmountIssuer", true));
+            this.textAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "AmountIsIssued", true));
             this.textAmountIssuer.Location = new System.Drawing.Point(12, 403);
             this.textAmountIssuer.Name = "textAmountIssuer";
             this.textAmountIssuer.Size = new System.Drawing.Size(260, 23);
@@ -258,6 +277,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SubmitPaymentForm";
             this.Text = "Payment";
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupFlags.ResumeLayout(false);
             this.groupFlags.PerformLayout();
             this.groupAmount.ResumeLayout(false);
@@ -269,6 +289,7 @@
 
         #endregion
 
+        private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.Label labelAccount;
         private System.Windows.Forms.TextBox textAccount;
