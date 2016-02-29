@@ -5,6 +5,7 @@ open System.ComponentModel
 open Microsoft.FSharp.Quotations.Patterns
 open RippleTool.Types
 open RippleTool.CommandTypes
+open RippleTool.TransactionTypes
 open RippleTool.Integration
 
 //-------------------------------------------------------------------------------------------------
@@ -30,6 +31,10 @@ type Model() =
 
 //-------------------------------------------------------------------------------------------------
 
+let private set (this : Model) value field expr =
+    field := value
+    this.OnPropertyChanged(expr)
+
 let private optional value map =
     match value with
     | value when value = "" -> None
@@ -39,13 +44,21 @@ let private toCurrency code issuer = function
     | true  -> IssuedCurrency <| { Code = code; Issuer = issuer }
     | false -> NativeCurrency <| NativeCurrency.NativeCurrency
 
-let private toAmount value currency issuer = function
-    | true  -> IssuedAmount <| { Value = Decimal.Parse value; Currency = currency; Issuer = issuer }
-    | false -> NativeAmount <| Decimal.Parse value
+let private toIssuedAmount value currency issuer =
+    IssuedAmount <| { Value = Decimal.Parse value; Currency = currency; Issuer = issuer }
 
-let private set (this : Model) value field expr =
-    field := value
-    this.OnPropertyChanged(expr)
+let private toNativeAmount value =
+    NativeAmount <| Decimal.Parse value
+
+let private toAmount value currency issuer = function
+    | true  -> toIssuedAmount value currency issuer
+    | false -> toNativeAmount value
+
+let private combineFlag flag (add : 'T) (acc : 'T) : 'T =
+    let add = LanguagePrimitives.EnumToValue(add)
+    let acc = LanguagePrimitives.EnumToValue(acc)
+    let res = if flag then acc ||| add else acc
+    LanguagePrimitives.EnumOfValue(res)
 
 //-------------------------------------------------------------------------------------------------
 
