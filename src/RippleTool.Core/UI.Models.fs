@@ -55,12 +55,12 @@ type BookOffersModel() =
 
     let taker = ref ""
     let limit = ref ""
-    let takerGetsIssued = ref true
-    let takerGetsNative = ref false
+    let takerGetsIsIssued = ref true
+    let takerGetsIsNative = ref false
     let takerGetsCurrency = ref ""
     let takerGetsIssuer = ref ""
-    let takerPaysIssued = ref true
-    let takerPaysNative = ref false
+    let takerPaysIsIssued = ref true
+    let takerPaysIsNative = ref false
     let takerPaysCurrency = ref ""
     let takerPaysIssuer = ref ""
 
@@ -72,19 +72,19 @@ type BookOffersModel() =
         with get () = !limit
         and set value = set this value limit <@ this.Limit @>
 
-    member this.TakerGetsIssued
-        with get () = !takerGetsIssued
+    member this.TakerGetsIsIssued
+        with get () = !takerGetsIsIssued
         and set value =
             let issued, native = (value, not value)
-            set this issued takerGetsIssued <@ this.TakerGetsIssued @>
-            set this native takerGetsNative <@ this.TakerGetsNative @>
+            set this issued takerGetsIsIssued <@ this.TakerGetsIsIssued @>
+            set this native takerGetsIsNative <@ this.TakerGetsIsNative @>
 
-    member this.TakerGetsNative
-        with get () = !takerGetsNative
+    member this.TakerGetsIsNative
+        with get () = !takerGetsIsNative
         and set value =
             let issued, native = (not value, value)
-            set this issued takerGetsIssued <@ this.TakerGetsIssued @>
-            set this native takerGetsNative <@ this.TakerGetsNative @>
+            set this issued takerGetsIsIssued <@ this.TakerGetsIsIssued @>
+            set this native takerGetsIsNative <@ this.TakerGetsIsNative @>
 
     member this.TakerGetsCurrency
         with get () = !takerGetsCurrency
@@ -94,19 +94,19 @@ type BookOffersModel() =
         with get () = !takerGetsIssuer
         and set value = set this value takerGetsIssuer <@ this.TakerGetsIssuer @>
 
-    member this.TakerPaysIssued
-        with get () = !takerPaysIssued
+    member this.TakerPaysIsIssued
+        with get () = !takerPaysIsIssued
         and set value =
             let issued, native = (value, not value)
-            set this issued takerPaysIssued <@ this.TakerPaysIssued @>
-            set this native takerPaysNative <@ this.TakerPaysNative @>
+            set this issued takerPaysIsIssued <@ this.TakerPaysIsIssued @>
+            set this native takerPaysIsNative <@ this.TakerPaysIsNative @>
 
-    member this.TakerPaysNative
-        with get () = !takerPaysNative
+    member this.TakerPaysIsNative
+        with get () = !takerPaysIsNative
         and set value =
             let issued, native = (not value, value)
-            set this issued takerPaysIssued <@ this.TakerPaysIssued @>
-            set this native takerPaysNative <@ this.TakerPaysNative @>
+            set this issued takerPaysIsIssued <@ this.TakerPaysIsIssued @>
+            set this native takerPaysIsNative <@ this.TakerPaysIsNative @>
 
     member this.TakerPaysCurrency
         with get () = !takerPaysCurrency
@@ -122,11 +122,11 @@ type BookOffersModel() =
         let limit = optional !limit UInt32.Parse
 
         let takerGets =
-            !takerGetsIssued
+            !takerGetsIsIssued
             |> toCurrency !takerGetsCurrency !takerGetsIssuer
 
         let takerPays =
-            !takerPaysIssued
+            !takerPaysIsIssued
             |> toCurrency !takerPaysCurrency !takerPaysIssuer
 
         let command =
@@ -145,8 +145,8 @@ type RipplePathFindModel() =
 
     let sourceAccount = ref ""
     let destinationAccount = ref ""
-    let destinationAmountIssued = ref true
-    let destinationAmountNative = ref false
+    let destinationAmountIsIssued = ref true
+    let destinationAmountIsNative = ref false
     let destinationAmountValue = ref ""
     let destinationAmountCurrency = ref ""
     let destinationAmountIssuer = ref ""
@@ -159,19 +159,19 @@ type RipplePathFindModel() =
         with get () = !destinationAccount
         and set value = set this value destinationAccount <@ this.DestinationAccount @>
 
-    member this.DestinationAmountIssued
-        with get () = !destinationAmountIssued
+    member this.DestinationAmountIsIssued
+        with get () = !destinationAmountIsIssued
         and set value =
             let issued, native = (value, not value)
-            set this issued destinationAmountIssued <@ this.DestinationAmountIssued @>
-            set this native destinationAmountNative <@ this.DestinationAmountNative @>
+            set this issued destinationAmountIsIssued <@ this.DestinationAmountIsIssued @>
+            set this native destinationAmountIsNative <@ this.DestinationAmountIsNative @>
 
-    member this.DestinationAmountNative
-        with get () = !destinationAmountNative
+    member this.DestinationAmountIsNative
+        with get () = !destinationAmountIsNative
         and set value =
             let issued, native = (not value, value)
-            set this issued destinationAmountIssued <@ this.DestinationAmountIssued @>
-            set this native destinationAmountNative <@ this.DestinationAmountNative @>
+            set this issued destinationAmountIsIssued <@ this.DestinationAmountIsIssued @>
+            set this native destinationAmountIsNative <@ this.DestinationAmountIsNative @>
 
     member this.DestinationAmountValue
         with get () = !destinationAmountValue
@@ -188,7 +188,7 @@ type RipplePathFindModel() =
     member this.Submit() =
 
         let destinationAmount =
-            !destinationAmountIssued
+            !destinationAmountIsIssued
             |> toAmount !destinationAmountValue !destinationAmountCurrency !destinationAmountIssuer
 
         let command =

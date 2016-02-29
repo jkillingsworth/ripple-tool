@@ -36,8 +36,8 @@
             this.labelDestinationAccount = new System.Windows.Forms.Label();
             this.textDestinationAccount = new System.Windows.Forms.TextBox();
             this.groupDestinationAmount = new System.Windows.Forms.GroupBox();
-            this.radioIssued = new System.Windows.Forms.RadioButton();
-            this.radioNative = new System.Windows.Forms.RadioButton();
+            this.radioDestinationAmountIsIssued = new System.Windows.Forms.RadioButton();
+            this.radioDestinationAmountIsNative = new System.Windows.Forms.RadioButton();
             this.labelDestinationAmountValue = new System.Windows.Forms.Label();
             this.textDestinationAmountValue = new System.Windows.Forms.TextBox();
             this.labelDestinationAmountCurrency = new System.Windows.Forms.Label();
@@ -98,8 +98,8 @@
             // 
             // groupDestinationAmount
             // 
-            this.groupDestinationAmount.Controls.Add(this.radioIssued);
-            this.groupDestinationAmount.Controls.Add(this.radioNative);
+            this.groupDestinationAmount.Controls.Add(this.radioDestinationAmountIsIssued);
+            this.groupDestinationAmount.Controls.Add(this.radioDestinationAmountIsNative);
             this.groupDestinationAmount.Location = new System.Drawing.Point(12, 100);
             this.groupDestinationAmount.Name = "groupDestinationAmount";
             this.groupDestinationAmount.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
@@ -108,29 +108,29 @@
             this.groupDestinationAmount.TabStop = false;
             this.groupDestinationAmount.Text = "Destination amount";
             // 
-            // radioIssued
+            // radioDestinationAmountIsIssued
             // 
-            this.radioIssued.AutoSize = true;
-            this.radioIssued.Checked = true;
-            this.radioIssued.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "DestinationAmountIssued", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioIssued.Location = new System.Drawing.Point(9, 22);
-            this.radioIssued.Name = "radioIssued";
-            this.radioIssued.Size = new System.Drawing.Size(58, 19);
-            this.radioIssued.TabIndex = 0;
-            this.radioIssued.TabStop = true;
-            this.radioIssued.Text = "Issued";
-            this.radioIssued.UseVisualStyleBackColor = true;
+            this.radioDestinationAmountIsIssued.AutoSize = true;
+            this.radioDestinationAmountIsIssued.Checked = true;
+            this.radioDestinationAmountIsIssued.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "DestinationAmountIsIssued", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioDestinationAmountIsIssued.Location = new System.Drawing.Point(9, 22);
+            this.radioDestinationAmountIsIssued.Name = "radioDestinationAmountIsIssued";
+            this.radioDestinationAmountIsIssued.Size = new System.Drawing.Size(58, 19);
+            this.radioDestinationAmountIsIssued.TabIndex = 0;
+            this.radioDestinationAmountIsIssued.TabStop = true;
+            this.radioDestinationAmountIsIssued.Text = "Issued";
+            this.radioDestinationAmountIsIssued.UseVisualStyleBackColor = true;
             // 
-            // radioNative
+            // radioDestinationAmountIsNative
             // 
-            this.radioNative.AutoSize = true;
-            this.radioNative.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "DestinationAmountNative", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioNative.Location = new System.Drawing.Point(73, 22);
-            this.radioNative.Name = "radioNative";
-            this.radioNative.Size = new System.Drawing.Size(59, 19);
-            this.radioNative.TabIndex = 1;
-            this.radioNative.Text = "Native";
-            this.radioNative.UseVisualStyleBackColor = true;
+            this.radioDestinationAmountIsNative.AutoSize = true;
+            this.radioDestinationAmountIsNative.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "DestinationAmountIsNative", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioDestinationAmountIsNative.Location = new System.Drawing.Point(73, 22);
+            this.radioDestinationAmountIsNative.Name = "radioDestinationAmountIsNative";
+            this.radioDestinationAmountIsNative.Size = new System.Drawing.Size(59, 19);
+            this.radioDestinationAmountIsNative.TabIndex = 1;
+            this.radioDestinationAmountIsNative.Text = "Native";
+            this.radioDestinationAmountIsNative.UseVisualStyleBackColor = true;
             // 
             // labelDestinationAmountValue
             // 
@@ -152,7 +152,7 @@
             // labelDestinationAmountCurrency
             // 
             this.labelDestinationAmountCurrency.AutoSize = true;
-            this.labelDestinationAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIssued", true));
+            this.labelDestinationAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIsIssued", true));
             this.labelDestinationAmountCurrency.Location = new System.Drawing.Point(12, 197);
             this.labelDestinationAmountCurrency.Name = "labelDestinationAmountCurrency";
             this.labelDestinationAmountCurrency.Size = new System.Drawing.Size(164, 15);
@@ -162,7 +162,7 @@
             // textDestinationAmountCurrency
             // 
             this.textDestinationAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DestinationAmountCurrency", true));
-            this.textDestinationAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIssued", true));
+            this.textDestinationAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIsIssued", true));
             this.textDestinationAmountCurrency.Location = new System.Drawing.Point(12, 215);
             this.textDestinationAmountCurrency.Name = "textDestinationAmountCurrency";
             this.textDestinationAmountCurrency.Size = new System.Drawing.Size(260, 23);
@@ -171,7 +171,7 @@
             // labelDestinationAmountIssuer
             // 
             this.labelDestinationAmountIssuer.AutoSize = true;
-            this.labelDestinationAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIssued", true));
+            this.labelDestinationAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIsIssued", true));
             this.labelDestinationAmountIssuer.Location = new System.Drawing.Point(12, 241);
             this.labelDestinationAmountIssuer.Name = "labelDestinationAmountIssuer";
             this.labelDestinationAmountIssuer.Size = new System.Drawing.Size(148, 15);
@@ -181,7 +181,7 @@
             // textDestinationAmountIssuer
             // 
             this.textDestinationAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DestinationAmountIssuer", true));
-            this.textDestinationAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIssued", true));
+            this.textDestinationAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "DestinationAmountIsIssued", true));
             this.textDestinationAmountIssuer.Location = new System.Drawing.Point(12, 259);
             this.textDestinationAmountIssuer.Name = "textDestinationAmountIssuer";
             this.textDestinationAmountIssuer.Size = new System.Drawing.Size(260, 23);
@@ -224,8 +224,8 @@
         private System.Windows.Forms.Label labelDestinationAccount;
         private System.Windows.Forms.TextBox textDestinationAccount;
         private System.Windows.Forms.GroupBox groupDestinationAmount;
-        private System.Windows.Forms.RadioButton radioIssued;
-        private System.Windows.Forms.RadioButton radioNative;
+        private System.Windows.Forms.RadioButton radioDestinationAmountIsIssued;
+        private System.Windows.Forms.RadioButton radioDestinationAmountIsNative;
         private System.Windows.Forms.Label labelDestinationAmountValue;
         private System.Windows.Forms.TextBox textDestinationAmountValue;
         private System.Windows.Forms.Label labelDestinationAmountCurrency;

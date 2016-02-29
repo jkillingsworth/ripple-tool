@@ -11,7 +11,7 @@ namespace RippleTool.UI
 
         private void RefreshCurrencyType()
         {
-            var enabled = radioIssued.Checked;
+            var enabled = radioAmountIsIssued.Checked;
             labelAmountCurrency.Enabled = enabled;
             textAmountCurrency.Enabled = enabled;
             labelAmountIssuer.Enabled = enabled;
@@ -48,7 +48,7 @@ namespace RippleTool.UI
 
             var destination = textDestination.Text;
 
-            var amount = radioIssued.Checked
+            var amount = radioAmountIsIssued.Checked
                 ? GetIssuedAmount()
                 : GetNativeAmount();
 

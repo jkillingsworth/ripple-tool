@@ -32,15 +32,15 @@
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.groupTakerGets = new System.Windows.Forms.GroupBox();
-            this.radioTakerGetsNative = new System.Windows.Forms.RadioButton();
-            this.radioTakerGetsIssued = new System.Windows.Forms.RadioButton();
+            this.radioTakerGetsIsIssued = new System.Windows.Forms.RadioButton();
+            this.radioTakerGetsIsNative = new System.Windows.Forms.RadioButton();
             this.labelTakerGetsCurrency = new System.Windows.Forms.Label();
             this.textTakerGetsCurrency = new System.Windows.Forms.TextBox();
             this.labelTakerGetsIssuer = new System.Windows.Forms.Label();
             this.textTakerGetsIssuer = new System.Windows.Forms.TextBox();
             this.groupTakerPays = new System.Windows.Forms.GroupBox();
-            this.radioTakerPaysNative = new System.Windows.Forms.RadioButton();
-            this.radioTakerPaysIssued = new System.Windows.Forms.RadioButton();
+            this.radioTakerPaysIsIssued = new System.Windows.Forms.RadioButton();
+            this.radioTakerPaysIsNative = new System.Windows.Forms.RadioButton();
             this.labelTakerPaysCurrency = new System.Windows.Forms.Label();
             this.textTakerPaysCurrency = new System.Windows.Forms.TextBox();
             this.labelTakerPaysIssuer = new System.Windows.Forms.Label();
@@ -70,8 +70,8 @@
             // 
             // groupTakerGets
             // 
-            this.groupTakerGets.Controls.Add(this.radioTakerGetsNative);
-            this.groupTakerGets.Controls.Add(this.radioTakerGetsIssued);
+            this.groupTakerGets.Controls.Add(this.radioTakerGetsIsIssued);
+            this.groupTakerGets.Controls.Add(this.radioTakerGetsIsNative);
             this.groupTakerGets.Location = new System.Drawing.Point(12, 100);
             this.groupTakerGets.Name = "groupTakerGets";
             this.groupTakerGets.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
@@ -80,34 +80,34 @@
             this.groupTakerGets.TabStop = false;
             this.groupTakerGets.Text = "Taker gets";
             // 
-            // radioTakerGetsNative
+            // radioTakerGetsIsIssued
             // 
-            this.radioTakerGetsNative.AutoSize = true;
-            this.radioTakerGetsNative.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "TakerGetsNative", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioTakerGetsNative.Location = new System.Drawing.Point(73, 22);
-            this.radioTakerGetsNative.Name = "radioTakerGetsNative";
-            this.radioTakerGetsNative.Size = new System.Drawing.Size(59, 19);
-            this.radioTakerGetsNative.TabIndex = 1;
-            this.radioTakerGetsNative.Text = "Native";
-            this.radioTakerGetsNative.UseVisualStyleBackColor = true;
+            this.radioTakerGetsIsIssued.AutoSize = true;
+            this.radioTakerGetsIsIssued.Checked = true;
+            this.radioTakerGetsIsIssued.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "TakerGetsIsIssued", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioTakerGetsIsIssued.Location = new System.Drawing.Point(9, 22);
+            this.radioTakerGetsIsIssued.Name = "radioTakerGetsIsIssued";
+            this.radioTakerGetsIsIssued.Size = new System.Drawing.Size(58, 19);
+            this.radioTakerGetsIsIssued.TabIndex = 0;
+            this.radioTakerGetsIsIssued.TabStop = true;
+            this.radioTakerGetsIsIssued.Text = "Issued";
+            this.radioTakerGetsIsIssued.UseVisualStyleBackColor = true;
             // 
-            // radioTakerGetsIssued
+            // radioTakerGetsIsNative
             // 
-            this.radioTakerGetsIssued.AutoSize = true;
-            this.radioTakerGetsIssued.Checked = true;
-            this.radioTakerGetsIssued.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "TakerGetsIssued", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioTakerGetsIssued.Location = new System.Drawing.Point(9, 22);
-            this.radioTakerGetsIssued.Name = "radioTakerGetsIssued";
-            this.radioTakerGetsIssued.Size = new System.Drawing.Size(58, 19);
-            this.radioTakerGetsIssued.TabIndex = 0;
-            this.radioTakerGetsIssued.TabStop = true;
-            this.radioTakerGetsIssued.Text = "Issued";
-            this.radioTakerGetsIssued.UseVisualStyleBackColor = true;
+            this.radioTakerGetsIsNative.AutoSize = true;
+            this.radioTakerGetsIsNative.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "TakerGetsIsNative", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioTakerGetsIsNative.Location = new System.Drawing.Point(73, 22);
+            this.radioTakerGetsIsNative.Name = "radioTakerGetsIsNative";
+            this.radioTakerGetsIsNative.Size = new System.Drawing.Size(59, 19);
+            this.radioTakerGetsIsNative.TabIndex = 1;
+            this.radioTakerGetsIsNative.Text = "Native";
+            this.radioTakerGetsIsNative.UseVisualStyleBackColor = true;
             // 
             // labelTakerGetsCurrency
             // 
             this.labelTakerGetsCurrency.AutoSize = true;
-            this.labelTakerGetsCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerGetsIssued", true));
+            this.labelTakerGetsCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerGetsIsIssued", true));
             this.labelTakerGetsCurrency.Location = new System.Drawing.Point(12, 153);
             this.labelTakerGetsCurrency.Name = "labelTakerGetsCurrency";
             this.labelTakerGetsCurrency.Size = new System.Drawing.Size(113, 15);
@@ -117,7 +117,7 @@
             // textTakerGetsCurrency
             // 
             this.textTakerGetsCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "TakerGetsCurrency", true));
-            this.textTakerGetsCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerGetsIssued", true));
+            this.textTakerGetsCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerGetsIsIssued", true));
             this.textTakerGetsCurrency.Location = new System.Drawing.Point(12, 171);
             this.textTakerGetsCurrency.Name = "textTakerGetsCurrency";
             this.textTakerGetsCurrency.Size = new System.Drawing.Size(260, 23);
@@ -126,7 +126,7 @@
             // labelTakerGetsIssuer
             // 
             this.labelTakerGetsIssuer.AutoSize = true;
-            this.labelTakerGetsIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerGetsIssued", true));
+            this.labelTakerGetsIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerGetsIsIssued", true));
             this.labelTakerGetsIssuer.Location = new System.Drawing.Point(12, 197);
             this.labelTakerGetsIssuer.Name = "labelTakerGetsIssuer";
             this.labelTakerGetsIssuer.Size = new System.Drawing.Size(97, 15);
@@ -136,7 +136,7 @@
             // textTakerGetsIssuer
             // 
             this.textTakerGetsIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "TakerGetsIssuer", true));
-            this.textTakerGetsIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerGetsIssued", true));
+            this.textTakerGetsIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerGetsIsIssued", true));
             this.textTakerGetsIssuer.Location = new System.Drawing.Point(12, 215);
             this.textTakerGetsIssuer.Name = "textTakerGetsIssuer";
             this.textTakerGetsIssuer.Size = new System.Drawing.Size(260, 23);
@@ -144,8 +144,8 @@
             // 
             // groupTakerPays
             // 
-            this.groupTakerPays.Controls.Add(this.radioTakerPaysNative);
-            this.groupTakerPays.Controls.Add(this.radioTakerPaysIssued);
+            this.groupTakerPays.Controls.Add(this.radioTakerPaysIsIssued);
+            this.groupTakerPays.Controls.Add(this.radioTakerPaysIsNative);
             this.groupTakerPays.Location = new System.Drawing.Point(12, 244);
             this.groupTakerPays.Name = "groupTakerPays";
             this.groupTakerPays.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
@@ -154,34 +154,34 @@
             this.groupTakerPays.TabStop = false;
             this.groupTakerPays.Text = "Taker pays";
             // 
-            // radioTakerPaysNative
+            // radioTakerPaysIsIssued
             // 
-            this.radioTakerPaysNative.AutoSize = true;
-            this.radioTakerPaysNative.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "TakerPaysNative", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioTakerPaysNative.Location = new System.Drawing.Point(73, 22);
-            this.radioTakerPaysNative.Name = "radioTakerPaysNative";
-            this.radioTakerPaysNative.Size = new System.Drawing.Size(59, 19);
-            this.radioTakerPaysNative.TabIndex = 1;
-            this.radioTakerPaysNative.Text = "Native";
-            this.radioTakerPaysNative.UseVisualStyleBackColor = true;
+            this.radioTakerPaysIsIssued.AutoSize = true;
+            this.radioTakerPaysIsIssued.Checked = true;
+            this.radioTakerPaysIsIssued.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "TakerPaysIsIssued", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioTakerPaysIsIssued.Location = new System.Drawing.Point(9, 22);
+            this.radioTakerPaysIsIssued.Name = "radioTakerPaysIsIssued";
+            this.radioTakerPaysIsIssued.Size = new System.Drawing.Size(58, 19);
+            this.radioTakerPaysIsIssued.TabIndex = 0;
+            this.radioTakerPaysIsIssued.TabStop = true;
+            this.radioTakerPaysIsIssued.Text = "Issued";
+            this.radioTakerPaysIsIssued.UseVisualStyleBackColor = true;
             // 
-            // radioTakerPaysIssued
+            // radioTakerPaysIsNative
             // 
-            this.radioTakerPaysIssued.AutoSize = true;
-            this.radioTakerPaysIssued.Checked = true;
-            this.radioTakerPaysIssued.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "TakerPaysIssued", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioTakerPaysIssued.Location = new System.Drawing.Point(9, 22);
-            this.radioTakerPaysIssued.Name = "radioTakerPaysIssued";
-            this.radioTakerPaysIssued.Size = new System.Drawing.Size(58, 19);
-            this.radioTakerPaysIssued.TabIndex = 0;
-            this.radioTakerPaysIssued.TabStop = true;
-            this.radioTakerPaysIssued.Text = "Issued";
-            this.radioTakerPaysIssued.UseVisualStyleBackColor = true;
+            this.radioTakerPaysIsNative.AutoSize = true;
+            this.radioTakerPaysIsNative.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "TakerPaysIsNative", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioTakerPaysIsNative.Location = new System.Drawing.Point(73, 22);
+            this.radioTakerPaysIsNative.Name = "radioTakerPaysIsNative";
+            this.radioTakerPaysIsNative.Size = new System.Drawing.Size(59, 19);
+            this.radioTakerPaysIsNative.TabIndex = 1;
+            this.radioTakerPaysIsNative.Text = "Native";
+            this.radioTakerPaysIsNative.UseVisualStyleBackColor = true;
             // 
             // labelTakerPaysCurrency
             // 
             this.labelTakerPaysCurrency.AutoSize = true;
-            this.labelTakerPaysCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerPaysIssued", true));
+            this.labelTakerPaysCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerPaysIsIssued", true));
             this.labelTakerPaysCurrency.Location = new System.Drawing.Point(12, 297);
             this.labelTakerPaysCurrency.Name = "labelTakerPaysCurrency";
             this.labelTakerPaysCurrency.Size = new System.Drawing.Size(115, 15);
@@ -191,7 +191,7 @@
             // textTakerPaysCurrency
             // 
             this.textTakerPaysCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "TakerPaysCurrency", true));
-            this.textTakerPaysCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerPaysIssued", true));
+            this.textTakerPaysCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerPaysIsIssued", true));
             this.textTakerPaysCurrency.Location = new System.Drawing.Point(12, 315);
             this.textTakerPaysCurrency.Name = "textTakerPaysCurrency";
             this.textTakerPaysCurrency.Size = new System.Drawing.Size(260, 23);
@@ -200,7 +200,7 @@
             // labelTakerPaysIssuer
             // 
             this.labelTakerPaysIssuer.AutoSize = true;
-            this.labelTakerPaysIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerPaysIssued", true));
+            this.labelTakerPaysIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerPaysIsIssued", true));
             this.labelTakerPaysIssuer.Location = new System.Drawing.Point(12, 341);
             this.labelTakerPaysIssuer.Name = "labelTakerPaysIssuer";
             this.labelTakerPaysIssuer.Size = new System.Drawing.Size(99, 15);
@@ -210,7 +210,7 @@
             // textTakerPaysIssuer
             // 
             this.textTakerPaysIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "TakerPaysIssuer", true));
-            this.textTakerPaysIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerPaysIssued", true));
+            this.textTakerPaysIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "TakerPaysIsIssued", true));
             this.textTakerPaysIssuer.Location = new System.Drawing.Point(12, 359);
             this.textTakerPaysIssuer.Name = "textTakerPaysIssuer";
             this.textTakerPaysIssuer.Size = new System.Drawing.Size(260, 23);
@@ -288,15 +288,15 @@
         private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.GroupBox groupTakerGets;
-        private System.Windows.Forms.RadioButton radioTakerGetsIssued;
-        private System.Windows.Forms.RadioButton radioTakerGetsNative;
+        private System.Windows.Forms.RadioButton radioTakerGetsIsIssued;
+        private System.Windows.Forms.RadioButton radioTakerGetsIsNative;
         private System.Windows.Forms.Label labelTakerGetsCurrency;
         private System.Windows.Forms.TextBox textTakerGetsCurrency;
         private System.Windows.Forms.Label labelTakerGetsIssuer;
         private System.Windows.Forms.TextBox textTakerGetsIssuer;
         private System.Windows.Forms.GroupBox groupTakerPays;
-        private System.Windows.Forms.RadioButton radioTakerPaysIssued;
-        private System.Windows.Forms.RadioButton radioTakerPaysNative;
+        private System.Windows.Forms.RadioButton radioTakerPaysIsIssued;
+        private System.Windows.Forms.RadioButton radioTakerPaysIsNative;
         private System.Windows.Forms.Label labelTakerPaysCurrency;
         private System.Windows.Forms.TextBox textTakerPaysCurrency;
         private System.Windows.Forms.Label labelTakerPaysIssuer;
