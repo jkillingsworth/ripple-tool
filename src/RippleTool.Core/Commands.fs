@@ -9,8 +9,6 @@ open RippleTool.CommandTypes
 
 module private Json =
 
-    let private toObject = Object << Map
-
     let private required name toJson value elements =
         (name, toJson value) :: elements
 
@@ -18,6 +16,7 @@ module private Json =
         | Some value -> value |> required name toJson
         | None -> id
 
+    let private toObject = Object << Map
     let private ofString = String
     let private ofNumber = Number
     let private ofUint32 = Number << decimal
