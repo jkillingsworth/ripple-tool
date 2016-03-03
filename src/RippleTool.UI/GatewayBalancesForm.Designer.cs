@@ -28,12 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSourceLedgerOptions = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.labelLedger = new System.Windows.Forms.Label();
             this.comboLedger = new System.Windows.Forms.ComboBox();
             this.labelAccount = new System.Windows.Forms.Label();
             this.textAccount = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLedgerOptions)).BeginInit();
             this.SuspendLayout();
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(RippleTool.UI.Models.GatewayBalancesModel);
+            // 
+            // bindingSourceLedgerOptions
+            // 
+            this.bindingSourceLedgerOptions.DataSource = typeof(RippleTool.UI.Models.LedgerOptions);
             // 
             // buttonSubmit
             // 
@@ -56,12 +69,16 @@
             // 
             // comboLedger
             // 
+            this.comboLedger.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bindingSource, "Ledger", true));
+            this.comboLedger.DataSource = this.bindingSourceLedgerOptions;
+            this.comboLedger.DisplayMember = "Display";
             this.comboLedger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboLedger.FormattingEnabled = true;
             this.comboLedger.Location = new System.Drawing.Point(12, 27);
             this.comboLedger.Name = "comboLedger";
             this.comboLedger.Size = new System.Drawing.Size(260, 23);
             this.comboLedger.TabIndex = 1;
+            this.comboLedger.ValueMember = "Value";
             // 
             // labelAccount
             // 
@@ -74,6 +91,7 @@
             // 
             // textAccount
             // 
+            this.textAccount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Account", true));
             this.textAccount.Location = new System.Drawing.Point(12, 71);
             this.textAccount.Name = "textAccount";
             this.textAccount.Size = new System.Drawing.Size(260, 23);
@@ -92,6 +110,8 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "GatewayBalancesForm";
             this.Text = "Gateway Balances";
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLedgerOptions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,6 +119,8 @@
 
         #endregion
 
+        private System.Windows.Forms.BindingSource bindingSource;
+        private System.Windows.Forms.BindingSource bindingSourceLedgerOptions;
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.Label labelLedger;
         private System.Windows.Forms.ComboBox comboLedger;
