@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace RippleTool.UI
 {
@@ -8,41 +7,19 @@ namespace RippleTool.UI
         public AccountObjectsForm()
         {
             InitializeComponent();
-
-            comboLedger.Items.Add(CommandTypes.Ledger.Validated);
-            comboLedger.Items.Add(CommandTypes.Ledger.Closed);
-            comboLedger.Items.Add(CommandTypes.Ledger.Current);
-            comboLedger.SelectedItem = CommandTypes.Ledger.Validated;
-            comboLedger.Format += comboLedger_Format;
+            Model = new Models.AccountObjectsModel();
+            bindingSourceLedgerOptions.DataSource = new Models.LedgerOptions();
         }
 
-        private void comboLedger_Format(object sender, ListControlConvertEventArgs e)
+        private Models.AccountObjectsModel Model
         {
-            var ledger = (CommandTypes.Ledger)e.Value;
-
-            if (ledger.IsValidated)
-            {
-                e.Value = "Validated";
-            }
-
-            if (ledger.IsCurrent)
-            {
-                e.Value = "Current";
-            }
-
-            if (ledger.IsClosed)
-            {
-                e.Value = "Closed";
-            }
+            get { return bindingSource.DataSource as Models.AccountObjectsModel; }
+            set { bindingSource.DataSource = value; }
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var ledger = (CommandTypes.Ledger)comboLedger.SelectedItem;
-            var account = textAccount.Text;
-            var commandItem = new CommandTypes.AccountObjects(account, ledger);
-            var command = CommandTypes.Command.NewAccountObjects(commandItem);
-            Integration.executeCommand(command);
+            Model.Submit();
         }
     }
 }
