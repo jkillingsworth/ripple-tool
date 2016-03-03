@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace RippleTool.UI
 {
@@ -8,23 +7,18 @@ namespace RippleTool.UI
         public AccountTxForm()
         {
             InitializeComponent();
-
-            comboLedger.Items.Add(0);
-            comboLedger.SelectedItem = 0;
-            comboLedger.Format += comboLedger_Format;
+            Model = new Models.AccountTxModel();
         }
 
-        private void comboLedger_Format(object sender, ListControlConvertEventArgs e)
+        private Models.AccountTxModel Model
         {
-            e.Value = "All";
+            get { return bindingSource.DataSource as Models.AccountTxModel; }
+            set { bindingSource.DataSource = value; }
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var account = textAccount.Text;
-            var commandItem = new CommandTypes.AccountTx(account);
-            var command = CommandTypes.Command.NewAccountTx(commandItem);
-            Integration.executeCommand(command);
+            Model.Submit();
         }
     }
 }

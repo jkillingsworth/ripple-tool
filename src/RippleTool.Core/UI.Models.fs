@@ -199,6 +199,27 @@ type AccountOffersModel() =
 
 //-------------------------------------------------------------------------------------------------
 
+type AccountTxModel() =
+
+    inherit Model()
+
+    let account = ref ""
+
+    member this.Ledger = "All"
+
+    member this.Account
+        with get () = !account
+        and set value = set this value account <@ this.Account @>
+
+    member this.Submit() =
+
+        let command : AccountTx =
+            { Account = !account }
+
+        executeCommand (command |> AccountTx)
+
+//-------------------------------------------------------------------------------------------------
+
 type BookOffersModel() =
 
     inherit Model()
