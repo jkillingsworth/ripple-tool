@@ -99,6 +99,31 @@ type AccountCurrenciesModel() =
 
 //-------------------------------------------------------------------------------------------------
 
+type AccountInfoModel() =
+
+    inherit Model()
+
+    let ledger = ref Ledger.Validated
+    let account = ref ""
+
+    member this.Ledger
+        with get () = !ledger
+        and set value = set this value ledger <@ this.Ledger @>
+
+    member this.Account
+        with get () = !account
+        and set value = set this value account <@ this.Account @>
+
+    member this.Submit() =
+
+        let command : AccountInfo =
+            { Ledger = !ledger
+              Account = !account }
+
+        executeCommand (command |> AccountInfo)
+
+//-------------------------------------------------------------------------------------------------
+
 type BookOffersModel() =
 
     inherit Model()
