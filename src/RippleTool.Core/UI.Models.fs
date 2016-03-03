@@ -245,6 +245,50 @@ type GatewayBalancesModel() =
 
 //-------------------------------------------------------------------------------------------------
 
+type NoRippleCheckModel() =
+
+    inherit Model()
+
+    let ledger = ref Ledger.Validated
+    let account = ref ""
+    let roleIsUser = ref true
+    let roleIsGateway = ref false
+
+    member this.Ledger
+        with get () = !ledger
+        and set value = set this value ledger <@ this.Ledger @>
+
+    member this.Account
+        with get () = !account
+        and set value = set this value account <@ this.Account @>
+
+    member this.RoleIsUser
+        with get () = !roleIsUser
+        and set value =
+            let user, gateway = (value, not value)
+            set this user roleIsUser <@ this.RoleIsUser @>
+            set this gateway roleIsGateway <@ this.RoleIsGateway @>
+
+    member this.RoleIsGateway
+        with get () = !roleIsGateway
+        and set value =
+            let user, gateway = (not value, value)
+            set this user roleIsUser <@ this.RoleIsUser @>
+            set this gateway roleIsGateway <@ this.RoleIsGateway @>
+
+    member this.Submit() =
+
+        let role = if !roleIsUser then User else Gateway
+
+        let command : NoRippleCheck =
+            { Ledger = !ledger
+              Account = !account
+              Role = role }
+
+        executeCommand (command |> NoRippleCheck)
+
+//-------------------------------------------------------------------------------------------------
+
 type BookOffersModel() =
 
     inherit Model()
