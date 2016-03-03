@@ -69,8 +69,8 @@ type LedgerOptions() as this =
     inherit BindingList<LedgerOption>()
 
     do this.Add({ Value = Ledger.Validated; Display = "Validated" })
-    do this.Add({ Value = Ledger.Current;   Display = "Current" })
     do this.Add({ Value = Ledger.Closed;    Display = "Closed" })
+    do this.Add({ Value = Ledger.Current;   Display = "Current" })
 
 //-------------------------------------------------------------------------------------------------
 
