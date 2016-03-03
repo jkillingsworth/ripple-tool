@@ -301,6 +301,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\Models.BookOffersModel.datasource" />
+    <None Include="Properties\DataSources\Models.LedgerOptions.datasource" />
     <None Include="Properties\DataSources\Models.RipplePathFindModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitPaymentModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitTrustSetModel.datasource" />

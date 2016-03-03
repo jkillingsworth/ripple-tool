@@ -62,6 +62,18 @@ let private combineFlag flag (add : 'T) (acc : 'T) : 'T =
 
 //-------------------------------------------------------------------------------------------------
 
+type LedgerOption = { Value : Ledger; Display : string }
+
+type LedgerOptions() as this =
+
+    inherit BindingList<LedgerOption>()
+
+    do this.Add({ Value = Ledger.Validated; Display = "Validated" })
+    do this.Add({ Value = Ledger.Current;   Display = "Current" })
+    do this.Add({ Value = Ledger.Closed;    Display = "Closed" })
+
+//-------------------------------------------------------------------------------------------------
+
 type BookOffersModel() =
 
     inherit Model()
