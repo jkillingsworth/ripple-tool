@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSubmit = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(RippleTool.UI.Models.PingModel);
             // 
             // buttonSubmit
             // 
@@ -50,12 +57,14 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "PingForm";
             this.Text = "Ping";
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.Button buttonSubmit;
     }
 }

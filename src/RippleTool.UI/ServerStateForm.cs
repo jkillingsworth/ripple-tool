@@ -7,12 +7,18 @@ namespace RippleTool.UI
         public ServerStateForm()
         {
             InitializeComponent();
+            Model = new Models.ServerStateModel();
+        }
+
+        private Models.ServerStateModel Model
+        {
+            get { return bindingSource.DataSource as Models.ServerStateModel; }
+            set { bindingSource.DataSource = value; }
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var command = CommandTypes.Command.NewServerState(null);
-            Integration.executeCommand(command);
+            Model.Submit();
         }
     }
 }

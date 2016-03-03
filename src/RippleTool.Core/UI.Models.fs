@@ -74,6 +74,58 @@ type LedgerOptions() as this =
 
 //-------------------------------------------------------------------------------------------------
 
+type PingModel() =
+
+    inherit Model()
+
+    member this.Submit() =
+
+        let command =
+            RippleTool.CommandTypes.Ping
+
+        executeCommand (command |> Ping)
+
+//-------------------------------------------------------------------------------------------------
+
+type RandomModel() =
+
+    inherit Model()
+
+    member this.Submit() =
+
+        let command =
+            RippleTool.CommandTypes.Random
+
+        executeCommand (command |> Random)
+
+//-------------------------------------------------------------------------------------------------
+
+type ServerInfoModel() =
+
+    inherit Model()
+
+    member this.Submit() =
+
+        let command =
+            RippleTool.CommandTypes.ServerInfo
+
+        executeCommand (command |> ServerInfo)
+
+//-------------------------------------------------------------------------------------------------
+
+type ServerStateModel() =
+
+    inherit Model()
+
+    member this.Submit() =
+
+        let command =
+            RippleTool.CommandTypes.ServerState
+
+        executeCommand (command |> ServerState)
+
+//-------------------------------------------------------------------------------------------------
+
 type AccountCurrenciesModel() =
 
     inherit Model()

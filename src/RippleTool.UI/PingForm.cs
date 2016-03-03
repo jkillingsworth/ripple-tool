@@ -7,12 +7,18 @@ namespace RippleTool.UI
         public PingForm()
         {
             InitializeComponent();
+            Model = new Models.PingModel();
+        }
+
+        private Models.PingModel Model
+        {
+            get { return bindingSource.DataSource as Models.PingModel; }
+            set { bindingSource.DataSource = value; }
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var command = CommandTypes.Command.NewPing(null);
-            Integration.executeCommand(command);
+            Model.Submit();
         }
     }
 }

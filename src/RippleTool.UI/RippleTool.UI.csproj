@@ -310,7 +310,11 @@
     <None Include="Properties\DataSources\Models.GatewayBalancesModel.datasource" />
     <None Include="Properties\DataSources\Models.LedgerOptions.datasource" />
     <None Include="Properties\DataSources\Models.NoRippleCheckModel.datasource" />
+    <None Include="Properties\DataSources\Models.PingModel.datasource" />
+    <None Include="Properties\DataSources\Models.RandomModel.datasource" />
     <None Include="Properties\DataSources\Models.RipplePathFindModel.datasource" />
+    <None Include="Properties\DataSources\Models.ServerInfoModel.datasource" />
+    <None Include="Properties\DataSources\Models.ServerStateModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitPaymentModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitTrustSetModel.datasource" />
     <None Include="Properties\DataSources\Models.TxModel.datasource" />
