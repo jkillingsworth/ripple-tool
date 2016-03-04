@@ -7,12 +7,18 @@ namespace RippleTool.UI
         public RawForm()
         {
             InitializeComponent();
+            Model = new Models.RawModel();
+        }
+
+        private Models.RawModel Model
+        {
+            get { return bindingSource.DataSource as Models.RawModel; }
+            set { bindingSource.DataSource = value; }
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var command = textJson.Text;
-            Integration.executeRawJson(command);
+            Model.Submit();
         }
     }
 }

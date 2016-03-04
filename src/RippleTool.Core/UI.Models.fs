@@ -100,6 +100,22 @@ type RandomModel() =
 
 //-------------------------------------------------------------------------------------------------
 
+type RawModel() =
+
+    inherit Model()
+
+    let json = ref ""
+
+    member this.Json
+        with get () = !json
+        and set value = set this value json <@ this.Json @>
+
+    member this.Submit() =
+
+        executeRawJson !json
+
+//-------------------------------------------------------------------------------------------------
+
 type ServerInfoModel() =
 
     inherit Model()
