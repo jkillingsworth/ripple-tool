@@ -1,6 +1,5 @@
 ﻿module RippleTool.UI.Models
 
-open System
 open System.ComponentModel
 open Microsoft.FSharp.Quotations.Patterns
 open RippleTool.Types
@@ -45,10 +44,10 @@ let private toCurrency code issuer = function
     | false -> NativeCurrency <| NativeCurrency.NativeCurrency
 
 let private toIssuedAmount value currency issuer =
-    IssuedAmount <| { Value = Decimal.Parse value; Currency = currency; Issuer = issuer }
+    IssuedAmount <| { Value = decimal value; Currency = currency; Issuer = issuer }
 
 let private toNativeAmount value =
-    NativeAmount <| Decimal.Parse value
+    NativeAmount <| decimal value
 
 let private toAmount value currency issuer = function
     | true  -> toIssuedAmount value currency issuer
@@ -427,7 +426,7 @@ type BookOffersModel() =
     member this.Submit() =
 
         let taker = optional !taker id
-        let limit = optional !limit UInt32.Parse
+        let limit = optional !limit uint32
 
         let takerGets =
             !takerGetsIsIssued
@@ -584,8 +583,8 @@ type SubmitPaymentModel() =
         let transaction =
             { Account = !account
               Fee = fee
-              Sequence = UInt32.Parse !sequence
-              Flags = uint32 flags
+              Sequence = uint32 !sequence
+              Flags = flags
               Destination = !destination
               Amount = amount }
 
@@ -659,8 +658,8 @@ type SubmitTrustSetModel() =
         let transaction =
             { Account = !account
               Fee = fee
-              Sequence = UInt32.Parse !sequence
-              Flags = uint32 flags
+              Sequence = uint32 !sequence
+              Flags = flags
               LimitAmount = limitAmount }
 
         executeSubmitTransaction (transaction |> TrustSet)

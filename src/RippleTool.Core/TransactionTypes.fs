@@ -18,7 +18,7 @@ type Payment =
     { Account : string
       Fee : Amount
       Sequence : uint32
-      Flags : uint32
+      Flags : PaymentFlags
       Destination : string
       Amount : Amount }
 
@@ -35,7 +35,7 @@ type TrustSet =
     { Account : string
       Fee : Amount
       Sequence : uint32
-      Flags : uint32
+      Flags : TrustSetFlags
       LimitAmount : Amount }
 
 //-------------------------------------------------------------------------------------------------

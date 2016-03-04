@@ -96,6 +96,11 @@ module Binary =
 
         | _ -> failwith "Cannot encode variable length data greater than 918744 bytes."
 
+    let ofFlags (input : 'T when 'T : enum<uint32>) =
+        input
+        |> LanguagePrimitives.EnumToValue
+        |> Binary.ofUint32
+
     let ofAmount = function
         | IssuedAmount amount -> ofIssuedAmount amount
         | NativeAmount amount -> ofNativeAmount amount
@@ -158,7 +163,7 @@ let private fieldsFromPayment (transaction : Payment) =
       { Type = Account'Account;        Value = Binary.ofAccount transaction.Account }
       { Type = Amount'Fee;             Value = Binary.ofAmount  transaction.Fee }
       { Type = UInt32'Sequence;        Value = Binary.ofUint32  transaction.Sequence }
-      { Type = UInt32'Flags;           Value = Binary.ofUint32  transaction.Flags }
+      { Type = UInt32'Flags;           Value = Binary.ofFlags   transaction.Flags }
       { Type = Account'Destination;    Value = Binary.ofAccount transaction.Destination }
       { Type = Amount'Amount;          Value = Binary.ofAmount  transaction.Amount } ]
 
@@ -174,7 +179,7 @@ let private fieldsFromTrustSet (transaction : TrustSet) =
       { Type = Account'Account;        Value = Binary.ofAccount transaction.Account }
       { Type = Amount'Fee;             Value = Binary.ofAmount  transaction.Fee }
       { Type = UInt32'Sequence;        Value = Binary.ofUint32  transaction.Sequence }
-      { Type = UInt32'Flags;           Value = Binary.ofUint32  transaction.Flags }
+      { Type = UInt32'Flags;           Value = Binary.ofFlags   transaction.Flags }
       { Type = Amount'Limit;           Value = Binary.ofAmount  transaction.LimitAmount } ]
 
 //-------------------------------------------------------------------------------------------------
