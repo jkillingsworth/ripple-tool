@@ -2,17 +2,17 @@
 
 namespace RippleTool.UI
 {
-    public partial class RawForm : DockForm
+    public partial class RawJsonForm : DockForm
     {
-        public RawForm()
+        public RawJsonForm()
         {
             InitializeComponent();
-            Model = new Models.RawModel();
+            Model = new Models.RawJsonModel();
         }
 
-        private Models.RawModel Model
+        private Models.RawJsonModel Model
         {
-            get { return bindingSource.DataSource as Models.RawModel; }
+            get { return bindingSource.DataSource as Models.RawJsonModel; }
             set { bindingSource.DataSource = value; }
         }
 

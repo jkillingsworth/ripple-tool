@@ -1,6 +1,6 @@
 ﻿namespace RippleTool.UI
 {
-    partial class RawForm
+    partial class RawJsonForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             // 
             // bindingSource
             // 
-            this.bindingSource.DataSource = typeof(RippleTool.UI.Models.RawModel);
+            this.bindingSource.DataSource = typeof(RippleTool.UI.Models.RawJsonModel);
             // 
             // buttonSubmit
             // 
@@ -63,7 +63,7 @@
             this.textJson.Size = new System.Drawing.Size(260, 807);
             this.textJson.TabIndex = 0;
             // 
-            // RawForm
+            // RawJsonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -71,8 +71,8 @@
             this.Controls.Add(this.textJson);
             this.Controls.Add(this.buttonSubmit);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "RawForm";
-            this.Text = "Raw";
+            this.Name = "RawJsonForm";
+            this.Text = "JSON";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

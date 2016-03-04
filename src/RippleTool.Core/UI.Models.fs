@@ -74,6 +74,22 @@ type LedgerOptions() as this =
 
 //-------------------------------------------------------------------------------------------------
 
+type RawJsonModel() =
+
+    inherit Model()
+
+    let json = ref ""
+
+    member this.Json
+        with get () = !json
+        and set value = set this value json <@ this.Json @>
+
+    member this.Submit() =
+
+        executeRawJson !json
+
+//-------------------------------------------------------------------------------------------------
+
 type PingModel() =
 
     inherit Model()
@@ -97,22 +113,6 @@ type RandomModel() =
             RippleTool.CommandTypes.Random
 
         executeCommand (command |> Random)
-
-//-------------------------------------------------------------------------------------------------
-
-type RawModel() =
-
-    inherit Model()
-
-    let json = ref ""
-
-    member this.Json
-        with get () = !json
-        and set value = set this value json <@ this.Json @>
-
-    member this.Submit() =
-
-        executeRawJson !json
 
 //-------------------------------------------------------------------------------------------------
 

@@ -191,6 +191,11 @@ namespace RippleTool.UI
             Show(new ResponseForm());
         }
 
+        private void menuItemViewRawJson_Click(object sender, EventArgs e)
+        {
+            Show(new RawJsonForm());
+        }
+
         private void menuItemViewPing_Click(object sender, EventArgs e)
         {
             Show(new PingForm());
@@ -199,11 +204,6 @@ namespace RippleTool.UI
         private void menuItemViewRandom_Click(object sender, EventArgs e)
         {
             Show(new RandomForm());
-        }
-
-        private void menuItemViewRaw_Click(object sender, EventArgs e)
-        {
-            Show(new RawForm());
         }
 
         private void menuItemViewServerInfo_Click(object sender, EventArgs e)

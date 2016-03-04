@@ -43,9 +43,9 @@
             this.menuItemViewRequest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewResponse = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemViewRawJson = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRandom = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewRaw = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemViewServerInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewServerState = new System.Windows.Forms.ToolStripMenuItem();
@@ -178,9 +178,9 @@
             this.menuItemViewRequest,
             this.menuItemViewResponse,
             this.menuItemViewSeparator1,
+            this.menuItemViewRawJson,
             this.menuItemViewPing,
             this.menuItemViewRandom,
-            this.menuItemViewRaw,
             this.menuItemViewSeparator2,
             this.menuItemViewServerInfo,
             this.menuItemViewServerState,
@@ -227,6 +227,13 @@
             this.menuItemViewSeparator1.Name = "menuItemViewSeparator1";
             this.menuItemViewSeparator1.Size = new System.Drawing.Size(241, 6);
             // 
+            // menuItemViewRawJson
+            // 
+            this.menuItemViewRawJson.Name = "menuItemViewRawJson";
+            this.menuItemViewRawJson.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewRawJson.Text = "JSON";
+            this.menuItemViewRawJson.Click += new System.EventHandler(this.menuItemViewRawJson_Click);
+            // 
             // menuItemViewPing
             // 
             this.menuItemViewPing.Name = "menuItemViewPing";
@@ -240,13 +247,6 @@
             this.menuItemViewRandom.Size = new System.Drawing.Size(244, 22);
             this.menuItemViewRandom.Text = "Random";
             this.menuItemViewRandom.Click += new System.EventHandler(this.menuItemViewRandom_Click);
-            // 
-            // menuItemViewRaw
-            // 
-            this.menuItemViewRaw.Name = "menuItemViewRaw";
-            this.menuItemViewRaw.Size = new System.Drawing.Size(244, 22);
-            this.menuItemViewRaw.Text = "Raw";
-            this.menuItemViewRaw.Click += new System.EventHandler(this.menuItemViewRaw_Click);
             // 
             // menuItemViewSeparator2
             // 
@@ -555,7 +555,7 @@
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewPing;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRandom;
-        private System.Windows.Forms.ToolStripMenuItem menuItemViewRaw;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewRawJson;
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator2;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewServerInfo;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewServerState;
