@@ -193,7 +193,6 @@ let execute serverUri command =
     async {
 
         use ws = new WebSocket(serverUri)
-        ws.Error |> Event.add (fun ea -> raise ea.Exception)
 
         ws.Open()
         let! ea = Async.AwaitEvent(ws.Opened)

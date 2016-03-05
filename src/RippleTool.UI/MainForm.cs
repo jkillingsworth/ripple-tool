@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -8,18 +9,21 @@ namespace RippleTool.UI
 {
     public partial class MainForm : Form
     {
+        private SynchronizationContext context;
         private string currentFile = null;
 
         public MainForm()
         {
             InitializeComponent();
             InitializeDockPanel();
+            context = SynchronizationContext.Current;
             statusItemServerUri.Text = Integration.Config.serverUri;
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
+            Integration.hookupEventExecuteCommandErr(HandleEventErr);
             Integration.hookupEventExecuteCommandReq(HandleEventReq);
             Integration.hookupEventExecuteCommandRes(HandleEventRes);
         }
@@ -27,6 +31,7 @@ namespace RippleTool.UI
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
+            Integration.unhookEventExecuteCommandErr(HandleEventErr);
             Integration.unhookEventExecuteCommandReq(HandleEventReq);
             Integration.unhookEventExecuteCommandRes(HandleEventRes);
         }
@@ -99,6 +104,16 @@ namespace RippleTool.UI
         private void Show(DockContent dockContent)
         {
             dockContent.Show(dockPanel);
+        }
+
+        private void HandleEventErr(object sender, Exception ex)
+        {
+            Action<object> handler = obj =>
+            {
+                throw new Exception("An error occurred.", ex);
+            };
+
+            context.Post(new SendOrPostCallback(handler), ex);
         }
 
         private void HandleEventReq(object sender, string value)

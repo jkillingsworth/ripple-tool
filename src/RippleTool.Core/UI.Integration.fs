@@ -58,6 +58,7 @@ let private agentTrackStateWithEvent (event : Event<'T>) state = Agent.Start(fun
 let private hookup (event : Event<'T>) = event.Publish.AddHandler
 let private unhook (event : Event<'T>) = event.Publish.RemoveHandler
 
+let private eventExecuteCommandErr = new Event<Exception>()
 let private eventExecuteCommandReq = new Event<string>()
 let private eventExecuteCommandRes = new Event<string>()
 let private agentExecuteCommandReq = agentTrackStateWithEvent eventExecuteCommandReq null
@@ -72,10 +73,12 @@ let private agentExecuteCommand = Agent.Start(fun inbox ->
             agentExecuteCommandRes.Post (Set res)
     })
 
-Event.add raise agentExecuteCommand.Error
+agentExecuteCommand.Error |> Event.add eventExecuteCommandErr.Trigger
 
 //-------------------------------------------------------------------------------------------------
 
+let hookupEventExecuteCommandErr handler = handler |> hookup eventExecuteCommandErr
+let unhookEventExecuteCommandErr handler = handler |> unhook eventExecuteCommandErr
 let hookupEventExecuteCommandReq handler = handler |> hookup eventExecuteCommandReq
 let unhookEventExecuteCommandReq handler = handler |> unhook eventExecuteCommandReq
 let hookupEventExecuteCommandRes handler = handler |> hookup eventExecuteCommandRes
