@@ -207,9 +207,9 @@
             this.menuItemViewRequest.Name = "menuItemViewRequest";
             this.menuItemViewRequest.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Up)));
-            this.menuItemViewRequest.Size = new System.Drawing.Size(244, 22);
-            this.menuItemViewRequest.Text = "Request";
+            | System.Windows.Forms.Keys.Q)));
+            this.menuItemViewRequest.Size = new System.Drawing.Size(219, 22);
+            this.menuItemViewRequest.Text = "Re&quest";
             this.menuItemViewRequest.Click += new System.EventHandler(this.menuItemViewRequest_Click);
             // 
             // menuItemViewResponse
@@ -217,133 +217,133 @@
             this.menuItemViewResponse.Name = "menuItemViewResponse";
             this.menuItemViewResponse.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Down)));
-            this.menuItemViewResponse.Size = new System.Drawing.Size(244, 22);
-            this.menuItemViewResponse.Text = "Response";
+            | System.Windows.Forms.Keys.S)));
+            this.menuItemViewResponse.Size = new System.Drawing.Size(219, 22);
+            this.menuItemViewResponse.Text = "Re&sponse";
             this.menuItemViewResponse.Click += new System.EventHandler(this.menuItemViewResponse_Click);
             // 
             // menuItemViewSeparator1
             // 
             this.menuItemViewSeparator1.Name = "menuItemViewSeparator1";
-            this.menuItemViewSeparator1.Size = new System.Drawing.Size(241, 6);
+            this.menuItemViewSeparator1.Size = new System.Drawing.Size(216, 6);
             // 
             // menuItemViewRawJson
             // 
             this.menuItemViewRawJson.Name = "menuItemViewRawJson";
-            this.menuItemViewRawJson.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewRawJson.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewRawJson.Text = "JSON";
             this.menuItemViewRawJson.Click += new System.EventHandler(this.menuItemViewRawJson_Click);
             // 
             // menuItemViewPing
             // 
             this.menuItemViewPing.Name = "menuItemViewPing";
-            this.menuItemViewPing.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewPing.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewPing.Text = "Ping";
             this.menuItemViewPing.Click += new System.EventHandler(this.menuItemViewPing_Click);
             // 
             // menuItemViewRandom
             // 
             this.menuItemViewRandom.Name = "menuItemViewRandom";
-            this.menuItemViewRandom.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewRandom.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewRandom.Text = "Random";
             this.menuItemViewRandom.Click += new System.EventHandler(this.menuItemViewRandom_Click);
             // 
             // menuItemViewSeparator2
             // 
             this.menuItemViewSeparator2.Name = "menuItemViewSeparator2";
-            this.menuItemViewSeparator2.Size = new System.Drawing.Size(241, 6);
+            this.menuItemViewSeparator2.Size = new System.Drawing.Size(216, 6);
             // 
             // menuItemViewServerInfo
             // 
             this.menuItemViewServerInfo.Name = "menuItemViewServerInfo";
-            this.menuItemViewServerInfo.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewServerInfo.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewServerInfo.Text = "Server Info";
             this.menuItemViewServerInfo.Click += new System.EventHandler(this.menuItemViewServerInfo_Click);
             // 
             // menuItemViewServerState
             // 
             this.menuItemViewServerState.Name = "menuItemViewServerState";
-            this.menuItemViewServerState.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewServerState.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewServerState.Text = "Server State";
             this.menuItemViewServerState.Click += new System.EventHandler(this.menuItemViewServerState_Click);
             // 
             // menuItemViewSeparator3
             // 
             this.menuItemViewSeparator3.Name = "menuItemViewSeparator3";
-            this.menuItemViewSeparator3.Size = new System.Drawing.Size(241, 6);
+            this.menuItemViewSeparator3.Size = new System.Drawing.Size(216, 6);
             // 
             // menuItemViewAccountCurrencies
             // 
             this.menuItemViewAccountCurrencies.Name = "menuItemViewAccountCurrencies";
-            this.menuItemViewAccountCurrencies.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewAccountCurrencies.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewAccountCurrencies.Text = "Account Currencies";
             this.menuItemViewAccountCurrencies.Click += new System.EventHandler(this.menuItemViewAccountCurrencies_Click);
             // 
             // menuItemViewAccountInfo
             // 
             this.menuItemViewAccountInfo.Name = "menuItemViewAccountInfo";
-            this.menuItemViewAccountInfo.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewAccountInfo.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewAccountInfo.Text = "Account Info";
             this.menuItemViewAccountInfo.Click += new System.EventHandler(this.menuItemViewAccountInfo_Click);
             // 
             // menuItemViewAccountLines
             // 
             this.menuItemViewAccountLines.Name = "menuItemViewAccountLines";
-            this.menuItemViewAccountLines.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewAccountLines.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewAccountLines.Text = "Account Lines";
             this.menuItemViewAccountLines.Click += new System.EventHandler(this.menuItemViewAccountLines_Click);
             // 
             // menuItemViewAccountObjects
             // 
             this.menuItemViewAccountObjects.Name = "menuItemViewAccountObjects";
-            this.menuItemViewAccountObjects.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewAccountObjects.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewAccountObjects.Text = "Account Objects";
             this.menuItemViewAccountObjects.Click += new System.EventHandler(this.menuItemViewAccountObjects_Click);
             // 
             // menuItemViewAccountOffers
             // 
             this.menuItemViewAccountOffers.Name = "menuItemViewAccountOffers";
-            this.menuItemViewAccountOffers.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewAccountOffers.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewAccountOffers.Text = "Account Offers";
             this.menuItemViewAccountOffers.Click += new System.EventHandler(this.menuItemViewAccountOffers_Click);
             // 
             // menuItemViewAccountTx
             // 
             this.menuItemViewAccountTx.Name = "menuItemViewAccountTx";
-            this.menuItemViewAccountTx.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewAccountTx.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewAccountTx.Text = "Account Tx";
             this.menuItemViewAccountTx.Click += new System.EventHandler(this.menuItemViewAccountTx_Click);
             // 
             // menuItemViewGatewayBalances
             // 
             this.menuItemViewGatewayBalances.Name = "menuItemViewGatewayBalances";
-            this.menuItemViewGatewayBalances.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewGatewayBalances.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewGatewayBalances.Text = "Gateway Balances";
             this.menuItemViewGatewayBalances.Click += new System.EventHandler(this.menuItemViewGatewayBalances_Click);
             // 
             // menuItemViewNoRippleCheck
             // 
             this.menuItemViewNoRippleCheck.Name = "menuItemViewNoRippleCheck";
-            this.menuItemViewNoRippleCheck.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewNoRippleCheck.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewNoRippleCheck.Text = "No Ripple Check";
             this.menuItemViewNoRippleCheck.Click += new System.EventHandler(this.menuItemViewNoRippleCheck_Click);
             // 
             // menuItemViewSeparator4
             // 
             this.menuItemViewSeparator4.Name = "menuItemViewSeparator4";
-            this.menuItemViewSeparator4.Size = new System.Drawing.Size(241, 6);
+            this.menuItemViewSeparator4.Size = new System.Drawing.Size(216, 6);
             // 
             // menuItemViewBookOffers
             // 
             this.menuItemViewBookOffers.Name = "menuItemViewBookOffers";
-            this.menuItemViewBookOffers.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewBookOffers.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewBookOffers.Text = "Book Offers";
             this.menuItemViewBookOffers.Click += new System.EventHandler(this.menuItemViewBookOffers_Click);
             // 
             // menuItemViewRipplePathFind
             // 
             this.menuItemViewRipplePathFind.Name = "menuItemViewRipplePathFind";
-            this.menuItemViewRipplePathFind.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewRipplePathFind.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewRipplePathFind.Text = "Ripple Path Find";
             this.menuItemViewRipplePathFind.Click += new System.EventHandler(this.menuItemViewRipplePathFind_Click);
             // 
@@ -357,7 +357,7 @@
             this.menuItemViewSubmitSetRegularKey,
             this.menuItemViewSubmitTrustSet});
             this.menuItemViewSubmit.Name = "menuItemViewSubmit";
-            this.menuItemViewSubmit.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewSubmit.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewSubmit.Text = "Submit";
             // 
             // menuItemViewSubmitAccountSet
@@ -409,7 +409,7 @@
             // menuItemViewTx
             // 
             this.menuItemViewTx.Name = "menuItemViewTx";
-            this.menuItemViewTx.Size = new System.Drawing.Size(244, 22);
+            this.menuItemViewTx.Size = new System.Drawing.Size(219, 22);
             this.menuItemViewTx.Text = "Tx";
             this.menuItemViewTx.Click += new System.EventHandler(this.menuItemViewTx_Click);
             // 
