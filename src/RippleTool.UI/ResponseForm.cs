@@ -58,7 +58,7 @@ namespace RippleTool.UI
                 RenderJson();
             };
 
-            UI.Events.Invoke(this, handler);
+            Integration.Eventing.invoke(this, handler);
         }
 
         private void toolItemFormatted_Click(object sender, EventArgs e)

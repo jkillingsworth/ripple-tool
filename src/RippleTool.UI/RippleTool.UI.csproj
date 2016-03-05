@@ -115,7 +115,6 @@
     <Compile Include="DockForm.Designer.cs">
       <DependentUpon>DockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Events.cs" />
     <Compile Include="GatewayBalancesForm.cs">
       <SubType>Form</SubType>
     </Compile>

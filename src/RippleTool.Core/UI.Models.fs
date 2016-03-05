@@ -5,7 +5,7 @@ open Microsoft.FSharp.Quotations.Patterns
 open RippleTool.Types
 open RippleTool.CommandTypes
 open RippleTool.TransactionTypes
-open RippleTool.Integration
+open RippleTool.UI.Integration
 
 //-------------------------------------------------------------------------------------------------
 

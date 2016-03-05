@@ -1,8 +1,12 @@
-﻿module RippleTool.Integration
+﻿module RippleTool.UI.Integration
 
+open System
 open System.Configuration
+open System.Windows.Forms
 open Chiron
+open RippleTool
 open RippleTool.Encoding
+open RippleTool.CommandTypes
 open RippleTool.Commands
 
 //-------------------------------------------------------------------------------------------------
@@ -14,6 +18,17 @@ module Config =
     let serverUri = reader.GetValue("serverUri", typeof<string>) :?> string
     let accountId = reader.GetValue("accountId", typeof<string>) :?> string
     let secretKey = reader.GetValue("secretKey", typeof<string>) :?> string
+
+//-------------------------------------------------------------------------------------------------
+
+module Eventing =
+
+    let invoke (control : Control) (handler : Action) =
+
+        if (control.InvokeRequired) then
+            control.Invoke(handler) |> ignore
+        else
+            handler.Invoke()
 
 //-------------------------------------------------------------------------------------------------
 
@@ -66,19 +81,15 @@ let unhookEventExecuteCommandReq handler = handler |> unhook eventExecuteCommand
 let hookupEventExecuteCommandRes handler = handler |> hookup eventExecuteCommandRes
 let unhookEventExecuteCommandRes handler = handler |> unhook eventExecuteCommandRes
 
-let executeRawJson command =
-    command
-    |> agentExecuteCommand.Post
+let executeRawJson =
+    agentExecuteCommand.Post
 
-let executeCommand command =
-    command
-    |> serialize
-    |> agentExecuteCommand.Post
+let executeCommand =
+    agentExecuteCommand.Post << serialize
 
-let executeSubmitTransaction transaction =
-    let blob = Transactions.sign transaction Config.secretKey
-    let command = CommandTypes.Submit { TxBlob = Binary.toHex blob }
-    executeCommand command
+let executeSubmitTransaction =
+    let toSubmit blob = Submit { TxBlob = Binary.toHex blob }
+    executeCommand << toSubmit << Transactions.sign Config.secretKey
 
 let getJsonReq () =
     agentExecuteCommandReq.PostAndReply (fun channel -> Get channel)

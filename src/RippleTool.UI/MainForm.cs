@@ -108,7 +108,7 @@ namespace RippleTool.UI
                 statusItemProgress.MarqueeAnimationSpeed = 1;
             };
 
-            UI.Events.Invoke(this, handler);
+            Integration.Eventing.invoke(this, handler);
         }
 
         private void HandleEventRes(object sender, string value)
@@ -119,7 +119,7 @@ namespace RippleTool.UI
                 statusItemProgress.Invalidate();
             };
 
-            UI.Events.Invoke(this, handler);
+            Integration.Eventing.invoke(this, handler);
         }
 
         private void menuStrip_MenuActivate(object sender, EventArgs e)

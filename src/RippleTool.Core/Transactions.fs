@@ -240,7 +240,7 @@ let private getAccountKeys n secretKey =
     |> Crypto.computeRootKeys
     |> Crypto.computeAccountKeys n
 
-let sign transaction secretKey =
+let sign secretKey transaction =
 
     let accountKeys = secretKey |> getAccountKeys 0u
     let transactionBinary = serialize transaction accountKeys.Pub (None)
