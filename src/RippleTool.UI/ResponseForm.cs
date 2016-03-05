@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace RippleTool.UI
 {
     public partial class ResponseForm : DockForm
     {
+        private IDisposable eventExecuteCommandRes;
         private string json = null;
 
         public ResponseForm()
@@ -14,16 +16,16 @@ namespace RippleTool.UI
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            Integration.hookupEventExecuteCommandRes(HandleEvent);
+            eventExecuteCommandRes = Integration.hookupEventExecuteCommandRes(HandleEvent);
 
             json = Integration.getJsonRes();
             RenderJson();
         }
 
-        protected override void OnClosed(EventArgs e)
+        protected override void OnFormClosed(FormClosedEventArgs e)
         {
             base.OnClosed(e);
-            Integration.unhookEventExecuteCommandRes(HandleEvent);
+            eventExecuteCommandRes.Dispose();
         }
 
         private void RenderJson()
@@ -50,15 +52,10 @@ namespace RippleTool.UI
             }
         }
 
-        private void HandleEvent(object sender, string value)
+        private void HandleEvent(string value)
         {
-            Action handler = () =>
-            {
-                json = value;
-                RenderJson();
-            };
-
-            Integration.Eventing.invoke(this, handler);
+            json = value;
+            RenderJson();
         }
 
         private void toolItemFormatted_Click(object sender, EventArgs e)

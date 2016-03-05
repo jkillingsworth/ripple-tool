@@ -2,7 +2,7 @@
 
 open System
 open System.Configuration
-open System.Windows.Forms
+open System.Threading
 open Chiron
 open RippleTool
 open RippleTool.Encoding
@@ -21,56 +21,56 @@ module Config =
 
 //-------------------------------------------------------------------------------------------------
 
-module Eventing =
-
-    let invoke (control : Control) (handler : Action) =
-
-        if (control.InvokeRequired) then
-            control.Invoke(handler) |> ignore
-        else
-            handler.Invoke()
-
-//-------------------------------------------------------------------------------------------------
-
 type private Agent<'T> = MailboxProcessor<'T>
 
 type private State<'T> =
     | Get of AsyncReplyChannel<'T>
     | Set of 'T
 
-let private agentTrackStateWithEvent (event : Event<'T>) state = Agent.Start(fun inbox ->
+let private handleTrackState (event : Event<'T>) state = function
+    | Get channel
+        ->
+        state |> channel.Reply
+        state
+    | Set state
+        ->
+        state |> event.Trigger
+        state
+
+let private agentTrackState event state = Agent.Start(fun inbox ->
     let rec loop state =
         async {
             let! message = inbox.Receive()
-            match message with
-            | Get channel
-                ->
-                state |> channel.Reply
-                return! loop state
-            | Set state
-                ->
-                state |> event.Trigger
-                return! loop state
+            return! message |> handleTrackState event state |> loop
     }
-
     loop state)
 
-let private hookup (event : Event<'T>) = event.Publish.AddHandler
-let private unhook (event : Event<'T>) = event.Publish.RemoveHandler
+let private hookup (event : Event<'T>) (handler : Action<'T>) =
+
+    let context = SynchronizationContext.Current
+
+    let handler value =
+        let callback obj = handler.Invoke(value)
+        let callback = SendOrPostCallback(callback)
+        context.Post(callback, value)
+
+    Observable.subscribe handler event.Publish
+
+//-------------------------------------------------------------------------------------------------
 
 let private eventExecuteCommandErr = new Event<Exception>()
 let private eventExecuteCommandReq = new Event<string>()
 let private eventExecuteCommandRes = new Event<string>()
-let private agentExecuteCommandReq = agentTrackStateWithEvent eventExecuteCommandReq null
-let private agentExecuteCommandRes = agentTrackStateWithEvent eventExecuteCommandRes null
+let private agentExecuteCommandReq = agentTrackState eventExecuteCommandReq null
+let private agentExecuteCommandRes = agentTrackState eventExecuteCommandRes null
 
 let private agentExecuteCommand = Agent.Start(fun inbox ->
     async {
         while true do
             let! req = inbox.Receive()
-            agentExecuteCommandReq.Post (Set req)
+            agentExecuteCommandReq.Post(Set req)
             let! res = execute Config.serverUri req
-            agentExecuteCommandRes.Post (Set res)
+            agentExecuteCommandRes.Post(Set res)
     })
 
 agentExecuteCommand.Error |> Event.add eventExecuteCommandErr.Trigger
@@ -78,11 +78,8 @@ agentExecuteCommand.Error |> Event.add eventExecuteCommandErr.Trigger
 //-------------------------------------------------------------------------------------------------
 
 let hookupEventExecuteCommandErr handler = handler |> hookup eventExecuteCommandErr
-let unhookEventExecuteCommandErr handler = handler |> unhook eventExecuteCommandErr
 let hookupEventExecuteCommandReq handler = handler |> hookup eventExecuteCommandReq
-let unhookEventExecuteCommandReq handler = handler |> unhook eventExecuteCommandReq
 let hookupEventExecuteCommandRes handler = handler |> hookup eventExecuteCommandRes
-let unhookEventExecuteCommandRes handler = handler |> unhook eventExecuteCommandRes
 
 let executeRawJson =
     agentExecuteCommand.Post
@@ -95,16 +92,16 @@ let executeSubmitTransaction =
     executeCommand << toSubmit << Transactions.sign Config.secretKey
 
 let getJsonReq () =
-    agentExecuteCommandReq.PostAndReply (fun channel -> Get channel)
+    agentExecuteCommandReq.PostAndReply(Get)
 
 let getJsonRes () =
-    agentExecuteCommandRes.PostAndReply (fun channel -> Get channel)
+    agentExecuteCommandRes.PostAndReply(Get)
 
 let setJsonReq json =
-    agentExecuteCommandReq.Post (Set json)
+    agentExecuteCommandReq.Post(Set json)
 
 let setJsonRes json =
-    agentExecuteCommandRes.Post (Set json)
+    agentExecuteCommandRes.Post(Set json)
 
 let formatJson =
     Json.parse >> Json.formatWith JsonFormattingOptions.Pretty

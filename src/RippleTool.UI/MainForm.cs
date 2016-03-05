@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -9,31 +8,32 @@ namespace RippleTool.UI
 {
     public partial class MainForm : Form
     {
-        private SynchronizationContext context;
+        private IDisposable eventExecuteCommandErr;
+        private IDisposable eventExecuteCommandReq;
+        private IDisposable eventExecuteCommandRes;
         private string currentFile = null;
 
         public MainForm()
         {
             InitializeComponent();
             InitializeDockPanel();
-            context = SynchronizationContext.Current;
             statusItemServerUri.Text = Integration.Config.serverUri;
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            Integration.hookupEventExecuteCommandErr(HandleEventErr);
-            Integration.hookupEventExecuteCommandReq(HandleEventReq);
-            Integration.hookupEventExecuteCommandRes(HandleEventRes);
+            eventExecuteCommandErr = Integration.hookupEventExecuteCommandErr(HandleEventErr);
+            eventExecuteCommandReq = Integration.hookupEventExecuteCommandReq(HandleEventReq);
+            eventExecuteCommandRes = Integration.hookupEventExecuteCommandRes(HandleEventRes);
         }
 
-        protected override void OnClosed(EventArgs e)
+        protected override void OnFormClosed(FormClosedEventArgs e)
         {
             base.OnClosed(e);
-            Integration.unhookEventExecuteCommandErr(HandleEventErr);
-            Integration.unhookEventExecuteCommandReq(HandleEventReq);
-            Integration.unhookEventExecuteCommandRes(HandleEventRes);
+            eventExecuteCommandErr.Dispose();
+            eventExecuteCommandReq.Dispose();
+            eventExecuteCommandRes.Dispose();
         }
 
         private static IDockContent GetDockContentInstance(string typeName)
@@ -106,35 +106,20 @@ namespace RippleTool.UI
             dockContent.Show(dockPanel);
         }
 
-        private void HandleEventErr(object sender, Exception ex)
+        private void HandleEventErr(Exception ex)
         {
-            Action<object> handler = obj =>
-            {
-                throw new Exception("An error occurred.", ex);
-            };
-
-            context.Post(new SendOrPostCallback(handler), ex);
+            throw new Exception("An error occurred.", ex);
         }
 
-        private void HandleEventReq(object sender, string value)
+        private void HandleEventReq(string value)
         {
-            Action handler = () =>
-            {
-                statusItemProgress.MarqueeAnimationSpeed = 1;
-            };
-
-            Integration.Eventing.invoke(this, handler);
+            statusItemProgress.MarqueeAnimationSpeed = 1;
         }
 
-        private void HandleEventRes(object sender, string value)
+        private void HandleEventRes(string value)
         {
-            Action handler = () =>
-            {
-                statusItemProgress.MarqueeAnimationSpeed = 0;
-                statusItemProgress.Invalidate();
-            };
-
-            Integration.Eventing.invoke(this, handler);
+            statusItemProgress.MarqueeAnimationSpeed = 0;
+            statusItemProgress.Invalidate();
         }
 
         private void menuStrip_MenuActivate(object sender, EventArgs e)
