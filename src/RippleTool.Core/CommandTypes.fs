@@ -56,7 +56,8 @@ type NoRippleCheck =
       Role : Role }
 
 type BookOffers =
-    { Taker : string option
+    { Ledger : Ledger
+      Taker : string option
       Limit : uint32 option
       TakerGets : Currency
       TakerPays : Currency }

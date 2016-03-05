@@ -8,6 +8,7 @@ namespace RippleTool.UI
         {
             InitializeComponent();
             Model = new Models.BookOffersModel();
+            bindingSourceLedgerOptions.DataSource = new Models.LedgerOptions();
         }
 
         private Models.BookOffersModel Model

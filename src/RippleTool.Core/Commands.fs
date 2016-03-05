@@ -141,6 +141,7 @@ module private Json =
     let private ofBookOffers (command : BookOffers) =
         []
         |> required "command" ofString "book_offers"
+        |> required "ledger_index" ofLedger command.Ledger
         |> optional "taker" ofString command.Taker
         |> optional "limit" ofUint32 command.Limit
         |> required "taker_gets" ofCurrency command.TakerGets

@@ -360,6 +360,7 @@ type BookOffersModel() =
 
     inherit Model()
 
+    let ledger = ref Ledger.Validated
     let taker = ref ""
     let limit = ref ""
     let takerGetsIsIssued = ref true
@@ -370,6 +371,10 @@ type BookOffersModel() =
     let takerPaysIsNative = ref false
     let takerPaysCurrency = ref ""
     let takerPaysIssuer = ref ""
+
+    member this.Ledger
+        with get () = !ledger
+        and set value = set this value ledger <@ this.Ledger @>
 
     member this.Taker
         with get () = !taker
@@ -437,7 +442,8 @@ type BookOffersModel() =
             |> toCurrency !takerPaysCurrency !takerPaysIssuer
 
         let command =
-            { Taker = taker
+            { Ledger = !ledger
+              Taker = taker
               Limit = limit
               TakerGets = takerGets
               TakerPays = takerPays }
