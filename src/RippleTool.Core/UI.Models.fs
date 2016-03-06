@@ -605,12 +605,18 @@ type SubmitTrustSetModel() =
     let account = ref ""
     let fee = ref ""
     let sequence = ref ""
+    let lastLedgerSequence = ref ""
     let flagFullyCanonicalSig = ref true
+    let flagSetAuth = ref false
     let flagSetNoRipple = ref false
     let flagClearNoRipple = ref false
+    let flagSetFreeze = ref false
+    let flagClearFreeze = ref false
     let limitAmountValue = ref ""
     let limitAmountCurrency = ref ""
     let limitAmountIssuer = ref ""
+    let qualityIn = ref ""
+    let qualityOut = ref ""
 
     member this.Account
         with get () = !account
@@ -624,9 +630,17 @@ type SubmitTrustSetModel() =
         with get () = !sequence
         and set value = set this value sequence <@ this.Sequence @>
 
+    member this.LastLedgerSequence
+        with get () = !lastLedgerSequence
+        and set value = set this value lastLedgerSequence <@ this.LastLedgerSequence @>
+
     member this.FlagFullyCanonicalSig
         with get () = !flagFullyCanonicalSig
         and set value = set this value flagFullyCanonicalSig <@ this.FlagFullyCanonicalSig @>
+
+    member this.FlagSetAuth
+        with get () = !flagSetAuth
+        and set value = set this value flagSetAuth <@ this.FlagSetAuth @>
 
     member this.FlagSetNoRipple
         with get () = !flagSetNoRipple
@@ -635,6 +649,14 @@ type SubmitTrustSetModel() =
     member this.FlagClearNoRipple
         with get () = !flagClearNoRipple
         and set value = set this value flagClearNoRipple <@ this.FlagClearNoRipple @>
+
+    member this.FlagSetFreeze
+        with get () = !flagSetFreeze
+        and set value = set this value flagSetFreeze <@ this.FlagSetFreeze @>
+
+    member this.FlagClearFreeze
+        with get () = !flagClearFreeze
+        and set value = set this value flagClearFreeze <@ this.FlagClearFreeze @>
 
     member this.LimitAmountValue
         with get () = !limitAmountValue
@@ -648,25 +670,43 @@ type SubmitTrustSetModel() =
         with get () = !limitAmountIssuer
         and set value = set this value limitAmountIssuer <@ this.LimitAmountIssuer @>
 
+    member this.QualityIn
+        with get () = !qualityIn
+        and set value = set this value qualityIn <@ this.QualityIn @>
+
+    member this.QualityOut
+        with get () = !qualityOut
+        and set value = set this value qualityOut <@ this.QualityOut @>
+
     member this.Submit() =
 
         let fee = toNativeAmount !fee
+        let lastLedgerSequence = optional !lastLedgerSequence uint32
 
         let flags =
             TrustSetFlags.None
             |> combineFlag !flagFullyCanonicalSig TrustSetFlags.FullyCanonicalSig
+            |> combineFlag !flagSetAuth           TrustSetFlags.SetAuth
             |> combineFlag !flagSetNoRipple       TrustSetFlags.SetNoRipple
             |> combineFlag !flagClearNoRipple     TrustSetFlags.ClearNoRipple
+            |> combineFlag !flagSetFreeze         TrustSetFlags.SetFreeze
+            |> combineFlag !flagClearFreeze       TrustSetFlags.ClearFreeze
 
         let limitAmount =
             toIssuedAmount !limitAmountValue !limitAmountCurrency !limitAmountIssuer
+
+        let qualityIn = optional !qualityIn decimal
+        let qualityOut = optional !qualityOut decimal
 
         let transaction =
             { Account = !account
               Fee = fee
               Sequence = uint32 !sequence
+              LastLedgerSequence = lastLedgerSequence
               Flags = flags
-              LimitAmount = limitAmount }
+              LimitAmount = limitAmount
+              QualityIn = qualityIn
+              QualityOut = qualityOut }
 
         executeSubmitTransaction (transaction |> TrustSet)
 

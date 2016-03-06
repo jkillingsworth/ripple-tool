@@ -101,6 +101,13 @@ module Binary =
         |> LanguagePrimitives.EnumToValue
         |> Binary.ofUint32
 
+    let ofQuality (input : decimal) =
+        input
+        |> (*) 1000000000m
+        |> Decimal.Round
+        |> uint32
+        |> Binary.ofUint32
+
     let ofAmount = function
         | IssuedAmount amount -> ofIssuedAmount amount
         | NativeAmount amount -> ofNativeAmount amount
@@ -131,6 +138,9 @@ type private FieldType =
     | UInt16'TransactionType
     | UInt32'Flags
     | UInt32'Sequence
+    | UInt32'QualityIn
+    | UInt32'QualityOut
+    | UInt32'LastLedgerSequence
     | Amount'Amount
     | Amount'Limit
     | Amount'Fee
@@ -182,12 +192,15 @@ let private fieldsFromTrustSet (transaction : TrustSet) =
 
     let transactionType = uint16 TransactionType.TrustSet
     []
-    |> required UInt16'TransactionType Binary.ofUint16  transactionType
-    |> required Account'Account        Binary.ofAccount transaction.Account
-    |> required Amount'Fee             Binary.ofAmount  transaction.Fee
-    |> required UInt32'Sequence        Binary.ofUint32  transaction.Sequence
-    |> required UInt32'Flags           Binary.ofFlags   transaction.Flags
-    |> required Amount'Limit           Binary.ofAmount  transaction.LimitAmount
+    |> required UInt16'TransactionType    Binary.ofUint16  transactionType
+    |> required Account'Account           Binary.ofAccount transaction.Account
+    |> required Amount'Fee                Binary.ofAmount  transaction.Fee
+    |> required UInt32'Sequence           Binary.ofUint32  transaction.Sequence
+    |> optional UInt32'LastLedgerSequence Binary.ofUint32  transaction.LastLedgerSequence
+    |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
+    |> required Amount'Limit              Binary.ofAmount  transaction.LimitAmount
+    |> optional UInt32'QualityIn          Binary.ofQuality transaction.QualityIn
+    |> optional UInt32'QualityOut         Binary.ofQuality transaction.QualityOut
 
 //-------------------------------------------------------------------------------------------------
 
@@ -200,16 +213,19 @@ let private fieldsFromTransaction = function
     | TrustSet      transaction -> transaction |> fieldsFromTrustSet
 
 let private fieldOrdinal = function
-    | UInt16'TransactionType -> (1, 2)
-    | UInt32'Flags           -> (2, 2)
-    | UInt32'Sequence        -> (2, 4)
-    | Amount'Amount          -> (6, 1)
-    | Amount'Limit           -> (6, 3)
-    | Amount'Fee             -> (6, 8)
-    | Variable'SigningPubKey -> (7, 3)
-    | Variable'TxnSignature  -> (7, 4)
-    | Account'Account        -> (8, 1)
-    | Account'Destination    -> (8, 3)
+    | UInt16'TransactionType    -> (1,  2)
+    | UInt32'Flags              -> (2,  2)
+    | UInt32'Sequence           -> (2,  4)
+    | UInt32'QualityIn          -> (2, 20)
+    | UInt32'QualityOut         -> (2, 21)
+    | UInt32'LastLedgerSequence -> (2, 27)
+    | Amount'Amount             -> (6,  1)
+    | Amount'Limit              -> (6,  3)
+    | Amount'Fee                -> (6,  8)
+    | Variable'SigningPubKey    -> (7,  3)
+    | Variable'TxnSignature     -> (7,  4)
+    | Account'Account           -> (8,  1)
+    | Account'Destination       -> (8,  3)
 
 let private fieldToBytes field =
 

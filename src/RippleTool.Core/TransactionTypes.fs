@@ -27,15 +27,21 @@ type OfferCancel = unit
 type TrustSetFlags =
     | None              = 0x00000000u
     | FullyCanonicalSig = 0x80000000u
+    | SetAuth           = 0x00010000u
     | SetNoRipple       = 0x00020000u
     | ClearNoRipple     = 0x00040000u
+    | SetFreeze         = 0x00100000u
+    | ClearFreeze       = 0x00200000u
 
 type TrustSet =
     { Account : string
       Fee : Amount
       Sequence : uint32
+      LastLedgerSequence : uint32 option
       Flags : TrustSetFlags
-      LimitAmount : Amount }
+      LimitAmount : Amount
+      QualityIn : decimal option
+      QualityOut : decimal option }
 
 //-------------------------------------------------------------------------------------------------
 
