@@ -5,10 +5,6 @@ open RippleTool.Types
 
 //-------------------------------------------------------------------------------------------------
 
-type AccountSet = unit
-type OfferCancel = unit
-type OfferCreate = unit
-
 [<Flags>]
 type PaymentFlags =
     | None              = 0x00000000u
@@ -22,7 +18,10 @@ type Payment =
       Destination : string
       Amount : Amount }
 
+type AccountSet = unit
 type SetRegularKey = unit
+type OfferCreate = unit
+type OfferCancel = unit
 
 [<Flags>]
 type TrustSetFlags =
@@ -41,9 +40,9 @@ type TrustSet =
 //-------------------------------------------------------------------------------------------------
 
 type Transaction =
-    | AccountSet    of AccountSet
-    | OfferCancel   of OfferCancel
-    | OfferCreate   of OfferCreate
     | Payment       of Payment
+    | AccountSet    of AccountSet
     | SetRegularKey of SetRegularKey
+    | OfferCreate   of OfferCreate
+    | OfferCancel   of OfferCancel
     | TrustSet      of TrustSet

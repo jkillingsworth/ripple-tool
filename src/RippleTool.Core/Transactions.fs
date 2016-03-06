@@ -120,11 +120,11 @@ module Binary =
 //-------------------------------------------------------------------------------------------------
 
 type private TransactionType =
-    | AccountSet    = 03us
-    | OfferCancel   = 08us
-    | OfferCreate   = 07us
     | Payment       = 00us
+    | AccountSet    = 03us
     | SetRegularKey = 05us
+    | OfferCreate   = 07us
+    | OfferCancel   = 08us
     | TrustSet      = 20us
 
 type private FieldType =
@@ -143,18 +143,6 @@ type private Field = { Type : FieldType; Value : byte[] }
 
 //-------------------------------------------------------------------------------------------------
 
-let private fieldsFromAccountSet (transaction : AccountSet) =
-
-    failwith "Not implemented"
-
-let private fieldsFromOfferCancel (transaction : OfferCancel) =
-
-    failwith "Not implemented"
-
-let private fieldsFromOfferCreate (transaction : OfferCreate) =
-
-    failwith "Not implemented"
-
 let private fieldsFromPayment (transaction : Payment) =
 
     let transactionType = uint16 TransactionType.Payment
@@ -167,7 +155,19 @@ let private fieldsFromPayment (transaction : Payment) =
       { Type = Account'Destination;    Value = Binary.ofAccount transaction.Destination }
       { Type = Amount'Amount;          Value = Binary.ofAmount  transaction.Amount } ]
 
+let private fieldsFromAccountSet (transaction : AccountSet) =
+
+    failwith "Not implemented"
+
 let private fieldsFromSetRegularKey (transaction : SetRegularKey) =
+
+    failwith "Not implemented"
+
+let private fieldsFromOfferCreate (transaction : OfferCreate) =
+
+    failwith "Not implemented"
+
+let private fieldsFromOfferCancel (transaction : OfferCancel) =
 
     failwith "Not implemented"
 
@@ -185,11 +185,11 @@ let private fieldsFromTrustSet (transaction : TrustSet) =
 //-------------------------------------------------------------------------------------------------
 
 let private fieldsFromTransaction = function
-    | AccountSet    transaction -> transaction |> fieldsFromAccountSet
-    | OfferCancel   transaction -> transaction |> fieldsFromOfferCancel
-    | OfferCreate   transaction -> transaction |> fieldsFromOfferCreate
     | Payment       transaction -> transaction |> fieldsFromPayment
+    | AccountSet    transaction -> transaction |> fieldsFromAccountSet
     | SetRegularKey transaction -> transaction |> fieldsFromSetRegularKey
+    | OfferCreate   transaction -> transaction |> fieldsFromOfferCreate
+    | OfferCancel   transaction -> transaction |> fieldsFromOfferCancel
     | TrustSet      transaction -> transaction |> fieldsFromTrustSet
 
 let private fieldOrdinal = function
