@@ -141,19 +141,26 @@ type private FieldType =
 
 type private Field = { Type : FieldType; Value : byte[] }
 
+let private required fieldType toBinary value fields =
+    { Type = fieldType; Value = toBinary value } :: fields
+
+let private optional fieldType toBinary = function
+    | Some value -> value |> required fieldType toBinary
+    | None -> id
+
 //-------------------------------------------------------------------------------------------------
 
 let private fieldsFromPayment (transaction : Payment) =
 
     let transactionType = uint16 TransactionType.Payment
-
-    [ { Type = UInt16'TransactionType; Value = Binary.ofUint16  transactionType }
-      { Type = Account'Account;        Value = Binary.ofAccount transaction.Account }
-      { Type = Amount'Fee;             Value = Binary.ofAmount  transaction.Fee }
-      { Type = UInt32'Sequence;        Value = Binary.ofUint32  transaction.Sequence }
-      { Type = UInt32'Flags;           Value = Binary.ofFlags   transaction.Flags }
-      { Type = Account'Destination;    Value = Binary.ofAccount transaction.Destination }
-      { Type = Amount'Amount;          Value = Binary.ofAmount  transaction.Amount } ]
+    []
+    |> required UInt16'TransactionType Binary.ofUint16  transactionType
+    |> required Account'Account        Binary.ofAccount transaction.Account
+    |> required Amount'Fee             Binary.ofAmount  transaction.Fee
+    |> required UInt32'Sequence        Binary.ofUint32  transaction.Sequence
+    |> required UInt32'Flags           Binary.ofFlags   transaction.Flags
+    |> required Account'Destination    Binary.ofAccount transaction.Destination
+    |> required Amount'Amount          Binary.ofAmount  transaction.Amount
 
 let private fieldsFromAccountSet (transaction : AccountSet) =
 
@@ -174,13 +181,13 @@ let private fieldsFromOfferCancel (transaction : OfferCancel) =
 let private fieldsFromTrustSet (transaction : TrustSet) =
 
     let transactionType = uint16 TransactionType.TrustSet
-
-    [ { Type = UInt16'TransactionType; Value = Binary.ofUint16  transactionType }
-      { Type = Account'Account;        Value = Binary.ofAccount transaction.Account }
-      { Type = Amount'Fee;             Value = Binary.ofAmount  transaction.Fee }
-      { Type = UInt32'Sequence;        Value = Binary.ofUint32  transaction.Sequence }
-      { Type = UInt32'Flags;           Value = Binary.ofFlags   transaction.Flags }
-      { Type = Amount'Limit;           Value = Binary.ofAmount  transaction.LimitAmount } ]
+    []
+    |> required UInt16'TransactionType Binary.ofUint16  transactionType
+    |> required Account'Account        Binary.ofAccount transaction.Account
+    |> required Amount'Fee             Binary.ofAmount  transaction.Fee
+    |> required UInt32'Sequence        Binary.ofUint32  transaction.Sequence
+    |> required UInt32'Flags           Binary.ofFlags   transaction.Flags
+    |> required Amount'Limit           Binary.ofAmount  transaction.LimitAmount
 
 //-------------------------------------------------------------------------------------------------
 
@@ -206,18 +213,20 @@ let private fieldOrdinal = function
 
 let private fieldToBytes field =
 
-    let fieldType, fieldName = fieldOrdinal field.Type
-    let fieldHead = [| byte <| (fieldType <<< 4) + fieldName |]
+    let fieldHead =
+        match fieldOrdinal field.Type with
+        | fieldType, fieldName when fieldType > 15 -> [| byte (fieldName <<< 0); byte fieldType |]
+        | fieldType, fieldName when fieldName > 15 -> [| byte (fieldType <<< 4); byte fieldName |]
+        | fieldType, fieldName -> [| byte <| (fieldType <<< 4) + (fieldName <<< 0) |]
+
     Array.concat [ fieldHead; field.Value ]
 
-let serialize transaction signingPublicKey signature =
+let serialize signingPublicKey signature transaction =
 
-    let signingFields = [ { Type = Variable'SigningPubKey; Value = Binary.ofVariable signingPublicKey } ]
     let signingFields =
-        match signature with
-        | Some signature
-            -> signingFields @ [ { Type = Variable'TxnSignature; Value = Binary.ofVariable signature } ]
-        | _ -> signingFields
+        []
+        |> required Variable'SigningPubKey Binary.ofVariable signingPublicKey
+        |> optional Variable'TxnSignature  Binary.ofVariable signature
 
     transaction
     |> fieldsFromTransaction
@@ -243,8 +252,8 @@ let private getAccountKeys n secretKey =
 let sign secretKey transaction =
 
     let accountKeys = secretKey |> getAccountKeys 0u
-    let transactionBinary = serialize transaction accountKeys.Pub (None)
-    let signature = transactionBinary |> computeSigningHash |> Crypto.computeSignature accountKeys
-    let transactionBinary = serialize transaction accountKeys.Pub (Some signature)
+    let signatureOf = computeSigningHash >> Crypto.computeSignature accountKeys >> Some
+    let transactionBinary = transaction |> serialize accountKeys.Pub (None)
+    let transactionBinary = transaction |> serialize accountKeys.Pub (signatureOf transactionBinary)
 
     transactionBinary
