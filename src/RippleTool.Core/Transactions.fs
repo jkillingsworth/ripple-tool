@@ -137,7 +137,9 @@ type private TransactionType =
 type private FieldType =
     | UInt16'TransactionType
     | UInt32'Flags
+    | UInt32'SourceTag
     | UInt32'Sequence
+    | UInt32'DestinationTag
     | UInt32'QualityIn
     | UInt32'QualityOut
     | UInt32'LastLedgerSequence
@@ -164,13 +166,16 @@ let private fieldsFromPayment (transaction : Payment) =
 
     let transactionType = uint16 TransactionType.Payment
     []
-    |> required UInt16'TransactionType Binary.ofUint16  transactionType
-    |> required Account'Account        Binary.ofAccount transaction.Account
-    |> required Amount'Fee             Binary.ofAmount  transaction.Fee
-    |> required UInt32'Sequence        Binary.ofUint32  transaction.Sequence
-    |> required UInt32'Flags           Binary.ofFlags   transaction.Flags
-    |> required Account'Destination    Binary.ofAccount transaction.Destination
-    |> required Amount'Amount          Binary.ofAmount  transaction.Amount
+    |> required UInt16'TransactionType    Binary.ofUint16  transactionType
+    |> required Account'Account           Binary.ofAccount transaction.Account
+    |> required Amount'Fee                Binary.ofAmount  transaction.Fee
+    |> required UInt32'Sequence           Binary.ofUint32  transaction.Sequence
+    |> optional UInt32'LastLedgerSequence Binary.ofUint32  transaction.LastLedgerSequence
+    |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
+    |> optional UInt32'SourceTag          Binary.ofUint32  transaction.SourceTag
+    |> optional UInt32'DestinationTag     Binary.ofUint32  transaction.DestinationTag
+    |> required Account'Destination       Binary.ofAccount transaction.Destination
+    |> required Amount'Amount             Binary.ofAmount  transaction.Amount
 
 let private fieldsFromAccountSet (transaction : AccountSet) =
 
@@ -215,7 +220,9 @@ let private fieldsFromTransaction = function
 let private fieldOrdinal = function
     | UInt16'TransactionType    -> (1,  2)
     | UInt32'Flags              -> (2,  2)
+    | UInt32'SourceTag          -> (2,  3)
     | UInt32'Sequence           -> (2,  4)
+    | UInt32'DestinationTag     -> (2, 14)
     | UInt32'QualityIn          -> (2, 20)
     | UInt32'QualityOut         -> (2, 21)
     | UInt32'LastLedgerSequence -> (2, 27)

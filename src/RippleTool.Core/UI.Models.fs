@@ -520,7 +520,13 @@ type SubmitPaymentModel() =
     let account = ref ""
     let fee = ref ""
     let sequence = ref ""
+    let lastLedgerSequence = ref ""
     let flagFullyCanonicalSig = ref true
+    let flagNoRippleDirect = ref false
+    let flagPartialPayment = ref false
+    let flagLimitQuality = ref false
+    let sourceTag = ref ""
+    let destinationTag = ref ""
     let destination = ref ""
     let amountIsIssued = ref true
     let amountIsNative = ref false
@@ -540,9 +546,33 @@ type SubmitPaymentModel() =
         with get () = !sequence
         and set value = set this value sequence <@ this.Sequence @>
 
+    member this.LastLedgerSequence
+        with get () = !lastLedgerSequence
+        and set value = set this value lastLedgerSequence <@ this.LastLedgerSequence @>
+
     member this.FlagFullyCanonicalSig
         with get () = !flagFullyCanonicalSig
         and set value = set this value flagFullyCanonicalSig <@ this.FlagFullyCanonicalSig @>
+
+    member this.FlagNoRippleDirect
+        with get () = !flagNoRippleDirect
+        and set value = set this value flagNoRippleDirect <@ this.FlagNoRippleDirect @>
+
+    member this.FlagPartialPayment
+        with get () = !flagPartialPayment
+        and set value = set this value flagPartialPayment <@ this.FlagPartialPayment @>
+
+    member this.FlagLimitQuality
+        with get () = !flagLimitQuality
+        and set value = set this value flagLimitQuality <@ this.FlagLimitQuality @>
+
+    member this.SourceTag
+        with get () = !sourceTag
+        and set value = set this value sourceTag <@ this.SourceTag @>
+
+    member this.DestinationTag
+        with get () = !destinationTag
+        and set value = set this value destinationTag <@ this.DestinationTag @>
 
     member this.Destination
         with get () = !destination
@@ -577,10 +607,17 @@ type SubmitPaymentModel() =
     member this.Submit() =
 
         let fee = toNativeAmount !fee
+        let lastLedgerSequence = optional !lastLedgerSequence uint32
 
         let flags =
             PaymentFlags.None
             |> combineFlag !flagFullyCanonicalSig PaymentFlags.FullyCanonicalSig
+            |> combineFlag !flagNoRippleDirect    PaymentFlags.NoRippleDirect
+            |> combineFlag !flagPartialPayment    PaymentFlags.PartialPayment
+            |> combineFlag !flagLimitQuality      PaymentFlags.LimitQuality
+
+        let sourceTag = optional !sourceTag uint32
+        let destinationTag = optional !destinationTag uint32
 
         let amount =
             !amountIsIssued
@@ -590,7 +627,10 @@ type SubmitPaymentModel() =
             { Account = !account
               Fee = fee
               Sequence = uint32 !sequence
+              LastLedgerSequence = lastLedgerSequence
               Flags = flags
+              SourceTag = sourceTag
+              DestinationTag = destinationTag
               Destination = !destination
               Amount = amount }
 

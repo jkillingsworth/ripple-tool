@@ -37,8 +37,17 @@
             this.textFee = new System.Windows.Forms.TextBox();
             this.labelSequence = new System.Windows.Forms.Label();
             this.textSequence = new System.Windows.Forms.TextBox();
+            this.labelLastLedgerSequence = new System.Windows.Forms.Label();
+            this.textLastLedgerSequence = new System.Windows.Forms.TextBox();
             this.groupFlags = new System.Windows.Forms.GroupBox();
             this.checkFullyCanonicalSig = new System.Windows.Forms.CheckBox();
+            this.checkNoRippleDirect = new System.Windows.Forms.CheckBox();
+            this.checkPartialPayment = new System.Windows.Forms.CheckBox();
+            this.checkLimitQuality = new System.Windows.Forms.CheckBox();
+            this.labelSourceTag = new System.Windows.Forms.Label();
+            this.textSourceTag = new System.Windows.Forms.TextBox();
+            this.labelDestinationTag = new System.Windows.Forms.Label();
+            this.textDestinationTag = new System.Windows.Forms.TextBox();
             this.labelDestination = new System.Windows.Forms.Label();
             this.textDestination = new System.Windows.Forms.TextBox();
             this.groupAmount = new System.Windows.Forms.GroupBox();
@@ -61,10 +70,10 @@
             // 
             // buttonSubmit
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(12, 432);
+            this.buttonSubmit.Location = new System.Drawing.Point(12, 639);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
-            this.buttonSubmit.TabIndex = 16;
+            this.buttonSubmit.TabIndex = 18;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
@@ -120,14 +129,34 @@
             this.textSequence.Size = new System.Drawing.Size(260, 23);
             this.textSequence.TabIndex = 5;
             // 
+            // labelLastLedgerSequence
+            // 
+            this.labelLastLedgerSequence.AutoSize = true;
+            this.labelLastLedgerSequence.Location = new System.Drawing.Point(12, 141);
+            this.labelLastLedgerSequence.Name = "labelLastLedgerSequence";
+            this.labelLastLedgerSequence.Size = new System.Drawing.Size(175, 15);
+            this.labelLastLedgerSequence.TabIndex = 6;
+            this.labelLastLedgerSequence.Text = "Last ledger sequence (optional):";
+            // 
+            // textLastLedgerSequence
+            // 
+            this.textLastLedgerSequence.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "LastLedgerSequence", true));
+            this.textLastLedgerSequence.Location = new System.Drawing.Point(12, 159);
+            this.textLastLedgerSequence.Name = "textLastLedgerSequence";
+            this.textLastLedgerSequence.Size = new System.Drawing.Size(260, 23);
+            this.textLastLedgerSequence.TabIndex = 7;
+            // 
             // groupFlags
             // 
             this.groupFlags.Controls.Add(this.checkFullyCanonicalSig);
-            this.groupFlags.Location = new System.Drawing.Point(12, 144);
+            this.groupFlags.Controls.Add(this.checkNoRippleDirect);
+            this.groupFlags.Controls.Add(this.checkPartialPayment);
+            this.groupFlags.Controls.Add(this.checkLimitQuality);
+            this.groupFlags.Location = new System.Drawing.Point(12, 188);
             this.groupFlags.Name = "groupFlags";
             this.groupFlags.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
-            this.groupFlags.Size = new System.Drawing.Size(260, 50);
-            this.groupFlags.TabIndex = 6;
+            this.groupFlags.Size = new System.Drawing.Size(260, 125);
+            this.groupFlags.TabIndex = 8;
             this.groupFlags.TabStop = false;
             this.groupFlags.Text = "Flags";
             // 
@@ -144,32 +173,99 @@
             this.checkFullyCanonicalSig.Text = "Fully canonical signature";
             this.checkFullyCanonicalSig.UseVisualStyleBackColor = true;
             // 
+            // checkNoRippleDirect
+            // 
+            this.checkNoRippleDirect.AutoSize = true;
+            this.checkNoRippleDirect.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "FlagNoRippleDirect", true));
+            this.checkNoRippleDirect.Location = new System.Drawing.Point(9, 47);
+            this.checkNoRippleDirect.Name = "checkNoRippleDirect";
+            this.checkNoRippleDirect.Size = new System.Drawing.Size(108, 19);
+            this.checkNoRippleDirect.TabIndex = 1;
+            this.checkNoRippleDirect.Text = "No ripple direct";
+            this.checkNoRippleDirect.UseVisualStyleBackColor = true;
+            // 
+            // checkPartialPayment
+            // 
+            this.checkPartialPayment.AutoSize = true;
+            this.checkPartialPayment.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "FlagPartialPayment", true));
+            this.checkPartialPayment.Location = new System.Drawing.Point(9, 72);
+            this.checkPartialPayment.Name = "checkPartialPayment";
+            this.checkPartialPayment.Size = new System.Drawing.Size(109, 19);
+            this.checkPartialPayment.TabIndex = 2;
+            this.checkPartialPayment.Text = "Partial payment";
+            this.checkPartialPayment.UseVisualStyleBackColor = true;
+            // 
+            // checkLimitQuality
+            // 
+            this.checkLimitQuality.AutoSize = true;
+            this.checkLimitQuality.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "FlagLimitQuality", true));
+            this.checkLimitQuality.Location = new System.Drawing.Point(9, 97);
+            this.checkLimitQuality.Name = "checkLimitQuality";
+            this.checkLimitQuality.Size = new System.Drawing.Size(92, 19);
+            this.checkLimitQuality.TabIndex = 3;
+            this.checkLimitQuality.Text = "Limit quality";
+            this.checkLimitQuality.UseVisualStyleBackColor = true;
+            // 
+            // labelSourceTag
+            // 
+            this.labelSourceTag.AutoSize = true;
+            this.labelSourceTag.Location = new System.Drawing.Point(12, 316);
+            this.labelSourceTag.Name = "labelSourceTag";
+            this.labelSourceTag.Size = new System.Drawing.Size(121, 15);
+            this.labelSourceTag.TabIndex = 19;
+            this.labelSourceTag.Text = "Source tag (optional):";
+            // 
+            // textSourceTag
+            // 
+            this.textSourceTag.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "SourceTag", true));
+            this.textSourceTag.Location = new System.Drawing.Point(12, 334);
+            this.textSourceTag.Name = "textSourceTag";
+            this.textSourceTag.Size = new System.Drawing.Size(260, 23);
+            this.textSourceTag.TabIndex = 20;
+            // 
+            // labelDestinationTag
+            // 
+            this.labelDestinationTag.AutoSize = true;
+            this.labelDestinationTag.Location = new System.Drawing.Point(12, 360);
+            this.labelDestinationTag.Name = "labelDestinationTag";
+            this.labelDestinationTag.Size = new System.Drawing.Size(145, 15);
+            this.labelDestinationTag.TabIndex = 21;
+            this.labelDestinationTag.Text = "Destination tag (optional):";
+            // 
+            // textDestinationTag
+            // 
+            this.textDestinationTag.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "DestinationTag", true));
+            this.textDestinationTag.Location = new System.Drawing.Point(12, 378);
+            this.textDestinationTag.Name = "textDestinationTag";
+            this.textDestinationTag.Size = new System.Drawing.Size(260, 23);
+            this.textDestinationTag.TabIndex = 22;
+            // 
             // labelDestination
             // 
             this.labelDestination.AutoSize = true;
-            this.labelDestination.Location = new System.Drawing.Point(12, 197);
+            this.labelDestination.Location = new System.Drawing.Point(12, 404);
             this.labelDestination.Name = "labelDestination";
             this.labelDestination.Size = new System.Drawing.Size(70, 15);
-            this.labelDestination.TabIndex = 7;
+            this.labelDestination.TabIndex = 9;
             this.labelDestination.Text = "Destination:";
             // 
             // textDestination
             // 
             this.textDestination.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Destination", true));
-            this.textDestination.Location = new System.Drawing.Point(12, 215);
+            this.textDestination.Location = new System.Drawing.Point(12, 422);
             this.textDestination.Name = "textDestination";
             this.textDestination.Size = new System.Drawing.Size(260, 23);
-            this.textDestination.TabIndex = 8;
+            this.textDestination.TabIndex = 10;
             // 
             // groupAmount
             // 
             this.groupAmount.Controls.Add(this.radioAmountIsIssued);
             this.groupAmount.Controls.Add(this.radioAmountIsNative);
-            this.groupAmount.Location = new System.Drawing.Point(12, 244);
+            this.groupAmount.Location = new System.Drawing.Point(12, 451);
             this.groupAmount.Name = "groupAmount";
             this.groupAmount.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
-            this.groupAmount.Size = new System.Drawing.Size(257, 50);
-            this.groupAmount.TabIndex = 9;
+            this.groupAmount.Size = new System.Drawing.Size(260, 50);
+            this.groupAmount.TabIndex = 11;
             this.groupAmount.TabStop = false;
             this.groupAmount.Text = "Amount";
             // 
@@ -200,57 +296,57 @@
             // labelAmountValue
             // 
             this.labelAmountValue.AutoSize = true;
-            this.labelAmountValue.Location = new System.Drawing.Point(12, 297);
+            this.labelAmountValue.Location = new System.Drawing.Point(12, 504);
             this.labelAmountValue.Name = "labelAmountValue";
             this.labelAmountValue.Size = new System.Drawing.Size(85, 15);
-            this.labelAmountValue.TabIndex = 10;
+            this.labelAmountValue.TabIndex = 12;
             this.labelAmountValue.Text = "Amount value:";
             // 
             // textAmountValue
             // 
             this.textAmountValue.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "AmountValue", true));
-            this.textAmountValue.Location = new System.Drawing.Point(12, 315);
+            this.textAmountValue.Location = new System.Drawing.Point(12, 522);
             this.textAmountValue.Name = "textAmountValue";
             this.textAmountValue.Size = new System.Drawing.Size(260, 23);
-            this.textAmountValue.TabIndex = 11;
+            this.textAmountValue.TabIndex = 13;
             // 
             // labelAmountCurrency
             // 
             this.labelAmountCurrency.AutoSize = true;
             this.labelAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "AmountIsIssued", true));
-            this.labelAmountCurrency.Location = new System.Drawing.Point(12, 341);
+            this.labelAmountCurrency.Location = new System.Drawing.Point(12, 548);
             this.labelAmountCurrency.Name = "labelAmountCurrency";
             this.labelAmountCurrency.Size = new System.Drawing.Size(103, 15);
-            this.labelAmountCurrency.TabIndex = 12;
+            this.labelAmountCurrency.TabIndex = 14;
             this.labelAmountCurrency.Text = "Amount currency:";
             // 
             // textAmountCurrency
             // 
             this.textAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "AmountCurrency", true));
             this.textAmountCurrency.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "AmountIsIssued", true));
-            this.textAmountCurrency.Location = new System.Drawing.Point(12, 359);
+            this.textAmountCurrency.Location = new System.Drawing.Point(12, 566);
             this.textAmountCurrency.Name = "textAmountCurrency";
             this.textAmountCurrency.Size = new System.Drawing.Size(260, 23);
-            this.textAmountCurrency.TabIndex = 13;
+            this.textAmountCurrency.TabIndex = 15;
             // 
             // labelAmountIssuer
             // 
             this.labelAmountIssuer.AutoSize = true;
             this.labelAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "AmountIsIssued", true));
-            this.labelAmountIssuer.Location = new System.Drawing.Point(12, 385);
+            this.labelAmountIssuer.Location = new System.Drawing.Point(12, 592);
             this.labelAmountIssuer.Name = "labelAmountIssuer";
             this.labelAmountIssuer.Size = new System.Drawing.Size(87, 15);
-            this.labelAmountIssuer.TabIndex = 14;
+            this.labelAmountIssuer.TabIndex = 16;
             this.labelAmountIssuer.Text = "Amount issuer:";
             // 
             // textAmountIssuer
             // 
             this.textAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "AmountIssuer", true));
             this.textAmountIssuer.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSource, "AmountIsIssued", true));
-            this.textAmountIssuer.Location = new System.Drawing.Point(12, 403);
+            this.textAmountIssuer.Location = new System.Drawing.Point(12, 610);
             this.textAmountIssuer.Name = "textAmountIssuer";
             this.textAmountIssuer.Size = new System.Drawing.Size(260, 23);
-            this.textAmountIssuer.TabIndex = 15;
+            this.textAmountIssuer.TabIndex = 17;
             // 
             // SubmitPaymentForm
             // 
@@ -266,7 +362,13 @@
             this.Controls.Add(this.groupAmount);
             this.Controls.Add(this.textDestination);
             this.Controls.Add(this.labelDestination);
+            this.Controls.Add(this.textDestinationTag);
+            this.Controls.Add(this.labelDestinationTag);
+            this.Controls.Add(this.textSourceTag);
+            this.Controls.Add(this.labelSourceTag);
             this.Controls.Add(this.groupFlags);
+            this.Controls.Add(this.textLastLedgerSequence);
+            this.Controls.Add(this.labelLastLedgerSequence);
             this.Controls.Add(this.textSequence);
             this.Controls.Add(this.labelSequence);
             this.Controls.Add(this.textFee);
@@ -297,8 +399,17 @@
         private System.Windows.Forms.TextBox textFee;
         private System.Windows.Forms.Label labelSequence;
         private System.Windows.Forms.TextBox textSequence;
+        private System.Windows.Forms.Label labelLastLedgerSequence;
+        private System.Windows.Forms.TextBox textLastLedgerSequence;
         private System.Windows.Forms.GroupBox groupFlags;
         private System.Windows.Forms.CheckBox checkFullyCanonicalSig;
+        private System.Windows.Forms.CheckBox checkNoRippleDirect;
+        private System.Windows.Forms.CheckBox checkPartialPayment;
+        private System.Windows.Forms.CheckBox checkLimitQuality;
+        private System.Windows.Forms.Label labelSourceTag;
+        private System.Windows.Forms.TextBox textSourceTag;
+        private System.Windows.Forms.Label labelDestinationTag;
+        private System.Windows.Forms.TextBox textDestinationTag;
         private System.Windows.Forms.Label labelDestination;
         private System.Windows.Forms.TextBox textDestination;
         private System.Windows.Forms.GroupBox groupAmount;

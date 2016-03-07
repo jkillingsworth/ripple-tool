@@ -9,12 +9,18 @@ open RippleTool.Types
 type PaymentFlags =
     | None              = 0x00000000u
     | FullyCanonicalSig = 0x80000000u
+    | NoRippleDirect    = 0x00010000u
+    | PartialPayment    = 0x00020000u
+    | LimitQuality      = 0x00040000u
 
 type Payment =
     { Account : string
       Fee : Amount
       Sequence : uint32
+      LastLedgerSequence : uint32 option
       Flags : PaymentFlags
+      SourceTag : uint32 option
+      DestinationTag : uint32 option
       Destination : string
       Amount : Amount }
 
