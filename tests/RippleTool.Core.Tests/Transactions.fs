@@ -11,6 +11,50 @@ open RippleTool.Transactions
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
+let ``Binary of quality amount 0.00`` () =
+
+    let input = 0.00m
+    let expected = Binary.ofUInt32 0u
+    input |> Binary.ofQuality |> should equal expected
+
+[<Test>]
+let ``Binary of quality amount 0.99`` () =
+
+    let input = 0.99m
+    let expected = Binary.ofUInt32 990000000u
+    input |> Binary.ofQuality |> should equal expected
+
+[<Test>]
+let ``Binary of quality amount 1.00`` () =
+
+    let input = 1.00m
+    let expected = Binary.ofUInt32 1000000000u
+    input |> Binary.ofQuality |> should equal expected
+
+[<Test>]
+let ``Binary of quality amount 1.01`` () =
+
+    let input = 1.01m
+    let expected = Binary.ofUInt32 1010000000u
+    input |> Binary.ofQuality |> should equal expected
+
+[<Test>]
+let ``Binary of quality amount rounds toward even down`` () =
+
+    let input = 1.0000000025m
+    let expected = Binary.ofUInt32 1000000002u
+    input |> Binary.ofQuality |> should equal expected
+
+[<Test>]
+let ``Binary of quality amount rounds toward even up`` () =
+
+    let input = 1.0000000015m
+    let expected = Binary.ofUInt32 1000000002u
+    input |> Binary.ofQuality |> should equal expected
+
+//-------------------------------------------------------------------------------------------------
+
+[<Test>]
 let ``Binary of issued amount +000.000`` () =
 
     // 8000000000000000 1 <<< 63
