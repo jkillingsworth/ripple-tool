@@ -64,7 +64,7 @@
     <Compile Include="FsUnit.fs" />
     <Compile Include="Encoding.fs" />
     <Compile Include="Crypto.fs" />
-    <Compile Include="Transactions.fs" />
+    <Compile Include="Transaction.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FsUnit.NUnit">

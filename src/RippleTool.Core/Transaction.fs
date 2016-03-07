@@ -1,4 +1,4 @@
-﻿module RippleTool.Transactions
+﻿module RippleTool.Transaction
 
 open System
 open RippleTool.Encoding

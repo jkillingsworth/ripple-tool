@@ -7,7 +7,6 @@ open Chiron
 open RippleTool
 open RippleTool.Encoding
 open RippleTool.Types
-open RippleTool.Commands
 
 //-------------------------------------------------------------------------------------------------
 
@@ -69,7 +68,7 @@ let private agentExecuteCommand = Agent.Start(fun inbox ->
         while true do
             let! req = inbox.Receive()
             agentExecuteCommandReq.Post(Set req)
-            let! res = execute Config.serverUri req
+            let! res = Command.execute Config.serverUri req
             agentExecuteCommandRes.Post(Set res)
     })
 
@@ -85,11 +84,11 @@ let executeRawJson =
     agentExecuteCommand.Post
 
 let executeCommand =
-    agentExecuteCommand.Post << serialize
+    agentExecuteCommand.Post << Command.serialize
 
 let executeSubmitTransaction =
     let toSubmit blob = Submit { TxBlob = Binary.toHex blob }
-    executeCommand << toSubmit << Transactions.sign Config.secretKey
+    executeCommand << toSubmit << Transaction.sign Config.secretKey
 
 let getJsonReq () =
     agentExecuteCommandReq.PostAndReply(Get)

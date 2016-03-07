@@ -1,11 +1,11 @@
-﻿module RippleTool.Tests.Transactions
+﻿module RippleTool.Tests.Transaction
 
 open System
 open NUnit.Framework
 open FsUnit
 open RippleTool.Encoding
 open RippleTool.Types
-open RippleTool.Transactions
+open RippleTool.Transaction
 
 //-------------------------------------------------------------------------------------------------
 

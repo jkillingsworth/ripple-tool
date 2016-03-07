@@ -1,4 +1,4 @@
-﻿module RippleTool.Commands
+﻿module RippleTool.Command
 
 open Chiron
 open WebSocket4Net
