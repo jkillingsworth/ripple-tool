@@ -38,32 +38,32 @@ module Binary =
         |> reverseIfPlatformIsNotBigEndian
         |> bigint
 
-    let ofUint16 (input : uint16) =
+    let ofUInt16 (input : uint16) =
         input
         |> BitConverter.GetBytes
         |> reverseIfPlatformIsNotBigEndian
 
-    let toUint16 (input : byte[]) =
+    let toUInt16 (input : byte[]) =
         input
         |> reverseIfPlatformIsNotBigEndian
         |> convertWith BitConverter.ToUInt16
 
-    let ofUint32 (input : uint32) =
+    let ofUInt32 (input : uint32) =
         input
         |> BitConverter.GetBytes
         |> reverseIfPlatformIsNotBigEndian
 
-    let toUint32 (input : byte[]) =
+    let toUInt32 (input : byte[]) =
         input
         |> reverseIfPlatformIsNotBigEndian
         |> convertWith BitConverter.ToUInt32
 
-    let ofUint64 (input : uint64) =
+    let ofUInt64 (input : uint64) =
         input
         |> BitConverter.GetBytes
         |> reverseIfPlatformIsNotBigEndian
 
-    let toUint64 (input : byte[]) =
+    let toUInt64 (input : byte[]) =
         input
         |> reverseIfPlatformIsNotBigEndian
         |> convertWith BitConverter.ToUInt64

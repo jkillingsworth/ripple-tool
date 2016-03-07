@@ -43,7 +43,7 @@ module Binary =
 
         let combined = Array.fold (|||) 0UL [| bits1; bits2; bits3; bits4 |]
 
-        let bytes1 = Binary.ofUint64 combined
+        let bytes1 = Binary.ofUInt64 combined
         let bytes2 = Array.zeroCreate<byte> 12
         let bytes3 = input.Currency |> Seq.map byte |> Seq.toArray
         let bytes4 = Array.zeroCreate<byte> 5
@@ -71,7 +71,7 @@ module Binary =
 
         let combined = Array.fold (|||) 0UL [| bits1; bits2; bits3 |]
 
-        Binary.ofUint64 combined
+        Binary.ofUInt64 combined
 
     let private encodeLength = function
 
@@ -99,14 +99,14 @@ module Binary =
     let ofFlags (input : 'T when 'T : enum<uint32>) =
         input
         |> LanguagePrimitives.EnumToValue
-        |> Binary.ofUint32
+        |> Binary.ofUInt32
 
     let ofQuality (input : decimal) =
         input
         |> (*) 1000000000m
         |> Decimal.Round
         |> uint32
-        |> Binary.ofUint32
+        |> Binary.ofUInt32
 
     let ofAmount = function
         | IssuedAmount amount -> ofIssuedAmount amount
@@ -166,14 +166,14 @@ let private fieldsFromPayment (transaction : Payment) =
 
     let transactionType = uint16 TransactionType.Payment
     []
-    |> required UInt16'TransactionType    Binary.ofUint16  transactionType
+    |> required UInt16'TransactionType    Binary.ofUInt16  transactionType
     |> required Account'Account           Binary.ofAccount transaction.Account
     |> required Amount'Fee                Binary.ofAmount  transaction.Fee
-    |> required UInt32'Sequence           Binary.ofUint32  transaction.Sequence
-    |> optional UInt32'LastLedgerSequence Binary.ofUint32  transaction.LastLedgerSequence
+    |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
+    |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
     |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
-    |> optional UInt32'SourceTag          Binary.ofUint32  transaction.SourceTag
-    |> optional UInt32'DestinationTag     Binary.ofUint32  transaction.DestinationTag
+    |> optional UInt32'SourceTag          Binary.ofUInt32  transaction.SourceTag
+    |> optional UInt32'DestinationTag     Binary.ofUInt32  transaction.DestinationTag
     |> required Account'Destination       Binary.ofAccount transaction.Destination
     |> required Amount'Amount             Binary.ofAmount  transaction.Amount
 
@@ -197,11 +197,11 @@ let private fieldsFromTrustSet (transaction : TrustSet) =
 
     let transactionType = uint16 TransactionType.TrustSet
     []
-    |> required UInt16'TransactionType    Binary.ofUint16  transactionType
+    |> required UInt16'TransactionType    Binary.ofUInt16  transactionType
     |> required Account'Account           Binary.ofAccount transaction.Account
     |> required Amount'Fee                Binary.ofAmount  transaction.Fee
-    |> required UInt32'Sequence           Binary.ofUint32  transaction.Sequence
-    |> optional UInt32'LastLedgerSequence Binary.ofUint32  transaction.LastLedgerSequence
+    |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
+    |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
     |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
     |> required Amount'Limit              Binary.ofAmount  transaction.LimitAmount
     |> optional UInt32'QualityIn          Binary.ofQuality transaction.QualityIn

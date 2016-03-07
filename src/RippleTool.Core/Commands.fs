@@ -19,7 +19,7 @@ module private Json =
     let private toObject = Object << Map
     let private ofString = String
     let private ofNumber = Number
-    let private ofUint32 = Number << decimal
+    let private ofUInt32 = Number << decimal
 
     let private ofLedger = String << function
         | Validated -> "validated"
@@ -143,7 +143,7 @@ module private Json =
         |> required "command" ofString "book_offers"
         |> required "ledger_index" ofLedger command.Ledger
         |> optional "taker" ofString command.Taker
-        |> optional "limit" ofUint32 command.Limit
+        |> optional "limit" ofUInt32 command.Limit
         |> required "taker_gets" ofCurrency command.TakerGets
         |> required "taker_pays" ofCurrency command.TakerPays
         |> toObject

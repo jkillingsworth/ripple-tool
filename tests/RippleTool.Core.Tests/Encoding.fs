@@ -68,133 +68,133 @@ let ``Binary to bigint 999`` () =
 
 [<Test>]
 let ``Binary of uint16 000`` () =
-    000us |> Binary.ofUint16 |> should equal [| 0x00uy; 0x00uy |]
+    000us |> Binary.ofUInt16 |> should equal [| 0x00uy; 0x00uy |]
 
 [<Test>]
 let ``Binary of uint16 001`` () =
-    001us |> Binary.ofUint16 |> should equal [| 0x00uy; 0x01uy |]
+    001us |> Binary.ofUInt16 |> should equal [| 0x00uy; 0x01uy |]
 
 [<Test>]
 let ``Binary of uint16 255`` () =
-    255us |> Binary.ofUint16 |> should equal [| 0x00uy; 0xFFuy |]
+    255us |> Binary.ofUInt16 |> should equal [| 0x00uy; 0xFFuy |]
 
 [<Test>]
 let ``Binary of uint16 256`` () =
-    256us |> Binary.ofUint16 |> should equal [| 0x01uy; 0x00uy |]
+    256us |> Binary.ofUInt16 |> should equal [| 0x01uy; 0x00uy |]
 
 [<Test>]
 let ``Binary of uint16 999`` () =
-    999us |> Binary.ofUint16 |> should equal [| 0x03uy; 0xE7uy |]
+    999us |> Binary.ofUInt16 |> should equal [| 0x03uy; 0xE7uy |]
 
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
 let ``Binary to uint16 000`` () =
-    [| 0x00uy; 0x00uy |] |> Binary.toUint16 |> should equal 000us
+    [| 0x00uy; 0x00uy |] |> Binary.toUInt16 |> should equal 000us
 
 [<Test>]
 let ``Binary to uint16 001`` () =
-    [| 0x00uy; 0x01uy |] |> Binary.toUint16 |> should equal 001us
+    [| 0x00uy; 0x01uy |] |> Binary.toUInt16 |> should equal 001us
 
 [<Test>]
 let ``Binary to uint16 255`` () =
-    [| 0x00uy; 0xFFuy |] |> Binary.toUint16 |> should equal 255us
+    [| 0x00uy; 0xFFuy |] |> Binary.toUInt16 |> should equal 255us
 
 [<Test>]
 let ``Binary to uint16 256`` () =
-    [| 0x01uy; 0x00uy |] |> Binary.toUint16 |> should equal 256us
+    [| 0x01uy; 0x00uy |] |> Binary.toUInt16 |> should equal 256us
 
 [<Test>]
 let ``Binary to uint16 999`` () =
-    [| 0x03uy; 0xE7uy |] |> Binary.toUint16 |> should equal 999us
+    [| 0x03uy; 0xE7uy |] |> Binary.toUInt16 |> should equal 999us
 
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
 let ``Binary of uint32 000`` () =
-    000u |> Binary.ofUint32 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy |]
+    000u |> Binary.ofUInt32 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy |]
 
 [<Test>]
 let ``Binary of uint32 001`` () =
-    001u |> Binary.ofUint32 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x01uy |]
+    001u |> Binary.ofUInt32 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x01uy |]
 
 [<Test>]
 let ``Binary of uint32 255`` () =
-    255u |> Binary.ofUint32 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0xFFuy |]
+    255u |> Binary.ofUInt32 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0xFFuy |]
 
 [<Test>]
 let ``Binary of uint32 256`` () =
-    256u |> Binary.ofUint32 |> should equal [| 0x00uy; 0x00uy; 0x01uy; 0x00uy |]
+    256u |> Binary.ofUInt32 |> should equal [| 0x00uy; 0x00uy; 0x01uy; 0x00uy |]
 
 [<Test>]
 let ``Binary of uint32 999`` () =
-    999u |> Binary.ofUint32 |> should equal [| 0x00uy; 0x00uy; 0x03uy; 0xE7uy |]
+    999u |> Binary.ofUInt32 |> should equal [| 0x00uy; 0x00uy; 0x03uy; 0xE7uy |]
 
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
 let ``Binary to uint32 000`` () =
-    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy |] |> Binary.toUint32 |> should equal 000u
+    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy |] |> Binary.toUInt32 |> should equal 000u
 
 [<Test>]
 let ``Binary to uint32 001`` () =
-    [| 0x00uy; 0x00uy; 0x00uy; 0x01uy |] |> Binary.toUint32 |> should equal 001u
+    [| 0x00uy; 0x00uy; 0x00uy; 0x01uy |] |> Binary.toUInt32 |> should equal 001u
 
 [<Test>]
 let ``Binary to uint32 255`` () =
-    [| 0x00uy; 0x00uy; 0x00uy; 0xFFuy |] |> Binary.toUint32 |> should equal 255u
+    [| 0x00uy; 0x00uy; 0x00uy; 0xFFuy |] |> Binary.toUInt32 |> should equal 255u
 
 [<Test>]
 let ``Binary to uint32 256`` () =
-    [| 0x00uy; 0x00uy; 0x01uy; 0x00uy |] |> Binary.toUint32 |> should equal 256u
+    [| 0x00uy; 0x00uy; 0x01uy; 0x00uy |] |> Binary.toUInt32 |> should equal 256u
 
 [<Test>]
 let ``Binary to uint32 999`` () =
-    [| 0x00uy; 0x00uy; 0x03uy; 0xE7uy |] |> Binary.toUint32 |> should equal 999u
+    [| 0x00uy; 0x00uy; 0x03uy; 0xE7uy |] |> Binary.toUInt32 |> should equal 999u
 
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
 let ``Binary of uint64 000`` () =
-    000UL |> Binary.ofUint64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy |]
+    000UL |> Binary.ofUInt64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy |]
 
 [<Test>]
 let ``Binary of uint64 001`` () =
-    001UL |> Binary.ofUint64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x01uy |]
+    001UL |> Binary.ofUInt64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x01uy |]
 
 [<Test>]
 let ``Binary of uint64 255`` () =
-    255UL |> Binary.ofUint64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0xFFuy |]
+    255UL |> Binary.ofUInt64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0xFFuy |]
 
 [<Test>]
 let ``Binary of uint64 256`` () =
-    256UL |> Binary.ofUint64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x01uy; 0x00uy |]
+    256UL |> Binary.ofUInt64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x01uy; 0x00uy |]
 
 [<Test>]
 let ``Binary of uint64 999`` () =
-    999UL |> Binary.ofUint64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x03uy; 0xE7uy |]
+    999UL |> Binary.ofUInt64 |> should equal [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x03uy; 0xE7uy |]
 
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
 let ``Binary to uint64 000`` () =
-    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy |] |> Binary.toUint64 |> should equal 000UL
+    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy |] |> Binary.toUInt64 |> should equal 000UL
 
 [<Test>]
 let ``Binary to uint64 001`` () =
-    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x01uy |] |> Binary.toUint64 |> should equal 001UL
+    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x01uy |] |> Binary.toUInt64 |> should equal 001UL
 
 [<Test>]
 let ``Binary to uint64 255`` () =
-    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0xFFuy |] |> Binary.toUint64 |> should equal 255UL
+    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0xFFuy |] |> Binary.toUInt64 |> should equal 255UL
 
 [<Test>]
 let ``Binary to uint64 256`` () =
-    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x01uy; 0x00uy |] |> Binary.toUint64 |> should equal 256UL
+    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x01uy; 0x00uy |] |> Binary.toUInt64 |> should equal 256UL
 
 [<Test>]
 let ``Binary to uint64 999`` () =
-    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x03uy; 0xE7uy |] |> Binary.toUint64 |> should equal 999UL
+    [| 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x00uy; 0x03uy; 0xE7uy |] |> Binary.toUInt64 |> should equal 999UL
 
 //-------------------------------------------------------------------------------------------------
 

@@ -38,7 +38,7 @@ let computeHash (input : byte[]) =
 
 type Keys = { Prv : byte[]; Pub : byte[] }
 
-let private appendSeqNumber input = Array.append input << Binary.ofUint32
+let private appendSeqNumber input = Array.append input << Binary.ofUInt32
 
 let private computeKeysHash appendSeqNumber input =
     let generator i = Some (appendSeqNumber input i, i + 1u)
