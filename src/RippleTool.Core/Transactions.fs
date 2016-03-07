@@ -134,7 +134,7 @@ type private TransactionType =
     | OfferCancel   = 08us
     | TrustSet      = 20us
 
-type private FieldType =
+type private FieldKind =
     | UInt16'TransactionType
     | UInt32'Flags
     | UInt32'SourceTag
@@ -150,72 +150,6 @@ type private FieldType =
     | Variable'TxnSignature
     | Account'Account
     | Account'Destination
-
-type private Field = { Type : FieldType; Value : byte[] }
-
-let private required fieldType toBinary value fields =
-    { Type = fieldType; Value = toBinary value } :: fields
-
-let private optional fieldType toBinary = function
-    | Some value -> value |> required fieldType toBinary
-    | None -> id
-
-//-------------------------------------------------------------------------------------------------
-
-let private fieldsFromPayment (transaction : Payment) =
-
-    let transactionType = uint16 TransactionType.Payment
-    []
-    |> required UInt16'TransactionType    Binary.ofUInt16  transactionType
-    |> required Account'Account           Binary.ofAccount transaction.Account
-    |> required Amount'Fee                Binary.ofAmount  transaction.Fee
-    |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
-    |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
-    |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
-    |> optional UInt32'SourceTag          Binary.ofUInt32  transaction.SourceTag
-    |> optional UInt32'DestinationTag     Binary.ofUInt32  transaction.DestinationTag
-    |> required Account'Destination       Binary.ofAccount transaction.Destination
-    |> required Amount'Amount             Binary.ofAmount  transaction.Amount
-
-let private fieldsFromAccountSet (transaction : AccountSet) =
-
-    failwith "Not implemented"
-
-let private fieldsFromSetRegularKey (transaction : SetRegularKey) =
-
-    failwith "Not implemented"
-
-let private fieldsFromOfferCreate (transaction : OfferCreate) =
-
-    failwith "Not implemented"
-
-let private fieldsFromOfferCancel (transaction : OfferCancel) =
-
-    failwith "Not implemented"
-
-let private fieldsFromTrustSet (transaction : TrustSet) =
-
-    let transactionType = uint16 TransactionType.TrustSet
-    []
-    |> required UInt16'TransactionType    Binary.ofUInt16  transactionType
-    |> required Account'Account           Binary.ofAccount transaction.Account
-    |> required Amount'Fee                Binary.ofAmount  transaction.Fee
-    |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
-    |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
-    |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
-    |> required Amount'Limit              Binary.ofAmount  transaction.LimitAmount
-    |> optional UInt32'QualityIn          Binary.ofQuality transaction.QualityIn
-    |> optional UInt32'QualityOut         Binary.ofQuality transaction.QualityOut
-
-//-------------------------------------------------------------------------------------------------
-
-let private fieldsFromTransaction = function
-    | Payment       transaction -> transaction |> fieldsFromPayment
-    | AccountSet    transaction -> transaction |> fieldsFromAccountSet
-    | SetRegularKey transaction -> transaction |> fieldsFromSetRegularKey
-    | OfferCreate   transaction -> transaction |> fieldsFromOfferCreate
-    | OfferCancel   transaction -> transaction |> fieldsFromOfferCancel
-    | TrustSet      transaction -> transaction |> fieldsFromTrustSet
 
 let private fieldOrdinal = function
     | UInt16'TransactionType    -> (1,  2)
@@ -234,28 +168,101 @@ let private fieldOrdinal = function
     | Account'Account           -> (8,  1)
     | Account'Destination       -> (8,  3)
 
-let private fieldToBytes field =
+type private Field = { Kind : FieldKind; Data : byte[] }
 
-    let fieldHead =
-        match fieldOrdinal field.Type with
-        | fieldType, fieldName when fieldType > 15 -> [| byte (fieldName <<< 0); byte fieldType |]
-        | fieldType, fieldName when fieldName > 15 -> [| byte (fieldType <<< 4); byte fieldName |]
-        | fieldType, fieldName -> [| byte <| (fieldType <<< 4) + (fieldName <<< 0) |]
+//-------------------------------------------------------------------------------------------------
 
-    Array.concat [ fieldHead; field.Value ]
+module private Fields =
+
+    let private required kind toBinary value fields =
+        { Kind = kind; Data = toBinary value } :: fields
+
+    let private optional kind toBinary = function
+        | Some value -> value |> required kind toBinary
+        | None -> id
+
+    let private ofPayment (transaction : Payment) =
+
+        let transactionType = uint16 TransactionType.Payment
+        []
+        |> required UInt16'TransactionType    Binary.ofUInt16  transactionType
+        |> required Account'Account           Binary.ofAccount transaction.Account
+        |> required Amount'Fee                Binary.ofAmount  transaction.Fee
+        |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
+        |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
+        |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
+        |> optional UInt32'SourceTag          Binary.ofUInt32  transaction.SourceTag
+        |> optional UInt32'DestinationTag     Binary.ofUInt32  transaction.DestinationTag
+        |> required Account'Destination       Binary.ofAccount transaction.Destination
+        |> required Amount'Amount             Binary.ofAmount  transaction.Amount
+
+    let private ofAccountSet (transaction : AccountSet) =
+
+        failwith "Not implemented"
+
+    let private ofSetRegularKey (transaction : SetRegularKey) =
+
+        failwith "Not implemented"
+
+    let private ofOfferCreate (transaction : OfferCreate) =
+
+        failwith "Not implemented"
+
+    let private ofOfferCancel (transaction : OfferCancel) =
+
+        failwith "Not implemented"
+
+    let private ofTrustSet (transaction : TrustSet) =
+
+        let transactionType = uint16 TransactionType.TrustSet
+        []
+        |> required UInt16'TransactionType    Binary.ofUInt16  transactionType
+        |> required Account'Account           Binary.ofAccount transaction.Account
+        |> required Amount'Fee                Binary.ofAmount  transaction.Fee
+        |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
+        |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
+        |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
+        |> required Amount'Limit              Binary.ofAmount  transaction.LimitAmount
+        |> optional UInt32'QualityIn          Binary.ofQuality transaction.QualityIn
+        |> optional UInt32'QualityOut         Binary.ofQuality transaction.QualityOut
+
+    let ofTransaction = function
+        | Payment       transaction -> transaction |> ofPayment
+        | AccountSet    transaction -> transaction |> ofAccountSet
+        | SetRegularKey transaction -> transaction |> ofSetRegularKey
+        | OfferCreate   transaction -> transaction |> ofOfferCreate
+        | OfferCancel   transaction -> transaction |> ofOfferCancel
+        | TrustSet      transaction -> transaction |> ofTrustSet
+
+    let appendSigningPublicKey =
+        Binary.ofVariable |> required Variable'SigningPubKey
+
+    let appendSignature =
+        Binary.ofVariable |> optional Variable'TxnSignature
+
+    let sort =
+        List.sortBy (fun field -> fieldOrdinal field.Kind)
+
+//-------------------------------------------------------------------------------------------------
+
+let private serializeFieldKind = function
+    | fieldType, fieldName when fieldType > 15 -> [| byte (fieldName <<< 0); byte fieldType |]
+    | fieldType, fieldName when fieldName > 15 -> [| byte (fieldType <<< 4); byte fieldName |]
+    | fieldType, fieldName -> [| byte <| (fieldType <<< 4) + (fieldName <<< 0) |]
+
+let private serializeField field =
+    let binaryKind = field.Kind |> fieldOrdinal |> serializeFieldKind
+    let binaryData = field.Data
+    Array.concat [ binaryKind; binaryData ]
 
 let serialize signingPublicKey signature transaction =
 
-    let signingFields =
-        []
-        |> required Variable'SigningPubKey Binary.ofVariable signingPublicKey
-        |> optional Variable'TxnSignature  Binary.ofVariable signature
-
     transaction
-    |> fieldsFromTransaction
-    |> List.append signingFields
-    |> List.sortBy (fun field -> fieldOrdinal field.Type)
-    |> List.map fieldToBytes
+    |> Fields.ofTransaction
+    |> Fields.appendSigningPublicKey signingPublicKey
+    |> Fields.appendSignature signature
+    |> Fields.sort
+    |> List.map serializeField
     |> Array.concat
 
 //-------------------------------------------------------------------------------------------------
