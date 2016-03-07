@@ -3,8 +3,6 @@
 open System.ComponentModel
 open Microsoft.FSharp.Quotations.Patterns
 open RippleTool.Types
-open RippleTool.CommandTypes
-open RippleTool.TransactionTypes
 open RippleTool.UI.Integration
 
 //-------------------------------------------------------------------------------------------------
@@ -96,7 +94,7 @@ type PingModel() =
     member this.Submit() =
 
         let command =
-            RippleTool.CommandTypes.Ping
+            RippleTool.Types.Ping
 
         executeCommand (command |> Ping)
 
@@ -109,7 +107,7 @@ type RandomModel() =
     member this.Submit() =
 
         let command =
-            RippleTool.CommandTypes.Random
+            RippleTool.Types.Random
 
         executeCommand (command |> Random)
 
@@ -122,7 +120,7 @@ type ServerInfoModel() =
     member this.Submit() =
 
         let command =
-            RippleTool.CommandTypes.ServerInfo
+            RippleTool.Types.ServerInfo
 
         executeCommand (command |> ServerInfo)
 
@@ -135,7 +133,7 @@ type ServerStateModel() =
     member this.Submit() =
 
         let command =
-            RippleTool.CommandTypes.ServerState
+            RippleTool.Types.ServerState
 
         executeCommand (command |> ServerState)
 

@@ -6,7 +6,7 @@ open System.Threading
 open Chiron
 open RippleTool
 open RippleTool.Encoding
-open RippleTool.CommandTypes
+open RippleTool.Types
 open RippleTool.Commands
 
 //-------------------------------------------------------------------------------------------------

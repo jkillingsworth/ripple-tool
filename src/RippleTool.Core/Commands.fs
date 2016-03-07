@@ -3,7 +3,6 @@
 open Chiron
 open WebSocket4Net
 open RippleTool.Types
-open RippleTool.CommandTypes
 
 //-------------------------------------------------------------------------------------------------
 

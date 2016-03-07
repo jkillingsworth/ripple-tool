@@ -3,7 +3,6 @@
 open System
 open RippleTool.Encoding
 open RippleTool.Types
-open RippleTool.TransactionTypes
 
 //-------------------------------------------------------------------------------------------------
 

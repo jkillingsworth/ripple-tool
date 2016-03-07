@@ -5,7 +5,6 @@ open NUnit.Framework
 open FsUnit
 open RippleTool.Encoding
 open RippleTool.Types
-open RippleTool.TransactionTypes
 open RippleTool.Transactions
 
 //-------------------------------------------------------------------------------------------------
