@@ -26,123 +26,123 @@ type Role =
 
 [<Flags>]
 type PaymentFlags =
-    | None              = 0x00000000u
-    | FullyCanonicalSig = 0x80000000u
-    | NoRippleDirect    = 0x00010000u
-    | PartialPayment    = 0x00020000u
-    | LimitQuality      = 0x00040000u
+    | None               = 0x00000000u
+    | FullyCanonicalSig  = 0x80000000u
+    | NoRippleDirect     = 0x00010000u
+    | PartialPayment     = 0x00020000u
+    | LimitQuality       = 0x00040000u
 
 type Payment =
-    { Account : string
-      Fee : Amount
-      Sequence : uint32
+    { Account            : string
+      Fee                : Amount
+      Sequence           : uint32
       LastLedgerSequence : uint32 option
-      Flags : PaymentFlags
-      SourceTag : uint32 option
-      DestinationTag : uint32 option
-      Destination : string
-      Amount : Amount }
+      Flags              : PaymentFlags
+      SourceTag          : uint32 option
+      DestinationTag     : uint32 option
+      Destination        : string
+      Amount             : Amount }
 
-type AccountSet = unit
-type SetRegularKey = unit
-type OfferCreate = unit
-type OfferCancel = unit
+type AccountSet          = unit
+type SetRegularKey       = unit
+type OfferCreate         = unit
+type OfferCancel         = unit
 
 [<Flags>]
 type TrustSetFlags =
-    | None              = 0x00000000u
-    | FullyCanonicalSig = 0x80000000u
-    | SetAuth           = 0x00010000u
-    | SetNoRipple       = 0x00020000u
-    | ClearNoRipple     = 0x00040000u
-    | SetFreeze         = 0x00100000u
-    | ClearFreeze       = 0x00200000u
+    | None               = 0x00000000u
+    | FullyCanonicalSig  = 0x80000000u
+    | SetAuth            = 0x00010000u
+    | SetNoRipple        = 0x00020000u
+    | ClearNoRipple      = 0x00040000u
+    | SetFreeze          = 0x00100000u
+    | ClearFreeze        = 0x00200000u
 
 type TrustSet =
-    { Account : string
-      Fee : Amount
-      Sequence : uint32
+    { Account            : string
+      Fee                : Amount
+      Sequence           : uint32
       LastLedgerSequence : uint32 option
-      Flags : TrustSetFlags
-      LimitAmount : Amount
-      QualityIn : decimal option
-      QualityOut : decimal option }
+      Flags              : TrustSetFlags
+      LimitAmount        : Amount
+      QualityIn          : decimal option
+      QualityOut         : decimal option }
 
 //-------------------------------------------------------------------------------------------------
 
 type Ping =
-    { Id : string option }
+    { Id                 : string option }
 
 type Random =
-    { Id : string option }
+    { Id                 : string option }
 
 type ServerInfo =
-    { Id : string option }
+    { Id                 : string option }
 
 type ServerState =
-    { Id : string option }
+    { Id                 : string option }
 
 type AccountCurrencies =
-    { Id : string option
-      Account : string
-      Ledger : Ledger }
+    { Id                 : string option
+      Account            : string
+      Ledger             : Ledger }
 
 type AccountInfo =
-    { Id : string option
-      Account : string
-      Ledger : Ledger }
+    { Id                 : string option
+      Account            : string
+      Ledger             : Ledger }
 
 type AccountLines =
-    { Id : string option
-      Account : string
-      Ledger : Ledger }
+    { Id                 : string option
+      Account            : string
+      Ledger             : Ledger }
 
 type AccountObjects =
-    { Id : string option
-      Account : string
-      Ledger : Ledger }
+    { Id                 : string option
+      Account            : string
+      Ledger             : Ledger }
 
 type AccountOffers =
-    { Id : string option
-      Account : string
-      Ledger : Ledger }
+    { Id                 : string option
+      Account            : string
+      Ledger             : Ledger }
 
 type AccountTx =
-    { Id : string option
-      Account : string }
+    { Id                 : string option
+      Account            : string }
 
 type GatewayBalances =
-    { Id : string option
-      Account : string
-      Ledger : Ledger }
+    { Id                 : string option
+      Account            : string
+      Ledger             : Ledger }
 
 type NoRippleCheck =
-    { Id : string option
-      Account : string
-      Ledger : Ledger
-      Role : Role }
+    { Id                 : string option
+      Account            : string
+      Ledger             : Ledger
+      Role               : Role }
 
 type BookOffers =
-    { Id : string option
-      Ledger : Ledger
-      Taker : string option
-      Limit : uint32 option
-      TakerGets : Currency
-      TakerPays : Currency }
+    { Id                 : string option
+      Ledger             : Ledger
+      Taker              : string option
+      Limit              : uint32 option
+      TakerGets          : Currency
+      TakerPays          : Currency }
 
 type RipplePathFind =
-    { Id : string option
-      SourceAccount : string
+    { Id                 : string option
+      SourceAccount      : string
       DestinationAccount : string
-      DestinationAmount : Amount }
+      DestinationAmount  : Amount }
 
 type Submit =
-    { Id : string option
-      TxBlob : string }
+    { Id                 : string option
+      TxBlob             : string }
 
 type Tx =
-    { Id : string option
-      Transaction : string }
+    { Id                 : string option
+      Transaction        : string }
 
 //-------------------------------------------------------------------------------------------------
 
