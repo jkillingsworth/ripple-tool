@@ -96,7 +96,7 @@ module Binary =
         |> LanguagePrimitives.EnumToValue
         |> Binary.ofUInt32
 
-    let ofQuality (input : decimal) =
+    let ofPercent (input : decimal) =
         input
         |> (*) 1000000000m
         |> Decimal.Round
@@ -218,8 +218,8 @@ module private Fields =
         |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
         |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
         |> required Amount'Limit              Binary.ofAmount  transaction.LimitAmount
-        |> optional UInt32'QualityIn          Binary.ofQuality transaction.QualityIn
-        |> optional UInt32'QualityOut         Binary.ofQuality transaction.QualityOut
+        |> optional UInt32'QualityIn          Binary.ofPercent transaction.QualityIn
+        |> optional UInt32'QualityOut         Binary.ofPercent transaction.QualityOut
 
     let ofTransaction = function
         | Payment       transaction -> transaction |> ofPayment
