@@ -89,7 +89,7 @@ module private Json =
         |> optional "id" ofString command.Id
         |> required "command" ofString "account_currencies"
         |> required "account" ofString command.Account
-        |> required "ledger_index" ofLedger command.Ledger
+        |> optional "ledger_index" ofLedger command.Ledger
         |> toObject
 
     let private ofAccountInfo (command : AccountInfo) =
@@ -97,7 +97,7 @@ module private Json =
         |> optional "id" ofString command.Id
         |> required "command" ofString "account_info"
         |> required "account" ofString command.Account
-        |> required "ledger_index" ofLedger command.Ledger
+        |> optional "ledger_index" ofLedger command.Ledger
         |> toObject
 
     let private ofAccountLines (command : AccountLines) =
@@ -105,7 +105,7 @@ module private Json =
         |> optional "id" ofString command.Id
         |> required "command" ofString "account_lines"
         |> required "account" ofString command.Account
-        |> required "ledger_index" ofLedger command.Ledger
+        |> optional "ledger_index" ofLedger command.Ledger
         |> toObject
 
     let private ofAccountObjects (command : AccountObjects) =
@@ -113,7 +113,7 @@ module private Json =
         |> optional "id" ofString command.Id
         |> required "command" ofString "account_objects"
         |> required "account" ofString command.Account
-        |> required "ledger_index" ofLedger command.Ledger
+        |> optional "ledger_index" ofLedger command.Ledger
         |> toObject
 
     let private ofAccountOffers (command : AccountOffers) =
@@ -121,7 +121,7 @@ module private Json =
         |> optional "id" ofString command.Id
         |> required "command" ofString "account_offers"
         |> required "account" ofString command.Account
-        |> required "ledger_index" ofLedger command.Ledger
+        |> optional "ledger_index" ofLedger command.Ledger
         |> toObject
 
     let private ofAccountTx (command : AccountTx) =
@@ -129,6 +129,7 @@ module private Json =
         |> optional "id" ofString command.Id
         |> required "command" ofString "account_tx"
         |> required "account" ofString command.Account
+        |> optional "ledger_index" ofLedger command.Ledger
         |> required "ledger_index_min" ofNumber -1m
         |> required "ledger_index_max" ofNumber -1m
         |> optional "binary" ofBool command.Binary
@@ -139,7 +140,7 @@ module private Json =
         |> optional "id" ofString command.Id
         |> required "command" ofString "gateway_balances"
         |> required "account" ofString command.Account
-        |> required "ledger_index" ofLedger command.Ledger
+        |> optional "ledger_index" ofLedger command.Ledger
         |> toObject
 
     let private ofNoRippleCheck (command : NoRippleCheck) =
@@ -147,7 +148,7 @@ module private Json =
         |> optional "id" ofString command.Id
         |> required "command" ofString "noripple_check"
         |> required "account" ofString command.Account
-        |> required "ledger_index" ofLedger command.Ledger
+        |> optional "ledger_index" ofLedger command.Ledger
         |> required "role" ofRole command.Role
         |> toObject
 
@@ -155,7 +156,7 @@ module private Json =
         []
         |> optional "id" ofString command.Id
         |> required "command" ofString "book_offers"
-        |> required "ledger_index" ofLedger command.Ledger
+        |> optional "ledger_index" ofLedger command.Ledger
         |> optional "taker" ofString command.Taker
         |> optional "limit" ofUInt32 command.Limit
         |> required "taker_gets" ofCurrency command.TakerGets
@@ -166,7 +167,7 @@ module private Json =
         []
         |> optional "id" ofString command.Id
         |> required "command" ofString "ripple_path_find"
-        |> required "ledger_index" ofLedger command.Ledger
+        |> optional "ledger_index" ofLedger command.Ledger
         |> required "source_account" ofString command.SourceAccount
         |> required "destination_account" ofString command.DestinationAccount
         |> required "destination_amount" ofAmount command.DestinationAmount

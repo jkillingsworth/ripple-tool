@@ -85,47 +85,48 @@ type ServerState =
 type AccountCurrencies =
     { Id                 : string option
       Account            : string
-      Ledger             : Ledger }
+      Ledger             : Ledger option }
 
 type AccountInfo =
     { Id                 : string option
       Account            : string
-      Ledger             : Ledger }
+      Ledger             : Ledger option }
 
 type AccountLines =
     { Id                 : string option
       Account            : string
-      Ledger             : Ledger }
+      Ledger             : Ledger option }
 
 type AccountObjects =
     { Id                 : string option
       Account            : string
-      Ledger             : Ledger }
+      Ledger             : Ledger option }
 
 type AccountOffers =
     { Id                 : string option
       Account            : string
-      Ledger             : Ledger }
+      Ledger             : Ledger option }
 
 type AccountTx =
     { Id                 : string option
       Account            : string
+      Ledger             : Ledger option
       Binary             : bool option }
 
 type GatewayBalances =
     { Id                 : string option
       Account            : string
-      Ledger             : Ledger }
+      Ledger             : Ledger option }
 
 type NoRippleCheck =
     { Id                 : string option
       Account            : string
-      Ledger             : Ledger
+      Ledger             : Ledger option
       Role               : Role }
 
 type BookOffers =
     { Id                 : string option
-      Ledger             : Ledger
+      Ledger             : Ledger option
       Taker              : string option
       Limit              : uint32 option
       TakerGets          : Currency
@@ -133,7 +134,7 @@ type BookOffers =
 
 type RipplePathFind =
     { Id                 : string option
-      Ledger             : Ledger
+      Ledger             : Ledger option
       SourceAccount      : string
       DestinationAccount : string
       DestinationAmount  : Amount }

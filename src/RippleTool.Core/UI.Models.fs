@@ -192,7 +192,7 @@ type AccountCurrenciesModel() =
 
         let command : AccountCurrencies =
             { Id = None
-              Ledger = !ledger
+              Ledger = Some !ledger
               Account = !account }
 
         executeCommand (command |> AccountCurrencies)
@@ -218,7 +218,7 @@ type AccountInfoModel() =
 
         let command : AccountInfo =
             { Id = None
-              Ledger = !ledger
+              Ledger = Some !ledger
               Account = !account }
 
         executeCommand (command |> AccountInfo)
@@ -244,7 +244,7 @@ type AccountLinesModel() =
 
         let command : AccountLines =
             { Id = None
-              Ledger = !ledger
+              Ledger = Some !ledger
               Account = !account }
 
         executeCommand (command |> AccountLines)
@@ -270,7 +270,7 @@ type AccountObjectsModel() =
 
         let command : AccountObjects =
             { Id = None
-              Ledger = !ledger
+              Ledger = Some !ledger
               Account = !account }
 
         executeCommand (command |> AccountObjects)
@@ -296,7 +296,7 @@ type AccountOffersModel() =
 
         let command : AccountOffers =
             { Id = None
-              Ledger = !ledger
+              Ledger = Some !ledger
               Account = !account }
 
         executeCommand (command |> AccountOffers)
@@ -324,6 +324,7 @@ type AccountTxModel() =
 
         let command : AccountTx =
             { Id = None
+              Ledger = None
               Account = !account
               Binary = Some !binary }
 
@@ -350,7 +351,7 @@ type GatewayBalancesModel() =
 
         let command : GatewayBalances =
             { Id = None
-              Ledger = !ledger
+              Ledger = Some !ledger
               Account = !account }
 
         executeCommand (command |> GatewayBalances)
@@ -394,7 +395,7 @@ type NoRippleCheckModel() =
 
         let command : NoRippleCheck =
             { Id = None
-              Ledger = !ledger
+              Ledger = Some !ledger
               Account = !account
               Role = role }
 
@@ -489,7 +490,7 @@ type BookOffersModel() =
 
         let command : BookOffers =
             { Id = None
-              Ledger = !ledger
+              Ledger = Some !ledger
               Taker = taker
               Limit = limit
               TakerGets = takerGets
@@ -558,7 +559,7 @@ type RipplePathFindModel() =
 
         let command : RipplePathFind =
             { Id = None
-              Ledger = !ledger
+              Ledger = Some !ledger
               SourceAccount = !sourceAccount
               DestinationAccount = !destinationAccount
               DestinationAmount = destinationAmount }
