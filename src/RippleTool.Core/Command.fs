@@ -19,6 +19,7 @@ module private Json =
     let private ofString = String
     let private ofNumber = Number
     let private ofUInt32 = Number << decimal
+    let private ofBool   = Bool
 
     let private ofIssuedCurrency currency =
         []
@@ -130,6 +131,7 @@ module private Json =
         |> required "account" ofString command.Account
         |> required "ledger_index_min" ofNumber -1m
         |> required "ledger_index_max" ofNumber -1m
+        |> optional "binary" ofBool command.Binary
         |> toObject
 
     let private ofGatewayBalances (command : GatewayBalances) =
@@ -181,6 +183,7 @@ module private Json =
         |> optional "id" ofString command.Id
         |> required "command" ofString "tx"
         |> required "transaction" ofString command.Transaction
+        |> optional "binary" ofBool command.Binary
         |> toObject
 
     let ofCommand = function

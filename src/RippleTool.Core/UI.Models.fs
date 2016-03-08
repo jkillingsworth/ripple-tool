@@ -308,6 +308,7 @@ type AccountTxModel() =
     inherit Model()
 
     let account = ref ""
+    let binary = ref false
 
     member this.Ledger = "All"
 
@@ -315,11 +316,16 @@ type AccountTxModel() =
         with get () = !account
         and set value = set this value account <@ this.Account @>
 
+    member this.Binary
+        with get () = !binary
+        and set value = set this value binary <@ this.Binary @>
+
     member this.Submit() =
 
         let command : AccountTx =
             { Id = None
-              Account = !account }
+              Account = !account
+              Binary = Some !binary }
 
         executeCommand (command |> AccountTx)
 
@@ -799,15 +805,21 @@ type TxModel() =
     inherit Model()
 
     let transaction = ref ""
+    let binary = ref false
 
     member this.Transaction
         with get () = !transaction
         and set value = set this value transaction <@ this.Transaction @>
 
+    member this.Binary
+        with get () = !binary
+        and set value = set this value binary <@ this.Binary @>
+
     member this.Submit() =
 
         let command : Tx =
             { Id = None
-              Transaction = !transaction }
+              Transaction = !transaction
+              Binary = Some !binary }
 
         executeCommand (command |> Tx)

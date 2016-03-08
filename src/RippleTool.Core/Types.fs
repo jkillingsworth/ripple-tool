@@ -109,7 +109,8 @@ type AccountOffers =
 
 type AccountTx =
     { Id                 : string option
-      Account            : string }
+      Account            : string
+      Binary             : bool option }
 
 type GatewayBalances =
     { Id                 : string option
@@ -142,7 +143,8 @@ type Submit =
 
 type Tx =
     { Id                 : string option
-      Transaction        : string }
+      Transaction        : string
+      Binary             : bool option }
 
 //-------------------------------------------------------------------------------------------------
 

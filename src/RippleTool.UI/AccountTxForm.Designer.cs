@@ -35,6 +35,7 @@
             this.comboLedger = new System.Windows.Forms.ComboBox();
             this.labelAccount = new System.Windows.Forms.Label();
             this.textAccount = new System.Windows.Forms.TextBox();
+            this.checkBinary = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,10 +45,10 @@
             // 
             // buttonSubmit
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(12, 100);
+            this.buttonSubmit.Location = new System.Drawing.Point(12, 125);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
-            this.buttonSubmit.TabIndex = 4;
+            this.buttonSubmit.TabIndex = 5;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
@@ -90,11 +91,23 @@
             this.textAccount.Size = new System.Drawing.Size(260, 23);
             this.textAccount.TabIndex = 3;
             // 
+            // checkBinary
+            // 
+            this.checkBinary.AutoSize = true;
+            this.checkBinary.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bindingSource, "Binary", true));
+            this.checkBinary.Location = new System.Drawing.Point(12, 100);
+            this.checkBinary.Name = "checkBinary";
+            this.checkBinary.Size = new System.Drawing.Size(59, 19);
+            this.checkBinary.TabIndex = 4;
+            this.checkBinary.Text = "Binary";
+            this.checkBinary.UseVisualStyleBackColor = true;
+            // 
             // AccountTxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 862);
+            this.Controls.Add(this.checkBinary);
             this.Controls.Add(this.textAccount);
             this.Controls.Add(this.labelAccount);
             this.Controls.Add(this.comboLedger);
@@ -117,5 +130,6 @@
         private System.Windows.Forms.ComboBox comboLedger;
         private System.Windows.Forms.Label labelAccount;
         private System.Windows.Forms.TextBox textAccount;
+        private System.Windows.Forms.CheckBox checkBinary;
     }
 }
