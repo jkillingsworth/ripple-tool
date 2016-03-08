@@ -91,10 +91,18 @@ type PingModel() =
 
     inherit Model()
 
+    let commandId = ref ""
+
+    member this.CommandId
+        with get () = !commandId
+        and set value = set this value commandId <@ this.CommandId @>
+
     member this.Submit() =
 
-        let command =
-            RippleTool.Types.Ping
+        let commandId = optional !commandId id
+
+        let command : Ping =
+            { Id = commandId }
 
         executeCommand (command |> Ping)
 
@@ -104,10 +112,18 @@ type RandomModel() =
 
     inherit Model()
 
+    let commandId = ref ""
+
+    member this.CommandId
+        with get () = !commandId
+        and set value = set this value commandId <@ this.CommandId @>
+
     member this.Submit() =
 
-        let command =
-            RippleTool.Types.Random
+        let commandId = optional !commandId id
+
+        let command : Random =
+            { Id = commandId }
 
         executeCommand (command |> Random)
 
@@ -117,10 +133,18 @@ type ServerInfoModel() =
 
     inherit Model()
 
+    let commandId = ref ""
+
+    member this.CommandId
+        with get () = !commandId
+        and set value = set this value commandId <@ this.CommandId @>
+
     member this.Submit() =
 
-        let command =
-            RippleTool.Types.ServerInfo
+        let commandId = optional !commandId id
+
+        let command : ServerInfo =
+            { Id = commandId }
 
         executeCommand (command |> ServerInfo)
 
@@ -130,10 +154,18 @@ type ServerStateModel() =
 
     inherit Model()
 
+    let commandId = ref ""
+
+    member this.CommandId
+        with get () = !commandId
+        and set value = set this value commandId <@ this.CommandId @>
+
     member this.Submit() =
 
-        let command =
-            RippleTool.Types.ServerState
+        let commandId = optional !commandId id
+
+        let command : ServerState =
+            { Id = commandId }
 
         executeCommand (command |> ServerState)
 
@@ -157,7 +189,8 @@ type AccountCurrenciesModel() =
     member this.Submit() =
 
         let command : AccountCurrencies =
-            { Ledger = !ledger
+            { Id = None
+              Ledger = !ledger
               Account = !account }
 
         executeCommand (command |> AccountCurrencies)
@@ -182,7 +215,8 @@ type AccountInfoModel() =
     member this.Submit() =
 
         let command : AccountInfo =
-            { Ledger = !ledger
+            { Id = None
+              Ledger = !ledger
               Account = !account }
 
         executeCommand (command |> AccountInfo)
@@ -207,7 +241,8 @@ type AccountLinesModel() =
     member this.Submit() =
 
         let command : AccountLines =
-            { Ledger = !ledger
+            { Id = None
+              Ledger = !ledger
               Account = !account }
 
         executeCommand (command |> AccountLines)
@@ -232,7 +267,8 @@ type AccountObjectsModel() =
     member this.Submit() =
 
         let command : AccountObjects =
-            { Ledger = !ledger
+            { Id = None
+              Ledger = !ledger
               Account = !account }
 
         executeCommand (command |> AccountObjects)
@@ -257,7 +293,8 @@ type AccountOffersModel() =
     member this.Submit() =
 
         let command : AccountOffers =
-            { Ledger = !ledger
+            { Id = None
+              Ledger = !ledger
               Account = !account }
 
         executeCommand (command |> AccountOffers)
@@ -279,7 +316,8 @@ type AccountTxModel() =
     member this.Submit() =
 
         let command : AccountTx =
-            { Account = !account }
+            { Id = None
+              Account = !account }
 
         executeCommand (command |> AccountTx)
 
@@ -303,7 +341,8 @@ type GatewayBalancesModel() =
     member this.Submit() =
 
         let command : GatewayBalances =
-            { Ledger = !ledger
+            { Id = None
+              Ledger = !ledger
               Account = !account }
 
         executeCommand (command |> GatewayBalances)
@@ -346,7 +385,8 @@ type NoRippleCheckModel() =
         let role = if !roleIsUser then User else Gateway
 
         let command : NoRippleCheck =
-            { Ledger = !ledger
+            { Id = None
+              Ledger = !ledger
               Account = !account
               Role = role }
 
@@ -439,8 +479,9 @@ type BookOffersModel() =
             !takerPaysIsIssued
             |> toCurrency !takerPaysCurrency !takerPaysIssuer
 
-        let command =
-            { Ledger = !ledger
+        let command : BookOffers =
+            { Id = None
+              Ledger = !ledger
               Taker = taker
               Limit = limit
               TakerGets = takerGets
@@ -502,8 +543,9 @@ type RipplePathFindModel() =
             !destinationAmountIsIssued
             |> toAmount !destinationAmountValue !destinationAmountCurrency !destinationAmountIssuer
 
-        let command =
-            { SourceAccount = !sourceAccount
+        let command : RipplePathFind =
+            { Id = None
+              SourceAccount = !sourceAccount
               DestinationAccount = !destinationAccount
               DestinationAmount = destinationAmount }
 
@@ -621,7 +663,7 @@ type SubmitPaymentModel() =
             !amountIsIssued
             |> toAmount !amountValue !amountCurrency !amountIssuer
 
-        let transaction =
+        let transaction : Payment =
             { Account = !account
               Fee = fee
               Sequence = uint32 !sequence
@@ -736,7 +778,7 @@ type SubmitTrustSetModel() =
         let qualityIn = optional !qualityIn decimal
         let qualityOut = optional !qualityOut decimal
 
-        let transaction =
+        let transaction : TrustSet =
             { Account = !account
               Fee = fee
               Sequence = uint32 !sequence
@@ -762,6 +804,8 @@ type TxModel() =
 
     member this.Submit() =
 
-        let command = { Transaction = !transaction }
+        let command : Tx =
+            { Id = None
+              Transaction = !transaction }
 
         executeCommand (command |> Tx)

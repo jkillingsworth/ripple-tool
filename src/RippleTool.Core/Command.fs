@@ -61,26 +61,31 @@ module private Json =
 
     let private ofPing (command : Ping) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "ping"
         |> toObject
 
     let private ofRandom (command : Random) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "random"
         |> toObject
 
     let private ofServerInfo (command : ServerInfo) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "server_info"
         |> toObject
 
     let private ofServerState (command : ServerState) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "server_state"
         |> toObject
 
     let private ofAccountCurrencies (command : AccountCurrencies) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "account_currencies"
         |> required "account" ofString command.Account
         |> required "ledger_index" ofLedger command.Ledger
@@ -88,6 +93,7 @@ module private Json =
 
     let private ofAccountInfo (command : AccountInfo) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "account_info"
         |> required "account" ofString command.Account
         |> required "ledger_index" ofLedger command.Ledger
@@ -95,6 +101,7 @@ module private Json =
 
     let private ofAccountLines (command : AccountLines) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "account_lines"
         |> required "account" ofString command.Account
         |> required "ledger_index" ofLedger command.Ledger
@@ -102,6 +109,7 @@ module private Json =
 
     let private ofAccountObjects (command : AccountObjects) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "account_objects"
         |> required "account" ofString command.Account
         |> required "ledger_index" ofLedger command.Ledger
@@ -109,6 +117,7 @@ module private Json =
 
     let private ofAccountOffers (command : AccountOffers) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "account_offers"
         |> required "account" ofString command.Account
         |> required "ledger_index" ofLedger command.Ledger
@@ -116,6 +125,7 @@ module private Json =
 
     let private ofAccountTx (command : AccountTx) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "account_tx"
         |> required "account" ofString command.Account
         |> required "ledger_index_min" ofNumber -1m
@@ -124,6 +134,7 @@ module private Json =
 
     let private ofGatewayBalances (command : GatewayBalances) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "gateway_balances"
         |> required "account" ofString command.Account
         |> required "ledger_index" ofLedger command.Ledger
@@ -131,6 +142,7 @@ module private Json =
 
     let private ofNoRippleCheck (command : NoRippleCheck) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "noripple_check"
         |> required "account" ofString command.Account
         |> required "ledger_index" ofLedger command.Ledger
@@ -139,6 +151,7 @@ module private Json =
 
     let private ofBookOffers (command : BookOffers) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "book_offers"
         |> required "ledger_index" ofLedger command.Ledger
         |> optional "taker" ofString command.Taker
@@ -149,6 +162,7 @@ module private Json =
 
     let private ofRipplePathFind (command : RipplePathFind) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "ripple_path_find"
         |> required "source_account" ofString command.SourceAccount
         |> required "destination_account" ofString command.DestinationAccount
@@ -157,12 +171,14 @@ module private Json =
 
     let private ofSubmit (command : Submit) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "submit"
         |> required "tx_blob" ofString command.TxBlob
         |> toObject
 
     let private ofTx (command : Tx) =
         []
+        |> optional "id" ofString command.Id
         |> required "command" ofString "tx"
         |> required "transaction" ofString command.Transaction
         |> toObject

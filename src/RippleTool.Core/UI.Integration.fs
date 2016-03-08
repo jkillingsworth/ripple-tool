@@ -87,7 +87,7 @@ let executeCommand =
     agentExecuteCommand.Post << Command.serialize
 
 let executeSubmitTransaction =
-    let toSubmit blob = Submit { TxBlob = Binary.toHex blob }
+    let toSubmit blob = Submit { Id = None; TxBlob = Binary.toHex blob }
     executeCommand << toSubmit << Transaction.sign Config.secretKey
 
 let getJsonReq () =

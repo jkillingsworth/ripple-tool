@@ -75,63 +75,79 @@ type TrustSet =
 
 //-------------------------------------------------------------------------------------------------
 
-type Ping = Ping
+type Ping =
+    { Id : string option }
 
-type Random = Random
+type Random =
+    { Id : string option }
 
-type ServerInfo = ServerInfo
+type ServerInfo =
+    { Id : string option }
 
-type ServerState = ServerState
+type ServerState =
+    { Id : string option }
 
 type AccountCurrencies =
-    { Account : string
+    { Id : string option
+      Account : string
       Ledger : Ledger }
 
 type AccountInfo =
-    { Account : string
+    { Id : string option
+      Account : string
       Ledger : Ledger }
 
 type AccountLines =
-    { Account : string
+    { Id : string option
+      Account : string
       Ledger : Ledger }
 
 type AccountObjects =
-    { Account : string
+    { Id : string option
+      Account : string
       Ledger : Ledger }
 
 type AccountOffers =
-    { Account : string
+    { Id : string option
+      Account : string
       Ledger : Ledger }
 
 type AccountTx =
-    { Account : string }
+    { Id : string option
+      Account : string }
 
 type GatewayBalances =
-    { Account : string
+    { Id : string option
+      Account : string
       Ledger : Ledger }
 
 type NoRippleCheck =
-    { Account : string
+    { Id : string option
+      Account : string
       Ledger : Ledger
       Role : Role }
 
 type BookOffers =
-    { Ledger : Ledger
+    { Id : string option
+      Ledger : Ledger
       Taker : string option
       Limit : uint32 option
       TakerGets : Currency
       TakerPays : Currency }
 
 type RipplePathFind =
-    { SourceAccount : string
+    { Id : string option
+      SourceAccount : string
       DestinationAccount : string
       DestinationAmount : Amount }
 
 type Submit =
-    { TxBlob : string }
+    { Id : string option
+      TxBlob : string }
 
 type Tx =
-    { Transaction : string }
+    { Id : string option
+      Transaction : string }
 
 //-------------------------------------------------------------------------------------------------
 
