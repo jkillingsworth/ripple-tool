@@ -166,6 +166,7 @@ module private Json =
         []
         |> optional "id" ofString command.Id
         |> required "command" ofString "ripple_path_find"
+        |> required "ledger_index" ofLedger command.Ledger
         |> required "source_account" ofString command.SourceAccount
         |> required "destination_account" ofString command.DestinationAccount
         |> required "destination_amount" ofAmount command.DestinationAmount

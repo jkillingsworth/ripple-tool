@@ -133,6 +133,7 @@ type BookOffers =
 
 type RipplePathFind =
     { Id                 : string option
+      Ledger             : Ledger
       SourceAccount      : string
       DestinationAccount : string
       DestinationAmount  : Amount }

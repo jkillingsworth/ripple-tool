@@ -503,6 +503,7 @@ type RipplePathFindModel() =
 
     inherit Model()
 
+    let ledger = ref Ledger.Validated
     let sourceAccount = ref ""
     let destinationAccount = ref ""
     let destinationAmountIsIssued = ref true
@@ -510,6 +511,10 @@ type RipplePathFindModel() =
     let destinationAmountValue = ref ""
     let destinationAmountCurrency = ref ""
     let destinationAmountIssuer = ref ""
+
+    member this.Ledger
+        with get () = !ledger
+        and set value = set this value ledger <@ this.Ledger @>
 
     member this.SourceAccount
         with get () = !sourceAccount
@@ -553,6 +558,7 @@ type RipplePathFindModel() =
 
         let command : RipplePathFind =
             { Id = None
+              Ledger = !ledger
               SourceAccount = !sourceAccount
               DestinationAccount = !destinationAccount
               DestinationAmount = destinationAmount }

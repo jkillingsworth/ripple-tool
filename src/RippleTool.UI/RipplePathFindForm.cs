@@ -8,6 +8,7 @@ namespace RippleTool.UI
         {
             InitializeComponent();
             Model = new Models.RipplePathFindModel();
+            bindingSourceLedgerOptions.DataSource = new Models.LedgerOptions();
         }
 
         private Models.RipplePathFindModel Model
