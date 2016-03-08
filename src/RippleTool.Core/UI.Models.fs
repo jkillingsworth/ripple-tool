@@ -192,8 +192,8 @@ type AccountCurrenciesModel() =
 
         let command : AccountCurrencies =
             { Id = None
-              Ledger = Some !ledger
-              Account = !account }
+              Account = !account
+              Ledger = Some !ledger }
 
         executeCommand (command |> AccountCurrencies)
 
@@ -218,8 +218,8 @@ type AccountInfoModel() =
 
         let command : AccountInfo =
             { Id = None
-              Ledger = Some !ledger
-              Account = !account }
+              Account = !account
+              Ledger = Some !ledger }
 
         executeCommand (command |> AccountInfo)
 
@@ -244,8 +244,8 @@ type AccountLinesModel() =
 
         let command : AccountLines =
             { Id = None
-              Ledger = Some !ledger
-              Account = !account }
+              Account = !account
+              Ledger = Some !ledger }
 
         executeCommand (command |> AccountLines)
 
@@ -270,8 +270,8 @@ type AccountObjectsModel() =
 
         let command : AccountObjects =
             { Id = None
-              Ledger = Some !ledger
-              Account = !account }
+              Account = !account
+              Ledger = Some !ledger }
 
         executeCommand (command |> AccountObjects)
 
@@ -296,8 +296,8 @@ type AccountOffersModel() =
 
         let command : AccountOffers =
             { Id = None
-              Ledger = Some !ledger
-              Account = !account }
+              Account = !account
+              Ledger = Some !ledger }
 
         executeCommand (command |> AccountOffers)
 
@@ -324,8 +324,8 @@ type AccountTxModel() =
 
         let command : AccountTx =
             { Id = None
-              Ledger = None
               Account = !account
+              Ledger = None
               Binary = Some !binary }
 
         executeCommand (command |> AccountTx)
@@ -351,8 +351,8 @@ type GatewayBalancesModel() =
 
         let command : GatewayBalances =
             { Id = None
-              Ledger = Some !ledger
-              Account = !account }
+              Account = !account
+              Ledger = Some !ledger }
 
         executeCommand (command |> GatewayBalances)
 
@@ -395,8 +395,8 @@ type NoRippleCheckModel() =
 
         let command : NoRippleCheck =
             { Id = None
-              Ledger = Some !ledger
               Account = !account
+              Ledger = Some !ledger
               Role = role }
 
         executeCommand (command |> NoRippleCheck)
