@@ -5,18 +5,13 @@ open System
 //-------------------------------------------------------------------------------------------------
 
 type IssuedCurrency = { Code : string; Issuer : string }
-type NativeCurrency = NativeCurrency
+type NativeCurrency = Xrp
 
 type Currency =
     | IssuedCurrency of IssuedCurrency
     | NativeCurrency of NativeCurrency
 
-type IssuedAmount = { Value : decimal; Currency : string; Issuer : string }
-type NativeAmount = decimal
-
-type Amount =
-    | IssuedAmount of IssuedAmount
-    | NativeAmount of NativeAmount
+type Amount = { Value : decimal; Currency : Currency }
 
 type Ledger =
     | Validated

@@ -38,14 +38,16 @@ let private optional value map =
     | value -> value |> map |> Some
 
 let private toCurrency code issuer = function
-    | true  -> IssuedCurrency <| { Code = code; Issuer = issuer }
-    | false -> NativeCurrency <| NativeCurrency.NativeCurrency
+    | true  -> IssuedCurrency { Code = code; Issuer = issuer }
+    | false -> NativeCurrency Xrp
 
 let private toIssuedAmount value currency issuer =
-    IssuedAmount <| { Value = decimal value; Currency = currency; Issuer = issuer }
+    { Value = decimal value
+      Currency = IssuedCurrency { Code = currency; Issuer = issuer } }
 
 let private toNativeAmount value =
-    NativeAmount <| decimal value
+    { Value = decimal value
+      Currency = NativeCurrency Xrp }
 
 let private toAmount value currency issuer = function
     | true  -> toIssuedAmount value currency issuer

@@ -20,22 +20,13 @@ module private Json =
     let private ofNumber = Number
     let private ofUInt32 = Number << decimal
 
-    let private ofLedger = String << function
-        | Validated -> "validated"
-        | Closed    -> "closed"
-        | Current   -> "current"
-
-    let private ofRole = String << function
-        | User    -> "user"
-        | Gateway -> "gateway"
-
-    let private ofIssuedCurrency (currency : IssuedCurrency) =
+    let private ofIssuedCurrency currency =
         []
         |> required "currency" ofString currency.Code
         |> required "issuer" ofString currency.Issuer
         |> toObject
 
-    let private ofNativeCurrency (currency : NativeCurrency) =
+    let private ofNativeCurrency currency =
         []
         |> required "currency" ofString "XRP"
         |> toObject
@@ -44,20 +35,29 @@ module private Json =
         | IssuedCurrency currency -> ofIssuedCurrency currency
         | NativeCurrency currency -> ofNativeCurrency currency
 
-    let private ofIssuedAmount (amount : IssuedAmount) =
+    let private ofIssuedAmount value currency =
         []
-        |> required "value" ofNumber amount.Value
-        |> required "currency" ofString amount.Currency
-        |> required "issuer" ofString amount.Issuer
+        |> required "value" ofNumber value
+        |> required "currency" ofString currency.Code
+        |> required "issuer" ofString currency.Issuer
         |> toObject
 
-    let private ofNativeAmount (amount : NativeAmount) =
+    let private ofNativeAmount value currency =
 
-        ofNumber amount
+        ofNumber value
 
     let private ofAmount = function
-        | IssuedAmount amount -> ofIssuedAmount amount
-        | NativeAmount amount -> ofNativeAmount amount
+        | { Value = value; Currency = IssuedCurrency currency } -> ofIssuedAmount value currency
+        | { Value = value; Currency = NativeCurrency currency } -> ofNativeAmount value currency
+
+    let private ofLedger = function
+        | Validated -> ofString "validated"
+        | Closed    -> ofString "closed"
+        | Current   -> ofString "current"
+
+    let private ofRole = function
+        | User    -> ofString "user"
+        | Gateway -> ofString "gateway"
 
     let private ofPing (command : Ping) =
         []

@@ -21,9 +21,7 @@ module Binary =
         | x when x >= 10m -> log10 (x / 10m) (n + 1)
         | x -> n
 
-    let private ofIssuedAmount (input : IssuedAmount) =
-
-        let value = input.Value
+    let private ofIssuedAmount value currency =
 
         let typeFlag = 1
         let signFlag = if value > Decimal.Zero then 1 else 0
@@ -44,15 +42,13 @@ module Binary =
 
         let bytes1 = Binary.ofUInt64 combined
         let bytes2 = Array.zeroCreate<byte> 12
-        let bytes3 = input.Currency |> Seq.map byte |> Seq.toArray
+        let bytes3 = currency.Code |> Seq.map byte |> Seq.toArray
         let bytes4 = Array.zeroCreate<byte> 5
-        let bytes5 = Base58.decodeAccountId input.Issuer
+        let bytes5 = Base58.decodeAccountId currency.Issuer
 
         Array.concat [ bytes1; bytes2; bytes3; bytes4; bytes5 ]
 
-    let private ofNativeAmount (input : NativeAmount) =
-
-        let value = input
+    let private ofNativeAmount value currency =
 
         let typeFlag = 0
         let signFlag = if value < Decimal.Zero then 0 else 1
@@ -108,8 +104,8 @@ module Binary =
         |> Binary.ofUInt32
 
     let ofAmount = function
-        | IssuedAmount amount -> ofIssuedAmount amount
-        | NativeAmount amount -> ofNativeAmount amount
+        | { Value = value; Currency = IssuedCurrency currency } -> ofIssuedAmount value currency
+        | { Value = value; Currency = NativeCurrency currency } -> ofNativeAmount value currency
 
     let ofVariable (input : byte[]) =
 

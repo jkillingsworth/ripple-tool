@@ -125,7 +125,7 @@ module Base58 =
         |> Seq.map (fun x -> alphabet.IndexOf(x))
         |> Seq.fold (fun acc x -> (acc * 58I) + bigint x) 0I
 
-    let private encode (version : Version) (input : byte[]) =
+    let private encode version (input : byte[]) =
 
         let binaryVersion = [| byte version |]
         let binaryPayload = input
@@ -146,7 +146,7 @@ module Base58 =
 
         encodedPadding + encodedInteger
 
-    let private decode (version : Version) (input : string) =
+    let private decode version (input : string) =
 
         let decodedPadding =
             input
