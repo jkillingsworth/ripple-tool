@@ -2,17 +2,17 @@
 
 namespace RippleTool.UI
 {
-    public partial class TxForm : DockForm
+    public partial class AccountTransactionsForm : DockForm
     {
-        public TxForm()
+        public AccountTransactionsForm()
         {
             InitializeComponent();
-            Model = new Models.TxModel();
+            Model = new Models.AccountTransactionsModel();
         }
 
-        private Models.TxModel Model
+        private Models.AccountTransactionsModel Model
         {
-            get { return bindingSource.DataSource as Models.TxModel; }
+            get { return bindingSource.DataSource as Models.AccountTransactionsModel; }
             set { bindingSource.DataSource = value; }
         }
 

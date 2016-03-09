@@ -303,7 +303,7 @@ type AccountOffersModel() =
 
 //-------------------------------------------------------------------------------------------------
 
-type AccountTxModel() =
+type AccountTransactionsModel() =
 
     inherit Model()
 
@@ -322,13 +322,13 @@ type AccountTxModel() =
 
     member this.Submit() =
 
-        let command : AccountTx =
+        let command : AccountTransactions =
             { Id = None
               Account = !account
               Ledger = None
               Binary = Some !binary }
 
-        executeCommand (command |> AccountTx)
+        executeCommand (command |> AccountTransactions)
 
 //-------------------------------------------------------------------------------------------------
 
@@ -807,16 +807,16 @@ type SubmitTrustSetModel() =
 
 //-------------------------------------------------------------------------------------------------
 
-type TxModel() =
+type TransactionInfoModel() =
 
     inherit Model()
 
-    let transaction = ref ""
+    let transactionHash = ref ""
     let binary = ref false
 
-    member this.Transaction
-        with get () = !transaction
-        and set value = set this value transaction <@ this.Transaction @>
+    member this.TransactionHash
+        with get () = !transactionHash
+        and set value = set this value transactionHash <@ this.TransactionHash @>
 
     member this.Binary
         with get () = !binary
@@ -824,9 +824,9 @@ type TxModel() =
 
     member this.Submit() =
 
-        let command : Tx =
+        let command : TransactionInfo =
             { Id = None
-              Transaction = !transaction
+              TransactionHash = !transactionHash
               Binary = Some !binary }
 
-        executeCommand (command |> Tx)
+        executeCommand (command |> TransactionInfo)

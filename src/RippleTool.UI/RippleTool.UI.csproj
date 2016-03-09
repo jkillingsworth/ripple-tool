@@ -97,11 +97,11 @@
     <Compile Include="AccountOffersForm.Designer.cs">
       <DependentUpon>AccountOffersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AccountTxForm.cs">
+    <Compile Include="AccountTransactionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AccountTxForm.Designer.cs">
-      <DependentUpon>AccountTxForm.cs</DependentUpon>
+    <Compile Include="AccountTransactionsForm.Designer.cs">
+      <DependentUpon>AccountTransactionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BookOffersForm.cs">
       <SubType>Form</SubType>
@@ -204,11 +204,11 @@
     <Compile Include="SubmitTrustSetForm.Designer.cs">
       <DependentUpon>SubmitTrustSetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TxForm.cs">
+    <Compile Include="TransactionInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TxForm.Designer.cs">
-      <DependentUpon>TxForm.cs</DependentUpon>
+    <Compile Include="TransactionInfoForm.Designer.cs">
+      <DependentUpon>TransactionInfoForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -230,8 +230,8 @@
     <EmbeddedResource Include="AccountOffersForm.resx">
       <DependentUpon>AccountOffersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AccountTxForm.resx">
-      <DependentUpon>AccountTxForm.cs</DependentUpon>
+    <EmbeddedResource Include="AccountTransactionsForm.resx">
+      <DependentUpon>AccountTransactionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookOffersForm.resx">
       <DependentUpon>BookOffersForm.cs</DependentUpon>
@@ -285,8 +285,8 @@
     <EmbeddedResource Include="SubmitTrustSetForm.resx">
       <DependentUpon>SubmitTrustSetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TxForm.resx">
-      <DependentUpon>TxForm.cs</DependentUpon>
+    <EmbeddedResource Include="TransactionInfoForm.resx">
+      <DependentUpon>TransactionInfoForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -304,7 +304,7 @@
     <None Include="Properties\DataSources\Models.AccountLinesModel.datasource" />
     <None Include="Properties\DataSources\Models.AccountObjectsModel.datasource" />
     <None Include="Properties\DataSources\Models.AccountOffersModel.datasource" />
-    <None Include="Properties\DataSources\Models.AccountTxModel.datasource" />
+    <None Include="Properties\DataSources\Models.AccountTransactionsModel.datasource" />
     <None Include="Properties\DataSources\Models.BookOffersModel.datasource" />
     <None Include="Properties\DataSources\Models.GatewayBalancesModel.datasource" />
     <None Include="Properties\DataSources\Models.LedgerOptions.datasource" />
@@ -317,7 +317,7 @@
     <None Include="Properties\DataSources\Models.ServerStateModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitPaymentModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitTrustSetModel.datasource" />
-    <None Include="Properties\DataSources\Models.TxModel.datasource" />
+    <None Include="Properties\DataSources\Models.TransactionInfoModel.datasource" />
     <None Include="Resources\JsonFormatted.png" />
     <None Include="Resources\JsonRaw.png" />
     <None Include="Resources\JsonClear.png" />

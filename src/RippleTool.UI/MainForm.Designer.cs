@@ -55,7 +55,7 @@
             this.menuItemViewAccountLines = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountObjects = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewAccountOffers = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewAccountTx = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewAccountTransactions = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewGatewayBalances = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewNoRippleCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -68,7 +68,7 @@
             this.menuItemViewSubmitOfferCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSubmitOfferCancel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSubmitTrustSet = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewTx = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewTransactionInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindowCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
@@ -190,14 +190,14 @@
             this.menuItemViewAccountLines,
             this.menuItemViewAccountObjects,
             this.menuItemViewAccountOffers,
-            this.menuItemViewAccountTx,
+            this.menuItemViewAccountTransactions,
             this.menuItemViewGatewayBalances,
             this.menuItemViewNoRippleCheck,
             this.menuItemViewSeparator4,
             this.menuItemViewBookOffers,
             this.menuItemViewRipplePathFind,
             this.menuItemViewSubmit,
-            this.menuItemViewTx});
+            this.menuItemViewTransactionInfo});
             this.menuItemView.Name = "menuItemView";
             this.menuItemView.Size = new System.Drawing.Size(44, 20);
             this.menuItemView.Text = "&View";
@@ -307,12 +307,12 @@
             this.menuItemViewAccountOffers.Text = "Account Offers";
             this.menuItemViewAccountOffers.Click += new System.EventHandler(this.menuItemViewAccountOffers_Click);
             // 
-            // menuItemViewAccountTx
+            // menuItemViewAccountTransactions
             // 
-            this.menuItemViewAccountTx.Name = "menuItemViewAccountTx";
-            this.menuItemViewAccountTx.Size = new System.Drawing.Size(219, 22);
-            this.menuItemViewAccountTx.Text = "Account Tx";
-            this.menuItemViewAccountTx.Click += new System.EventHandler(this.menuItemViewAccountTx_Click);
+            this.menuItemViewAccountTransactions.Name = "menuItemViewAccountTransactions";
+            this.menuItemViewAccountTransactions.Size = new System.Drawing.Size(219, 22);
+            this.menuItemViewAccountTransactions.Text = "Account Transactions";
+            this.menuItemViewAccountTransactions.Click += new System.EventHandler(this.menuItemViewAccountTransactions_Click);
             // 
             // menuItemViewGatewayBalances
             // 
@@ -406,12 +406,12 @@
             this.menuItemViewSubmitTrustSet.Text = "Trust Set";
             this.menuItemViewSubmitTrustSet.Click += new System.EventHandler(this.menuItemViewSubmitTrustSet_Click);
             // 
-            // menuItemViewTx
+            // menuItemViewTransactionInfo
             // 
-            this.menuItemViewTx.Name = "menuItemViewTx";
-            this.menuItemViewTx.Size = new System.Drawing.Size(219, 22);
-            this.menuItemViewTx.Text = "Tx";
-            this.menuItemViewTx.Click += new System.EventHandler(this.menuItemViewTx_Click);
+            this.menuItemViewTransactionInfo.Name = "menuItemViewTransactionInfo";
+            this.menuItemViewTransactionInfo.Size = new System.Drawing.Size(219, 22);
+            this.menuItemViewTransactionInfo.Text = "Transaction Info";
+            this.menuItemViewTransactionInfo.Click += new System.EventHandler(this.menuItemViewTransactionInfo_Click);
             // 
             // menuItemWindow
             // 
@@ -565,7 +565,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountLines;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountObjects;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountOffers;
-        private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountTx;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewAccountTransactions;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewGatewayBalances;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewNoRippleCheck;
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator4;
@@ -578,7 +578,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitOfferCreate;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitOfferCancel;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitTrustSet;
-        private System.Windows.Forms.ToolStripMenuItem menuItemViewTx;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewTransactionInfo;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindowCloseAll;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;

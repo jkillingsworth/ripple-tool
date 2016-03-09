@@ -241,9 +241,9 @@ namespace RippleTool.UI
             Show(new AccountOffersForm());
         }
 
-        private void menuItemViewAccountTx_Click(object sender, EventArgs e)
+        private void menuItemViewAccountTransactions_Click(object sender, EventArgs e)
         {
-            Show(new AccountTxForm());
+            Show(new AccountTransactionsForm());
         }
 
         private void menuItemViewGatewayBalances_Click(object sender, EventArgs e)
@@ -276,9 +276,9 @@ namespace RippleTool.UI
             Show(new SubmitTrustSetForm());
         }
 
-        private void menuItemViewTx_Click(object sender, EventArgs e)
+        private void menuItemViewTransactionInfo_Click(object sender, EventArgs e)
         {
-            Show(new TxForm());
+            Show(new TransactionInfoForm());
         }
 
         private void menuItemWindowCloseAll_Click(object sender, EventArgs e)

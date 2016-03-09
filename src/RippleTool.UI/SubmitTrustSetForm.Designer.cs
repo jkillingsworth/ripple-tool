@@ -338,7 +338,7 @@
             this.Controls.Add(this.buttonSubmit);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SubmitTrustSetForm";
-            this.Text = "Trust Set";
+            this.Text = "Submit Trust Set";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupFlags.ResumeLayout(false);
             this.groupFlags.PerformLayout();

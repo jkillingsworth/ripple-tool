@@ -378,7 +378,7 @@
             this.Controls.Add(this.buttonSubmit);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SubmitPaymentForm";
-            this.Text = "Payment";
+            this.Text = "Submit Payment";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupFlags.ResumeLayout(false);
             this.groupFlags.PerformLayout();

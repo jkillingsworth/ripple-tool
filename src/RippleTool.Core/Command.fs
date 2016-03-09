@@ -124,7 +124,7 @@ module private Json =
         |> optional "ledger_index" ofLedger command.Ledger
         |> toObject
 
-    let private ofAccountTx (command : AccountTx) =
+    let private ofAccountTransactions (command : AccountTransactions) =
         []
         |> optional "id" ofString command.Id
         |> required "command" ofString "account_tx"
@@ -177,34 +177,34 @@ module private Json =
         []
         |> optional "id" ofString command.Id
         |> required "command" ofString "submit"
-        |> required "tx_blob" ofString command.TxBlob
+        |> required "tx_blob" ofString command.TransactionBlob
         |> toObject
 
-    let private ofTx (command : Tx) =
+    let private ofTransactionInfo (command : TransactionInfo) =
         []
         |> optional "id" ofString command.Id
         |> required "command" ofString "tx"
-        |> required "transaction" ofString command.Transaction
+        |> required "transaction" ofString command.TransactionHash
         |> optional "binary" ofBool command.Binary
         |> toObject
 
     let ofCommand = function
-        | Ping              command -> command |> ofPing
-        | Random            command -> command |> ofRandom
-        | ServerInfo        command -> command |> ofServerInfo
-        | ServerState       command -> command |> ofServerState
-        | AccountCurrencies command -> command |> ofAccountCurrencies
-        | AccountInfo       command -> command |> ofAccountInfo
-        | AccountLines      command -> command |> ofAccountLines
-        | AccountObjects    command -> command |> ofAccountObjects
-        | AccountOffers     command -> command |> ofAccountOffers
-        | AccountTx         command -> command |> ofAccountTx
-        | GatewayBalances   command -> command |> ofGatewayBalances
-        | NoRippleCheck     command -> command |> ofNoRippleCheck
-        | BookOffers        command -> command |> ofBookOffers
-        | RipplePathFind    command -> command |> ofRipplePathFind
-        | Submit            command -> command |> ofSubmit
-        | Tx                command -> command |> ofTx
+        | Ping                command -> command |> ofPing
+        | Random              command -> command |> ofRandom
+        | ServerInfo          command -> command |> ofServerInfo
+        | ServerState         command -> command |> ofServerState
+        | AccountCurrencies   command -> command |> ofAccountCurrencies
+        | AccountInfo         command -> command |> ofAccountInfo
+        | AccountLines        command -> command |> ofAccountLines
+        | AccountObjects      command -> command |> ofAccountObjects
+        | AccountOffers       command -> command |> ofAccountOffers
+        | AccountTransactions command -> command |> ofAccountTransactions
+        | GatewayBalances     command -> command |> ofGatewayBalances
+        | NoRippleCheck       command -> command |> ofNoRippleCheck
+        | BookOffers          command -> command |> ofBookOffers
+        | RipplePathFind      command -> command |> ofRipplePathFind
+        | Submit              command -> command |> ofSubmit
+        | TransactionInfo     command -> command |> ofTransactionInfo
 
 //-------------------------------------------------------------------------------------------------
 
