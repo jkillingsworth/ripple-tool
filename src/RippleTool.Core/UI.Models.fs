@@ -779,6 +779,64 @@ type SubmitAccountSetModel() =
 
 //-------------------------------------------------------------------------------------------------
 
+type SubmitSetRegularKeyModel() =
+
+    inherit Model()
+
+    let account = ref ""
+    let fee = ref ""
+    let sequence = ref ""
+    let lastLedgerSequence = ref ""
+    let flagFullyCanonicalSig = ref true
+    let regularKey = ref ""
+
+    member this.Account
+        with get () = !account
+        and set value = set this value account <@ this.Account @>
+
+    member this.Fee
+        with get () = !fee
+        and set value = set this value fee <@ this.Fee @>
+
+    member this.Sequence
+        with get () = !sequence
+        and set value = set this value sequence <@ this.Sequence @>
+
+    member this.LastLedgerSequence
+        with get () = !lastLedgerSequence
+        and set value = set this value lastLedgerSequence <@ this.LastLedgerSequence @>
+
+    member this.FlagFullyCanonicalSig
+        with get () = !flagFullyCanonicalSig
+        and set value = set this value flagFullyCanonicalSig <@ this.FlagFullyCanonicalSig @>
+
+    member this.RegularKey
+        with get () = !regularKey
+        and set value = set this value regularKey <@ this.RegularKey @>
+
+    member this.Submit() =
+
+        let fee = toNativeAmount !fee
+        let lastLedgerSequence = optional !lastLedgerSequence uint32
+
+        let flags =
+            SetRegularKeyFlags.None
+            |> combineFlag !flagFullyCanonicalSig SetRegularKeyFlags.FullyCanonicalSig
+
+        let regularKey = optional !regularKey string
+
+        let transaction : SetRegularKey =
+            { Account = !account
+              Fee = fee
+              Sequence = uint32 !sequence
+              LastLedgerSequence = lastLedgerSequence
+              Flags = flags
+              RegularKey = regularKey }
+
+        executeSubmitTransaction (transaction |> SetRegularKey)
+
+//-------------------------------------------------------------------------------------------------
+
 type SubmitTrustSetModel() =
 
     inherit Model()

@@ -376,11 +376,10 @@
             // 
             // menuItemViewSubmitSetRegularKey
             // 
-            this.menuItemViewSubmitSetRegularKey.Enabled = false;
             this.menuItemViewSubmitSetRegularKey.Name = "menuItemViewSubmitSetRegularKey";
             this.menuItemViewSubmitSetRegularKey.Size = new System.Drawing.Size(155, 22);
             this.menuItemViewSubmitSetRegularKey.Text = "Set Regular Key";
-            this.menuItemViewSubmitSetRegularKey.ToolTipText = "Not implemented";
+            this.menuItemViewSubmitSetRegularKey.Click += new System.EventHandler(this.menuItemViewSubmitSetRegularKey_Click);
             // 
             // menuItemViewSubmitOfferCreate
             // 

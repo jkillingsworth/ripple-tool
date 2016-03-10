@@ -204,6 +204,12 @@
     <Compile Include="SubmitPaymentForm.Designer.cs">
       <DependentUpon>SubmitPaymentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubmitSetRegularKeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmitSetRegularKeyForm.Designer.cs">
+      <DependentUpon>SubmitSetRegularKeyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubmitTrustSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +297,9 @@
     <EmbeddedResource Include="SubmitPaymentForm.resx">
       <DependentUpon>SubmitPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubmitSetRegularKeyForm.resx">
+      <DependentUpon>SubmitSetRegularKeyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubmitTrustSetForm.resx">
       <DependentUpon>SubmitTrustSetForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -327,6 +336,7 @@
     <None Include="Properties\DataSources\Models.ServerStateModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitAccountSetModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitPaymentModel.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitSetRegularKeyModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitTrustSetModel.datasource" />
     <None Include="Properties\DataSources\Models.TransactionInfoModel.datasource" />
     <None Include="Resources\JsonFormatted.png" />

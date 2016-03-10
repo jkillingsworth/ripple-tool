@@ -68,7 +68,19 @@ type AccountSet =
       ClearFlag           : AccountSetFlag option
       TransferRate        : decimal option }
 
-type SetRegularKey        = unit
+[<Flags>]
+type SetRegularKeyFlags =
+    | None                = 0x00000000u
+    | FullyCanonicalSig   = 0x80000000u
+
+type SetRegularKey =
+    { Account             : string
+      Fee                 : Amount
+      Sequence            : uint32
+      LastLedgerSequence  : uint32 option
+      Flags               : SetRegularKeyFlags
+      RegularKey          : string option }
+
 type OfferCreate          = unit
 type OfferCancel          = unit
 
