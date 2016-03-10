@@ -134,10 +134,13 @@ type private FieldKind =
     | UInt32'Flags
     | UInt32'SourceTag
     | UInt32'Sequence
+    | UInt32'TransferRate
     | UInt32'DestinationTag
     | UInt32'QualityIn
     | UInt32'QualityOut
     | UInt32'LastLedgerSequence
+    | UInt32'SetFlag
+    | UInt32'ClearFlag
     | Amount'Amount
     | Amount'Limit
     | Amount'Fee
@@ -151,10 +154,13 @@ let private fieldOrdinal = function
     | UInt32'Flags              -> (2,  2)
     | UInt32'SourceTag          -> (2,  3)
     | UInt32'Sequence           -> (2,  4)
+    | UInt32'TransferRate       -> (2, 11)
     | UInt32'DestinationTag     -> (2, 14)
     | UInt32'QualityIn          -> (2, 20)
     | UInt32'QualityOut         -> (2, 21)
     | UInt32'LastLedgerSequence -> (2, 27)
+    | UInt32'SetFlag            -> (2, 33)
+    | UInt32'ClearFlag          -> (2, 34)
     | Amount'Amount             -> (6,  1)
     | Amount'Limit              -> (6,  3)
     | Amount'Fee                -> (6,  8)
@@ -193,7 +199,17 @@ module private Fields =
 
     let private ofAccountSet (transaction : AccountSet) =
 
-        failwith "Not implemented"
+        let transactionType = uint16 TransactionType.AccountSet
+        []
+        |> required UInt16'TransactionType    Binary.ofUInt16  transactionType
+        |> required Account'Account           Binary.ofAccount transaction.Account
+        |> required Amount'Fee                Binary.ofAmount  transaction.Fee
+        |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
+        |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
+        |> required UInt32'Flags              Binary.ofEnum    transaction.Flags
+        |> optional UInt32'SetFlag            Binary.ofEnum    transaction.SetFlag
+        |> optional UInt32'ClearFlag          Binary.ofEnum    transaction.ClearFlag
+        |> optional UInt32'TransferRate       Binary.ofPercent transaction.TransferRate
 
     let private ofSetRegularKey (transaction : SetRegularKey) =
 

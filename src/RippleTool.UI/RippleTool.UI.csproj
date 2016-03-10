@@ -192,6 +192,12 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubmitAccountSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmitAccountSetForm.Designer.cs">
+      <DependentUpon>SubmitAccountSetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubmitPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubmitAccountSetForm.resx">
+      <DependentUpon>SubmitAccountSetForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubmitPaymentForm.resx">
       <DependentUpon>SubmitPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,6 +313,7 @@
     <None Include="Properties\DataSources\Models.AccountLinesModel.datasource" />
     <None Include="Properties\DataSources\Models.AccountObjectsModel.datasource" />
     <None Include="Properties\DataSources\Models.AccountOffersModel.datasource" />
+    <None Include="Properties\DataSources\Models.AccountSetFlagOptions.datasource" />
     <None Include="Properties\DataSources\Models.AccountTransactionsModel.datasource" />
     <None Include="Properties\DataSources\Models.BookOffersModel.datasource" />
     <None Include="Properties\DataSources\Models.GatewayBalancesModel.datasource" />
@@ -315,6 +325,7 @@
     <None Include="Properties\DataSources\Models.RipplePathFindModel.datasource" />
     <None Include="Properties\DataSources\Models.ServerInfoModel.datasource" />
     <None Include="Properties\DataSources\Models.ServerStateModel.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitAccountSetModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitPaymentModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitTrustSetModel.datasource" />
     <None Include="Properties\DataSources\Models.TransactionInfoModel.datasource" />

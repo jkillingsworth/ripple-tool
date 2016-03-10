@@ -369,11 +369,10 @@
             // 
             // menuItemViewSubmitAccountSet
             // 
-            this.menuItemViewSubmitAccountSet.Enabled = false;
             this.menuItemViewSubmitAccountSet.Name = "menuItemViewSubmitAccountSet";
             this.menuItemViewSubmitAccountSet.Size = new System.Drawing.Size(155, 22);
             this.menuItemViewSubmitAccountSet.Text = "Account Set";
-            this.menuItemViewSubmitAccountSet.ToolTipText = "Not implemented";
+            this.menuItemViewSubmitAccountSet.Click += new System.EventHandler(this.menuItemViewSubmitAccountSet_Click);
             // 
             // menuItemViewSubmitSetRegularKey
             // 

@@ -693,6 +693,92 @@ type SubmitPaymentModel() =
 
 //-------------------------------------------------------------------------------------------------
 
+type AccountSetFlagOption = { Value : AccountSetFlag option; Display : string }
+
+type AccountSetFlagOptions() as this =
+
+    inherit BindingList<AccountSetFlagOption>()
+
+    do this.Add({ Value = None;                              Display = "" })
+    do this.Add({ Value = Some AccountSetFlag.RequireDest;   Display = "Require destination tag" })
+    do this.Add({ Value = Some AccountSetFlag.RequireAuth;   Display = "Require authorization" })
+    do this.Add({ Value = Some AccountSetFlag.DisallowXrp;   Display = "Disallow XRP" })
+    do this.Add({ Value = Some AccountSetFlag.DisableMaster; Display = "Disable master" })
+    do this.Add({ Value = Some AccountSetFlag.AccountTxnId;  Display = "Account transaction ID" })
+    do this.Add({ Value = Some AccountSetFlag.NoFreeze;      Display = "No freeze" })
+    do this.Add({ Value = Some AccountSetFlag.GlobalFreeze;  Display = "Global freeze" })
+    do this.Add({ Value = Some AccountSetFlag.DefaultRipple; Display = "Default ripple" })
+
+type SubmitAccountSetModel() =
+
+    inherit Model()
+
+    let account = ref ""
+    let fee = ref ""
+    let sequence = ref ""
+    let lastLedgerSequence = ref ""
+    let flagFullyCanonicalSig = ref true
+    let setFlag = ref None
+    let clearFlag = ref None
+    let transferRate = ref ""
+
+    member this.Account
+        with get () = !account
+        and set value = set this value account <@ this.Account @>
+
+    member this.Fee
+        with get () = !fee
+        and set value = set this value fee <@ this.Fee @>
+
+    member this.Sequence
+        with get () = !sequence
+        and set value = set this value sequence <@ this.Sequence @>
+
+    member this.LastLedgerSequence
+        with get () = !lastLedgerSequence
+        and set value = set this value lastLedgerSequence <@ this.LastLedgerSequence @>
+
+    member this.FlagFullyCanonicalSig
+        with get () = !flagFullyCanonicalSig
+        and set value = set this value flagFullyCanonicalSig <@ this.FlagFullyCanonicalSig @>
+
+    member this.SetFlag
+        with get () = !setFlag
+        and set value = set this value setFlag <@ this.SetFlag @>
+
+    member this.ClearFlag
+        with get () = !clearFlag
+        and set value = set this value clearFlag <@ this.ClearFlag @>
+
+    member this.TransferRate
+        with get () = !transferRate
+        and set value = set this value transferRate <@ this.TransferRate @>
+
+    member this.Submit() =
+
+        let fee = toNativeAmount !fee
+        let lastLedgerSequence = optional !lastLedgerSequence uint32
+
+        let flags =
+            AccountSetFlags.None
+            |> combineFlag !flagFullyCanonicalSig AccountSetFlags.FullyCanonicalSig
+
+        let transferRate = optional !transferRate decimal
+
+        let transaction : AccountSet =
+            { Account = !account
+              Fee = fee
+              Sequence = uint32 !sequence
+              LastLedgerSequence = lastLedgerSequence
+              Flags = flags
+              SetFlag = !setFlag
+              ClearFlag = !clearFlag
+              TransferRate = transferRate }
+
+        executeSubmitTransaction (transaction |> AccountSet)
+
+//-------------------------------------------------------------------------------------------------
+
 type SubmitTrustSetModel() =
 
     inherit Model()

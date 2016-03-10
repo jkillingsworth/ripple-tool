@@ -43,7 +43,31 @@ type Payment =
       Destination         : string
       Amount              : Amount }
 
-type AccountSet           = unit
+[<Flags>]
+type AccountSetFlags =
+    | None                = 0x00000000u
+    | FullyCanonicalSig   = 0x80000000u
+
+type AccountSetFlag =
+    | RequireDest         = 1u
+    | RequireAuth         = 2u
+    | DisallowXrp         = 3u
+    | DisableMaster       = 4u
+    | AccountTxnId        = 5u
+    | NoFreeze            = 6u
+    | GlobalFreeze        = 7u
+    | DefaultRipple       = 8u
+
+type AccountSet =
+    { Account             : string
+      Fee                 : Amount
+      Sequence            : uint32
+      LastLedgerSequence  : uint32 option
+      Flags               : AccountSetFlags
+      SetFlag             : AccountSetFlag option
+      ClearFlag           : AccountSetFlag option
+      TransferRate        : decimal option }
+
 type SetRegularKey        = unit
 type OfferCreate          = unit
 type OfferCancel          = unit

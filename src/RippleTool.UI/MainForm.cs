@@ -271,6 +271,11 @@ namespace RippleTool.UI
             Show(new SubmitPaymentForm());
         }
 
+        private void menuItemViewSubmitAccountSet_Click(object sender, EventArgs e)
+        {
+            Show(new SubmitAccountSetForm());
+        }
+
         private void menuItemViewSubmitTrustSet_Click(object sender, EventArgs e)
         {
             Show(new SubmitTrustSetForm());
