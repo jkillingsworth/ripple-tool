@@ -73,7 +73,7 @@
             this.buttonSubmit.Location = new System.Drawing.Point(12, 639);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
-            this.buttonSubmit.TabIndex = 18;
+            this.buttonSubmit.TabIndex = 22;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
@@ -212,7 +212,7 @@
             this.labelSourceTag.Location = new System.Drawing.Point(12, 316);
             this.labelSourceTag.Name = "labelSourceTag";
             this.labelSourceTag.Size = new System.Drawing.Size(121, 15);
-            this.labelSourceTag.TabIndex = 19;
+            this.labelSourceTag.TabIndex = 9;
             this.labelSourceTag.Text = "Source tag (optional):";
             // 
             // textSourceTag
@@ -221,7 +221,7 @@
             this.textSourceTag.Location = new System.Drawing.Point(12, 334);
             this.textSourceTag.Name = "textSourceTag";
             this.textSourceTag.Size = new System.Drawing.Size(260, 23);
-            this.textSourceTag.TabIndex = 20;
+            this.textSourceTag.TabIndex = 10;
             // 
             // labelDestinationTag
             // 
@@ -229,7 +229,7 @@
             this.labelDestinationTag.Location = new System.Drawing.Point(12, 360);
             this.labelDestinationTag.Name = "labelDestinationTag";
             this.labelDestinationTag.Size = new System.Drawing.Size(145, 15);
-            this.labelDestinationTag.TabIndex = 21;
+            this.labelDestinationTag.TabIndex = 11;
             this.labelDestinationTag.Text = "Destination tag (optional):";
             // 
             // textDestinationTag
@@ -238,7 +238,7 @@
             this.textDestinationTag.Location = new System.Drawing.Point(12, 378);
             this.textDestinationTag.Name = "textDestinationTag";
             this.textDestinationTag.Size = new System.Drawing.Size(260, 23);
-            this.textDestinationTag.TabIndex = 22;
+            this.textDestinationTag.TabIndex = 12;
             // 
             // labelDestination
             // 
@@ -246,7 +246,7 @@
             this.labelDestination.Location = new System.Drawing.Point(12, 404);
             this.labelDestination.Name = "labelDestination";
             this.labelDestination.Size = new System.Drawing.Size(70, 15);
-            this.labelDestination.TabIndex = 9;
+            this.labelDestination.TabIndex = 13;
             this.labelDestination.Text = "Destination:";
             // 
             // textDestination
@@ -255,7 +255,7 @@
             this.textDestination.Location = new System.Drawing.Point(12, 422);
             this.textDestination.Name = "textDestination";
             this.textDestination.Size = new System.Drawing.Size(260, 23);
-            this.textDestination.TabIndex = 10;
+            this.textDestination.TabIndex = 14;
             // 
             // groupAmount
             // 
@@ -265,7 +265,7 @@
             this.groupAmount.Name = "groupAmount";
             this.groupAmount.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
             this.groupAmount.Size = new System.Drawing.Size(260, 50);
-            this.groupAmount.TabIndex = 11;
+            this.groupAmount.TabIndex = 15;
             this.groupAmount.TabStop = false;
             this.groupAmount.Text = "Amount";
             // 
@@ -299,7 +299,7 @@
             this.labelAmountValue.Location = new System.Drawing.Point(12, 504);
             this.labelAmountValue.Name = "labelAmountValue";
             this.labelAmountValue.Size = new System.Drawing.Size(85, 15);
-            this.labelAmountValue.TabIndex = 12;
+            this.labelAmountValue.TabIndex = 16;
             this.labelAmountValue.Text = "Amount value:";
             // 
             // textAmountValue
@@ -308,7 +308,7 @@
             this.textAmountValue.Location = new System.Drawing.Point(12, 522);
             this.textAmountValue.Name = "textAmountValue";
             this.textAmountValue.Size = new System.Drawing.Size(260, 23);
-            this.textAmountValue.TabIndex = 13;
+            this.textAmountValue.TabIndex = 17;
             // 
             // labelAmountCurrency
             // 
@@ -317,7 +317,7 @@
             this.labelAmountCurrency.Location = new System.Drawing.Point(12, 548);
             this.labelAmountCurrency.Name = "labelAmountCurrency";
             this.labelAmountCurrency.Size = new System.Drawing.Size(103, 15);
-            this.labelAmountCurrency.TabIndex = 14;
+            this.labelAmountCurrency.TabIndex = 18;
             this.labelAmountCurrency.Text = "Amount currency:";
             // 
             // textAmountCurrency
@@ -327,7 +327,7 @@
             this.textAmountCurrency.Location = new System.Drawing.Point(12, 566);
             this.textAmountCurrency.Name = "textAmountCurrency";
             this.textAmountCurrency.Size = new System.Drawing.Size(260, 23);
-            this.textAmountCurrency.TabIndex = 15;
+            this.textAmountCurrency.TabIndex = 19;
             // 
             // labelAmountIssuer
             // 
@@ -336,7 +336,7 @@
             this.labelAmountIssuer.Location = new System.Drawing.Point(12, 592);
             this.labelAmountIssuer.Name = "labelAmountIssuer";
             this.labelAmountIssuer.Size = new System.Drawing.Size(87, 15);
-            this.labelAmountIssuer.TabIndex = 16;
+            this.labelAmountIssuer.TabIndex = 20;
             this.labelAmountIssuer.Text = "Amount issuer:";
             // 
             // textAmountIssuer
@@ -346,7 +346,7 @@
             this.textAmountIssuer.Location = new System.Drawing.Point(12, 610);
             this.textAmountIssuer.Name = "textAmountIssuer";
             this.textAmountIssuer.Size = new System.Drawing.Size(260, 23);
-            this.textAmountIssuer.TabIndex = 17;
+            this.textAmountIssuer.TabIndex = 21;
             // 
             // SubmitPaymentForm
             // 
