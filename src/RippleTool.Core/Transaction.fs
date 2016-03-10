@@ -91,7 +91,7 @@ module Binary =
 
         | _ -> failwith "Cannot encode variable length data greater than 918744 bytes."
 
-    let ofFlags (input : 'T when 'T : enum<uint32>) =
+    let ofEnum (input : 'T when 'T : enum<uint32>) =
         input
         |> LanguagePrimitives.EnumToValue
         |> Binary.ofUInt32
@@ -185,7 +185,7 @@ module private Fields =
         |> required Amount'Fee                Binary.ofAmount  transaction.Fee
         |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
         |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
-        |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
+        |> required UInt32'Flags              Binary.ofEnum    transaction.Flags
         |> optional UInt32'SourceTag          Binary.ofUInt32  transaction.SourceTag
         |> optional UInt32'DestinationTag     Binary.ofUInt32  transaction.DestinationTag
         |> required Account'Destination       Binary.ofAccount transaction.Destination
@@ -216,7 +216,7 @@ module private Fields =
         |> required Amount'Fee                Binary.ofAmount  transaction.Fee
         |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
         |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
-        |> required UInt32'Flags              Binary.ofFlags   transaction.Flags
+        |> required UInt32'Flags              Binary.ofEnum    transaction.Flags
         |> required Amount'Limit              Binary.ofAmount  transaction.LimitAmount
         |> optional UInt32'QualityIn          Binary.ofPercent transaction.QualityIn
         |> optional UInt32'QualityOut         Binary.ofPercent transaction.QualityOut
