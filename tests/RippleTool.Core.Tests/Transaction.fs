@@ -10,6 +10,22 @@ open RippleTool.Transaction
 //-------------------------------------------------------------------------------------------------
 
 [<Test>]
+let ``Binary of time 2000-01-01 00:00:00Z`` () =
+
+    let input = DateTimeOffset(2000, 01, 01, 00, 00, 00, TimeSpan.Zero)
+    let expected = Binary.ofUInt32 0u
+    input |> Binary.ofTime |> should equal expected
+
+[<Test>]
+let ``Binary of time 2016-02-29 15:30:45Z`` () =
+
+    let input = DateTimeOffset(2016, 02, 29, 15, 30, 45, TimeSpan.Zero)
+    let expected = Binary.ofUInt32 510075045u
+    input |> Binary.ofTime |> should equal expected
+
+//-------------------------------------------------------------------------------------------------
+
+[<Test>]
 let ``Binary of percent amount 0.00`` () =
 
     let input = 0.00m
