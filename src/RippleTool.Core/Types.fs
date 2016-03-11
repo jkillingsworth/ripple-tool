@@ -81,7 +81,26 @@ type SetRegularKey =
       Flags               : SetRegularKeyFlags
       RegularKey          : string option }
 
-type OfferCreate          = unit
+[<Flags>]
+type OfferCreateFlags =
+    | None                = 0x00000000u
+    | FullyCanonicalSig   = 0x80000000u
+    | Passive             = 0x00010000u
+    | ImmediateOrCancel   = 0x00020000u
+    | FillOrKill          = 0x00040000u
+    | Sell                = 0x00080000u
+
+type OfferCreate =
+    { Account             : string
+      Fee                 : Amount
+      Sequence            : uint32
+      LastLedgerSequence  : uint32 option
+      Flags               : OfferCreateFlags
+      OfferSequence       : uint32 option
+      Expiration          : DateTimeOffset option
+      TakerGets           : Amount
+      TakerPays           : Amount }
+
 type OfferCancel          = unit
 
 [<Flags>]

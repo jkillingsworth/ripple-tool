@@ -96,6 +96,12 @@ module Binary =
         |> LanguagePrimitives.EnumToValue
         |> Binary.ofUInt32
 
+    let ofTime (input : DateTimeOffset) =
+        input.ToUnixTimeSeconds()
+        |> (-) <| 946684800L
+        |> uint32
+        |> Binary.ofUInt32
+
     let ofPercent (input : decimal) =
         input
         |> (*) 1000000000m
@@ -134,15 +140,19 @@ type private FieldKind =
     | UInt32'Flags
     | UInt32'SourceTag
     | UInt32'Sequence
+    | UInt32'Expiration
     | UInt32'TransferRate
     | UInt32'DestinationTag
     | UInt32'QualityIn
     | UInt32'QualityOut
+    | UInt32'OfferSequence
     | UInt32'LastLedgerSequence
     | UInt32'SetFlag
     | UInt32'ClearFlag
     | Amount'Amount
     | Amount'Limit
+    | Amount'TakerPays
+    | Amount'TakerGets
     | Amount'Fee
     | Variable'SigningPubKey
     | Variable'TxnSignature
@@ -155,15 +165,19 @@ let private fieldOrdinal = function
     | UInt32'Flags              -> (2,  2)
     | UInt32'SourceTag          -> (2,  3)
     | UInt32'Sequence           -> (2,  4)
+    | UInt32'Expiration         -> (2, 10)
     | UInt32'TransferRate       -> (2, 11)
     | UInt32'DestinationTag     -> (2, 14)
     | UInt32'QualityIn          -> (2, 20)
     | UInt32'QualityOut         -> (2, 21)
+    | UInt32'OfferSequence      -> (2, 25)
     | UInt32'LastLedgerSequence -> (2, 27)
     | UInt32'SetFlag            -> (2, 33)
     | UInt32'ClearFlag          -> (2, 34)
     | Amount'Amount             -> (6,  1)
     | Amount'Limit              -> (6,  3)
+    | Amount'TakerPays          -> (6,  4)
+    | Amount'TakerGets          -> (6,  5)
     | Amount'Fee                -> (6,  8)
     | Variable'SigningPubKey    -> (7,  3)
     | Variable'TxnSignature     -> (7,  4)
@@ -227,7 +241,18 @@ module private Fields =
 
     let private ofOfferCreate (transaction : OfferCreate) =
 
-        failwith "Not implemented"
+        let transactionType = uint16 TransactionType.OfferCreate
+        []
+        |> required UInt16'TransactionType    Binary.ofUInt16  transactionType
+        |> required Account'Account           Binary.ofAccount transaction.Account
+        |> required Amount'Fee                Binary.ofAmount  transaction.Fee
+        |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
+        |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
+        |> required UInt32'Flags              Binary.ofEnum    transaction.Flags
+        |> optional UInt32'OfferSequence      Binary.ofUInt32  transaction.OfferSequence
+        |> optional UInt32'Expiration         Binary.ofTime    transaction.Expiration
+        |> required Amount'TakerGets          Binary.ofAmount  transaction.TakerGets
+        |> required Amount'TakerPays          Binary.ofAmount  transaction.TakerPays
 
     let private ofOfferCancel (transaction : OfferCancel) =
 

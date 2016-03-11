@@ -1,5 +1,6 @@
 ﻿module RippleTool.UI.Models
 
+open System
 open System.ComponentModel
 open Microsoft.FSharp.Quotations.Patterns
 open RippleTool.Types
@@ -834,6 +835,167 @@ type SubmitSetRegularKeyModel() =
               RegularKey = regularKey }
 
         executeSubmitTransaction (transaction |> SetRegularKey)
+
+//-------------------------------------------------------------------------------------------------
+
+type SubmitOfferCreate() =
+
+    inherit Model()
+
+    let account = ref ""
+    let fee = ref ""
+    let sequence = ref ""
+    let lastLedgerSequence = ref ""
+    let flagFullyCanonicalSig = ref true
+    let flagPassive = ref false
+    let flagImmediateOrCancel = ref false
+    let flagFillOrKill = ref false
+    let flagSell = ref false
+    let offerSequence = ref ""
+    let expiration = ref ""
+    let takerGetsIsIssued = ref true
+    let takerGetsIsNative = ref false
+    let takerGetsValue = ref ""
+    let takerGetsCurrency = ref ""
+    let takerGetsIssuer = ref ""
+    let takerPaysIsIssued = ref true
+    let takerPaysIsNative = ref false
+    let takerPaysValue = ref ""
+    let takerPaysCurrency = ref ""
+    let takerPaysIssuer = ref ""
+
+    member this.Account
+        with get () = !account
+        and set value = set this value account <@ this.Account @>
+
+    member this.Fee
+        with get () = !fee
+        and set value = set this value fee <@ this.Fee @>
+
+    member this.Sequence
+        with get () = !sequence
+        and set value = set this value sequence <@ this.Sequence @>
+
+    member this.LastLedgerSequence
+        with get () = !lastLedgerSequence
+        and set value = set this value lastLedgerSequence <@ this.LastLedgerSequence @>
+
+    member this.FlagFullyCanonicalSig
+        with get () = !flagFullyCanonicalSig
+        and set value = set this value flagFullyCanonicalSig <@ this.FlagFullyCanonicalSig @>
+
+    member this.FlagPassive
+        with get () = !flagPassive
+        and set value = set this value flagPassive <@ this.FlagPassive @>
+
+    member this.FlagImmediateOrCancel
+        with get () = !flagImmediateOrCancel
+        and set value = set this value flagImmediateOrCancel <@ this.FlagImmediateOrCancel @>
+
+    member this.FlagFillOrKill
+        with get () = !flagFillOrKill
+        and set value = set this value flagFillOrKill <@ this.FlagFillOrKill @>
+
+    member this.FlagSell
+        with get () = !flagSell
+        and set value = set this value flagSell <@ this.FlagSell @>
+
+    member this.OfferSequence
+        with get () = !offerSequence
+        and set value = set this value offerSequence <@ this.OfferSequence @>
+
+    member this.Expiration
+        with get () = !expiration
+        and set value = set this value expiration <@ this.Expiration @>
+
+    member this.TakerGetsIsIssued
+        with get () = !takerGetsIsIssued
+        and set value =
+            let issued, native = (value, not value)
+            set this issued takerGetsIsIssued <@ this.TakerGetsIsIssued @>
+            set this native takerGetsIsNative <@ this.TakerGetsIsNative @>
+
+    member this.TakerGetsIsNative
+        with get () = !takerGetsIsNative
+        and set value =
+            let issued, native = (not value, value)
+            set this issued takerGetsIsIssued <@ this.TakerGetsIsIssued @>
+            set this native takerGetsIsNative <@ this.TakerGetsIsNative @>
+
+    member this.TakerGetsValue
+        with get () = !takerGetsValue
+        and set value = set this value takerGetsValue <@ this.TakerGetsValue @>
+
+    member this.TakerGetsCurrency
+        with get () = !takerGetsCurrency
+        and set value = set this value takerGetsCurrency <@ this.TakerGetsCurrency @>
+
+    member this.TakerGetsIssuer
+        with get () = !takerGetsIssuer
+        and set value = set this value takerGetsIssuer <@ this.TakerGetsIssuer @>
+
+    member this.TakerPaysIsIssued
+        with get () = !takerPaysIsIssued
+        and set value =
+            let issued, native = (value, not value)
+            set this issued takerPaysIsIssued <@ this.TakerPaysIsIssued @>
+            set this native takerPaysIsNative <@ this.TakerPaysIsNative @>
+
+    member this.TakerPaysIsNative
+        with get () = !takerPaysIsNative
+        and set value =
+            let issued, native = (not value, value)
+            set this issued takerPaysIsIssued <@ this.TakerPaysIsIssued @>
+            set this native takerPaysIsNative <@ this.TakerPaysIsNative @>
+
+    member this.TakerPaysValue
+        with get () = !takerPaysValue
+        and set value = set this value takerPaysValue <@ this.TakerPaysValue @>
+
+    member this.TakerPaysCurrency
+        with get () = !takerPaysCurrency
+        and set value = set this value takerPaysCurrency <@ this.TakerPaysCurrency @>
+
+    member this.TakerPaysIssuer
+        with get () = !takerPaysIssuer
+        and set value = set this value takerPaysIssuer <@ this.TakerPaysIssuer @>
+
+    member this.Submit() =
+
+        let fee = toNativeAmount !fee
+        let lastLedgerSequence = optional !lastLedgerSequence uint32
+
+        let flags =
+            OfferCreateFlags.None
+            |> combineFlag !flagFullyCanonicalSig OfferCreateFlags.FullyCanonicalSig
+            |> combineFlag !flagPassive           OfferCreateFlags.Passive
+            |> combineFlag !flagImmediateOrCancel OfferCreateFlags.ImmediateOrCancel
+            |> combineFlag !flagFillOrKill        OfferCreateFlags.FillOrKill
+            |> combineFlag !flagSell              OfferCreateFlags.Sell
+
+        let offerSequence = optional !offerSequence uint32
+        let expiration = optional !expiration (fun x -> DateTimeOffset.ParseExact(x, "u", null))
+
+        let takerGets =
+            !takerGetsIsIssued
+            |> toAmount !takerGetsValue !takerGetsCurrency !takerGetsIssuer
+
+        let takerPays =
+            !takerPaysIsIssued
+            |> toAmount !takerPaysValue !takerPaysCurrency !takerPaysIssuer
+
+        let transaction : OfferCreate =
+            { Account = !account
+              Fee = fee
+              Sequence = uint32 !sequence
+              LastLedgerSequence = lastLedgerSequence
+              Flags = flags
+              OfferSequence = offerSequence
+              Expiration = expiration
+              TakerGets = takerGets
+              TakerPays = takerPays }
+
+        executeSubmitTransaction (transaction |> OfferCreate)
 
 //-------------------------------------------------------------------------------------------------
 

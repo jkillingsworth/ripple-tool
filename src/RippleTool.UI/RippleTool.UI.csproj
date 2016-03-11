@@ -198,6 +198,12 @@
     <Compile Include="SubmitAccountSetForm.Designer.cs">
       <DependentUpon>SubmitAccountSetForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubmitOfferCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmitOfferCreateForm.Designer.cs">
+      <DependentUpon>SubmitOfferCreateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubmitPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +300,9 @@
     <EmbeddedResource Include="SubmitAccountSetForm.resx">
       <DependentUpon>SubmitAccountSetForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubmitOfferCreateForm.resx">
+      <DependentUpon>SubmitOfferCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubmitPaymentForm.resx">
       <DependentUpon>SubmitPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,6 +344,7 @@
     <None Include="Properties\DataSources\Models.ServerInfoModel.datasource" />
     <None Include="Properties\DataSources\Models.ServerStateModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitAccountSetModel.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitOfferCreate.datasource" />
     <None Include="Properties\DataSources\Models.SubmitPaymentModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitSetRegularKeyModel.datasource" />
     <None Include="Properties\DataSources\Models.SubmitTrustSetModel.datasource" />

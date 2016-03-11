@@ -383,11 +383,10 @@
             // 
             // menuItemViewSubmitOfferCreate
             // 
-            this.menuItemViewSubmitOfferCreate.Enabled = false;
             this.menuItemViewSubmitOfferCreate.Name = "menuItemViewSubmitOfferCreate";
             this.menuItemViewSubmitOfferCreate.Size = new System.Drawing.Size(155, 22);
             this.menuItemViewSubmitOfferCreate.Text = "Offer Create";
-            this.menuItemViewSubmitOfferCreate.ToolTipText = "Not implemented";
+            this.menuItemViewSubmitOfferCreate.Click += new System.EventHandler(this.menuItemViewSubmitOfferCreate_Click);
             // 
             // menuItemViewSubmitOfferCancel
             // 
