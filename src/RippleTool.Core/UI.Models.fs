@@ -999,6 +999,82 @@ type SubmitOfferCreate() =
 
 //-------------------------------------------------------------------------------------------------
 
+type SubmitOfferCancel() =
+
+    inherit Model()
+
+    let account = ref ""
+    let fee = ref ""
+    let sequence = ref ""
+    let lastLedgerSequence = ref ""
+    let flagFullyCanonicalSig = ref true
+    let flagPassive = ref false
+    let flagImmediateOrCancel = ref false
+    let flagFillOrKill = ref false
+    let flagSell = ref false
+    let offerSequence = ref ""
+
+    member this.Account
+        with get () = !account
+        and set value = set this value account <@ this.Account @>
+
+    member this.Fee
+        with get () = !fee
+        and set value = set this value fee <@ this.Fee @>
+
+    member this.Sequence
+        with get () = !sequence
+        and set value = set this value sequence <@ this.Sequence @>
+
+    member this.LastLedgerSequence
+        with get () = !lastLedgerSequence
+        and set value = set this value lastLedgerSequence <@ this.LastLedgerSequence @>
+
+    member this.FlagFullyCanonicalSig
+        with get () = !flagFullyCanonicalSig
+        and set value = set this value flagFullyCanonicalSig <@ this.FlagFullyCanonicalSig @>
+
+    member this.FlagPassive
+        with get () = !flagPassive
+        and set value = set this value flagPassive <@ this.FlagPassive @>
+
+    member this.FlagImmediateOrCancel
+        with get () = !flagImmediateOrCancel
+        and set value = set this value flagImmediateOrCancel <@ this.FlagImmediateOrCancel @>
+
+    member this.FlagFillOrKill
+        with get () = !flagFillOrKill
+        and set value = set this value flagFillOrKill <@ this.FlagFillOrKill @>
+
+    member this.FlagSell
+        with get () = !flagSell
+        and set value = set this value flagSell <@ this.FlagSell @>
+
+    member this.OfferSequence
+        with get () = !offerSequence
+        and set value = set this value offerSequence <@ this.OfferSequence @>
+
+    member this.Submit() =
+
+        let fee = toNativeAmount !fee
+        let lastLedgerSequence = optional !lastLedgerSequence uint32
+
+        let flags =
+            OfferCancelFlags.None
+            |> combineFlag !flagFullyCanonicalSig OfferCancelFlags.FullyCanonicalSig
+
+        let transaction : OfferCancel =
+            { Account = !account
+              Fee = fee
+              Sequence = uint32 !sequence
+              LastLedgerSequence = lastLedgerSequence
+              Flags = flags
+              OfferSequence = uint32 !offerSequence }
+
+        executeSubmitTransaction (transaction |> OfferCancel)
+
+//-------------------------------------------------------------------------------------------------
+
 type SubmitTrustSetModel() =
 
     inherit Model()

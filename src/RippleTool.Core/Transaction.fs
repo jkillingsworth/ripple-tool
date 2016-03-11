@@ -256,7 +256,15 @@ module private Fields =
 
     let private ofOfferCancel (transaction : OfferCancel) =
 
-        failwith "Not implemented"
+        let transactionType = uint16 TransactionType.OfferCancel
+        []
+        |> required UInt16'TransactionType    Binary.ofUInt16  transactionType
+        |> required Account'Account           Binary.ofAccount transaction.Account
+        |> required Amount'Fee                Binary.ofAmount  transaction.Fee
+        |> required UInt32'Sequence           Binary.ofUInt32  transaction.Sequence
+        |> optional UInt32'LastLedgerSequence Binary.ofUInt32  transaction.LastLedgerSequence
+        |> required UInt32'Flags              Binary.ofEnum    transaction.Flags
+        |> required UInt32'OfferSequence      Binary.ofUInt32  transaction.OfferSequence
 
     let private ofTrustSet (transaction : TrustSet) =
 

@@ -101,7 +101,18 @@ type OfferCreate =
       TakerGets           : Amount
       TakerPays           : Amount }
 
-type OfferCancel          = unit
+[<Flags>]
+type OfferCancelFlags =
+    | None                = 0x00000000u
+    | FullyCanonicalSig   = 0x80000000u
+
+type OfferCancel =
+    { Account             : string
+      Fee                 : Amount
+      Sequence            : uint32
+      LastLedgerSequence  : uint32 option
+      Flags               : OfferCancelFlags
+      OfferSequence       : uint32 }
 
 [<Flags>]
 type TrustSetFlags =
