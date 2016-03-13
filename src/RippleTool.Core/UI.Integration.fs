@@ -57,7 +57,9 @@ let private hookup (event : Event<'T>) (handler : Action<'T>) =
 
 //-------------------------------------------------------------------------------------------------
 
-let private eventExecuteCommandErr = new Event<Exception>()
+let private eventExecuteCommandException = new Event<Exception>()
+let private eventExecuteCommandBeginning = new Event<obj>()
+let private eventExecuteCommandFinishing = new Event<obj>()
 let private eventExecuteCommandReq = new Event<string>()
 let private eventExecuteCommandRes = new Event<string>()
 let private agentExecuteCommandReq = agentTrackState eventExecuteCommandReq null
@@ -67,16 +69,20 @@ let private agentExecuteCommand = Agent.Start(fun inbox ->
     async {
         while true do
             let! req = inbox.Receive()
+            eventExecuteCommandBeginning.Trigger()
             agentExecuteCommandReq.Post(Set req)
             let! res = Command.execute Config.serverUri req
             agentExecuteCommandRes.Post(Set res)
+            eventExecuteCommandFinishing.Trigger()
     })
 
-agentExecuteCommand.Error |> Event.add eventExecuteCommandErr.Trigger
+agentExecuteCommand.Error |> Event.add eventExecuteCommandException.Trigger
 
 //-------------------------------------------------------------------------------------------------
 
-let hookupEventExecuteCommandErr handler = handler |> hookup eventExecuteCommandErr
+let hookupEventExecuteCommandException handler = handler |> hookup eventExecuteCommandException
+let hookupEventExecuteCommandBeginning handler = handler |> hookup eventExecuteCommandBeginning
+let hookupEventExecuteCommandFinishing handler = handler |> hookup eventExecuteCommandFinishing
 let hookupEventExecuteCommandReq handler = handler |> hookup eventExecuteCommandReq
 let hookupEventExecuteCommandRes handler = handler |> hookup eventExecuteCommandRes
 

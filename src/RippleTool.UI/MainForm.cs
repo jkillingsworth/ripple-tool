@@ -8,9 +8,9 @@ namespace RippleTool.UI
 {
     public partial class MainForm : Form
     {
-        private IDisposable eventExecuteCommandErr;
-        private IDisposable eventExecuteCommandReq;
-        private IDisposable eventExecuteCommandRes;
+        private IDisposable eventExecuteCommandException;
+        private IDisposable eventExecuteCommandBeginning;
+        private IDisposable eventExecuteCommandFinishing;
         private string currentFile = null;
 
         public MainForm()
@@ -23,17 +23,17 @@ namespace RippleTool.UI
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            eventExecuteCommandErr = Integration.hookupEventExecuteCommandErr(HandleEventErr);
-            eventExecuteCommandReq = Integration.hookupEventExecuteCommandReq(HandleEventReq);
-            eventExecuteCommandRes = Integration.hookupEventExecuteCommandRes(HandleEventRes);
+            eventExecuteCommandException = Integration.hookupEventExecuteCommandException(HandleEventException);
+            eventExecuteCommandBeginning = Integration.hookupEventExecuteCommandBeginning(HandleEventBeginning);
+            eventExecuteCommandFinishing = Integration.hookupEventExecuteCommandFinishing(HandleEventFinishing);
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             base.OnClosed(e);
-            eventExecuteCommandErr.Dispose();
-            eventExecuteCommandReq.Dispose();
-            eventExecuteCommandRes.Dispose();
+            eventExecuteCommandException.Dispose();
+            eventExecuteCommandBeginning.Dispose();
+            eventExecuteCommandFinishing.Dispose();
         }
 
         private static IDockContent GetDockContentInstance(string typeName)
@@ -106,17 +106,17 @@ namespace RippleTool.UI
             dockContent.Show(dockPanel);
         }
 
-        private void HandleEventErr(Exception ex)
+        private void HandleEventException(Exception ex)
         {
             throw new Exception("An error occurred.", ex);
         }
 
-        private void HandleEventReq(string value)
+        private void HandleEventBeginning(object obj)
         {
             statusItemProgress.MarqueeAnimationSpeed = 1;
         }
 
-        private void HandleEventRes(string value)
+        private void HandleEventFinishing(object obj)
         {
             statusItemProgress.MarqueeAnimationSpeed = 0;
             statusItemProgress.Invalidate();
