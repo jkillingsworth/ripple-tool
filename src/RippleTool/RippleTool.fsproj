@@ -90,7 +90,7 @@
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>if exist $(ProjectDir)..\..\private\Private.config xcopy $(ProjectDir)..\..\private\Private.config $(TargetDir) /y</PostBuildEvent>
+    <PostBuildEvent>if exist "$(ProjectDir)..\..\private\Private.config" xcopy "$(ProjectDir)..\..\private\Private.config" "$(TargetDir)" /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
