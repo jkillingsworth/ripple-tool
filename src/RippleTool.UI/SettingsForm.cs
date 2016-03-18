@@ -9,9 +9,9 @@ namespace RippleTool.UI
         {
             InitializeComponent();
 
-            textServerUri.Text = Integration.Config.serverUri;
-            textAccountId.Text = Integration.Config.accountId;
-            textSecretKey.Text = Integration.Config.secretKey;
+            textServerUri.Text = Config.serverUri;
+            textAccountId.Text = Config.accountId;
+            textSecretKey.Text = Config.secretKey;
         }
 
         private void checkHideSecretKey_CheckedChanged(object sender, EventArgs e)

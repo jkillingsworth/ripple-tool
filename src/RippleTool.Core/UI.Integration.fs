@@ -1,22 +1,11 @@
 ﻿module RippleTool.UI.Integration
 
 open System
-open System.Configuration
 open System.Threading
 open Chiron
 open RippleTool
 open RippleTool.Encoding
 open RippleTool.Types
-
-//-------------------------------------------------------------------------------------------------
-
-module Config =
-
-    let private reader = AppSettingsReader()
-
-    let serverUri = reader.GetValue("serverUri", typeof<string>) :?> string
-    let accountId = reader.GetValue("accountId", typeof<string>) :?> string
-    let secretKey = reader.GetValue("secretKey", typeof<string>) :?> string
 
 //-------------------------------------------------------------------------------------------------
 

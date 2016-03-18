@@ -65,6 +65,7 @@
     <Compile Include="Types.fs" />
     <Compile Include="Transaction.fs" />
     <Compile Include="Command.fs" />
+    <Compile Include="Config.fs" />
     <Compile Include="UI.Integration.fs" />
     <Compile Include="UI.Models.fs" />
   </ItemGroup>
