@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{70642095-3B64-41AA-A28F-20AA6122D221}</ProjectGuid>
+    <ProjectGuid>{41A8D6B5-5661-4C3F-B7C9-B9959DCE5810}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RippleTool.UI</RootNamespace>
     <AssemblyName>RippleTool.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,7 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FSharp.Core, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="FSharp.Core, Version=4.7.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FSharp.Core.4.7.0\lib\net45\FSharp.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,17 +49,55 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ThemeVS2012Light, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DockPanelSuite.ThemeVS2012Light.2.10.0-beta2\lib\net40\ThemeVS2012Light.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DockPanelSuite.2.10.0-beta2\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\DockPanelSuite.2.10.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2012Light, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DockPanelSuite.ThemeVS2012Light.2.10.0\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2012Light.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RippleTool.Core\RippleTool.Core.fsproj">
+      <Project>{4130e304-7e8c-4598-8e19-cfe2cfd2cbeb}</Project>
+      <Name>RippleTool.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Models.AccountCurrenciesModel.datasource" />
+    <None Include="Properties\DataSources\Models.AccountInfoModel.datasource" />
+    <None Include="Properties\DataSources\Models.AccountLinesModel.datasource" />
+    <None Include="Properties\DataSources\Models.AccountObjectsModel.datasource" />
+    <None Include="Properties\DataSources\Models.AccountOffersModel.datasource" />
+    <None Include="Properties\DataSources\Models.AccountSetFlagOptions.datasource" />
+    <None Include="Properties\DataSources\Models.AccountTransactionsModel.datasource" />
+    <None Include="Properties\DataSources\Models.BookOffersModel.datasource" />
+    <None Include="Properties\DataSources\Models.GatewayBalancesModel.datasource" />
+    <None Include="Properties\DataSources\Models.LedgerOptions.datasource" />
+    <None Include="Properties\DataSources\Models.NoRippleCheckModel.datasource" />
+    <None Include="Properties\DataSources\Models.PingModel.datasource" />
+    <None Include="Properties\DataSources\Models.RandomModel.datasource" />
+    <None Include="Properties\DataSources\Models.RawJsonModel.datasource" />
+    <None Include="Properties\DataSources\Models.RipplePathFindModel.datasource" />
+    <None Include="Properties\DataSources\Models.ServerInfoModel.datasource" />
+    <None Include="Properties\DataSources\Models.ServerStateModel.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitAccountSetModel.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitOfferCancel.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitOfferCreate.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitPaymentModel.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitSetRegularKeyModel.datasource" />
+    <None Include="Properties\DataSources\Models.SubmitTrustSetModel.datasource" />
+    <None Include="Properties\DataSources\Models.TransactionInfoModel.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document.ico" />
+    <None Include="Resources\JsonClear.png" />
+    <None Include="Resources\JsonFormatted.png" />
+    <None Include="Resources\JsonRaw.png" />
+    <None Include="Resources\Ripple.ico" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs">
@@ -326,54 +365,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RippleTool.Core\RippleTool.Core.fsproj">
-      <Project>{8728af9f-462b-4075-acb6-93f837652a0c}</Project>
-      <Name>RippleTool.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\DataSources\Models.AccountCurrenciesModel.datasource" />
-    <None Include="Properties\DataSources\Models.AccountInfoModel.datasource" />
-    <None Include="Properties\DataSources\Models.AccountLinesModel.datasource" />
-    <None Include="Properties\DataSources\Models.AccountObjectsModel.datasource" />
-    <None Include="Properties\DataSources\Models.AccountOffersModel.datasource" />
-    <None Include="Properties\DataSources\Models.AccountSetFlagOptions.datasource" />
-    <None Include="Properties\DataSources\Models.AccountTransactionsModel.datasource" />
-    <None Include="Properties\DataSources\Models.BookOffersModel.datasource" />
-    <None Include="Properties\DataSources\Models.GatewayBalancesModel.datasource" />
-    <None Include="Properties\DataSources\Models.LedgerOptions.datasource" />
-    <None Include="Properties\DataSources\Models.NoRippleCheckModel.datasource" />
-    <None Include="Properties\DataSources\Models.PingModel.datasource" />
-    <None Include="Properties\DataSources\Models.RandomModel.datasource" />
-    <None Include="Properties\DataSources\Models.RawJsonModel.datasource" />
-    <None Include="Properties\DataSources\Models.RipplePathFindModel.datasource" />
-    <None Include="Properties\DataSources\Models.ServerInfoModel.datasource" />
-    <None Include="Properties\DataSources\Models.ServerStateModel.datasource" />
-    <None Include="Properties\DataSources\Models.SubmitAccountSetModel.datasource" />
-    <None Include="Properties\DataSources\Models.SubmitOfferCancel.datasource" />
-    <None Include="Properties\DataSources\Models.SubmitOfferCreate.datasource" />
-    <None Include="Properties\DataSources\Models.SubmitPaymentModel.datasource" />
-    <None Include="Properties\DataSources\Models.SubmitSetRegularKeyModel.datasource" />
-    <None Include="Properties\DataSources\Models.SubmitTrustSetModel.datasource" />
-    <None Include="Properties\DataSources\Models.TransactionInfoModel.datasource" />
-    <None Include="Resources\JsonFormatted.png" />
-    <None Include="Resources\JsonRaw.png" />
-    <None Include="Resources\JsonClear.png" />
-    <None Include="Resources\Ripple.ico" />
-    <None Include="Resources\Document.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="MainFormLayout.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
