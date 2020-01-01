@@ -5,3 +5,5 @@ private
 
 *.VisualState.xml
 TestResult.xml
+
+**/obj/*.fsprojAssemblyReference.cache
