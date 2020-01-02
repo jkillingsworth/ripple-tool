@@ -306,14 +306,14 @@ namespace RippleTool.UI
             CloseAllDocuments();
         }
 
-        private void menuItemHelpDeveloperCenter_Click(object sender, EventArgs e)
+        private void menuItemHelpXrpLedgerDevPortal_Click(object sender, EventArgs e)
         {
-            Process.Start("https://ripple.com/build/");
+            Process.Start("https://xrpl.org/");
         }
 
-        private void menuItemHelpKnowledgeCenter_Click(object sender, EventArgs e)
+        private void menuItemHelpXrpCharts_Click(object sender, EventArgs e)
         {
-            Process.Start("https://ripple.com/learn/");
+            Process.Start("https://xrpcharts.ripple.com/#/");
         }
 
         private void menuItemHelpAbout_Click(object sender, EventArgs e)

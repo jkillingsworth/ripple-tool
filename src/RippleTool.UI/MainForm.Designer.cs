@@ -72,8 +72,8 @@
             this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindowCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemHelpDeveloperCenter = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemHelpKnowledgeCenter = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemHelpXrpLedgerDevPortal = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemHelpXrpCharts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -427,37 +427,37 @@
             // menuItemHelp
             // 
             this.menuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemHelpDeveloperCenter,
-            this.menuItemHelpKnowledgeCenter,
+            this.menuItemHelpXrpLedgerDevPortal,
+            this.menuItemHelpXrpCharts,
             this.menuItemHelpSeparator1,
             this.menuItemHelpAbout});
             this.menuItemHelp.Name = "menuItemHelp";
             this.menuItemHelp.Size = new System.Drawing.Size(44, 20);
             this.menuItemHelp.Text = "&Help";
             // 
-            // menuItemHelpDeveloperCenter
+            // menuItemHelpXrpLedgerDevPortal
             // 
-            this.menuItemHelpDeveloperCenter.Name = "menuItemHelpDeveloperCenter";
-            this.menuItemHelpDeveloperCenter.Size = new System.Drawing.Size(171, 22);
-            this.menuItemHelpDeveloperCenter.Text = "Developer Center";
-            this.menuItemHelpDeveloperCenter.Click += new System.EventHandler(this.menuItemHelpDeveloperCenter_Click);
+            this.menuItemHelpXrpLedgerDevPortal.Name = "menuItemHelpXrpLedgerDevPortal";
+            this.menuItemHelpXrpLedgerDevPortal.Size = new System.Drawing.Size(191, 22);
+            this.menuItemHelpXrpLedgerDevPortal.Text = "XRP Ledger Dev Portal";
+            this.menuItemHelpXrpLedgerDevPortal.Click += new System.EventHandler(this.menuItemHelpXrpLedgerDevPortal_Click);
             // 
-            // menuItemHelpKnowledgeCenter
+            // menuItemHelpXrpCharts
             // 
-            this.menuItemHelpKnowledgeCenter.Name = "menuItemHelpKnowledgeCenter";
-            this.menuItemHelpKnowledgeCenter.Size = new System.Drawing.Size(171, 22);
-            this.menuItemHelpKnowledgeCenter.Text = "Knowledge Center";
-            this.menuItemHelpKnowledgeCenter.Click += new System.EventHandler(this.menuItemHelpKnowledgeCenter_Click);
+            this.menuItemHelpXrpCharts.Name = "menuItemHelpXrpCharts";
+            this.menuItemHelpXrpCharts.Size = new System.Drawing.Size(191, 22);
+            this.menuItemHelpXrpCharts.Text = "XRP Charts";
+            this.menuItemHelpXrpCharts.Click += new System.EventHandler(this.menuItemHelpXrpCharts_Click);
             // 
             // menuItemHelpSeparator1
             // 
             this.menuItemHelpSeparator1.Name = "menuItemHelpSeparator1";
-            this.menuItemHelpSeparator1.Size = new System.Drawing.Size(168, 6);
+            this.menuItemHelpSeparator1.Size = new System.Drawing.Size(188, 6);
             // 
             // menuItemHelpAbout
             // 
             this.menuItemHelpAbout.Name = "menuItemHelpAbout";
-            this.menuItemHelpAbout.Size = new System.Drawing.Size(171, 22);
+            this.menuItemHelpAbout.Size = new System.Drawing.Size(191, 22);
             this.menuItemHelpAbout.Text = "&About RippleTool";
             this.menuItemHelpAbout.Click += new System.EventHandler(this.menuItemHelpAbout_Click);
             // 
@@ -578,8 +578,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindowCloseAll;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;
-        private System.Windows.Forms.ToolStripMenuItem menuItemHelpKnowledgeCenter;
-        private System.Windows.Forms.ToolStripMenuItem menuItemHelpDeveloperCenter;
+        private System.Windows.Forms.ToolStripMenuItem menuItemHelpXrpLedgerDevPortal;
+        private System.Windows.Forms.ToolStripMenuItem menuItemHelpXrpCharts;
         private System.Windows.Forms.ToolStripSeparator menuItemHelpSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpAbout;
         private System.Windows.Forms.StatusStrip statusStrip;
