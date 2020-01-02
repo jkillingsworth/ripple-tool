@@ -12,7 +12,7 @@ namespace RippleTool.UI
 
         private void linkViewSourceCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/jkillingsworth/RippleTool");
+            Process.Start("https://github.com/jkillingsworth/ripple-tool");
         }
     }
 }
