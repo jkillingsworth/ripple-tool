@@ -4,5 +4,5 @@ This is a tool for connecting to nodes on the [Ripple](https://ripple.com/) netw
 
 ## References
 
-* [API Documentation](https://ripple.com/build/rippled-apis/)
-* [Transaction Format](https://ripple.com/build/transactions/)
+* [API Reference](https://xrpl.org/rippled-api.html)
+* [Transaction Formats](https://xrpl.org/transaction-formats.html)
