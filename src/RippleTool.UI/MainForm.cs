@@ -36,6 +36,30 @@ namespace RippleTool.UI
             eventExecuteCommandFinishing.Dispose();
         }
 
+        protected override void OnDragEnter(DragEventArgs e)
+        {
+            base.OnDragEnter(e);
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        protected override void OnDragDrop(DragEventArgs e)
+        {
+            base.OnDragDrop(e);
+
+            CloseAllDocuments();
+            CloseAllPanes();
+
+            var fileList = e.Data.GetData(DataFormats.FileDrop) as string[];
+            var fileName = fileList[0];
+            var deserializer = new DeserializeDockContent(GetDockContentInstance);
+            dockPanel.LoadFromXml(fileName, deserializer);
+            currentFile = fileName;
+        }
+
         private static IDockContent GetDockContentInstance(string typeName)
         {
             var type = Type.GetType(typeName);
