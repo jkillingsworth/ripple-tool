@@ -231,6 +231,11 @@ namespace RippleTool.UI
             Show(new RandomForm());
         }
 
+        private void menuItemViewFee_Click(object sender, EventArgs e)
+        {
+            Show(new FeeForm());
+        }
+
         private void menuItemViewServerInfo_Click(object sender, EventArgs e)
         {
             Show(new ServerInfoForm());

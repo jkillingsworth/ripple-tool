@@ -132,6 +132,27 @@ type RandomModel() =
 
 //-------------------------------------------------------------------------------------------------
 
+type FeeModel() =
+
+    inherit Model()
+
+    let commandId = ref ""
+
+    member this.CommandId
+        with get () = !commandId
+        and set value = set this value commandId <@ this.CommandId @>
+
+    member this.Submit() =
+
+        let commandId = optional !commandId id
+
+        let command : Fee =
+            { Id = commandId }
+
+        executeCommand (command |> Fee)
+
+//-------------------------------------------------------------------------------------------------
+
 type ServerInfoModel() =
 
     inherit Model()

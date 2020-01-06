@@ -76,6 +76,7 @@
     <None Include="Properties\DataSources\Models.AccountSetFlagOptions.datasource" />
     <None Include="Properties\DataSources\Models.AccountTransactionsModel.datasource" />
     <None Include="Properties\DataSources\Models.BookOffersModel.datasource" />
+    <None Include="Properties\DataSources\Models.FeeModel.datasource" />
     <None Include="Properties\DataSources\Models.GatewayBalancesModel.datasource" />
     <None Include="Properties\DataSources\Models.GenerateKeyPairModel.datasource" />
     <None Include="Properties\DataSources\Models.LedgerOptions.datasource" />
@@ -155,6 +156,12 @@
     </Compile>
     <Compile Include="DockForm.Designer.cs">
       <DependentUpon>DockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeeForm.Designer.cs">
+      <DependentUpon>FeeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GatewayBalancesForm.cs">
       <SubType>Form</SubType>
@@ -309,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DockForm.resx">
       <DependentUpon>DockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeeForm.resx">
+      <DependentUpon>FeeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GatewayBalancesForm.resx">
       <DependentUpon>GatewayBalancesForm.cs</DependentUpon>

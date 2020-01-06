@@ -142,6 +142,9 @@ type Ping =
 type Random =
     { Id                  : string option }
 
+type Fee =
+    { Id                  : string option }
+
 type ServerInfo =
     { Id                  : string option }
 
@@ -227,6 +230,7 @@ type Transaction =
 type Command =
     | Ping                of Ping
     | Random              of Random
+    | Fee                 of Fee
     | ServerInfo          of ServerInfo
     | ServerState         of ServerState
     | AccountCurrencies   of AccountCurrencies

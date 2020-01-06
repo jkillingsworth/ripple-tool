@@ -47,6 +47,7 @@
             this.menuItemViewPing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewRandom = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemViewFee = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewServerInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewServerState = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -186,6 +187,7 @@
             this.menuItemViewPing,
             this.menuItemViewRandom,
             this.menuItemViewSeparator2,
+            this.menuItemViewFee,
             this.menuItemViewServerInfo,
             this.menuItemViewServerState,
             this.menuItemViewSeparator3,
@@ -256,6 +258,13 @@
             // 
             this.menuItemViewSeparator2.Name = "menuItemViewSeparator2";
             this.menuItemViewSeparator2.Size = new System.Drawing.Size(216, 6);
+            // 
+            // menuItemViewFee
+            // 
+            this.menuItemViewFee.Name = "menuItemViewFee";
+            this.menuItemViewFee.Size = new System.Drawing.Size(219, 22);
+            this.menuItemViewFee.Text = "Fee";
+            this.menuItemViewFee.Click += new System.EventHandler(this.menuItemViewFee_Click);
             // 
             // menuItemViewServerInfo
             // 
@@ -577,6 +586,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRandom;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewRawJson;
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewFee;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewServerInfo;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewServerState;
         private System.Windows.Forms.ToolStripSeparator menuItemViewSeparator3;

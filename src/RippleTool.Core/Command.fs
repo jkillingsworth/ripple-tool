@@ -72,6 +72,12 @@ module private Json =
         |> required "command" ofString "random"
         |> toObject
 
+    let private ofFee (command : Fee) =
+        []
+        |> optional "id" ofString command.Id
+        |> required "command" ofString "fee"
+        |> toObject
+
     let private ofServerInfo (command : ServerInfo) =
         []
         |> optional "id" ofString command.Id
@@ -191,6 +197,7 @@ module private Json =
     let ofCommand = function
         | Ping                command -> command |> ofPing
         | Random              command -> command |> ofRandom
+        | Fee                 command -> command |> ofFee
         | ServerInfo          command -> command |> ofServerInfo
         | ServerState         command -> command |> ofServerState
         | AccountCurrencies   command -> command |> ofAccountCurrencies
