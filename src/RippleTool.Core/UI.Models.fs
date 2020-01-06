@@ -3,6 +3,7 @@
 open System
 open System.ComponentModel
 open Microsoft.FSharp.Quotations.Patterns
+open RippleTool
 open RippleTool.Types
 open RippleTool.UI.Integration
 
@@ -595,7 +596,7 @@ type SubmitPaymentModel() =
     inherit Model()
 
     let account = ref ""
-    let fee = ref ""
+    let fee = ref Config.baseTxFee
     let sequence = ref ""
     let lastLedgerSequence = ref ""
     let flagFullyCanonicalSig = ref true
@@ -736,7 +737,7 @@ type SubmitAccountSetModel() =
     inherit Model()
 
     let account = ref ""
-    let fee = ref ""
+    let fee = ref Config.baseTxFee
     let sequence = ref ""
     let lastLedgerSequence = ref ""
     let flagFullyCanonicalSig = ref true
@@ -806,7 +807,7 @@ type SubmitSetRegularKeyModel() =
     inherit Model()
 
     let account = ref ""
-    let fee = ref ""
+    let fee = ref Config.baseTxFee
     let sequence = ref ""
     let lastLedgerSequence = ref ""
     let flagFullyCanonicalSig = ref true
@@ -864,7 +865,7 @@ type SubmitOfferCreate() =
     inherit Model()
 
     let account = ref ""
-    let fee = ref ""
+    let fee = ref Config.baseTxFee
     let sequence = ref ""
     let lastLedgerSequence = ref ""
     let flagFullyCanonicalSig = ref true
@@ -1025,7 +1026,7 @@ type SubmitOfferCancel() =
     inherit Model()
 
     let account = ref ""
-    let fee = ref ""
+    let fee = ref Config.baseTxFee
     let sequence = ref ""
     let lastLedgerSequence = ref ""
     let flagFullyCanonicalSig = ref true
@@ -1101,7 +1102,7 @@ type SubmitTrustSetModel() =
     inherit Model()
 
     let account = ref ""
-    let fee = ref ""
+    let fee = ref Config.baseTxFee
     let sequence = ref ""
     let lastLedgerSequence = ref ""
     let flagFullyCanonicalSig = ref true
