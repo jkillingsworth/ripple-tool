@@ -58,7 +58,7 @@
             this.buttonClose.Location = new System.Drawing.Point(292, 275);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(100, 25);
-            this.buttonClose.TabIndex = 3;
+            this.buttonClose.TabIndex = 4;
             this.buttonClose.Text = "&Close";
             this.buttonClose.UseVisualStyleBackColor = true;
             // 
@@ -73,7 +73,7 @@
             this.groupEntropySource.Name = "groupEntropySource";
             this.groupEntropySource.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
             this.groupEntropySource.Size = new System.Drawing.Size(380, 104);
-            this.groupEntropySource.TabIndex = 4;
+            this.groupEntropySource.TabIndex = 0;
             this.groupEntropySource.TabStop = false;
             this.groupEntropySource.Text = "Entropy source";
             // 
@@ -118,7 +118,7 @@
             this.buttonGenerate.Location = new System.Drawing.Point(12, 122);
             this.buttonGenerate.Name = "buttonGenerate";
             this.buttonGenerate.Size = new System.Drawing.Size(100, 25);
-            this.buttonGenerate.TabIndex = 0;
+            this.buttonGenerate.TabIndex = 1;
             this.buttonGenerate.Text = "&Generate";
             this.buttonGenerate.UseVisualStyleBackColor = true;
             this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
@@ -128,7 +128,7 @@
             this.buttonReset.Location = new System.Drawing.Point(118, 122);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(100, 25);
-            this.buttonReset.TabIndex = 1;
+            this.buttonReset.TabIndex = 2;
             this.buttonReset.Text = "&Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
@@ -145,7 +145,7 @@
             this.groupKeyPair.Name = "groupKeyPair";
             this.groupKeyPair.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
             this.groupKeyPair.Size = new System.Drawing.Size(380, 86);
-            this.groupKeyPair.TabIndex = 2;
+            this.groupKeyPair.TabIndex = 3;
             this.groupKeyPair.TabStop = false;
             this.groupKeyPair.Text = "Key pair";
             // 
