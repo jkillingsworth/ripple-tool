@@ -102,5 +102,8 @@ let formatJson =
 
 //-------------------------------------------------------------------------------------------------
 
-let generateKeyPairFromRandNumber = Crypto.createSecretKeyFromRandNumber >> Crypto.generateKeyPair
-let generateKeyPairFromPassphrase = Crypto.createSecretKeyFromPassphrase >> Crypto.generateKeyPair
+let generateKeyPairFromRandNumber =
+    Crypto.generateKeyPair << Crypto.createSecretKeyFromRandNumber
+
+let generateKeyPairFromPassphrase =
+    Crypto.generateKeyPair << Crypto.createSecretKeyFromPassphrase
