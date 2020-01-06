@@ -1229,15 +1229,15 @@ type GenerateKeyPairModel() =
     member this.EntropyFromRandNumber
         with get () = !entropyFromRandNumber
         and set value =
-            let isRandomNumber, fromPassphrase = (value, not value)
-            set this isRandomNumber entropyFromRandNumber <@ this.EntropyFromRandNumber @>
+            let fromRandNumber, fromPassphrase = (value, not value)
+            set this fromRandNumber entropyFromRandNumber <@ this.EntropyFromRandNumber @>
             set this fromPassphrase entropyFromPassphrase <@ this.EntropyFromPassphrase @>
 
     member this.EntropyFromPassphrase
         with get () = !entropyFromPassphrase
         and set value =
-            let isRandomNumber, fromPassphrase = (not value, value)
-            set this isRandomNumber entropyFromRandNumber <@ this.EntropyFromRandNumber @>
+            let fromRandNumber, fromPassphrase = (not value, value)
+            set this fromRandNumber entropyFromRandNumber <@ this.EntropyFromRandNumber @>
             set this fromPassphrase entropyFromPassphrase <@ this.EntropyFromPassphrase @>
 
     member this.Passphrase
@@ -1266,8 +1266,8 @@ type GenerateKeyPairModel() =
 
     member this.Reset() =
 
-        let isRandomNumber, fromPassphrase = (true, false)
-        set this isRandomNumber entropyFromRandNumber <@ this.EntropyFromRandNumber @>
+        let fromRandNumber, fromPassphrase = (true, false)
+        set this fromRandNumber entropyFromRandNumber <@ this.EntropyFromRandNumber @>
         set this fromPassphrase entropyFromPassphrase <@ this.EntropyFromPassphrase @>
         this.Passphrase <- ""
         this.AccountId <- ""
