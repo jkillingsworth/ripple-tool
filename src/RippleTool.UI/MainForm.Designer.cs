@@ -69,6 +69,8 @@
             this.menuItemViewSubmitOfferCancel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewSubmitTrustSet = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewTransactionInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemToolsGenerateKeyPair = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWindowCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,6 +94,7 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemFile,
             this.menuItemView,
+            this.menuItemTools,
             this.menuItemWindow,
             this.menuItemHelp});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -409,6 +412,21 @@
             this.menuItemViewTransactionInfo.Text = "Transaction Info";
             this.menuItemViewTransactionInfo.Click += new System.EventHandler(this.menuItemViewTransactionInfo_Click);
             // 
+            // menuItemTools
+            // 
+            this.menuItemTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemToolsGenerateKeyPair});
+            this.menuItemTools.Name = "menuItemTools";
+            this.menuItemTools.Size = new System.Drawing.Size(48, 20);
+            this.menuItemTools.Text = "&Tools";
+            // 
+            // menuItemToolsGenerateKeyPair
+            // 
+            this.menuItemToolsGenerateKeyPair.Name = "menuItemToolsGenerateKeyPair";
+            this.menuItemToolsGenerateKeyPair.Size = new System.Drawing.Size(180, 22);
+            this.menuItemToolsGenerateKeyPair.Text = "Generate &Key Pair...";
+            this.menuItemToolsGenerateKeyPair.Click += new System.EventHandler(this.menuItemToolsGenerateKeyPair_Click);
+            // 
             // menuItemWindow
             // 
             this.menuItemWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -576,6 +594,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitOfferCancel;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewSubmitTrustSet;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewTransactionInfo;
+        private System.Windows.Forms.ToolStripMenuItem menuItemTools;
+        private System.Windows.Forms.ToolStripMenuItem menuItemToolsGenerateKeyPair;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindow;
         private System.Windows.Forms.ToolStripMenuItem menuItemWindowCloseAll;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;

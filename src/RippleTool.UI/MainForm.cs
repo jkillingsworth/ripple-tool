@@ -325,6 +325,12 @@ namespace RippleTool.UI
             Show(new TransactionInfoForm());
         }
 
+        private void menuItemToolsGenerateKeyPair_Click(object sender, EventArgs e)
+        {
+            var form = new GenerateKeyPairForm();
+            form.ShowDialog();
+        }
+
         private void menuItemWindowCloseAll_Click(object sender, EventArgs e)
         {
             CloseAllDocuments();

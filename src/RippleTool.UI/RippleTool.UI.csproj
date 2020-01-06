@@ -77,6 +77,7 @@
     <None Include="Properties\DataSources\Models.AccountTransactionsModel.datasource" />
     <None Include="Properties\DataSources\Models.BookOffersModel.datasource" />
     <None Include="Properties\DataSources\Models.GatewayBalancesModel.datasource" />
+    <None Include="Properties\DataSources\Models.GenerateKeyPairModel.datasource" />
     <None Include="Properties\DataSources\Models.LedgerOptions.datasource" />
     <None Include="Properties\DataSources\Models.NoRippleCheckModel.datasource" />
     <None Include="Properties\DataSources\Models.PingModel.datasource" />
@@ -160,6 +161,12 @@
     </Compile>
     <Compile Include="GatewayBalancesForm.Designer.cs">
       <DependentUpon>GatewayBalancesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateKeyPairForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateKeyPairForm.Designer.cs">
+      <DependentUpon>GenerateKeyPairForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -305,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GatewayBalancesForm.resx">
       <DependentUpon>GatewayBalancesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateKeyPairForm.resx">
+      <DependentUpon>GenerateKeyPairForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

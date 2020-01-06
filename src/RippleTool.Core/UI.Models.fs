@@ -1212,3 +1212,63 @@ type TransactionInfoModel() =
               Binary = Some !binary }
 
         executeCommand (command |> TransactionInfo)
+
+
+//-------------------------------------------------------------------------------------------------
+
+type GenerateKeyPairModel() =
+
+    inherit Model()
+
+    let entropyFromRandNumber = ref true
+    let entropyFromPassphrase = ref false
+    let passphrase = ref ""
+    let accountId = ref ""
+    let secretKey = ref ""
+
+    member this.EntropyFromRandNumber
+        with get () = !entropyFromRandNumber
+        and set value =
+            let isRandomNumber, fromPassphrase = (value, not value)
+            set this isRandomNumber entropyFromRandNumber <@ this.EntropyFromRandNumber @>
+            set this fromPassphrase entropyFromPassphrase <@ this.EntropyFromPassphrase @>
+
+    member this.EntropyFromPassphrase
+        with get () = !entropyFromPassphrase
+        and set value =
+            let isRandomNumber, fromPassphrase = (not value, value)
+            set this isRandomNumber entropyFromRandNumber <@ this.EntropyFromRandNumber @>
+            set this fromPassphrase entropyFromPassphrase <@ this.EntropyFromPassphrase @>
+
+    member this.Passphrase
+        with get () = !passphrase
+        and set value = set this value passphrase <@ this.Passphrase @>
+
+    member this.AccountId
+        with get () = !accountId
+        and set value = set this value accountId <@ this.AccountId @>
+
+    member this.SecreyKey
+        with get () = !secretKey
+        and set value = set this value secretKey <@ this.SecreyKey @>
+
+    member this.Generate() =
+
+        if (!entropyFromRandNumber) then
+            let r, s = generateKeyPairFromRandNumber ()
+            this.AccountId <- r
+            this.SecreyKey <- s
+
+        if (!entropyFromPassphrase) then
+            let r, s = generateKeyPairFromPassphrase !passphrase
+            this.AccountId <- r
+            this.SecreyKey <- s
+
+    member this.Reset() =
+
+        let isRandomNumber, fromPassphrase = (true, false)
+        set this isRandomNumber entropyFromRandNumber <@ this.EntropyFromRandNumber @>
+        set this fromPassphrase entropyFromPassphrase <@ this.EntropyFromPassphrase @>
+        this.Passphrase <- ""
+        this.AccountId <- ""
+        this.SecreyKey <- ""

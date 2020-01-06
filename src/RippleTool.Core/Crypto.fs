@@ -114,3 +114,32 @@ let computeSignature accountKeys input =
     input
     |> computeSignatureEcc accountKeys
     |> encodeToDer
+
+//-------------------------------------------------------------------------------------------------
+
+let createSecretKeyFromRandNumber () =
+    use rng = RandomNumberGenerator.Create()
+    let bytes = Array.zeroCreate<byte> 16
+    rng.GetBytes(bytes)
+    bytes
+
+let createSecretKeyFromPassphrase (passphrase : string) =
+    passphrase
+    |> Text.Encoding.ASCII.GetBytes
+    |> computeHash
+    |> Array.take 16
+
+let generateKeyPair secretKeyBinary =
+
+    let accountId =
+        secretKeyBinary
+        |> computeRootKeys
+        |> computeAccountKeys 0u
+        |> computeAccountId
+        |> Base58.encodeAccountId
+
+    let secreyKey =
+        secretKeyBinary
+        |> Base58.encodeSecretKey
+
+    (accountId, secreyKey)

@@ -99,3 +99,8 @@ let setJsonRes json =
 
 let formatJson =
     Json.parse >> Json.formatWith JsonFormattingOptions.Pretty
+
+//-------------------------------------------------------------------------------------------------
+
+let generateKeyPairFromRandNumber = Crypto.createSecretKeyFromRandNumber >> Crypto.generateKeyPair
+let generateKeyPairFromPassphrase = Crypto.createSecretKeyFromPassphrase >> Crypto.generateKeyPair
