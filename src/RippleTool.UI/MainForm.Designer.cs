@@ -79,8 +79,9 @@
             this.menuItemHelpSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusItemProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.statusItemServerUri = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusItemAccountId = new System.Windows.Forms.ToolStripStatusLabel();
             this.dialogOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.dialogSaveFile = new System.Windows.Forms.SaveFileDialog();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
@@ -482,25 +483,14 @@
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusItemProgress,
             this.statusItemServerUri,
-            this.statusItemProgress});
+            this.statusItemAccountId});
             this.statusStrip.Location = new System.Drawing.Point(0, 538);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(784, 24);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip";
-            // 
-            // statusItemServerUri
-            // 
-            this.statusItemServerUri.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.statusItemServerUri.BorderStyle = System.Windows.Forms.Border3DStyle.Adjust;
-            this.statusItemServerUri.Name = "statusItemServerUri";
-            this.statusItemServerUri.Size = new System.Drawing.Size(667, 19);
-            this.statusItemServerUri.Spring = true;
-            this.statusItemServerUri.Text = "wss://s1.ripple.com";
-            this.statusItemServerUri.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // statusItemProgress
             // 
@@ -508,6 +498,21 @@
             this.statusItemProgress.Name = "statusItemProgress";
             this.statusItemProgress.Size = new System.Drawing.Size(100, 18);
             this.statusItemProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            // 
+            // statusItemServerUri
+            // 
+            this.statusItemServerUri.Name = "statusItemServerUri";
+            this.statusItemServerUri.Size = new System.Drawing.Size(433, 19);
+            this.statusItemServerUri.Spring = true;
+            this.statusItemServerUri.Text = "wss://s1.ripple.com";
+            this.statusItemServerUri.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // statusItemAccountId
+            // 
+            this.statusItemAccountId.Name = "statusItemAccountId";
+            this.statusItemAccountId.Size = new System.Drawing.Size(234, 19);
+            this.statusItemAccountId.Text = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh";
+            this.statusItemAccountId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dialogOpenFile
             // 
@@ -604,8 +609,9 @@
         private System.Windows.Forms.ToolStripSeparator menuItemHelpSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelpAbout;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
         private System.Windows.Forms.ToolStripProgressBar statusItemProgress;
+        private System.Windows.Forms.ToolStripStatusLabel statusItemServerUri;
+        private System.Windows.Forms.ToolStripStatusLabel statusItemAccountId;
         private System.Windows.Forms.OpenFileDialog dialogOpenFile;
         private System.Windows.Forms.SaveFileDialog dialogSaveFile;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;

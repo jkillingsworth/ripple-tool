@@ -18,6 +18,7 @@ namespace RippleTool.UI
             InitializeComponent();
             InitializeDockPanel();
             statusItemServerUri.Text = Config.serverUri;
+            statusItemAccountId.Text = Config.accountId;
         }
 
         protected override void OnShown(EventArgs e)
