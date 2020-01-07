@@ -126,7 +126,7 @@
             // 
             this.menuItemFileNew.Name = "menuItemFileNew";
             this.menuItemFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.menuItemFileNew.Size = new System.Drawing.Size(180, 22);
+            this.menuItemFileNew.Size = new System.Drawing.Size(155, 22);
             this.menuItemFileNew.Text = "&New";
             this.menuItemFileNew.Click += new System.EventHandler(this.menuItemFileNew_Click);
             // 
@@ -134,7 +134,7 @@
             // 
             this.menuItemFileOpen.Name = "menuItemFileOpen";
             this.menuItemFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.menuItemFileOpen.Size = new System.Drawing.Size(180, 22);
+            this.menuItemFileOpen.Size = new System.Drawing.Size(155, 22);
             this.menuItemFileOpen.Text = "&Open...";
             this.menuItemFileOpen.Click += new System.EventHandler(this.menuItemFileOpen_Click);
             // 
@@ -142,38 +142,38 @@
             // 
             this.menuItemFileSave.Name = "menuItemFileSave";
             this.menuItemFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.menuItemFileSave.Size = new System.Drawing.Size(180, 22);
+            this.menuItemFileSave.Size = new System.Drawing.Size(155, 22);
             this.menuItemFileSave.Text = "&Save";
             this.menuItemFileSave.Click += new System.EventHandler(this.menuItemFileSave_Click);
             // 
             // menuItemFileSaveAs
             // 
             this.menuItemFileSaveAs.Name = "menuItemFileSaveAs";
-            this.menuItemFileSaveAs.Size = new System.Drawing.Size(180, 22);
+            this.menuItemFileSaveAs.Size = new System.Drawing.Size(155, 22);
             this.menuItemFileSaveAs.Text = "Save &As...";
             this.menuItemFileSaveAs.Click += new System.EventHandler(this.menuItemFileSaveAs_Click);
             // 
             // menuItemFileSeparator1
             // 
             this.menuItemFileSeparator1.Name = "menuItemFileSeparator1";
-            this.menuItemFileSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.menuItemFileSeparator1.Size = new System.Drawing.Size(152, 6);
             // 
             // menuItemFileSettings
             // 
             this.menuItemFileSettings.Name = "menuItemFileSettings";
-            this.menuItemFileSettings.Size = new System.Drawing.Size(180, 22);
+            this.menuItemFileSettings.Size = new System.Drawing.Size(155, 22);
             this.menuItemFileSettings.Text = "Settings";
             this.menuItemFileSettings.Click += new System.EventHandler(this.menuItemFileSettings_Click);
             // 
             // menuItemFileSeparator2
             // 
             this.menuItemFileSeparator2.Name = "menuItemFileSeparator2";
-            this.menuItemFileSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.menuItemFileSeparator2.Size = new System.Drawing.Size(152, 6);
             // 
             // menuItemFileExit
             // 
             this.menuItemFileExit.Name = "menuItemFileExit";
-            this.menuItemFileExit.Size = new System.Drawing.Size(180, 22);
+            this.menuItemFileExit.Size = new System.Drawing.Size(155, 22);
             this.menuItemFileExit.Text = "E&xit";
             this.menuItemFileExit.Click += new System.EventHandler(this.menuItemFileExit_Click);
             // 
@@ -433,7 +433,7 @@
             // menuItemToolsGenerateKeyPair
             // 
             this.menuItemToolsGenerateKeyPair.Name = "menuItemToolsGenerateKeyPair";
-            this.menuItemToolsGenerateKeyPair.Size = new System.Drawing.Size(180, 22);
+            this.menuItemToolsGenerateKeyPair.Size = new System.Drawing.Size(175, 22);
             this.menuItemToolsGenerateKeyPair.Text = "Generate &Key Pair...";
             this.menuItemToolsGenerateKeyPair.Click += new System.EventHandler(this.menuItemToolsGenerateKeyPair_Click);
             // 
@@ -448,7 +448,7 @@
             // menuItemWindowCloseAll
             // 
             this.menuItemWindowCloseAll.Name = "menuItemWindowCloseAll";
-            this.menuItemWindowCloseAll.Size = new System.Drawing.Size(180, 22);
+            this.menuItemWindowCloseAll.Size = new System.Drawing.Size(120, 22);
             this.menuItemWindowCloseAll.Text = "C&lose All";
             this.menuItemWindowCloseAll.Click += new System.EventHandler(this.menuItemWindowCloseAll_Click);
             // 
